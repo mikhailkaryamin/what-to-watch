@@ -5,6 +5,7 @@ import {
 } from 'prop-types';
 
 const filmCardPropTypes = shape({
+  id: number,
   name: string,
   released: number,
   genre: string,

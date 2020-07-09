@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-import {getFilmCardsList} from './mock/mock.js';
+import {getFilmCardsList} from './mocks/films.js';
 
-const COUNT_FILM_CARDS = 20;
+const COUNT_FILM_CARDS = 8;
 const filmCards = getFilmCardsList(COUNT_FILM_CARDS);
 
 ReactDOM.render(
