@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import App from './app.jsx';
+import FilmCatalog from './film-catalog.jsx';
 
-describe(`Render App`, () => {
+describe(`FilmCatalog`, () => {
   const FILM_CARDS = [
     {
       id: 1,
@@ -31,13 +31,12 @@ describe(`Render App`, () => {
   const onHeadlineButtonClick = () => {};
 
   const wrapper = renderer
-    .create(
-        <App
-          filmCards={FILM_CARDS}
-          onHeadlineButtonClick={onHeadlineButtonClick}
-        />);
+    .create(<FilmCatalog
+      filmCards={FILM_CARDS}
+      onHeadlineButtonClick={onHeadlineButtonClick}
+    />);
 
-  test(`render`, () => {
+  test(`render film catalog`, () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

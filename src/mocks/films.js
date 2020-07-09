@@ -31,8 +31,14 @@ const GENRES = [
   `Romance`,
 ];
 
+const getIdCard = () => {
+  const idCard = Number(Date.now() + Math.random() * 10);
+  return idCard;
+};
+
 const getFilmCard = () => {
   return ({
+    id: getIdCard(),
     name: getRandomElement(NAMES),
     released: getRandomElement(RELEASED),
     genre: getRandomElement(GENRES),
