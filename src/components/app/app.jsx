@@ -1,13 +1,20 @@
 import React from 'react';
 import Main from '../main/main.jsx';
+import {arrayOf} from 'prop-types';
+import {filmCardPropTypes} from '../../types.js';
 
 const App = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {filmCard} = props;
+  const {filmCards} = props;
 
   return <Main
-    filmCard={filmCard}
+    filmCards={filmCards}
   />;
+};
+
+App.propTypes = {
+  filmCards: arrayOf(
+      filmCardPropTypes
+  ),
 };
 
 export default App;
