@@ -40,6 +40,12 @@ const getFilmCard = () => {
   });
 };
 
+const getFilmCardsList = (count) => {
+  let filmCards = new Array(count).fill(``);
+
+  return filmCards.map(() => getFilmCard());
+};
+
 export {
-  getFilmCard,
+  getFilmCardsList,
 };

@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-import {getFilmCard} from './mock/mock.js';
+import {getFilmCardsList} from './mock/mock.js';
 
-const filmCard = getFilmCard();
+const COUNT_FILM_CARDS = 20;
+const filmCards = getFilmCardsList(COUNT_FILM_CARDS);
 
 ReactDOM.render(
     <App
-      filmCard={filmCard}
+      filmCards={filmCards}
     />,
     document.querySelector(`#root`)
 );
