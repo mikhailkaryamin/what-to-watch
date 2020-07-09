@@ -1,7 +1,10 @@
 import React, {
   PureComponent
 } from 'react';
-import {arrayOf} from 'prop-types';
+import {
+  arrayOf,
+  func,
+} from 'prop-types';
 import {filmCardPropTypes} from '../../types.js';
 
 const GENRES = [
@@ -127,6 +130,7 @@ class Main extends PureComponent {
   _getFilmsCardMarkup() {
     const {
       filmCards,
+      onHeadlineButtonClick,
     } = this.props;
 
     const filmsCardMarkup = filmCards.map((card, i) => {
@@ -147,6 +151,7 @@ class Main extends PureComponent {
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={onHeadlineButtonClick}
           >
             <a
               className="small-movie-card__link"
@@ -180,6 +185,7 @@ Main.propTypes = {
   filmCards: arrayOf(
       filmCardPropTypes
   ),
+  onHeadlineButtonClick: func,
 };
 
 export default Main;
