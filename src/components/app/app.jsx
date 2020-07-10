@@ -7,6 +7,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import {arrayOf} from 'prop-types';
+
 import {filmCardPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 

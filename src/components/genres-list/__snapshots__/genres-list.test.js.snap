@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Genres list Render 1`] = `
+exports[`Genres list should render genres list 1`] = `
 <ul
   className="catalog__genres-list"
 >

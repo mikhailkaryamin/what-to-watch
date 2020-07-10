@@ -1,6 +1,7 @@
 import React, {
   PureComponent
 } from 'react';
+
 import {filmCardPropTypes} from '../../types.js';
 import {
   ButtonType,

@@ -7,7 +7,7 @@ describe(`Genres list`, () => {
   const wrapper = renderer
     .create(<GenresList />);
 
-  test(`Render`, () => {
+  test(`should render genres list`, () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -6,6 +6,7 @@ import {
   func,
   string,
 } from 'prop-types';
+
 import {filmCardPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
@@ -27,6 +28,7 @@ class FilmCardsList extends PureComponent {
       <div className={`catalog__movies-list ${sign === FilmCardsListType.MAIN ? `` : `catalog--like-this`}`}>
 
         {this._getFilmCardsMarkup()}
+
       </div>
     );
   }

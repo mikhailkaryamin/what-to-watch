@@ -7,7 +7,7 @@ describe(`Footer`, () => {
   const wrapper = renderer
     .create(<Footer />);
 
-  test(`render`, () => {
+  test(`should render footer`, () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
