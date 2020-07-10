@@ -4,9 +4,7 @@ import {filmCardPropTypes} from '../../types.js';
 
 const FilmCard = (props) => {
   const {
-    onHeadlineButtonClick,
-    onMouseEnter,
-    onMouseLeave,
+    onFilmCardClick,
   } = props;
 
   const {
@@ -17,11 +15,8 @@ const FilmCard = (props) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseEnter={() => {
-        onMouseEnter(props.filmCard);
-      }}
-      onMouseLeave={() => {
-        onMouseLeave();
+      onClick={() => {
+        onFilmCardClick(props.filmCard);
       }}
     >
       <div
@@ -36,11 +31,10 @@ const FilmCard = (props) => {
       </div>
       <h3
         className="small-movie-card__title"
-        onClick={onHeadlineButtonClick}
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="#"
         >
           {name}
         </a>
@@ -51,9 +45,7 @@ const FilmCard = (props) => {
 
 FilmCard.propTypes = {
   filmCard: filmCardPropTypes,
-  onMouseEnter: func,
-  onMouseLeave: func,
-  onHeadlineButtonClick: func,
+  onFilmCardClick: func,
 };
 
 export default FilmCard;
