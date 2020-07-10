@@ -1,48 +1,48 @@
-import {getRandomElement} from '../utils/utils.js';
-
-const NAMES = [
-  `Fantastic Beasts: The Crimes of Grindelwald`,
-  `Bohemian Rhapsody`,
-  `Macbeth`,
-  `Aviator`,
-  `We need to talk about Kevin`
-];
-const IMAGES = [
-  `img/aviator.jpg`,
-  `img/bg-the-grand-budapest-hotel.jpg`,
-  `img/bohemian-rhapsody.jpg`,
-  `img/johnny-english.jpg`,
-  `img/orlando.jpg`
-];
-
-const RELEASED = [
-  2012,
-  2013,
-  2014,
-  2015,
-  2016
-];
-
-const GENRES = [
-  `Comedy`,
-  `Crime`,
-  `Drama`,
-  `Horror`,
-  `Romance`,
-];
+import {
+  getRandomElement,
+  getRandomNumber,
+} from '../utils/utils.js';
+import {
+  ACTORS,
+  DESCRIPTIONS,
+  GENRES,
+  IMAGES,
+  NAMES,
+  Rating,
+  RunTime,
+  ScoreCount,
+  STARRING_MAX,
+  YearReleased,
+} from './consts.js';
 
 const getIdCard = () => {
   const idCard = Number(Date.now() + Math.random() * 10);
   return idCard;
 };
 
+const getStarring = () => {
+  let starring = new Set();
+  for (let i = 0; i < STARRING_MAX; i++) {
+    starring.add(ACTORS[getRandomNumber(ACTORS.length - 1)]);
+  }
+
+  return Array.from(starring);
+};
+
 const getFilmCard = () => {
   return ({
+    backgroundImage: getRandomElement(IMAGES),
+    description: getRandomElement(DESCRIPTIONS),
+    director: getRandomElement(ACTORS),
+    genre: getRandomElement(GENRES),
     id: getIdCard(),
     name: getRandomElement(NAMES),
-    released: getRandomElement(RELEASED),
-    genre: getRandomElement(GENRES),
     posterImage: getRandomElement(IMAGES),
+    rating: getRandomNumber(Rating.MAX),
+    released: getRandomNumber(YearReleased.MAX, YearReleased.MIN),
+    runTime: getRandomNumber(RunTime.MAX, RunTime.MIN),
+    scoreCount: getRandomNumber(ScoreCount.MAX),
+    starring: getStarring(),
   });
 };
 

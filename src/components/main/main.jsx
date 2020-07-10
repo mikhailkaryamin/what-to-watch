@@ -6,6 +6,7 @@ import {
   func,
 } from 'prop-types';
 import {filmCardPropTypes} from '../../types.js';
+import {FilmCardsListType} from '../../const.js';
 
 import FilmCardMain from '../film-card-main/film-card-main.jsx';
 import FilmCatalog from '../film-catalog/film-catalog.jsx';
@@ -19,7 +20,7 @@ class Main extends PureComponent {
   render() {
     const {
       filmCards,
-      onHeadlineButtonClick,
+      onFilmCardClick,
     } = this.props;
 
     return (
@@ -29,7 +30,8 @@ class Main extends PureComponent {
         <div className="page-content">
           <FilmCatalog
             filmCards={filmCards}
-            onHeadlineButtonClick={onHeadlineButtonClick}
+            sign={FilmCardsListType.MAIN}
+            onFilmCardClick={onFilmCardClick}
           />
           <Footer />
         </div>
@@ -42,7 +44,7 @@ Main.propTypes = {
   filmCards: arrayOf(
       filmCardPropTypes
   ),
-  onHeadlineButtonClick: func,
+  onFilmCardClick: func,
 };
 
 export default Main;

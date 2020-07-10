@@ -4,56 +4,64 @@ import React, {
 import {
   arrayOf,
   func,
+  string,
 } from 'prop-types';
 import {filmCardPropTypes} from '../../types.js';
+import {FilmCardsListType} from '../../const.js';
 
 import FilmCard from '../film-card/film-card.jsx';
+
+const LIKE_THIS_CARDS_COUNT = 4;
 
 class FilmCardsList extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      activeCardId: null,
-    };
-    this._setActiveFilmCard = this._setActiveFilmCard.bind(this);
-    this._removeActiveFilmCard = this._removeActiveFilmCard.bind(this);
   }
 
   render() {
     const {
-      filmCards,
-      onHeadlineButtonClick,
+      sign,
     } = this.props;
 
-    const filmCardsMarkup = filmCards.map((filmCard) => {
+    return (
+      <div className={`catalog__movies-list ${sign === FilmCardsListType.MAIN ? `` : `catalog--like-this`}`}>
+
+        {this._getFilmCardsMarkup()}
+      </div>
+    );
+  }
+
+  _getFilmCardsMarkup() {
+    const {
+      filmCards,
+      onFilmCardClick,
+      sign,
+    } = this.props;
+
+    if (sign === FilmCardsListType.LIKE_THIS) {
+      return filmCards.slice(0, LIKE_THIS_CARDS_COUNT).map((filmCard) => {
+        return <FilmCard
+          filmCard={filmCard}
+          key={filmCard.id}
+          onFilmCardClick={onFilmCardClick}
+        />;
+      });
+    }
+
+    return filmCards.map((filmCard) => {
       return <FilmCard
         filmCard={filmCard}
         key={filmCard.id}
-        onHeadlineButtonClick={onHeadlineButtonClick}
-        onMouseEnter={this._setActiveFilmCard}
-        onMouseLeave={this._removeActiveFilmCard}
+        onFilmCardClick={onFilmCardClick}
       />;
-    });
-
-    return filmCardsMarkup;
-  }
-
-  _setActiveFilmCard(id) {
-    this.setState({
-      activeCardId: id,
-    });
-  }
-
-  _removeActiveFilmCard() {
-    this.setState({
-      activeCardId: null,
     });
   }
 }
 
 FilmCardsList.propTypes = {
-  onHeadlineButtonClick: func,
   filmCards: arrayOf(filmCardPropTypes),
+  onFilmCardClick: func,
+  sign: string,
 };
 
 export default FilmCardsList;
