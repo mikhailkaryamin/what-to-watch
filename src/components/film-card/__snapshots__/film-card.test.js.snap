@@ -1,18 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Film card render 1`] = `
+exports[`Film card should render film card 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
+  onClick={[Function]}
 >
   <div
     className="small-movie-card__image"
   >
     <img
-      alt="Macbeth"
+      alt="Devin Albert"
       height="175"
-      src="img/bg-the-grand-budapest-hotel.jpg"
+      src="img/aviator.jpg"
       width="280"
     />
   </div>
@@ -21,9 +20,9 @@ exports[`Film card render 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="#"
     >
-      Macbeth
+      Devin Albert
     </a>
   </h3>
 </article>

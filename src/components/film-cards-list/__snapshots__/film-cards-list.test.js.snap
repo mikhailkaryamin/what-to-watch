@@ -1,87 +1,165 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Film cards list Render 1`] = `
-Array [
+exports[`Film cards list should render for like this 1`] = `
+<div
+  className="catalog__movies-list catalog--like-this"
+>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onClick={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="Macbeth"
+        alt="Devin Albert"
         height="175"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        src="img/aviator.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
-        Macbeth
+        Devin Albert
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onClick={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+        alt="Devin Albert"
         height="175"
-        src="img/orlando.jpg"
+        src="img/aviator.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
-        Fantastic Beasts: The Crimes of Grindelwald
+        Devin Albert
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onClick={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+        alt="Devin Albert"
         height="175"
-        src="img/orlando.jpg"
+        src="img/aviator.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="#"
       >
-        Fantastic Beasts: The Crimes of Grindelwald
+        Devin Albert
       </a>
     </h3>
-  </article>,
-]
+  </article>
+</div>
+`;
+
+exports[`Film cards list should render for main 1`] = `
+<div
+  className="catalog__movies-list "
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Devin Albert"
+        height="175"
+        src="img/aviator.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Devin Albert
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Devin Albert"
+        height="175"
+        src="img/aviator.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Devin Albert
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Devin Albert"
+        height="175"
+        src="img/aviator.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#"
+      >
+        Devin Albert
+      </a>
+    </h3>
+  </article>
+</div>
 `;

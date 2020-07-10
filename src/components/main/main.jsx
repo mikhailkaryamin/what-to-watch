@@ -5,6 +5,7 @@ import {
   arrayOf,
   func,
 } from 'prop-types';
+
 import {filmCardPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 

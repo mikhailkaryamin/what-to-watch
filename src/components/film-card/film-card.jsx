@@ -1,5 +1,6 @@
 import React from 'react';
 import {func} from 'prop-types';
+
 import {filmCardPropTypes} from '../../types.js';
 
 const FilmCard = (props) => {

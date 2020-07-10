@@ -1,42 +1,79 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {FilmCardsListType} from '../../const.js';
 
 import FilmCardsList from './film-cards-list.jsx';
 
 describe(`Film cards list`, () => {
   const FILM_CARDS = [
     {
+      backgroundImage: `img/aviator.jpg`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+      director: `Arthur Agee`,
+      genre: `Comedy`,
       id: 1,
-      genre: `Crime`,
-      name: `Macbeth`,
-      posterImage: `img/bg-the-grand-budapest-hotel.jpg`,
-      released: 2012,
+      name: `Devin Albert`,
+      posterImage: `img/aviator.jpg`,
+      rating: 3,
+      released: 2015,
+      runTime: 100,
+      scoreCount: 300,
+      starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
     },
     {
+      backgroundImage: `img/aviator.jpg`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+      director: `Arthur Agee`,
+      genre: `Comedy`,
       id: 2,
-      genre: `Romance`,
-      name: `Fantastic Beasts: The Crimes of Grindelwald`,
-      posterImage: `img/orlando.jpg`,
-      released: 2014
+      name: `Devin Albert`,
+      posterImage: `img/aviator.jpg`,
+      rating: 2,
+      released: 2015,
+      runTime: 100,
+      scoreCount: 300,
+      starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
     },
     {
+      backgroundImage: `img/aviator.jpg`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+      director: `Arthur Agee`,
+      genre: `Comedy`,
       id: 3,
-      genre: `Drama`,
-      name: `Fantastic Beasts: The Crimes of Grindelwald`,
-      posterImage: `img/orlando.jpg`,
-      released: 2012
+      name: `Devin Albert`,
+      posterImage: `img/aviator.jpg`,
+      rating: 3,
+      released: 2015,
+      runTime: 100,
+      scoreCount: 300,
+      starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
     }
   ];
 
-  const onHeadlineButtonClick = () => {};
+  const onFilmCardClick = () => {};
 
-  const wrapper = renderer
+  test(`should render for like this`, () => {
+    const wrapper = renderer
     .create(<FilmCardsList
       filmCards={FILM_CARDS}
-      onHeadlineButtonClick={onHeadlineButtonClick}
+      onFilmCardClick={onFilmCardClick}
+      sign={FilmCardsListType.LIKE_THIS}
     />);
 
-  test(`Render`, () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test(`should render for main`, () => {
+    const wrapper = renderer
+    .create(<FilmCardsList
+      filmCards={FILM_CARDS}
+      onFilmCardClick={onFilmCardClick}
+      sign={FilmCardsListType.MAIN}
+    />);
+
     expect(wrapper).toMatchSnapshot();
   });
 });
