@@ -1,4 +1,5 @@
 import {
+  getId,
   getRandomElement,
   getRandomNumber,
 } from '../utils/utils.js';
@@ -16,11 +17,6 @@ import {
   YearReleased,
 } from './consts.js';
 
-const getIdCard = () => {
-  const idCard = Number(Date.now() + Math.random() * 10);
-  return idCard;
-};
-
 const getStarring = () => {
   let starring = new Set();
   for (let i = 0; i < STARRING_MAX; i++) {
@@ -36,7 +32,7 @@ const getFilmCard = () => {
     description: getRandomElement(DESCRIPTIONS),
     director: getRandomElement(ACTORS),
     genre: getRandomElement(GENRES),
-    id: getIdCard(),
+    id: getId(),
     name: getRandomElement(NAMES),
     previewVideoLink: getRandomElement(PREVIEW_VIDEO_LINKS),
     posterImage: getRandomElement(IMAGES),

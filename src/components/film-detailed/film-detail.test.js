@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import FilmPage from './film-page.jsx';
+import FilmDetailed from './film-detailed.jsx';
 
-describe(`Film page`, () => {
+describe(`Film detailed`, () => {
   const FILM_CARD = {
     backgroundImage: `img/aviator.jpg`,
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -69,12 +69,12 @@ describe(`Film page`, () => {
   ];
 
   const wrapper = renderer
-    .create(<FilmPage
+    .create(<FilmDetailed
       filmCard={FILM_CARD}
       filmCards={FILM_CARDS}
     />);
 
-  test(`should render film page`, () => {
+  test(`should render film detailed`, () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

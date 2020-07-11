@@ -8,11 +8,14 @@ import {
 } from 'react-router-dom';
 import {arrayOf} from 'prop-types';
 
-import {filmCardPropTypes} from '../../types.js';
+import {
+  filmCardPropTypes,
+  filmCommentPropTypes,
+} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
 import Main from '../main/main.jsx';
-import FilmPage from '../film-page/film-page.jsx';
+import FilmDetailed from '../film-detailed/film-detailed.jsx';
 
 class App extends PureComponent {
   constructor(props) {
@@ -36,9 +39,10 @@ class App extends PureComponent {
           <Route
             path="/dev-component"
           >
-            <FilmPage
+            <FilmDetailed
               filmCard={this.props.filmCards[0]}
               filmCards={this.props.filmCards}
+              filmComments={this.props.filmComments}
               onFilmCardClick={this._setActiveFilmCard}
               sign={FilmCardsListType.LIKE_THIS}
             />
@@ -50,14 +54,16 @@ class App extends PureComponent {
 
   _renderApp() {
     const {
-      filmCards
+      filmCards,
+      filmComments,
     } = this.props;
 
     if (this.state.activeCard) {
       return (
-        <FilmPage
+        <FilmDetailed
           filmCard={this.state.activeCard}
-          filmCards={this.props.filmCards}
+          filmCards={filmCards}
+          filmComments={filmComments}
           onFilmCardClick={this._setActiveFilmCard}
           sign={FilmCardsListType.LIKE_THIS}
         />
@@ -83,6 +89,9 @@ App.propTypes = {
   filmCards: arrayOf(
       filmCardPropTypes
   ),
+  filmComments: arrayOf(
+      filmCommentPropTypes
+  )
 };
 
 export default App;

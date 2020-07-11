@@ -8,7 +8,14 @@ const FilmCardsListType = {
   LIKE_THIS: `like-this`,
 };
 
+const FilmDetailedTabsType = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
+};
+
 export {
   ButtonType,
   FilmCardsListType,
+  FilmDetailedTabsType,
 };
