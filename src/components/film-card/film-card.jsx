@@ -1,48 +1,80 @@
-import React from 'react';
+import React, {
+  PureComponent
+} from 'react';
 import {func} from 'prop-types';
 
 import {filmCardPropTypes} from '../../types.js';
 
-const FilmCard = (props) => {
-  const {
-    onFilmCardClick,
-  } = props;
+import VideoPlayer from '../video-player/video-player.jsx';
 
-  const {
-    posterImage,
-    name,
-  } = props.filmCard;
+class FilmCard extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isPlayVideo: false,
+    };
+    this._setPlayVideo = this._setPlayVideo.bind(this);
+  }
 
-  return (
-    <article
-      className="small-movie-card catalog__movies-card"
-      onClick={() => {
-        onFilmCardClick(props.filmCard);
-      }}
-    >
-      <div
-        className="small-movie-card__image"
+  render() {
+    const {
+      onFilmCardClick,
+    } = this.props;
+
+    const {
+      posterImage,
+      previewVideoLink,
+      name,
+    } = this.props.filmCard;
+
+    return (
+      <article
+        className="small-movie-card catalog__movies-card"
+        onClick={() => {
+          onFilmCardClick(this.props.filmCard);
+        }}
+        onMouseEnter={() => {
+          setTimeout(this._setPlayVideo, 1000);
+        }}
+        onMouseLeave={() =>{
+          this._setPlayVideo();
+        }}
       >
-        <img
-          src={posterImage}
-          alt={name}
-          width="280"
-          height="175"
-        />
-      </div>
-      <h3
-        className="small-movie-card__title"
-      >
-        <a
-          className="small-movie-card__link"
-          href="#"
+        <div
+          className="small-movie-card__image"
         >
-          {name}
-        </a>
-      </h3>
-    </article>
-  );
-};
+          {this.state.isPlayVideo || <img
+            src={posterImage}
+            alt={name}
+            width="280"
+            height="175"
+          />}
+
+          {this.state.isPlayVideo && <VideoPlayer
+            posterImage={posterImage}
+            previewVideoLink={previewVideoLink}
+          />}
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="#"
+          >
+            {name}
+          </a>
+        </h3>
+      </article>
+    );
+  }
+
+  _setPlayVideo() {
+    this.setState((state) => ({
+      isPlayVideo: !state.isPlayVideo
+    }));
+  }
+}
 
 FilmCard.propTypes = {
   filmCard: filmCardPropTypes,

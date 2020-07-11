@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video player should render video player 1`] = `
+<video
+  autoPlay={true}
+  muted={true}
+  poster="img/bg-the-grand-budapest-hotel.jpg"
+  src="https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/Schlossbergbahn.webm/Schlossbergbahn.webm.480p.vp9.webm"
+/>
+`;

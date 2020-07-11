@@ -52,6 +52,11 @@ const IMAGES = [
   `img/orlando.jpg`
 ];
 
+const PREVIEW_VIDEO_LINKS = [
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/Schlossbergbahn.webm/Schlossbergbahn.webm.480p.vp9.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+];
+
 const NAMES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
   `Bohemian Rhapsody`,
@@ -85,6 +90,7 @@ export {
   DESCRIPTIONS,
   GENRES,
   IMAGES,
+  PREVIEW_VIDEO_LINKS,
   NAMES,
   Rating,
   RunTime,

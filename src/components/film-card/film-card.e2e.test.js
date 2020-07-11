@@ -42,4 +42,25 @@ describe(`e2e film card`, () => {
     expect(onFilmCardClick.mock.calls.length).toBe(1);
     expect(onFilmCardClick.mock.calls[0][0]).toEqual(FILM_CARD);
   });
+
+  test(`Should play video player`, () => {
+    const filmCardEl = filmCard.find(`.small-movie-card`);
+    jest.useFakeTimers();
+    filmCardEl.simulate(`mouseenter`);
+    jest.advanceTimersByTime(1200);
+    expect(filmCard.state(`isPlayVideo`)).toBe(true);
+    filmCard.setState({
+      isPlayVideo: false
+    });
+  });
+
+  test(`Should play then mouseleave film card`, () => {
+    const filmCardEl = filmCard.find(`.small-movie-card`);
+    jest.useFakeTimers();
+    filmCardEl.simulate(`mouseenter`);
+    jest.advanceTimersByTime(1200);
+    expect(filmCard.state(`isPlayVideo`)).toBe(true);
+    filmCardEl.simulate(`mouseleave`);
+    expect(filmCard.state(`isPlayVideo`)).toBe(false);
+  });
 });
