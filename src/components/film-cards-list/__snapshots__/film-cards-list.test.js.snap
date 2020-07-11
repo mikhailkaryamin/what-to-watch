@@ -7,6 +7,8 @@ exports[`Film cards list should render for like this 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -32,6 +34,8 @@ exports[`Film cards list should render for like this 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -57,6 +61,8 @@ exports[`Film cards list should render for like this 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -89,6 +95,8 @@ exports[`Film cards list should render for main 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -114,6 +122,8 @@ exports[`Film cards list should render for main 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -139,6 +149,8 @@ exports[`Film cards list should render for main 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
