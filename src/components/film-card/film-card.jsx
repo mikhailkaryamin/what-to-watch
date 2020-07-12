@@ -44,12 +44,19 @@ class FilmCard extends PureComponent {
           });
         }}
         onMouseEnter={() => {
-          this._timer = setTimeout(() => {
+          const controlPlayPreview = () => {
             this._setPlayVideo();
-          }, 1000);
+          };
+          this._timer = setTimeout(controlPlayPreview, 1000);
         }}
-        onMouseLeave={() =>{
-          this._setPlayVideo();
+
+        onMouseLeave={() => {
+          if (this._timer && !this.state.isPlayVideo) {
+            clearTimeout(this._timer);
+          } else {
+            this._setPlayVideo();
+          }
+
         }}
       >
         <div
