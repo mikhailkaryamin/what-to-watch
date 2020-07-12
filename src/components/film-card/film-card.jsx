@@ -55,6 +55,7 @@ class FilmCard extends PureComponent {
             clearTimeout(this._timer);
           } else {
             this._setPlayVideo();
+            clearTimeout(this._timer);
           }
 
         }}
