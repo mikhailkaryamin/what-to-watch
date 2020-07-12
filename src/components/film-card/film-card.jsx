@@ -13,7 +13,14 @@ class FilmCard extends PureComponent {
     this.state = {
       isPlayVideo: false,
     };
+    this._timer = null;
     this._setPlayVideo = this._setPlayVideo.bind(this);
+  }
+
+  componentWillUnmount() {
+    if (this._timer) {
+      clearTimeout(this._timer);
+    }
   }
 
   render() {
@@ -32,12 +39,25 @@ class FilmCard extends PureComponent {
         className="small-movie-card catalog__movies-card"
         onClick={() => {
           onFilmCardClick(this.props.filmCard);
+          this.setState({
+            isPlayVideo: false,
+          });
         }}
         onMouseEnter={() => {
-          setTimeout(this._setPlayVideo, 1000);
+          const controlPlayPreview = () => {
+            this._setPlayVideo();
+          };
+          this._timer = setTimeout(controlPlayPreview, 1000);
         }}
-        onMouseLeave={() =>{
-          this._setPlayVideo();
+
+        onMouseLeave={() => {
+          if (this._timer && !this.state.isPlayVideo) {
+            clearTimeout(this._timer);
+          } else {
+            this._setPlayVideo();
+            clearTimeout(this._timer);
+          }
+
         }}
       >
         <div

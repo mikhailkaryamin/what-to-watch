@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Film page should render film page 1`] = `
+exports[`Film detailed should render film detailed 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
@@ -161,6 +161,7 @@ Array [
             >
               <li
                 className="movie-nav__item movie-nav__item--active"
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -170,7 +171,8 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -180,7 +182,8 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"

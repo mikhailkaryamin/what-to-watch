@@ -20,6 +20,18 @@ const filmCardPropTypes = shape({
   starring: arrayOf(string),
 });
 
+const filmCommentPropTypes = shape({
+  id: number,
+  user: shape({
+    id: number,
+    name: string,
+  }),
+  rating: number,
+  comment: string,
+  date: number,
+});
+
 export {
   filmCardPropTypes,
+  filmCommentPropTypes,
 };
