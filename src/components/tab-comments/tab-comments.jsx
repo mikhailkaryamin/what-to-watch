@@ -1,9 +1,10 @@
 import React, {
   PureComponent
 } from 'react';
+import {connect} from 'react-redux';
 import {arrayOf} from 'prop-types';
 
-import {filmCommentPropTypes} from '../../types.js';
+import {commentPropTypes} from '../../types.js';
 
 class TabComments extends PureComponent {
   constructor(props) {
@@ -12,14 +13,14 @@ class TabComments extends PureComponent {
 
   render() {
     const {
-      filmComments,
+      comments,
     } = this.props;
 
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
 
-          {filmComments.filter((el, i) => (i + 1) % 2).map((comment) =>
+          {comments.filter((el, i) => (i + 1) % 2).map((comment) =>
             this._getMarkupComment(comment)
           )}
 
@@ -27,7 +28,7 @@ class TabComments extends PureComponent {
 
         <div className="movie-card__reviews-col">
 
-          {filmComments.filter((el, i) => !((i + 1) % 2)).map((comment) =>
+          {comments.filter((el, i) => !((i + 1) % 2)).map((comment) =>
             this._getMarkupComment(comment)
           )}
 
@@ -78,7 +79,11 @@ class TabComments extends PureComponent {
 }
 
 TabComments.propTypes = {
-  filmComments: arrayOf(filmCommentPropTypes)
+  comments: arrayOf(commentPropTypes)
 };
 
-export default TabComments;
+const mapStateToProps = (state) => ({
+  comments: state.comments,
+});
+
+export default connect(mapStateToProps)(TabComments);

@@ -1,11 +1,8 @@
 import React from 'react';
 import {
-  arrayOf,
-  func,
   string,
 } from 'prop-types';
 
-import {filmCardPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
 import FilmCardsList from '../film-cards-list/film-cards-list.jsx';
@@ -13,8 +10,6 @@ import GenresList from '../genres-list/genres-list.jsx';
 
 const FilmCatalog = (props) => {
   const {
-    filmCards,
-    onFilmCardClick,
     sign,
   } = props;
 
@@ -25,8 +20,6 @@ const FilmCatalog = (props) => {
         <GenresList />
 
         <FilmCardsList
-          filmCards={filmCards}
-          onFilmCardClick={onFilmCardClick}
           sign={FilmCardsListType.MAIN}
         />
 
@@ -42,8 +35,6 @@ const FilmCatalog = (props) => {
         </h2>
 
         <FilmCardsList
-          filmCards={filmCards}
-          onFilmCardClick={onFilmCardClick}
           sign={FilmCardsListType.LIKE_THIS}
         />
       </React.Fragment>}
@@ -53,9 +44,7 @@ const FilmCatalog = (props) => {
 };
 
 FilmCatalog.propTypes = {
-  filmCards: arrayOf(filmCardPropTypes),
-  onFilmCardClick: func,
-  sign: string,
+  sign: string.isRequired,
 };
 
 export default FilmCatalog;

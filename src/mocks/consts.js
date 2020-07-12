@@ -37,11 +37,15 @@ Morbi.`
 ];
 
 const GENRES = [
-  `Comedy`,
+  `Comedies`,
   `Crime`,
-  `Drama`,
+  `Documentary`,
+  `Dramas`,
   `Horror`,
+  `Kids & Family`,
   `Romance`,
+  `Sci-Fi`,
+  `Thrillers`,
 ];
 
 const IMAGES = [

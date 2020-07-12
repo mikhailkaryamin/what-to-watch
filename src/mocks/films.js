@@ -17,6 +17,8 @@ import {
   YearReleased,
 } from './consts.js';
 
+const COUNT_FILM_CARDS = 8;
+
 const getStarring = () => {
   let starring = new Set();
   for (let i = 0; i < STARRING_MAX; i++) {
@@ -44,12 +46,12 @@ const getFilmCard = () => {
   });
 };
 
-const getFilmCardsList = (count) => {
-  let filmCards = new Array(count).fill(``);
+const getFilms = () => {
+  let filmCards = new Array(COUNT_FILM_CARDS).fill(``);
 
   return filmCards.map(() => getFilmCard());
 };
 
 export {
-  getFilmCardsList,
+  getFilms,
 };

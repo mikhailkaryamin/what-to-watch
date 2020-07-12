@@ -1,11 +1,11 @@
 import React, {
   PureComponent
 } from 'react';
-import {arrayOf} from 'prop-types';
+
+import {connect} from 'react-redux';
 
 import {
-  filmCommentPropTypes,
-  filmCardPropTypes
+  filmPropTypes
 } from '../../types.js';
 import {
   ButtonType,
@@ -38,7 +38,7 @@ class FilmPage extends PureComponent {
       name,
       posterImage,
       released,
-    } = this.props.filmCard;
+    } = this.props.currentFilm;
 
     return (
       <React.Fragment>
@@ -83,7 +83,6 @@ class FilmPage extends PureComponent {
         </section>
         <div className="page-content">
           <FilmCatalog
-            {...this.props}
             sign={FilmCardsListType.LIKE_THIS}
           />
           <Footer />
@@ -94,8 +93,7 @@ class FilmPage extends PureComponent {
 
   _changeTabs() {
     const {
-      filmCard,
-      filmComments,
+      currentFilm,
     } = this.props;
     const {
       description,
@@ -106,7 +104,7 @@ class FilmPage extends PureComponent {
       runTime,
       scoreCount,
       starring,
-    } = filmCard;
+    } = currentFilm;
 
     switch (this.state.currentTypeTab) {
       case (FilmDetailedTabsType.DETAILS):
@@ -118,9 +116,7 @@ class FilmPage extends PureComponent {
           starring={starring}
         />;
       case (FilmDetailedTabsType.REVIEWS):
-        return <TabComments
-          filmComments={filmComments}
-        />;
+        return <TabComments />;
       default:
         return <TabOverview
           description={description}
@@ -140,11 +136,16 @@ class FilmPage extends PureComponent {
 }
 
 FilmPage.propTypes = {
-  filmCard: filmCardPropTypes,
-  filmComments: arrayOf(
-      filmCommentPropTypes
-  )
+  currentFilm: filmPropTypes,
 };
 
-export default FilmPage;
+const mapStateToProps = (state) => ({
+  currentFilm: state.currentFilm
+});
+
+export {
+  FilmPage
+};
+
+export default connect(mapStateToProps)(FilmPage);
 
