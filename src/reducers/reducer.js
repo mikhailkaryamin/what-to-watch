@@ -4,6 +4,7 @@ import {extend} from '../utils/utils.js';
 import ActionType from '../actions/action-type.js';
 
 const DEFAULT_GENRES = [`All genres`];
+const AMOUNT_RENDER_FILM_CARD = 8;
 
 const getFilmsByGenre = (films, genre, id = null) => {
   if (genre === DEFAULT_GENRES[0]) {
@@ -22,6 +23,7 @@ const getGenres = () => {
 };
 
 const initialState = {
+  amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
   comments,
   currentFilm: null,
   currentGenre: DEFAULT_GENRES[0],
@@ -34,11 +36,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.GET_FILMS:
-      return extend(state, {
-        films: state.films.slice(),
-      });
-
     case ActionType.GET_FILMS_BY_GENRE:
       const filmsByGenre = getFilmsByGenre(state.films, action.payload);
       return extend(state, {
@@ -49,6 +46,17 @@ const reducer = (state = initialState, action) => {
       const filmsLikeThis = getFilmsByGenre(state.films, action.payload.genre, action.payload.id);
       return extend(state, {
         filmsLikeThis,
+      });
+
+    case ActionType.RESET_AMOUNT_RENDER_FILM_CARD:
+      return extend(state, {
+        amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
+      });
+
+    case ActionType.SET_AMOUNT_RENDER_FILM_CARD:
+      const amountRenderFilmCard = state.amountRenderFilmCard + AMOUNT_RENDER_FILM_CARD;
+      return extend(state, {
+        amountRenderFilmCard,
       });
 
     case ActionType.SET_CURRENT_FILM:

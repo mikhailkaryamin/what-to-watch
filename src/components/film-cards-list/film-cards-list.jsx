@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {
   arrayOf,
   string,
+  number,
 } from 'prop-types';
 
 import {filmPropTypes} from '../../types.js';
@@ -35,6 +36,7 @@ class FilmCardsList extends PureComponent {
 
   _getFilmCardsMarkup() {
     const {
+      amountRenderFilmCard,
       filmsByGenre,
       filmsLikeThis,
       sign,
@@ -49,7 +51,7 @@ class FilmCardsList extends PureComponent {
       });
     }
 
-    return filmsByGenre.map((film) => {
+    return filmsByGenre.slice(0, amountRenderFilmCard).map((film) => {
       return <FilmCard
         film={film}
         key={film.id}
@@ -59,12 +61,14 @@ class FilmCardsList extends PureComponent {
 }
 
 FilmCardsList.propTypes = {
+  amountRenderFilmCard: number,
   filmsByGenre: arrayOf(filmPropTypes).isRequired,
   filmsLikeThis: arrayOf(filmPropTypes),
   sign: string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  amountRenderFilmCard: state.amountRenderFilmCard,
   filmsByGenre: state.filmsByGenre,
   filmsLikeThis: state.filmsLikeThis,
 });

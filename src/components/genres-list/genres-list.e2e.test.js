@@ -1,12 +1,13 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, {
+import {
+  configure,
   shallow
 } from 'enzyme';
 
 import {GenresList} from './genres-list.jsx';
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 

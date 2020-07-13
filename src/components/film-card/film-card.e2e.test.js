@@ -1,12 +1,13 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, {
+import {
+  configure,
   shallow
 } from 'enzyme';
 
 import {FilmCard} from './film-card.jsx';
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 

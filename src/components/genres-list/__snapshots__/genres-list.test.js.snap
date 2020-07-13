@@ -5,17 +5,6 @@ exports[`Genres list should render genres list 1`] = `
   className="catalog__genres-list"
 >
   <li
-    className="catalog__genres-item catalog__genres-item--active"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      All genre
-    </a>
-  </li>
-  <li
     className="catalog__genres-item"
     onClick={[Function]}
   >

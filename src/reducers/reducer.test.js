@@ -1,7 +1,10 @@
 import {reducer} from './reducer.js';
 import ActionType from '../actions/action-type.js';
 
+const AMOUNT_RENDER_FILM_CARD = 8;
+
 const initialState = {
+  amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
   comments: [],
   currentFilm: null,
   currentGenre: ``,
@@ -75,6 +78,34 @@ describe(`reducer`, () => {
             genre: `crime`
           }],
         });
+  });
+
+  test(`should handle RESET_AMOUNT_RENDER_FILM_CARD`, () => {
+    expect(
+        reducer({
+          amountRenderFilmCard: 20,
+        }, {
+          type: ActionType.RESET_AMOUNT_RENDER_FILM_CARD,
+          payload: null,
+        })).toEqual(
+        {
+          amountRenderFilmCard: 8,
+        }
+    );
+  });
+
+  test(`should handle SET_AMOUNT_RENDER_FILM_CARD`, () => {
+    expect(
+        reducer({
+          amountRenderFilmCard: 8,
+        }, {
+          type: ActionType.SET_AMOUNT_RENDER_FILM_CARD,
+          payload: null,
+        })).toEqual(
+        {
+          amountRenderFilmCard: 16,
+        }
+    );
   });
 
   test(`should handle SET_CURRENT_FILM`, () => {

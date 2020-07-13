@@ -1,10 +1,5 @@
 import ActionType from './action-type.js';
 
-const getFilms = () => ({
-  type: ActionType.GET_FILMS,
-  payload: null,
-});
-
 const getFilmsByGenre = (genre) => ({
   type: ActionType.GET_FILMS_BY_GENRE,
   payload: genre,
@@ -13,6 +8,16 @@ const getFilmsByGenre = (genre) => ({
 const getFilmsLikeThis = (film) => ({
   type: ActionType.GET_FILMS_LIKE_THIS,
   payload: film,
+});
+
+const resetAmountRenderFilmCard = () => ({
+  type: ActionType.RESET_AMOUNT_RENDER_FILM_CARD,
+  payload: null,
+});
+
+const setAmountRenderFilmCard = () => ({
+  type: ActionType.SET_AMOUNT_RENDER_FILM_CARD,
+  payload: null,
 });
 
 const setCurrentFilm = (film) => ({
@@ -26,9 +31,10 @@ const setCurrentGenre = (genre) => ({
 });
 
 export {
-  getFilms,
   getFilmsByGenre,
   getFilmsLikeThis,
+  resetAmountRenderFilmCard,
+  setAmountRenderFilmCard,
   setCurrentGenre,
   setCurrentFilm
 };
