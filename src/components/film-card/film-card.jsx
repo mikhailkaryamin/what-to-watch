@@ -1,9 +1,14 @@
 import React, {
   PureComponent
 } from 'react';
+import {connect} from 'react-redux';
 import {func} from 'prop-types';
 
-import {filmCardPropTypes} from '../../types.js';
+import {
+  getFilmsLikeThis,
+  setCurrentFilm
+} from '../../actions/actions.js';
+import {filmPropTypes} from '../../types.js';
 
 import VideoPlayer from '../video-player/video-player.jsx';
 
@@ -32,17 +37,18 @@ class FilmCard extends PureComponent {
       posterImage,
       previewVideoLink,
       name,
-    } = this.props.filmCard;
+    } = this.props.film;
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
         onClick={() => {
-          onFilmCardClick(this.props.filmCard);
+          onFilmCardClick(this.props.film);
           this.setState({
             isPlayVideo: false,
           });
         }}
+
         onMouseEnter={() => {
           const controlPlayPreview = () => {
             this._setPlayVideo();
@@ -97,8 +103,19 @@ class FilmCard extends PureComponent {
 }
 
 FilmCard.propTypes = {
-  filmCard: filmCardPropTypes,
-  onFilmCardClick: func,
+  film: filmPropTypes.isRequired,
+  onFilmCardClick: func.isRequired,
 };
 
-export default FilmCard;
+const mapDispatchToProps = (dispatch) => ({
+  onFilmCardClick(film) {
+    dispatch(setCurrentFilm(film));
+    dispatch(getFilmsLikeThis(film));
+  }
+});
+
+export {
+  FilmCard
+};
+
+export default connect(null, mapDispatchToProps)(FilmCard);

@@ -6,11 +6,10 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import {arrayOf} from 'prop-types';
+import {connect} from 'react-redux';
 
 import {
-  filmCardPropTypes,
-  filmCommentPropTypes,
+  filmPropTypes,
 } from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
@@ -20,10 +19,6 @@ import FilmDetailed from '../film-detailed/film-detailed.jsx';
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      activeCard: null,
-    };
-    this._setActiveFilmCard = this._setActiveFilmCard.bind(this);
   }
 
   render() {
@@ -40,10 +35,6 @@ class App extends PureComponent {
             path="/dev-component"
           >
             <FilmDetailed
-              filmCard={this.props.filmCards[0]}
-              filmCards={this.props.filmCards}
-              filmComments={this.props.filmComments}
-              onFilmCardClick={this._setActiveFilmCard}
               sign={FilmCardsListType.LIKE_THIS}
             />
           </Route>
@@ -54,44 +45,33 @@ class App extends PureComponent {
 
   _renderApp() {
     const {
-      filmCards,
-      filmComments,
+      currentFilm,
     } = this.props;
 
-    if (this.state.activeCard) {
+    if (currentFilm) {
       return (
         <FilmDetailed
-          filmCard={this.state.activeCard}
-          filmCards={filmCards}
-          filmComments={filmComments}
-          onFilmCardClick={this._setActiveFilmCard}
           sign={FilmCardsListType.LIKE_THIS}
         />
       );
     } else {
       return (
-        <Main
-          filmCards={filmCards}
-          onFilmCardClick={this._setActiveFilmCard}
-        />
+        <Main />
       );
     }
-  }
-
-  _setActiveFilmCard(id) {
-    this.setState({
-      activeCard: id,
-    });
   }
 }
 
 App.propTypes = {
-  filmCards: arrayOf(
-      filmCardPropTypes
-  ),
-  filmComments: arrayOf(
-      filmCommentPropTypes
-  )
+  currentFilm: filmPropTypes,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  currentFilm: state.currentFilm,
+});
+
+export {
+  App,
+};
+
+export default connect(mapStateToProps)(App);

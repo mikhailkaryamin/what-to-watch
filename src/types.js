@@ -5,7 +5,7 @@ import {
   string,
 } from 'prop-types';
 
-const filmCardPropTypes = shape({
+const filmPropTypes = shape({
   backgroundImage: string,
   description: string,
   director: string,
@@ -20,7 +20,7 @@ const filmCardPropTypes = shape({
   starring: arrayOf(string),
 });
 
-const filmCommentPropTypes = shape({
+const commentPropTypes = shape({
   id: number,
   user: shape({
     id: number,
@@ -32,6 +32,6 @@ const filmCommentPropTypes = shape({
 });
 
 export {
-  filmCardPropTypes,
-  filmCommentPropTypes,
+  filmPropTypes,
+  commentPropTypes,
 };

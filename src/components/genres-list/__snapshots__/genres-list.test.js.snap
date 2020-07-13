@@ -6,16 +6,18 @@ exports[`Genres list should render genres list 1`] = `
 >
   <li
     className="catalog__genres-item catalog__genres-item--active"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
       href="#"
     >
-      All genres
+      All genre
     </a>
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -26,6 +28,7 @@ exports[`Genres list should render genres list 1`] = `
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -36,6 +39,7 @@ exports[`Genres list should render genres list 1`] = `
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -46,6 +50,7 @@ exports[`Genres list should render genres list 1`] = `
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -56,6 +61,7 @@ exports[`Genres list should render genres list 1`] = `
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -66,6 +72,7 @@ exports[`Genres list should render genres list 1`] = `
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -76,6 +83,7 @@ exports[`Genres list should render genres list 1`] = `
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -86,6 +94,7 @@ exports[`Genres list should render genres list 1`] = `
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -96,6 +105,7 @@ exports[`Genres list should render genres list 1`] = `
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"

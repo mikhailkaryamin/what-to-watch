@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-import {filmCardPropTypes} from '../../types.js';
+import {filmPropTypes} from '../../types.js';
 import {ButtonType} from '../../const.js';
 
 import Header from '../header/header.jsx';
@@ -13,7 +14,7 @@ const FilmCardMain = (props) => {
     name,
     posterImage,
     released,
-  } = props.filmCard;
+  } = props.promoFilm;
 
   return (
     <section className="movie-card">
@@ -47,7 +48,15 @@ const FilmCardMain = (props) => {
 };
 
 FilmCardMain.propTypes = {
-  filmCard: filmCardPropTypes,
+  promoFilm: filmPropTypes,
 };
 
-export default FilmCardMain;
+const mapStateToProps = (state) => ({
+  promoFilm: state.promoFilm,
+});
+
+export {
+  FilmCardMain
+};
+
+export default connect(mapStateToProps)(FilmCardMain);

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import FilmCardMain from './film-card-main.jsx';
+import {FilmCardMain} from './film-card-main.jsx';
 
 describe(`Film card main`, () => {
   const FILM_CARD = {
@@ -12,6 +12,7 @@ describe(`Film card main`, () => {
     genre: `Comedy`,
     id: 1,
     name: `Devin Albert`,
+    previewVideoLink: `link`,
     posterImage: `img/aviator.jpg`,
     rating: 3,
     released: 2015,
@@ -22,7 +23,7 @@ describe(`Film card main`, () => {
 
   const wrapper = renderer
     .create(<FilmCardMain
-      filmCard={FILM_CARD}
+      promoFilm={FILM_CARD}
     />);
 
   test(`should render film card main`, () => {

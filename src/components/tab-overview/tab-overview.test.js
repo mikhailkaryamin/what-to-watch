@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer';
 
 import TabOverview from './tab-overview.jsx';
 
-
 describe(`Tab overview`, () => {
   const DESCRIPTION = `simple text`;
   const DIRECTOR = `big boss`;

@@ -1,13 +1,13 @@
 import React, {
   PureComponent
 } from 'react';
+import {connect} from 'react-redux';
 import {
   arrayOf,
-  func,
   string,
 } from 'prop-types';
 
-import {filmCardPropTypes} from '../../types.js';
+import {filmPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
 import FilmCard from '../film-card/film-card.jsx';
@@ -35,35 +35,42 @@ class FilmCardsList extends PureComponent {
 
   _getFilmCardsMarkup() {
     const {
-      filmCards,
-      onFilmCardClick,
+      filmsByGenre,
+      filmsLikeThis,
       sign,
     } = this.props;
 
     if (sign === FilmCardsListType.LIKE_THIS) {
-      return filmCards.slice(0, LIKE_THIS_CARDS_COUNT).map((filmCard) => {
+      return filmsLikeThis.slice(0, LIKE_THIS_CARDS_COUNT).map((film) => {
         return <FilmCard
-          filmCard={filmCard}
-          key={filmCard.id}
-          onFilmCardClick={onFilmCardClick}
+          film={film}
+          key={film.id}
         />;
       });
     }
 
-    return filmCards.map((filmCard) => {
+    return filmsByGenre.map((film) => {
       return <FilmCard
-        filmCard={filmCard}
-        key={filmCard.id}
-        onFilmCardClick={onFilmCardClick}
+        film={film}
+        key={film.id}
       />;
     });
   }
 }
 
 FilmCardsList.propTypes = {
-  filmCards: arrayOf(filmCardPropTypes),
-  onFilmCardClick: func,
-  sign: string,
+  filmsByGenre: arrayOf(filmPropTypes).isRequired,
+  filmsLikeThis: arrayOf(filmPropTypes),
+  sign: string.isRequired,
 };
 
-export default FilmCardsList;
+const mapStateToProps = (state) => ({
+  filmsByGenre: state.filmsByGenre,
+  filmsLikeThis: state.filmsLikeThis,
+});
+
+export {
+  FilmCardsList
+};
+
+export default connect(mapStateToProps)(FilmCardsList);

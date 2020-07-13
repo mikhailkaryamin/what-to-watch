@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import TabComments from './tab-comments.jsx';
+import {TabComments} from './tab-comments.jsx';
 
 describe(`Tab comments`, () => {
   const COMMENTS = [{
@@ -36,7 +36,9 @@ describe(`Tab comments`, () => {
   }];
 
   const wrapper = renderer
-    .create(<TabComments filmComments={COMMENTS}/>);
+    .create(
+        <TabComments comments={COMMENTS}/>
+    );
 
   test(`should render tab comments`, () => {
     expect(wrapper).toMatchSnapshot();

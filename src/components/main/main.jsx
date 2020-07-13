@@ -1,12 +1,7 @@
 import React, {
   PureComponent
 } from 'react';
-import {
-  arrayOf,
-  func,
-} from 'prop-types';
 
-import {filmCardPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
 import FilmCardMain from '../film-card-main/film-card-main.jsx';
@@ -19,20 +14,13 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {
-      filmCards,
-      onFilmCardClick,
-    } = this.props;
-
     return (
       <React.Fragment>
-        <FilmCardMain filmCard={filmCards[0]}/>
+        <FilmCardMain />
 
         <div className="page-content">
           <FilmCatalog
-            filmCards={filmCards}
             sign={FilmCardsListType.MAIN}
-            onFilmCardClick={onFilmCardClick}
           />
           <Footer />
         </div>
@@ -40,12 +28,5 @@ class Main extends PureComponent {
     );
   }
 }
-
-Main.propTypes = {
-  filmCards: arrayOf(
-      filmCardPropTypes
-  ),
-  onFilmCardClick: func,
-};
 
 export default Main;
