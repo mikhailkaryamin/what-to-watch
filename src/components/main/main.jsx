@@ -19,22 +19,13 @@ class Main extends PureComponent {
   }
 
   render() {
-    // const {
-    //   filmCards,
-    //   onFilmCardClick,
-    // } = this.props;
-
     return (
       <React.Fragment>
-        <FilmCardMain
-        // filmCard={filmCards[0]}
-        />
+        <FilmCardMain />
 
         <div className="page-content">
           <FilmCatalog
-            // filmCards={filmCards}
             sign={FilmCardsListType.MAIN}
-            // onFilmCardClick={onFilmCardClick}
           />
           <Footer />
         </div>

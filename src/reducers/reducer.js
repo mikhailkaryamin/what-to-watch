@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.GET_FILMS:
       return extend(state, {
-        filmsByGenre: state.films.slice(),
+        films: state.films.slice(),
       });
 
     case ActionType.GET_FILMS_BY_GENRE:
@@ -51,14 +51,14 @@ const reducer = (state = initialState, action) => {
         filmsLikeThis,
       });
 
-    case ActionType.SET_CURRENT_GENRE:
-      return extend(state, {
-        currentGenre: action.payload,
-      });
-
     case ActionType.SET_CURRENT_FILM:
       return extend(state, {
         currentFilm: action.payload,
+      });
+
+    case ActionType.SET_CURRENT_GENRE:
+      return extend(state, {
+        currentGenre: action.payload,
       });
 
     default:

@@ -10,19 +10,19 @@ const getFilmsByGenre = (genre) => ({
   payload: genre,
 });
 
-const getFilmsLikeThis = (genre) => ({
+const getFilmsLikeThis = (film) => ({
   type: ActionType.GET_FILMS_LIKE_THIS,
-  payload: genre,
-});
-
-const setCurrentGenre = (genre) => ({
-  type: ActionType.SET_CURRENT_GENRE,
-  payload: genre,
+  payload: film,
 });
 
 const setCurrentFilm = (film) => ({
   type: ActionType.SET_CURRENT_FILM,
   payload: film,
+});
+
+const setCurrentGenre = (genre) => ({
+  type: ActionType.SET_CURRENT_GENRE,
+  payload: genre,
 });
 
 export {
