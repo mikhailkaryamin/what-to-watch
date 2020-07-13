@@ -86,4 +86,8 @@ const mapStateToProps = (state) => ({
   comments: state.comments,
 });
 
+export {
+  TabComments
+};
+
 export default connect(mapStateToProps)(TabComments);

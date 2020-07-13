@@ -1,12 +1,7 @@
 import React, {
   PureComponent
 } from 'react';
-import {
-  arrayOf,
-  func,
-} from 'prop-types';
 
-import {filmPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
 import FilmCardMain from '../film-card-main/film-card-main.jsx';
@@ -33,12 +28,5 @@ class Main extends PureComponent {
     );
   }
 }
-
-Main.propTypes = {
-  filmCards: arrayOf(
-      filmPropTypes
-  ),
-  onFilmCardClick: func,
-};
 
 export default Main;

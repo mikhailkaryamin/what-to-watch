@@ -4,7 +4,7 @@ import Enzyme, {
   shallow
 } from 'enzyme';
 
-import FilmCard from './film-card.jsx';
+import {FilmCard} from './film-card.jsx';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -19,6 +19,7 @@ describe(`e2e film card`, () => {
     genre: `Comedy`,
     id: 1,
     name: `Devin Albert`,
+    previewVideoLink: `link`,
     posterImage: `img/aviator.jpg`,
     rating: 3,
     released: 2015,
@@ -29,38 +30,38 @@ describe(`e2e film card`, () => {
 
   const onFilmCardClick = jest.fn();
 
-  const filmCard = shallow(
+  const wrapper = shallow(
       <FilmCard
-        filmCard={FILM_CARD}
+        film={FILM_CARD}
         onFilmCardClick={onFilmCardClick}
       />
   );
 
   test(`Should film card click then return FILM_CARD`, () => {
-    const filmCardEl = filmCard.find(`.small-movie-card`);
+    const filmCardEl = wrapper.find(`.small-movie-card`);
     filmCardEl.simulate(`click`);
     expect(onFilmCardClick.mock.calls.length).toBe(1);
     expect(onFilmCardClick.mock.calls[0][0]).toEqual(FILM_CARD);
   });
 
   test(`Should play video player`, () => {
-    const filmCardEl = filmCard.find(`.small-movie-card`);
+    const filmCardEl = wrapper.find(`.small-movie-card`);
     jest.useFakeTimers();
     filmCardEl.simulate(`mouseenter`);
     jest.advanceTimersByTime(1200);
-    expect(filmCard.state(`isPlayVideo`)).toBe(true);
-    filmCard.setState({
+    expect(wrapper.state(`isPlayVideo`)).toBe(true);
+    wrapper.setState({
       isPlayVideo: false
     });
   });
 
   test(`Should play then mouseleave film card`, () => {
-    const filmCardEl = filmCard.find(`.small-movie-card`);
+    const filmCardEl = wrapper.find(`.small-movie-card`);
     jest.useFakeTimers();
     filmCardEl.simulate(`mouseenter`);
     jest.advanceTimersByTime(1200);
-    expect(filmCard.state(`isPlayVideo`)).toBe(true);
+    expect(wrapper.state(`isPlayVideo`)).toBe(true);
     filmCardEl.simulate(`mouseleave`);
-    expect(filmCard.state(`isPlayVideo`)).toBe(false);
+    expect(wrapper.state(`isPlayVideo`)).toBe(false);
   });
 });
