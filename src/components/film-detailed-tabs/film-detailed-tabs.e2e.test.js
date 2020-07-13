@@ -1,6 +1,7 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, {
+import {
+  configure,
   shallow,
 } from 'enzyme';
 
@@ -8,7 +9,7 @@ import {FilmDetailedTabsType} from '../../const.js';
 
 import FilmDetailedTabs from './film-detailed-tabs.jsx';
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 

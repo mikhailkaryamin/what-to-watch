@@ -1,15 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {
+  arrayOf,
+  number,
   string,
 } from 'prop-types';
 
 import {FilmCardsListType} from '../../const.js';
+import {filmPropTypes} from '../../types.js';
 
 import FilmCardsList from '../film-cards-list/film-cards-list.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
+import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 
 const FilmCatalog = (props) => {
   const {
+    amountRenderFilmCard,
+    filmsByGenre,
     sign,
   } = props;
 
@@ -23,10 +30,7 @@ const FilmCatalog = (props) => {
           sign={FilmCardsListType.MAIN}
         />
 
-
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        {(filmsByGenre.length <= amountRenderFilmCard) ? `` : <ShowMoreButton />}
       </React.Fragment>}
 
       {sign === FilmCardsListType.LIKE_THIS && <React.Fragment>
@@ -44,7 +48,18 @@ const FilmCatalog = (props) => {
 };
 
 FilmCatalog.propTypes = {
+  amountRenderFilmCard: number.isRequired,
+  filmsByGenre: arrayOf(filmPropTypes),
   sign: string.isRequired,
 };
 
-export default FilmCatalog;
+const mapStateToProps = (state) => ({
+  amountRenderFilmCard: state.amountRenderFilmCard,
+  filmsByGenre: state.filmsByGenre,
+});
+
+export {
+  FilmCatalog,
+};
+
+export default connect(mapStateToProps)(FilmCatalog);

@@ -8,7 +8,8 @@ import {
 
 import {
   getFilmsByGenre,
-  setCurrentGenre
+  resetAmountRenderFilmCard,
+  setCurrentGenre,
 } from '../../actions/actions.js';
 
 const GenresList = (props) => {
@@ -53,6 +54,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreClick(genre) {
+    dispatch(resetAmountRenderFilmCard());
     dispatch(setCurrentGenre(genre));
     dispatch(getFilmsByGenre(genre));
   }

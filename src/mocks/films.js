@@ -17,7 +17,7 @@ import {
   YearReleased,
 } from './consts.js';
 
-const COUNT_FILM_CARDS = 8;
+const COUNT_FILM_CARDS = 20;
 
 const getStarring = () => {
   let starring = new Set();
