@@ -15,6 +15,9 @@ import {FilmCardsListType} from '../../const.js';
 
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
+import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.jsx';
+
+const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
 
 class App extends PureComponent {
   constructor(props) {
@@ -34,7 +37,7 @@ class App extends PureComponent {
           <Route
             path="/dev-component"
           >
-            <FilmDetailed
+            <FilmDetailedWrapped
               sign={FilmCardsListType.LIKE_THIS}
             />
           </Route>
@@ -50,7 +53,7 @@ class App extends PureComponent {
 
     if (currentFilm) {
       return (
-        <FilmDetailed
+        <FilmDetailedWrapped
           sign={FilmCardsListType.LIKE_THIS}
         />
       );
