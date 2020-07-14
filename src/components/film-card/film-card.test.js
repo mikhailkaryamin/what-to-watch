@@ -37,7 +37,11 @@ describe(`Film card`, () => {
         <Provider store={store}>
           <FilmCard
             film={FILM_CARD}
+            isPlayVideo={false}
+            onClick={() => {}}
             onFilmCardClick={onFilmCardClick}
+            onMouseEnter={() => {}}
+            onMouseLeave={() => {}}
           />
         </Provider>
     );

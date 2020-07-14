@@ -12,6 +12,9 @@ import {filmPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
 import FilmCard from '../film-card/film-card.jsx';
+import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video.jsx';
+
+const FilmCardWrapped = withPreviewVideo(FilmCard);
 
 const LIKE_THIS_CARDS_COUNT = 4;
 
@@ -44,7 +47,7 @@ class FilmCardsList extends PureComponent {
 
     if (sign === FilmCardsListType.LIKE_THIS) {
       return filmsLikeThis.slice(0, LIKE_THIS_CARDS_COUNT).map((film) => {
-        return <FilmCard
+        return <FilmCardWrapped
           film={film}
           key={film.id}
         />;
@@ -52,7 +55,7 @@ class FilmCardsList extends PureComponent {
     }
 
     return filmsByGenre.slice(0, amountRenderFilmCard).map((film) => {
-      return <FilmCard
+      return <FilmCardWrapped
         film={film}
         key={film.id}
       />;

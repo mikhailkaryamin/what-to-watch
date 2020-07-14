@@ -4,6 +4,9 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
 import {initialStateWithCurrentFilm} from '../../mocks/initialState.js';
+import {
+  FilmDetailedTabsType
+} from '../../const.js';
 
 import FilmDetailed from './film-detailed.jsx';
 
@@ -15,7 +18,10 @@ describe(`Film detailed`, () => {
   const wrapper = renderer
     .create(
         <Provider store={store}>
-          <FilmDetailed />
+          <FilmDetailed
+            currentTypeTab={FilmDetailedTabsType.OVERVIEW}
+            onTabClick={() => {}}
+          />
         </Provider>
     );
 

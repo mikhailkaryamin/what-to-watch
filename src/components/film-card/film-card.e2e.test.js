@@ -33,8 +33,12 @@ describe(`e2e film card`, () => {
 
   const wrapper = shallow(
       <FilmCard
+        isPlayVideo={false}
         film={FILM_CARD}
+        onClick={() => {}}
         onFilmCardClick={onFilmCardClick}
+        onMouseEnter={() => {}}
+        onMouseLeave={() => {}}
       />
   );
 
@@ -43,26 +47,5 @@ describe(`e2e film card`, () => {
     filmCardEl.simulate(`click`);
     expect(onFilmCardClick.mock.calls.length).toBe(1);
     expect(onFilmCardClick.mock.calls[0][0]).toEqual(FILM_CARD);
-  });
-
-  test(`Should play video player`, () => {
-    const filmCardEl = wrapper.find(`.small-movie-card`);
-    jest.useFakeTimers();
-    filmCardEl.simulate(`mouseenter`);
-    jest.advanceTimersByTime(1200);
-    expect(wrapper.state(`isPlayVideo`)).toBe(true);
-    wrapper.setState({
-      isPlayVideo: false
-    });
-  });
-
-  test(`Should play then mouseleave film card`, () => {
-    const filmCardEl = wrapper.find(`.small-movie-card`);
-    jest.useFakeTimers();
-    filmCardEl.simulate(`mouseenter`);
-    jest.advanceTimersByTime(1200);
-    expect(wrapper.state(`isPlayVideo`)).toBe(true);
-    filmCardEl.simulate(`mouseleave`);
-    expect(wrapper.state(`isPlayVideo`)).toBe(false);
   });
 });

@@ -2,7 +2,10 @@ import React, {
   PureComponent
 } from 'react';
 import {connect} from 'react-redux';
-import {func} from 'prop-types';
+import {
+  bool,
+  func,
+} from 'prop-types';
 
 import {
   getFilmsLikeThis,
@@ -15,22 +18,15 @@ import VideoPlayer from '../video-player/video-player.jsx';
 class FilmCard extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      isPlayVideo: false,
-    };
-    this._timer = null;
-    this._setPlayVideo = this._setPlayVideo.bind(this);
-  }
-
-  componentWillUnmount() {
-    if (this._timer) {
-      clearTimeout(this._timer);
-    }
   }
 
   render() {
     const {
+      isPlayVideo,
       onFilmCardClick,
+      onClick,
+      onMouseEnter,
+      onMouseLeave,
     } = this.props;
 
     const {
@@ -44,39 +40,28 @@ class FilmCard extends PureComponent {
         className="small-movie-card catalog__movies-card"
         onClick={() => {
           onFilmCardClick(this.props.film);
-          this.setState({
-            isPlayVideo: false,
-          });
+          onClick();
         }}
 
         onMouseEnter={() => {
-          const controlPlayPreview = () => {
-            this._setPlayVideo();
-          };
-          this._timer = setTimeout(controlPlayPreview, 1000);
+          onMouseEnter();
         }}
 
         onMouseLeave={() => {
-          if (this._timer && !this.state.isPlayVideo) {
-            clearTimeout(this._timer);
-          } else {
-            this._setPlayVideo();
-            clearTimeout(this._timer);
-          }
-
+          onMouseLeave();
         }}
       >
         <div
           className="small-movie-card__image"
         >
-          {this.state.isPlayVideo || <img
+          {isPlayVideo || <img
             src={posterImage}
             alt={name}
             width="280"
             height="175"
           />}
 
-          {this.state.isPlayVideo && <VideoPlayer
+          {isPlayVideo && <VideoPlayer
             posterImage={posterImage}
             previewVideoLink={previewVideoLink}
           />}
@@ -94,17 +79,15 @@ class FilmCard extends PureComponent {
       </article>
     );
   }
-
-  _setPlayVideo() {
-    this.setState((state) => ({
-      isPlayVideo: !state.isPlayVideo
-    }));
-  }
 }
 
 FilmCard.propTypes = {
   film: filmPropTypes.isRequired,
+  isPlayVideo: bool.isRequired,
+  onClick: func.isRequired,
   onFilmCardClick: func.isRequired,
+  onMouseEnter: func.isRequired,
+  onMouseLeave: func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

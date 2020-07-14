@@ -1,8 +1,11 @@
 import React, {
   PureComponent
 } from 'react';
-
 import {connect} from 'react-redux';
+import {
+  func,
+  string
+} from 'prop-types';
 
 import {
   filmPropTypes
@@ -25,20 +28,22 @@ import Header from '../header/header.jsx';
 class FilmPage extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      currentTypeTab: FilmDetailedTabsType.OVERVIEW,
-    };
-    this._handleTabTypeChange = this._handleTabTypeChange.bind(this);
   }
 
   render() {
+    const {
+      currentFilm,
+      currentTypeTab,
+      onTabClick,
+    } = this.props;
+
     const {
       backgroundImage,
       genre,
       name,
       posterImage,
       released,
-    } = this.props.currentFilm;
+    } = currentFilm;
 
     return (
       <React.Fragment>
@@ -73,10 +78,10 @@ class FilmPage extends PureComponent {
               </div>
               <div className="movie-card__desc">
                 <FilmDetailedTabs
-                  currentTypeTab={this.state.currentTypeTab}
-                  onTabClick={this._handleTabTypeChange}
+                  currentTypeTab={currentTypeTab}
+                  onTabClick={onTabClick}
                 />
-                {this._changeTabs()}
+                {this._changeTabs(currentTypeTab)}
               </div>
             </div>
           </div>
@@ -91,7 +96,7 @@ class FilmPage extends PureComponent {
     );
   }
 
-  _changeTabs() {
+  _changeTabs(currentTypeTab) {
     const {
       currentFilm,
     } = this.props;
@@ -106,7 +111,7 @@ class FilmPage extends PureComponent {
       starring,
     } = currentFilm;
 
-    switch (this.state.currentTypeTab) {
+    switch (currentTypeTab) {
       case (FilmDetailedTabsType.DETAILS):
         return <TabDetails
           director={director}
@@ -127,16 +132,12 @@ class FilmPage extends PureComponent {
         />;
     }
   }
-
-  _handleTabTypeChange(type) {
-    this.setState({
-      currentTypeTab: type,
-    });
-  }
 }
 
 FilmPage.propTypes = {
   currentFilm: filmPropTypes,
+  currentTypeTab: string.isRequired,
+  onTabClick: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
