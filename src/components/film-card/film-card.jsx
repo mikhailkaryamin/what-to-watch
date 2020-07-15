@@ -13,7 +13,7 @@ import {
 } from '../../actions/actions.js';
 import {filmPropTypes} from '../../types.js';
 
-import VideoPlayer from '../video-player/video-player.jsx';
+import VideoPlayer from '../preview-video/preview-video.jsx';
 
 class FilmCard extends PureComponent {
   constructor(props) {

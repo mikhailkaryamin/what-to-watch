@@ -15,6 +15,7 @@ import {FilmCardsListType} from '../../const.js';
 
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
+import VideoPlayer from '../video-player/video-player.jsx';
 import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.jsx';
 
 const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
@@ -37,9 +38,7 @@ class App extends PureComponent {
           <Route
             path="/dev-component"
           >
-            <FilmDetailedWrapped
-              sign={FilmCardsListType.LIKE_THIS}
-            />
+            <VideoPlayer />
           </Route>
         </Switch>
       </BrowserRouter>
