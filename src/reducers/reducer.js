@@ -2,7 +2,6 @@ import {getFilms} from '../mocks/films.js';
 import {getCommentList} from '../mocks/comments.js';
 import {extend} from '../utils/utils.js';
 import ActionType from '../actions/action-type.js';
-import { act } from 'react-test-renderer';
 
 const DEFAULT_GENRES = [`All genres`];
 const AMOUNT_RENDER_FILM_CARD = 8;
@@ -54,6 +53,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.RESET_AMOUNT_RENDER_FILM_CARD:
       return extend(state, {
         amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
+      });
+
+    case ActionType.RESET_CURRENT_WATCHED_FILM:
+      return extend(state, {
+        currentWatchedFilm: action.payload,
       });
 
     case ActionType.SET_AMOUNT_RENDER_FILM_CARD:

@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+
 import {string} from 'prop-types';
 
 import {ButtonType} from '../../const.js';
@@ -34,6 +34,7 @@ const Button = (props) => {
         </span>
       </React.Fragment>
       }
+
     </button>
   );
 };
@@ -41,9 +42,5 @@ const Button = (props) => {
 Button.propTypes = {
   sign: string.isRequired,
 };
-
-const mapDispatchToProps = (dispatch) => ({
-
-});
 
 export default Button;

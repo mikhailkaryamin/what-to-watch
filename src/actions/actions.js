@@ -15,6 +15,11 @@ const resetAmountRenderFilmCard = () => ({
   payload: null,
 });
 
+const resetCurrentWatchedFilm = () => ({
+  type: ActionType.RESET_CURRENT_WATCHED_FILM,
+  payload: null,
+});
+
 const setAmountRenderFilmCard = () => ({
   type: ActionType.SET_AMOUNT_RENDER_FILM_CARD,
   payload: null,
@@ -39,6 +44,7 @@ export {
   getFilmsByGenre,
   getFilmsLikeThis,
   resetAmountRenderFilmCard,
+  resetCurrentWatchedFilm,
   setAmountRenderFilmCard,
   setCurrentGenre,
   setCurrentOpenFilm,

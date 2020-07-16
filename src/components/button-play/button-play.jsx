@@ -1,12 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {string} from 'prop-types';
-import { setCurrentWatchedFilm } from '../../actions/actions';
+import {func} from 'prop-types';
+
+import {setCurrentWatchedFilm} from '../../actions/actions';
+import {filmPropTypes} from '../../types.js';
 
 const ButtonPlay = (props) => {
   const {
-    onPlayButtonClick,
     film,
+    onPlayButtonClick,
   } = props;
   return (
     <button
@@ -27,7 +29,8 @@ const ButtonPlay = (props) => {
 };
 
 ButtonPlay.propTypes = {
-  sign: string.isRequired,
+  film: filmPropTypes.isRequired,
+  onPlayButtonClick: func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

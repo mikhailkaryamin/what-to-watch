@@ -10,6 +10,8 @@ import {
   string
 } from 'prop-types';
 
+import ButtonExitPlayer from '../button-exit-player/button-exit-player.jsx';
+
 const DEFAULT_PLAYBACK_TIME = `00:00:00`;
 const TargetType = {
   BUTTON: `button`,
@@ -75,9 +77,7 @@ class VideoPlayer extends PureComponent {
           controls={this.state.isFullscreen}
         ></video>
 
-        <button type="button" className="player__exit">
-          Exit
-        </button>
+        <ButtonExitPlayer />
 
         <div className="player__controls">
           <div className="player__controls-row">
