@@ -6,29 +6,30 @@ import {
 } from 'prop-types';
 
 const filmPropTypes = shape({
-  backgroundImage: string,
-  description: string,
-  director: string,
-  genre: string,
-  id: number,
-  name: string,
-  posterImage: string,
-  rating: number,
-  released: number,
-  runTime: number,
-  scoreCount: number,
-  starring: arrayOf(string),
+  backgroundImage: string.isRequired,
+  description: string.isRequired,
+  director: string.isRequired,
+  genre: string.isRequired,
+  id: number.isRequired,
+  name: string.isRequired,
+  posterImage: string.isRequired,
+  rating: number.isRequired,
+  released: number.isRequired,
+  runTime: number.isRequired,
+  scoreCount: number.isRequired,
+  starring: arrayOf(string).isRequired,
+  video: string.isRequired,
 });
 
 const commentPropTypes = shape({
-  id: number,
+  id: number.isRequired,
   user: shape({
-    id: number,
-    name: string,
+    id: number.isRequired,
+    name: string.isRequired,
   }),
-  rating: number,
-  comment: string,
-  date: number,
+  rating: number.isRequired,
+  comment: string.isRequired,
+  date: number.isRequired,
 });
 
 export {

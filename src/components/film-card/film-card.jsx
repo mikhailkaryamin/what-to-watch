@@ -9,11 +9,11 @@ import {
 
 import {
   getFilmsLikeThis,
-  setCurrentFilm
+  setCurrentOpenFilm
 } from '../../actions/actions.js';
 import {filmPropTypes} from '../../types.js';
 
-import VideoPlayer from '../video-player/video-player.jsx';
+import VideoPlayer from '../preview-video/preview-video.jsx';
 
 class FilmCard extends PureComponent {
   constructor(props) {
@@ -92,7 +92,7 @@ FilmCard.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardClick(film) {
-    dispatch(setCurrentFilm(film));
+    dispatch(setCurrentOpenFilm(film));
     dispatch(getFilmsLikeThis(film));
   }
 });

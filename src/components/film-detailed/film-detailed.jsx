@@ -32,7 +32,7 @@ class FilmPage extends PureComponent {
 
   render() {
     const {
-      currentFilm,
+      currentOpenFilm,
       currentTypeTab,
       onTabClick,
     } = this.props;
@@ -43,7 +43,7 @@ class FilmPage extends PureComponent {
       name,
       posterImage,
       released,
-    } = currentFilm;
+    } = currentOpenFilm;
 
     return (
       <React.Fragment>
@@ -64,7 +64,7 @@ class FilmPage extends PureComponent {
                 <div className="movie-card__buttons">
                   <Button sign={ButtonType.PLAY} />
 
-                  <Button sign={ButtonType.ADD} />
+                  <Button sign={ButtonType.LIST} />
                   <a href="add-review.html" className="btn movie-card__button">Add review</a>
                 </div>
               </div>
@@ -98,7 +98,7 @@ class FilmPage extends PureComponent {
 
   _changeTabs(currentTypeTab) {
     const {
-      currentFilm,
+      currentOpenFilm,
     } = this.props;
     const {
       description,
@@ -109,7 +109,7 @@ class FilmPage extends PureComponent {
       runTime,
       scoreCount,
       starring,
-    } = currentFilm;
+    } = currentOpenFilm;
 
     switch (currentTypeTab) {
       case (FilmDetailedTabsType.DETAILS):
@@ -135,13 +135,13 @@ class FilmPage extends PureComponent {
 }
 
 FilmPage.propTypes = {
-  currentFilm: filmPropTypes,
+  currentOpenFilm: filmPropTypes,
   currentTypeTab: string.isRequired,
   onTabClick: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  currentFilm: state.currentFilm
+  currentOpenFilm: state.currentOpenFilm
 });
 
 export {

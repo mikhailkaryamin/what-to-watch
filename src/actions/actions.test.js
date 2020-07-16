@@ -37,9 +37,9 @@ describe(`actions`, () => {
     });
   });
 
-  test(`setCurrentFilm should SET_CURRENT_FILM action`, () => {
-    expect(actions.setCurrentFilm(`film`)).toEqual({
-      type: `SET_CURRENT_FILM`,
+  test(`setCurrentOpenFilm should SET_CURRENT_OPEN_FILM action`, () => {
+    expect(actions.setCurrentOpenFilm(`film`)).toEqual({
+      type: `SET_CURRENT_OPEN_FILM`,
       payload: `film`,
     });
   });

@@ -15,14 +15,14 @@ const resetAmountRenderFilmCard = () => ({
   payload: null,
 });
 
-const setAmountRenderFilmCard = () => ({
-  type: ActionType.SET_AMOUNT_RENDER_FILM_CARD,
+const resetCurrentWatchedFilm = () => ({
+  type: ActionType.RESET_CURRENT_WATCHED_FILM,
   payload: null,
 });
 
-const setCurrentFilm = (film) => ({
-  type: ActionType.SET_CURRENT_FILM,
-  payload: film,
+const setAmountRenderFilmCard = () => ({
+  type: ActionType.SET_AMOUNT_RENDER_FILM_CARD,
+  payload: null,
 });
 
 const setCurrentGenre = (genre) => ({
@@ -30,11 +30,23 @@ const setCurrentGenre = (genre) => ({
   payload: genre,
 });
 
+const setCurrentOpenFilm = (film) => ({
+  type: ActionType.SET_CURRENT_OPEN_FILM,
+  payload: film,
+});
+
+const setCurrentWatchedFilm = (film) => ({
+  type: ActionType.SET_CURRENT_WATCHED_FILM,
+  payload: film,
+});
+
 export {
   getFilmsByGenre,
   getFilmsLikeThis,
   resetAmountRenderFilmCard,
+  resetCurrentWatchedFilm,
   setAmountRenderFilmCard,
   setCurrentGenre,
-  setCurrentFilm
+  setCurrentOpenFilm,
+  setCurrentWatchedFilm,
 };

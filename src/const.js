@@ -1,6 +1,11 @@
 const ButtonType = {
   PLAY: `play`,
-  ADD: `add`,
+  LIST: `list`,
+};
+
+const EscKeyName = {
+  LONG: `Escape`,
+  SHORT: `Esc`,
 };
 
 const FilmCardsListType = {
@@ -14,8 +19,15 @@ const FilmDetailedTabsType = {
   REVIEWS: `Reviews`,
 };
 
+const SpaceKeyName = {
+  CODE: 32,
+  TEXT: `Space`,
+};
+
 export {
   ButtonType,
+  EscKeyName,
   FilmCardsListType,
   FilmDetailedTabsType,
+  SpaceKeyName,
 };

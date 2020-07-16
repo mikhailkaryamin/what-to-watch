@@ -15,7 +15,7 @@ describe(`Button component`, () => {
 
   test(`should render Add button`, () => {
     const wrapper = renderer
-      .create(<Button sign={ButtonType.ADD}/>);
+      .create(<Button sign={ButtonType.LIST}/>);
 
     expect(wrapper).toMatchSnapshot();
   });
