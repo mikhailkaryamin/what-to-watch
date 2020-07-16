@@ -6,7 +6,7 @@ const AMOUNT_RENDER_FILM_CARD = 8;
 const initialState = {
   amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
   comments: [],
-  currentFilm: null,
+  currentOpenFilm: null,
   currentGenre: ``,
   films: [],
   filmsByGenre: [],
@@ -108,18 +108,18 @@ describe(`reducer`, () => {
     );
   });
 
-  test(`should handle SET_CURRENT_FILM`, () => {
+  test(`should handle SET_CURRENT_OPEN_FILM`, () => {
     expect(
         reducer({
-          currentFilm: null,
+          currentOpenFilm: null,
         }, {
-          type: ActionType.SET_CURRENT_FILM,
+          type: ActionType.SET_CURRENT_OPEN_FILM,
           payload: {
             name: `some film`
           }
         })).toEqual(
         {
-          currentFilm: {
+          currentOpenFilm: {
             name: `some film`
           }
         });

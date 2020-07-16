@@ -9,7 +9,7 @@ import {
 
 import {
   getFilmsLikeThis,
-  setCurrentFilm
+  setCurrentOpenFilm
 } from '../../actions/actions.js';
 import {filmPropTypes} from '../../types.js';
 
@@ -92,7 +92,7 @@ FilmCard.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardClick(film) {
-    dispatch(setCurrentFilm(film));
+    dispatch(setCurrentOpenFilm(film));
     dispatch(getFilmsLikeThis(film));
   }
 });

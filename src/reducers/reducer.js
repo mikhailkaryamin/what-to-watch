@@ -2,6 +2,7 @@ import {getFilms} from '../mocks/films.js';
 import {getCommentList} from '../mocks/comments.js';
 import {extend} from '../utils/utils.js';
 import ActionType from '../actions/action-type.js';
+import { act } from 'react-test-renderer';
 
 const DEFAULT_GENRES = [`All genres`];
 const AMOUNT_RENDER_FILM_CARD = 8;
@@ -25,12 +26,14 @@ const getGenres = () => {
 const initialState = {
   amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
   comments,
-  currentFilm: null,
+  currentOpenFilm: null,
+  currentWatchedFilm: null,
   currentGenre: DEFAULT_GENRES[0],
   films,
   filmsByGenre: films,
   filmsLikeThis: [],
   genres: getGenres(),
+  playFilm: null,
   promoFilm: films[0],
 };
 
@@ -59,14 +62,19 @@ const reducer = (state = initialState, action) => {
         amountRenderFilmCard,
       });
 
-    case ActionType.SET_CURRENT_FILM:
+    case ActionType.SET_CURRENT_OPEN_FILM:
       return extend(state, {
-        currentFilm: action.payload,
+        currentOpenFilm: action.payload,
       });
 
     case ActionType.SET_CURRENT_GENRE:
       return extend(state, {
         currentGenre: action.payload,
+      });
+
+    case ActionType.SET_CURRENT_WATCHED_FILM:
+      return extend(state, {
+        currentWatchedFilm: action.payload,
       });
 
     default:

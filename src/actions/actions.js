@@ -20,14 +20,19 @@ const setAmountRenderFilmCard = () => ({
   payload: null,
 });
 
-const setCurrentFilm = (film) => ({
-  type: ActionType.SET_CURRENT_FILM,
-  payload: film,
-});
-
 const setCurrentGenre = (genre) => ({
   type: ActionType.SET_CURRENT_GENRE,
   payload: genre,
+});
+
+const setCurrentOpenFilm = (film) => ({
+  type: ActionType.SET_CURRENT_OPEN_FILM,
+  payload: film,
+});
+
+const setCurrentWatchedFilm = (film) => ({
+  type: ActionType.SET_CURRENT_WATCHED_FILM,
+  payload: film,
 });
 
 export {
@@ -36,5 +41,6 @@ export {
   resetAmountRenderFilmCard,
   setAmountRenderFilmCard,
   setCurrentGenre,
-  setCurrentFilm
+  setCurrentOpenFilm,
+  setCurrentWatchedFilm,
 };

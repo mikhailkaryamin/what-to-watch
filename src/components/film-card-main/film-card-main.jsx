@@ -6,15 +6,20 @@ import {ButtonType} from '../../const.js';
 
 import Header from '../header/header.jsx';
 import Button from '../button/button.jsx';
+import ButtonPlay from '../button-play/button-play.jsx';
 
 const FilmCardMain = (props) => {
+  const {
+    promoFilm
+  } = props;
+
   const {
     backgroundImage,
     genre,
     name,
     posterImage,
     released,
-  } = props.promoFilm;
+  } = promoFilm;
 
   return (
     <section className="movie-card">
@@ -35,10 +40,10 @@ const FilmCardMain = (props) => {
               <span className="movie-card__year">{released}</span>
             </p>
 
-            <div className="movie-card__buttons">
-              <Button sign={ButtonType.PLAY} />
+            <div className="movie-card__buttons" >
+              <ButtonPlay film={promoFilm} />
 
-              <Button sign={ButtonType.ADD} />
+              <Button sign={ButtonType.LIST} />
             </div>
           </div>
         </div>

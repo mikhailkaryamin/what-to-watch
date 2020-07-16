@@ -13,6 +13,11 @@ import {
 } from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
+import {
+  IMAGES,
+  VIDEO_LINKS,
+} from '../../mocks/consts.js';
+
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
 import VideoPlayer from '../video-player/video-player.jsx';
@@ -26,6 +31,7 @@ class App extends PureComponent {
   }
 
   render() {
+
     return (
       <BrowserRouter>
         <Switch>
@@ -38,7 +44,10 @@ class App extends PureComponent {
           <Route
             path="/dev-component"
           >
-            <VideoPlayer />
+            <VideoPlayer
+              posterImage={IMAGES[0]}
+              video={VIDEO_LINKS[0]}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -47,29 +56,40 @@ class App extends PureComponent {
 
   _renderApp() {
     const {
-      currentFilm,
+      currentOpenFilm,
+      currentWatchedFilm,
     } = this.props;
 
-    if (currentFilm) {
-      return (
-        <FilmDetailedWrapped
-          sign={FilmCardsListType.LIKE_THIS}
-        />
-      );
-    } else {
-      return (
-        <Main />
-      );
+    switch (true) {
+      case (currentOpenFilm !== null):
+        return (
+          <FilmDetailedWrapped
+            sign={FilmCardsListType.LIKE_THIS}
+          />
+        );
+      case (currentWatchedFilm !== null):
+        return (
+          <VideoPlayer
+            posterImage={currentWatchedFilm.posterImage}
+            video={currentWatchedFilm.video}
+          />
+        );
+      default:
+        return (
+          <Main />
+        );
     }
   }
 }
 
 App.propTypes = {
-  currentFilm: filmPropTypes,
+  currentOpenFilm: filmPropTypes,
+  currentWatchedFilm: filmPropTypes,
 };
 
 const mapStateToProps = (state) => ({
-  currentFilm: state.currentFilm,
+  currentOpenFilm: state.currentOpenFilm,
+  currentWatchedFilm: state.currentWatchedFilm,
 });
 
 export {

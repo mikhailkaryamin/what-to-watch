@@ -3,27 +3,43 @@ import React, {
   PureComponent,
 } from 'react';
 
+import {
+  SpaceKeyName,
+} from '../../const.js';
+import {
+  string
+} from 'prop-types';
+
 const DEFAULT_PLAYBACK_TIME = `00:00:00`;
+const TargetType = {
+  BUTTON: `button`,
+  VIDEO: `VIDEO`,
+};
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      isFullscreen: false,
       isPlay: false,
       playBackTime: DEFAULT_PLAYBACK_TIME,
       progress: 0,
     };
     this._changePlayBackTime = this._changePlayBackTime.bind(this);
-    this._handleSpaceButtonDown = this._handleSpaceButtonDown.bind(this);
+    this._handleSpaceKeyDown = this._handleSpaceKeyDown.bind(this);
     this._playButtonEl = null;
     this._playVideo = this._playVideo.bind(this);
+    this._setStateFullScreenVideo = this._setStateFullScreenVideo.bind(this);
+    this._setStatePlayVideo = this._setStatePlayVideo.bind(this);
     this._timer = null;
     this._toggleFullScreen = this._toggleFullScreen.bind(this);
     this._videoRef = createRef();
   }
 
   componentDidMount() {
-    document.addEventListener(`keydown`, this._handleSpaceButtonDown);
+    document.addEventListener(`keydown`, this._handleSpaceKeyDown);
+    this._setStatePlayVideo();
+    this._setStateFullScreenVideo();
   }
 
   componentDidUpdate() {
@@ -31,7 +47,6 @@ class VideoPlayer extends PureComponent {
     const playBackTime = this._videoRef.current.currentTime;
 
     if (duration <= playBackTime) {
-      clearInterval(this._timer);
       this.setState({
         playBackTime: DEFAULT_PLAYBACK_TIME,
         isPlay: false,
@@ -45,13 +60,19 @@ class VideoPlayer extends PureComponent {
       progress
     } = this.state;
 
+    const {
+      posterImage,
+      video,
+    } = this.props;
+
     return (
       <div className="player">
         <video
-          src="https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/Schlossbergbahn.webm/Schlossbergbahn.webm.480p.vp9.webm"
+          src={video}
           className="player__video"
-          poster="img/player-poster.jpg"
+          poster={posterImage}
           ref={this._videoRef}
+          controls={this.state.isFullscreen}
         ></video>
 
         <button type="button" className="player__exit">
@@ -102,10 +123,12 @@ class VideoPlayer extends PureComponent {
     );
   }
 
-  _handleSpaceButtonDown(evt) {
-    const isSpaceKey = evt.key === `Space` || evt.keyCode === 32;
+  _handleSpaceKeyDown(evt) {
+    const isSpaceKey = evt.code === SpaceKeyName.TEXT || evt.keyCode === SpaceKeyName.CODE;
+    const targetButton = evt.target.type === TargetType.BUTTON;
+    const targetVideo = evt.target.tagName === TargetType.VIDEO;
 
-    if (isSpaceKey) {  
+    if (isSpaceKey && !targetButton && !targetVideo) {
       this._playVideo();
     }
   }
@@ -170,17 +193,11 @@ class VideoPlayer extends PureComponent {
 
     if (this.state.isPlay) {
       videoPlayer.pause();
-
-      clearInterval(this._timer);
     } else {
       videoPlayer.play();
 
       this._changePlayBackTime();
-      this._timer = setInterval(this._changePlayBackTime, 1000);
     }
-
-    this.setState((curState) => ({isPlay: !curState.isPlay}));
-
   }
 
   _setIconPlay(isPlay) {
@@ -205,18 +222,55 @@ class VideoPlayer extends PureComponent {
     }
   }
 
+  _setStatePlayVideo() {
+    this._videoRef.current.addEventListener(`play`, () => {
+      this.setState({
+        isPlay: true,
+      });
+
+      this._timer = setInterval(this._changePlayBackTime, 1000);
+
+    });
+
+    this._videoRef.current.addEventListener(`pause`, () => {
+      this.setState({
+        isPlay: false,
+      });
+
+      clearInterval(this._timer);
+
+    });
+  }
+
+  _setStateFullScreenVideo() {
+    document.addEventListener(`fullscreenchange`, () => {
+      if (document.fullscreenElement) {
+        this.setState({
+          isFullscreen: true,
+        });
+      } else {
+        this.setState({
+          isFullscreen: false,
+        });
+      }
+    });
+  }
+
   _toggleFullScreen() {
     const video = this._videoRef.current;
 
     if (!document.fullscreenElement) {
-      video.requestFullscreen().catch((err) => {
-        alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-      });
+      video.requestFullscreen();
     } else {
       document.exitFullscreen();
     }
   }
 
 }
+
+VideoPlayer.propTypes = {
+  posterImage: string.isRequired,
+  video: string.isRequired,
+};
 
 export default VideoPlayer;

@@ -8,7 +8,7 @@ import {
   DESCRIPTIONS,
   GENRES,
   IMAGES,
-  PREVIEW_VIDEO_LINKS,
+  VIDEO_LINKS,
   NAMES,
   Rating,
   RunTime,
@@ -36,13 +36,14 @@ const getFilmCard = () => {
     genre: getRandomElement(GENRES),
     id: getId(),
     name: getRandomElement(NAMES),
-    previewVideoLink: getRandomElement(PREVIEW_VIDEO_LINKS),
+    previewVideoLink: getRandomElement(VIDEO_LINKS),
     posterImage: getRandomElement(IMAGES),
     rating: getRandomNumber(Rating.MAX),
     released: getRandomNumber(YearReleased.MAX, YearReleased.MIN),
     runTime: getRandomNumber(RunTime.MAX, RunTime.MIN),
     scoreCount: getRandomNumber(ScoreCount.MAX),
     starring: getStarring(),
+    video: getRandomElement(VIDEO_LINKS),
   });
 };
 

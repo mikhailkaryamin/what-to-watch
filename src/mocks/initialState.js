@@ -30,7 +30,7 @@ const initialState = {
     text: `some text`,
     date: 12938034343183,
   }],
-  currentFilm: null,
+  currentOpenFilm: null,
   currentGenre: `All genre`,
   films: [
     {
@@ -194,7 +194,7 @@ const initialStateWithCurrentFilm = {
     text: `some text`,
     date: 12938034343183,
   }],
-  currentFilm: {
+  currentOpenFilm: {
     backgroundImage: `img/aviator.jpg`,
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
