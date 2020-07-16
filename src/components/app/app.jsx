@@ -13,17 +13,14 @@ import {
 } from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
 
-import {
-  IMAGES,
-  VIDEO_LINKS,
-} from '../../mocks/consts.js';
-
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
 import VideoPlayer from '../video-player/video-player.jsx';
 import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.jsx';
+import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
 const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
+const VideoPlayerWrapped = withVideoPlayer(VideoPlayer);
 
 class App extends PureComponent {
   constructor(props) {
@@ -44,10 +41,6 @@ class App extends PureComponent {
           <Route
             path="/dev-component"
           >
-            <VideoPlayer
-              posterImage={IMAGES[0]}
-              video={VIDEO_LINKS[0]}
-            />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -69,7 +62,7 @@ class App extends PureComponent {
         );
       case (currentWatchedFilm !== null):
         return (
-          <VideoPlayer
+          <VideoPlayerWrapped
             posterImage={currentWatchedFilm.posterImage}
             video={currentWatchedFilm.video}
           />
