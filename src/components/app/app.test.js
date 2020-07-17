@@ -5,7 +5,8 @@ import {Provider} from 'react-redux';
 
 import {
   initialState,
-  initialStateWithCurrentFilm
+  initialStateWithOpenFilm,
+  initialStateWithWatchedFilm,
 } from '../../mocks/initialState.js';
 
 import App from './app.jsx';
@@ -22,19 +23,31 @@ describe(`Render App`, () => {
           <Provider store={store}>
             <App />
           </Provider>
-      );
+      ).toJSON();
     expect(wrapper).toMatchSnapshot();
   });
 
-  test(`should render app with current film`, () => {
-    const store = mockStore(initialStateWithCurrentFilm);
+  test(`should render app with open film`, () => {
+    const store = mockStore(initialStateWithOpenFilm);
 
     const wrapper = renderer
       .create(
           <Provider store={store}>
             <App />
           </Provider>
-      );
+      ).toJSON();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test(`should render app with watched film`, () => {
+    const store = mockStore(initialStateWithWatchedFilm);
+
+    const wrapper = renderer
+      .create(
+          <Provider store={store}>
+            <App />
+          </Provider>
+      ).toJSON();
     expect(wrapper).toMatchSnapshot();
   });
 });

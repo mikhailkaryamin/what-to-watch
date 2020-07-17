@@ -1,22 +1,16 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
-import {Provider} from 'react-redux';
 
-import {initialState} from '../../mocks/initialState.js';
+import {ButtonPlay} from './button-play.jsx';
 
-import {FilmCardMain} from './film-card-main.jsx';
-
-const mockStore = configureStore([]);
-
-describe(`Film card main`, () => {
-  const FILM_CARD = {
+describe(`button play`, () => {
+  const FILM = {
     backgroundImage: `img/aviator.jpg`,
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
     director: `Arthur Agee`,
     genre: `Comedy`,
-    id: 1,
+    id: 3,
     name: `Devin Albert`,
     posterImage: `img/aviator.jpg`,
     previewVideoLink: `link`,
@@ -28,18 +22,15 @@ describe(`Film card main`, () => {
     video: `some/link`,
   };
 
-  const store = mockStore(initialState);
-
   const wrapper = renderer
     .create(
-        <Provider store={store}>
-          <FilmCardMain
-            promoFilm={FILM_CARD}
-          />
-        </Provider>
+        <ButtonPlay
+          film={FILM}
+          onPlayButtonClick={() => {}}
+        />
     ).toJSON();
 
-  test(`should render film card main`, () => {
+  test(`should render button play`, () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

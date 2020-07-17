@@ -102,6 +102,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -118,12 +119,12 @@ Array [
               </span>
             </button>
             <button
-              className="btn btn--play movie-card__button"
+              className="btn movie-card__button btn--list"
               type="button"
             >
               <svg
-                height="19"
-                viewBox="0 0 19 19"
+                height="20"
+                viewBox="0 0 19 20"
                 width="19"
               >
                 <use
@@ -378,7 +379,7 @@ Array [
 ]
 `;
 
-exports[`Render App should render app with current film 1`] = `
+exports[`Render App should render app with open film 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
@@ -469,29 +470,16 @@ Array [
             className="movie-card__buttons"
           >
             <button
-              className="btn btn--play movie-card__button"
+              className="btn movie-card__button btn--play"
               type="button"
-            >
-              <svg
-                height="19"
-                viewBox="0 0 19 19"
-                width="19"
-              >
-                <use
-                  xlinkHref="#play-s"
-                />
-              </svg>
-              <span>
-                Play
-              </span>
-            </button>
+            />
             <button
-              className="btn btn--play movie-card__button"
+              className="btn movie-card__button btn--list"
               type="button"
             >
               <svg
-                height="19"
-                viewBox="0 0 19 19"
+                height="20"
+                viewBox="0 0 19 20"
                 width="19"
               >
                 <use
@@ -675,4 +663,101 @@ Array [
     </footer>
   </div>,
 ]
+`;
+
+exports[`Render App should render app with watched film 1`] = `
+<div
+  className="player"
+>
+  <video
+    className="player__video"
+    controls={false}
+    poster="img/aviator.jpg"
+    src="some/link"
+  />
+  <button
+    className="player__exit"
+    onClick={[Function]}
+    type="button"
+  >
+    Exit
+  </button>
+  <div
+    className="player__controls"
+  >
+    <div
+      className="player__controls-row"
+    >
+      <div
+        className="player__time"
+      >
+        <progress
+          className="player__progress"
+          max="100"
+          value={0}
+        />
+        <div
+          className="player__toggler"
+          style={
+            Object {
+              "left": "0%",
+            }
+          }
+        >
+          Toggler
+        </div>
+      </div>
+      <div
+        className="player__time-value"
+      >
+        00:00:00
+      </div>
+    </div>
+    <div
+      className="player__controls-row"
+    >
+      <button
+        className="player__play"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          height="19"
+          viewBox="0 0 19 19"
+          width="19"
+        >
+          <use
+            xlinkHref="#play-s"
+          />
+        </svg>
+        <span>
+          Play
+        </span>
+      </button>
+      <div
+        className="player__name"
+      >
+        Transpotting
+      </div>
+      <button
+        className="player__full-screen"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          height="27"
+          viewBox="0 0 27 27"
+          width="27"
+        >
+          <use
+            xlinkHref="#full-screen"
+          />
+        </svg>
+        <span>
+          Full screen
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
 `;

@@ -20,13 +20,14 @@ describe(`e2e film card`, () => {
     genre: `Comedy`,
     id: 1,
     name: `Devin Albert`,
-    previewVideoLink: `link`,
     posterImage: `img/aviator.jpg`,
+    previewVideoLink: `link`,
     rating: 3,
     released: 2015,
     runTime: 100,
     scoreCount: 300,
     starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+    video: `some/link`,
   };
 
   const onFilmCardClick = jest.fn();

@@ -39,9 +39,13 @@ const withVideoPlayer = (Component) => {
     }
 
     componentDidMount() {
-      document.addEventListener(`keydown`, this._handleSpaceKeyDown);
-      this._addListenerPlayVideo();
-      document.addEventListener(`fullscreenchange`, this._setStateFullScreenVideo);
+      const videoRef = this._videoRef.current;
+
+      if (videoRef) {
+        document.addEventListener(`keydown`, this._handleSpaceKeyDown);
+        this._addListenerPlayVideo();
+        document.addEventListener(`fullscreenchange`, this._setStateFullScreenVideo);
+      }
     }
 
     componentDidUpdate() {

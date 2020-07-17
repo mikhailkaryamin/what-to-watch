@@ -20,7 +20,7 @@ describe(`Tab overview`, () => {
       rating={RATING}
       scoreCount={SCORE_COUNT}
       starring={STARRING}
-    />);
+    />).toJSON();
 
   test(`should render tab overview`, () => {
     expect(wrapper).toMatchSnapshot();

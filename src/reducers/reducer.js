@@ -25,14 +25,13 @@ const getGenres = () => {
 const initialState = {
   amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
   comments,
+  currentGenre: DEFAULT_GENRES[0],
   currentOpenFilm: null,
   currentWatchedFilm: null,
-  currentGenre: DEFAULT_GENRES[0],
   films,
   filmsByGenre: films,
   filmsLikeThis: [],
   genres: getGenres(),
-  playFilm: null,
   promoFilm: films[0],
 };
 

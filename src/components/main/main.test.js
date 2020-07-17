@@ -19,7 +19,7 @@ describe(`Main`, () => {
         <Provider store={store}>
           <Main />
         </Provider>
-    );
+    ).toJSON();
 
   test(`should render main`, () => {
     expect(wrapper).toMatchSnapshot();

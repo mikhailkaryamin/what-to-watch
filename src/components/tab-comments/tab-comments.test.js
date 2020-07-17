@@ -38,7 +38,7 @@ describe(`Tab comments`, () => {
   const wrapper = renderer
     .create(
         <TabComments comments={COMMENTS}/>
-    );
+    ).toJSON();
 
   test(`should render tab comments`, () => {
     expect(wrapper).toMatchSnapshot();

@@ -7,7 +7,9 @@ describe(`Header`, () => {
   const BG_IMAGE = `img/aviator.jpg`;
 
   const wrapper = renderer
-    .create(<Header backgroundImage={BG_IMAGE} />);
+    .create(
+        <Header backgroundImage={BG_IMAGE} />
+    ).toJSON();
 
   test(`should render header`, () => {
     expect(wrapper).toMatchSnapshot();
