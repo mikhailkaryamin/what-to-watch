@@ -17,6 +17,7 @@ import {
 } from '../../const.js';
 
 import Button from '../button/button.jsx';
+import ButtonPlay from '../button-play/button-play.jsx';
 import FilmCatalog from '../film-catalog/film-catalog.jsx';
 import FilmDetailedTabs from '../film-detailed-tabs/film-detailed-tabs.jsx';
 import TabComments from '../tab-comments/tab-comments.jsx';
@@ -62,7 +63,7 @@ class FilmPage extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <Button sign={ButtonType.PLAY} />
+                  <ButtonPlay film={currentOpenFilm} />
 
                   <Button sign={ButtonType.LIST} />
                   <a href="add-review.html" className="btn movie-card__button">Add review</a>

@@ -54,17 +54,17 @@ class App extends PureComponent {
     } = this.props;
 
     switch (true) {
-      case (currentOpenFilm !== null):
-        return (
-          <FilmDetailedWrapped
-            sign={FilmCardsListType.LIKE_THIS}
-          />
-        );
       case (currentWatchedFilm !== null):
         return (
           <VideoPlayerWrapped
             posterImage={currentWatchedFilm.posterImage}
             video={currentWatchedFilm.video}
+          />
+        );
+      case (currentOpenFilm !== null):
+        return (
+          <FilmDetailedWrapped
+            sign={FilmCardsListType.LIKE_THIS}
           />
         );
       default:

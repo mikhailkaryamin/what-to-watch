@@ -38,7 +38,7 @@ class TabDetails extends PureComponent {
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
           <span className="movie-card__details-value">
-            {this._getFormatRunTime()}
+            {this._getFormattedRunTime()}
           </span>
         </p>
         <p className="movie-card__details-item">
@@ -57,7 +57,7 @@ class TabDetails extends PureComponent {
     </div>);
   }
 
-  _getFormatRunTime() {
+  _getFormattedRunTime() {
     let hours = null;
     let minutes = null;
 
