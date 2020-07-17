@@ -12,7 +12,7 @@ describe(`Film detailed tabs`, () => {
     .create(<FilmDetailedTabs
       currentTypeTab={FilmDetailedTabsType.OVERVIEW}
       onTabClick={onTabClick}
-    />);
+    />).toJSON();
 
   test(`should render film detailed tabs`, () => {
     expect(wrapper).toMatchSnapshot();

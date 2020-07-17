@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
-import {initialStateWithCurrentFilm} from '../../mocks/initialState.js';
+import {initialStateWithOpenFilm} from '../../mocks/initialState.js';
 import {
   FilmDetailedTabsType
 } from '../../const.js';
@@ -13,7 +13,7 @@ import FilmDetailed from './film-detailed.jsx';
 const mockStore = configureStore([]);
 
 describe(`Film detailed`, () => {
-  const store = mockStore(initialStateWithCurrentFilm);
+  const store = mockStore(initialStateWithOpenFilm);
 
   const wrapper = renderer
     .create(
@@ -23,7 +23,7 @@ describe(`Film detailed`, () => {
             onTabClick={() => {}}
           />
         </Provider>
-    );
+    ).toJSON();
 
   test(`should render film detailed`, () => {
     expect(wrapper).toMatchSnapshot();

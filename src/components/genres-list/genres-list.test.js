@@ -20,7 +20,7 @@ describe(`Genres list`, () => {
         <Provider store={store}>
           <GenresList onGenreClick={onGenreClick}/>
         </Provider>
-    );
+    ).toJSON();
 
   test(`should render genres list`, () => {
     expect(wrapper).toMatchSnapshot();

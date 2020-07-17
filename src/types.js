@@ -13,6 +13,7 @@ const filmPropTypes = shape({
   id: number.isRequired,
   name: string.isRequired,
   posterImage: string.isRequired,
+  previewVideoLink: string.isRequired,
   rating: number.isRequired,
   released: number.isRequired,
   runTime: number.isRequired,
@@ -28,7 +29,7 @@ const commentPropTypes = shape({
     name: string.isRequired,
   }),
   rating: number.isRequired,
-  comment: string.isRequired,
+  text: string.isRequired,
   date: number.isRequired,
 });
 

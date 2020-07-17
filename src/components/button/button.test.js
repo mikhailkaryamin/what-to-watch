@@ -6,16 +6,11 @@ import Button from './button.jsx';
 
 describe(`Button component`, () => {
 
-  test(`should render Play button`, () => {
-    const wrapper = renderer
-    .create(<Button sign={ButtonType.PLAY}/>);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
   test(`should render Add button`, () => {
     const wrapper = renderer
-      .create(<Button sign={ButtonType.LIST}/>);
+      .create(
+          <Button sign={ButtonType.LIST}/>
+      ).toJSON();
 
     expect(wrapper).toMatchSnapshot();
   });

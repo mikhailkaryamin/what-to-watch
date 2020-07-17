@@ -21,13 +21,14 @@ describe(`Film card`, () => {
     genre: `Comedy`,
     id: 1,
     name: `Devin Albert`,
-    previewVideoLink: `link`,
     posterImage: `img/aviator.jpg`,
+    previewVideoLink: `link`,
     rating: 3,
     released: 2015,
     runTime: 100,
     scoreCount: 300,
     starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+    video: `some/link`,
   };
 
   const store = mockStore(initialState);
@@ -44,7 +45,7 @@ describe(`Film card`, () => {
             onMouseLeave={() => {}}
           />
         </Provider>
-    );
+    ).toJSON();
 
   test(`should render film card`, () => {
     expect(wrapper).toMatchSnapshot();

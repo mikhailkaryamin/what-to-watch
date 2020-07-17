@@ -8,10 +8,12 @@ describe(`Preview video`, () => {
   const POSTER_IMAGE = `img/bg-the-grand-budapest-hotel.jpg`;
 
   const wrapper = renderer
-    .create(<PreviewVideo
-      previewVideoLink={PREVIEW_VIDEO_LINK}
-      posterImage={POSTER_IMAGE}
-    />);
+    .create(
+        <PreviewVideo
+          previewVideoLink={PREVIEW_VIDEO_LINK}
+          posterImage={POSTER_IMAGE}
+        />
+    ).toJSON();
 
   test(`should render preview video`, () => {
     expect(wrapper).toMatchSnapshot();

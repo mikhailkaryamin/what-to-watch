@@ -23,7 +23,7 @@ describe(`Film cards list`, () => {
             sign={FilmCardsListType.LIKE_THIS}
           />
         </Provider>
-    );
+    ).toJSON();
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -36,7 +36,7 @@ describe(`Film cards list`, () => {
             sign={FilmCardsListType.MAIN}
           />
         </Provider>
-    );
+    ).toJSON();
 
     expect(wrapper).toMatchSnapshot();
   });

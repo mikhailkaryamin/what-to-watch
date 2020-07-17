@@ -91,29 +91,16 @@ Array [
             className="movie-card__buttons"
           >
             <button
-              className="btn btn--play movie-card__button"
+              className="btn movie-card__button btn--play"
               type="button"
-            >
-              <svg
-                height="19"
-                viewBox="0 0 19 19"
-                width="19"
-              >
-                <use
-                  xlinkHref="#play-s"
-                />
-              </svg>
-              <span>
-                Play
-              </span>
-            </button>
+            />
             <button
-              className="btn btn--play movie-card__button"
+              className="btn movie-card__button btn--list"
               type="button"
             >
               <svg
-                height="19"
-                viewBox="0 0 19 19"
+                height="20"
+                viewBox="0 0 19 20"
                 width="19"
               >
                 <use

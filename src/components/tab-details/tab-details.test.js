@@ -15,13 +15,15 @@ describe(`Tab details`, () => {
   ];
 
   const wrapper = renderer
-    .create(<TabDetails
-      director={DIRECTOR}
-      genre={GENRE}
-      released={RELEASED}
-      runTime={RUN_TIME}
-      starring={STARRING}
-    />);
+    .create(
+        <TabDetails
+          director={DIRECTOR}
+          genre={GENRE}
+          released={RELEASED}
+          runTime={RUN_TIME}
+          starring={STARRING}
+        />
+    ).toJSON();
 
   test(`should render tab details`, () => {
     expect(wrapper).toMatchSnapshot();

@@ -10,7 +10,7 @@ describe(`Render ShowMoreButton`, () => {
     const wrapper = renderer
       .create(
           <ShowMoreButton onShowMoreButtonClick={onShowMoreButtonClick}/>
-      );
+      ).toJSON();
     expect(wrapper).toMatchSnapshot();
   });
 });
