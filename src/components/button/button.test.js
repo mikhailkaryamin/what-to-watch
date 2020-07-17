@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+
 import {ButtonType} from '../../const.js';
 
 import Button from './button.jsx';

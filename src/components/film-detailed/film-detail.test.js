@@ -4,9 +4,7 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
 import {initialStateWithOpenFilm} from '../../mocks/initialState.js';
-import {
-  FilmDetailedTabsType
-} from '../../const.js';
+import {FilmDetailedTabsType} from '../../const.js';
 
 import FilmDetailed from './film-detailed.jsx';
 

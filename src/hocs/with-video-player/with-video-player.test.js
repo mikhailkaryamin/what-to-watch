@@ -11,7 +11,7 @@ configure({
   adapter: new Adapter()
 });
 
-describe(`with video player`, () => {
+describe(`with video player HOC`, () => {
   const POSTER_IMAGE = `some/src`;
   const VIDEO = `some/src`;
 
