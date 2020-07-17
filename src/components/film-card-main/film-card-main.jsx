@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import {filmPropTypes} from '../../types.js';
 import {ButtonType} from '../../const.js';
+import {getPromoFilm} from '../../reducer/films/selectors.js';
 
 import Header from '../header/header.jsx';
 import Button from '../button/button.jsx';
@@ -12,6 +13,10 @@ const FilmCardMain = (props) => {
   const {
     promoFilm
   } = props;
+
+  if (!promoFilm) {
+    return false;
+  }
 
   const {
     backgroundImage,
@@ -57,7 +62,7 @@ FilmCardMain.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  promoFilm: state.promoFilm,
+  promoFilm: getPromoFilm(state),
 });
 
 export {

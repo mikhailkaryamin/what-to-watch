@@ -10,6 +10,11 @@ import {
 
 import {filmPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
+import {getAmountRenderFilmCard} from '../../reducer/current-state/selectors.js';
+import {
+  getFilmsByGenre,
+  getFilmsLikeThis,
+} from '../../reducer/films/selectors.js';
 
 import FilmCard from '../film-card/film-card.jsx';
 import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video.jsx';
@@ -71,9 +76,9 @@ FilmCardsList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  amountRenderFilmCard: state.amountRenderFilmCard,
-  filmsByGenre: state.filmsByGenre,
-  filmsLikeThis: state.filmsLikeThis,
+  amountRenderFilmCard: getAmountRenderFilmCard(state),
+  filmsByGenre: getFilmsByGenre(state),
+  filmsLikeThis: getFilmsLikeThis(state),
 });
 
 export {

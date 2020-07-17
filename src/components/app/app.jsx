@@ -12,6 +12,10 @@ import {
   filmPropTypes,
 } from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
+import {
+  getCurrentOpenFilm,
+  getCurrentWatchedFilm,
+} from '../../reducer/current-state/selectors.js';
 
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
@@ -54,14 +58,14 @@ class App extends PureComponent {
     } = this.props;
 
     switch (true) {
-      case (currentWatchedFilm !== null):
+      case (currentWatchedFilm):
         return (
           <VideoPlayerWrapped
             posterImage={currentWatchedFilm.posterImage}
             video={currentWatchedFilm.video}
           />
         );
-      case (currentOpenFilm !== null):
+      case (currentOpenFilm):
         return (
           <FilmDetailedWrapped
             sign={FilmCardsListType.LIKE_THIS}
@@ -81,8 +85,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentOpenFilm: state.currentOpenFilm,
-  currentWatchedFilm: state.currentWatchedFilm,
+  currentOpenFilm: getCurrentOpenFilm(state),
+  currentWatchedFilm: getCurrentWatchedFilm(state),
 });
 
 export {
