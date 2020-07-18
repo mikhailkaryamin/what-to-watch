@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {arrayOf} from 'prop-types';
 
 import {commentPropTypes} from '../../types.js';
+import {getComments} from '../../reducer/comment/selectors.js';
 
 class TabComments extends PureComponent {
   constructor(props) {
@@ -83,7 +84,7 @@ TabComments.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  comments: state.comments,
+  comments: getComments(state),
 });
 
 export {

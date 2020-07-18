@@ -7,10 +7,8 @@ import {
   func,
 } from 'prop-types';
 
-import {
-  getFilmsLikeThis,
-  setCurrentOpenFilm
-} from '../../actions/actions.js';
+import {ActionCreator as CurrentStateAction} from '../../reducer/current-state/current-state.js';
+import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
 import {filmPropTypes} from '../../types.js';
 
 import VideoPlayer from '../preview-video/preview-video.jsx';
@@ -24,9 +22,9 @@ class FilmCard extends PureComponent {
     const {
       isPlayVideo,
       onFilmCardClick,
-      onClick,
       onMouseEnter,
       onMouseLeave,
+      onStopPreviewClick,
     } = this.props;
 
     const {
@@ -40,7 +38,7 @@ class FilmCard extends PureComponent {
         className="small-movie-card catalog__movies-card"
         onClick={() => {
           onFilmCardClick(this.props.film);
-          onClick();
+          onStopPreviewClick();
         }}
 
         onMouseEnter={() => {
@@ -84,16 +82,16 @@ class FilmCard extends PureComponent {
 FilmCard.propTypes = {
   film: filmPropTypes.isRequired,
   isPlayVideo: bool.isRequired,
-  onClick: func.isRequired,
   onFilmCardClick: func.isRequired,
   onMouseEnter: func.isRequired,
   onMouseLeave: func.isRequired,
+  onStopPreviewClick: func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardClick(film) {
-    dispatch(setCurrentOpenFilm(film));
-    dispatch(getFilmsLikeThis(film));
+    dispatch(CurrentStateAction.setCurrentOpenFilm(film));
+    dispatch(CommentOperation.loadComments());
   }
 });
 

@@ -223,7 +223,7 @@ Array [
             className="movie-card__text"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.
+      Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.
             <p
               className="movie-card__director"
             >

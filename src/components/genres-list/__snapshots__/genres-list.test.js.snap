@@ -12,7 +12,7 @@ exports[`Genres list should render genres list 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Comedies
+      All genres
     </a>
   </li>
   <li
@@ -23,84 +23,7 @@ exports[`Genres list should render genres list 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Crime
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Documentary
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Dramas
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Horror
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Kids & Family
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Romance
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Sci-Fi
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Thrillers
+      Comedy
     </a>
   </li>
 </ul>

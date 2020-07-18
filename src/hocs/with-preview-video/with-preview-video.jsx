@@ -31,7 +31,7 @@ const withPreviewVideo = (Component) => {
         <Component
           {...this.props}
           isPlayVideo={isPlayVideo}
-          onClick={this._handleMouseClick}
+          onStopPreviewClick={this._handleMouseClick}
           onMouseEnter={this._handleMouseEnter}
           onMouseLeave={this._handleMouseLeave}
         />
