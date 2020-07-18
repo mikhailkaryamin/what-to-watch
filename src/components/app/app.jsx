@@ -7,6 +7,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import {connect} from 'react-redux';
+import {func} from 'prop-types';
 
 import {
   filmPropTypes,
@@ -16,14 +17,18 @@ import {
   getCurrentOpenFilm,
   getCurrentWatchedFilm,
 } from '../../reducer/current-state/selectors.js';
+import {Operation as UserOperation} from '../../reducer/user/reducer.js';
 
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
+import SignIn from '../sign-in/sign-in.jsx';
 import VideoPlayer from '../video-player/video-player.jsx';
+import withAuthorization from '../../hocs/with-authorization/with-authorization.jsx';
 import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
 const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
+const SignInWrapped = withAuthorization(SignIn);
 const VideoPlayerWrapped = withVideoPlayer(VideoPlayer);
 
 class App extends PureComponent {
@@ -32,6 +37,9 @@ class App extends PureComponent {
   }
 
   render() {
+    const {
+      signIn
+    } = this.props;
 
     return (
       <BrowserRouter>
@@ -45,6 +53,9 @@ class App extends PureComponent {
           <Route
             path="/dev-component"
           >
+            <SignInWrapped
+              signIn={signIn}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -82,6 +93,7 @@ class App extends PureComponent {
 App.propTypes = {
   currentOpenFilm: filmPropTypes,
   currentWatchedFilm: filmPropTypes,
+  signIn: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -89,8 +101,14 @@ const mapStateToProps = (state) => ({
   currentWatchedFilm: getCurrentWatchedFilm(state),
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  signIn: (user) => {
+    dispatch(UserOperation.signIn(user));
+  }
+});
+
 export {
   App,
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
