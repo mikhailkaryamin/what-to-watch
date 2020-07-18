@@ -77,14 +77,14 @@ const reducer = (state = initialState, action) => {
         currentGenre: action.payload,
       });
 
-    case ActionType.SET_CURRENT_WATCHED_FILM:
-      return extend(state, {
-        currentWatchedFilm: action.payload,
-      });
-
     case ActionType.SET_CURRENT_OPEN_FILM:
       return extend(state, {
         currentOpenFilm: action.payload,
+      });
+
+    case ActionType.SET_CURRENT_WATCHED_FILM:
+      return extend(state, {
+        currentWatchedFilm: action.payload,
       });
   }
 

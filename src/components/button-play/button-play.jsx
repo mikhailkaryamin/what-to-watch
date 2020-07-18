@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {func} from 'prop-types';
 
-import {setCurrentWatchedFilm} from '../../actions/actions';
+import {ActionCreator as CurrentStateCreator} from '../../reducer/current-state/current-state.js';
 import {filmPropTypes} from '../../types.js';
 
 const ButtonPlay = (props) => {
@@ -35,7 +35,7 @@ ButtonPlay.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onPlayButtonClick(film) {
-    dispatch(setCurrentWatchedFilm(film));
+    dispatch(CurrentStateCreator.setCurrentWatchedFilm(film));
   }
 });
 

@@ -39,10 +39,10 @@ describe(`Film card`, () => {
           <FilmCard
             film={FILM_CARD}
             isPlayVideo={false}
-            onClick={() => {}}
             onFilmCardClick={onFilmCardClick}
             onMouseEnter={() => {}}
             onMouseLeave={() => {}}
+            onStopPreviewClick={() => {}}
           />
         </Provider>
     ).toJSON();

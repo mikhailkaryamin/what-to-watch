@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {func} from 'prop-types';
 
-import {resetCurrentWatchedFilm} from '../../actions/actions.js';
+import {ActionCreator as CurrentStateCreator} from '../../reducer/current-state/current-state.js';
 
 const ButtonExitPlayer = (props) => {
   const {onButtonExitClick} = props;
@@ -26,7 +26,7 @@ ButtonExitPlayer.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onButtonExitClick() {
-    dispatch(resetCurrentWatchedFilm());
+    dispatch(CurrentStateCreator.resetCurrentWatchedFilm());
   }
 });
 

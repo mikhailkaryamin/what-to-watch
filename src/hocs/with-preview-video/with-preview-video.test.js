@@ -15,14 +15,14 @@ describe(`with preview video HOC`, () => {
   const MockComponent = () => <div />;
   const MockComponentWrapped = withPreviewVideo(MockComponent);
 
-  test(`onClick should to be isPlayVideo false`, () => {
+  test(`onStopPreviewClick should to be isPlayVideo false`, () => {
     const wrapper = shallow(
         <MockComponentWrapped />
     );
 
     wrapper.setState({isPlayVideo: true});
 
-    wrapper.props().onClick();
+    wrapper.props().onStopPreviewClick();
     expect(wrapper.props().isPlayVideo).toBe(false);
   });
 

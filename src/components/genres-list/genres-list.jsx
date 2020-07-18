@@ -10,7 +10,6 @@ import {ActionCreator as ActionCurrentState} from '../../reducer/current-state/c
 import {getCurrentGenre} from '../../reducer/current-state/selectors.js';
 import {
   getGenres,
-  getFilmsByGenre,
 } from '../../reducer/films/selectors.js';
 
 const GenresList = (props) => {

@@ -36,7 +36,7 @@ describe(`e2e film card`, () => {
       <FilmCard
         isPlayVideo={false}
         film={FILM_CARD}
-        onClick={() => {}}
+        onStopPreviewClick={() => {}}
         onFilmCardClick={onFilmCardClick}
         onMouseEnter={() => {}}
         onMouseLeave={() => {}}

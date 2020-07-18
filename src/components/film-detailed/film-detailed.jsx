@@ -15,6 +15,7 @@ import {
   FilmCardsListType,
   FilmDetailedTabsType,
 } from '../../const.js';
+import {getCurrentOpenFilm} from '../../reducer/current-state/selectors.js';
 
 import Button from '../button/button.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
@@ -142,7 +143,7 @@ FilmPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentOpenFilm: state.currentOpenFilm
+  currentOpenFilm: getCurrentOpenFilm(state)
 });
 
 export {
