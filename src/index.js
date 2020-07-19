@@ -16,7 +16,7 @@ import {
   ActionCreator as UserAction,
   AuthorizationStatus,
   Operation as UserOperation,
-} from './reducer/user/reducer.js';
+} from './reducer/user/user.js';
 
 const onUnauthorized = () => {
   store.dispatch(UserAction.checkAuthorization(AuthorizationStatus.NO_AUTH));
