@@ -101,8 +101,16 @@ const API_PROMO_FILM = {
   'video': `some/link`,
 };
 
+const API_USER = {
+  'avatar_url': `avatarUrl`,
+  'email': `email@email.ru`,
+  'id': 100,
+  'name': `name`,
+};
+
 export {
   API_COMMENT,
   API_FILMS,
   API_PROMO_FILM,
+  API_USER,
 };

@@ -9,11 +9,10 @@ import {
 import Comment from '../../models/comment.js';
 import {API_COMMENT} from '../../mocks/testMock.js';
 
+const api = createAPI(() => {});
 const initialState = {
   comments: []
 };
-
-const api = createAPI(() => {});
 
 describe(`comment`, () => {
   describe(`reducer`, () => {

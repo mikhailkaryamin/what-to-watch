@@ -9,7 +9,7 @@ const AuthorizationStatus = {
 const RESPONSE_STATUS_OK = 200;
 
 const DEFAULT_USER = {
-  id: 1,
+  id: -1,
   email: ``,
   name: ``,
   avatarUrl: ``,
@@ -96,7 +96,9 @@ const reducer = (state = initialState, action) => {
 
 export {
   AuthorizationStatus,
+  ActionType,
   ActionCreator,
+  DEFAULT_USER,
   Operation,
   reducer,
 };

@@ -17,7 +17,7 @@ import {
   getCurrentOpenFilm,
   getCurrentWatchedFilm,
 } from '../../reducer/current-state/selectors.js';
-import {Operation as UserOperation} from '../../reducer/user/reducer.js';
+import {Operation as UserOperation} from '../../reducer/user/user.js';
 
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
