@@ -25,7 +25,7 @@ Array [
         className="logo"
       >
         <a
-          className="logo__link"
+          className="logo__link "
         >
           <span
             className="logo__letter logo__letter--1"

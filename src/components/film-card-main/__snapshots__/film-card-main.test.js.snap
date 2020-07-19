@@ -24,7 +24,7 @@ exports[`Film card main should render film card main 1`] = `
       className="logo"
     >
       <a
-        className="logo__link"
+        className="logo__link "
       >
         <span
           className="logo__letter logo__letter--1"
