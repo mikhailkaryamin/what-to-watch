@@ -22,6 +22,7 @@ describe(`Film card`, () => {
     id: 1,
     name: `Devin Albert`,
     posterImage: `img/aviator.jpg`,
+    previewImage: `img/aviator.jpg`,
     previewVideoLink: `link`,
     rating: 3,
     released: 2015,

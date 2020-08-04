@@ -29,6 +29,7 @@ class FilmCard extends PureComponent {
 
     const {
       posterImage,
+      previewImage,
       previewVideoLink,
       name,
     } = this.props.film;
@@ -53,7 +54,7 @@ class FilmCard extends PureComponent {
           className="small-movie-card__image"
         >
           {isPlayVideo || <img
-            src={posterImage}
+            src={previewImage}
             alt={name}
             width="280"
             height="175"

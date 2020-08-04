@@ -13,6 +13,7 @@ const filmPropTypes = shape({
   id: number.isRequired,
   name: string.isRequired,
   posterImage: string.isRequired,
+  previewImage: string.isRequired,
   previewVideoLink: string.isRequired,
   rating: number.isRequired,
   released: number.isRequired,
