@@ -19,6 +19,7 @@ import {
 } from '../../reducer/current-state/selectors.js';
 import {Operation as UserOperation} from '../../reducer/user/user.js';
 
+import Comment from '../comment/comment.jsx';
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
@@ -56,6 +57,10 @@ class App extends PureComponent {
             <SignInWrapped
               signIn={signIn}
             />
+          </Route>
+          <Route
+            path="/dev-comment">
+            <Comment />
           </Route>
         </Switch>
       </BrowserRouter>
