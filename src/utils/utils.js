@@ -13,7 +13,6 @@ const extend = (preObj, newObj) => {
 
 export {
   extend,
-  getId,
   getRandomElement,
   getRandomNumber,
 };
