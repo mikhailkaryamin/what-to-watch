@@ -11,13 +11,15 @@ import {
   filmPropTypes
 } from '../../types.js';
 import {
-  ButtonType,
+  AuthorizationStatus,
   FilmCardsListType,
   FilmDetailedTabsType,
 } from '../../const.js';
 import {getCurrentOpenFilm} from '../../reducer/current-state/selectors.js';
+import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 
-import Button from '../button/button.jsx';
+import ButtonAddComment from '../button-add-comment/button-add-comment.jsx';
+import ButtonList from '../button-list/button-list.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
 import FilmCatalog from '../film-catalog/film-catalog.jsx';
 import FilmDetailedTabs from '../film-detailed-tabs/film-detailed-tabs.jsx';
@@ -34,6 +36,7 @@ class FilmPage extends PureComponent {
 
   render() {
     const {
+      authorizationStatus,
       currentOpenFilm,
       currentTypeTab,
       onTabClick,
@@ -66,8 +69,10 @@ class FilmPage extends PureComponent {
                 <div className="movie-card__buttons">
                   <ButtonPlay film={currentOpenFilm} />
 
-                  <Button sign={ButtonType.LIST} />
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  <ButtonList />
+
+                  {authorizationStatus === AuthorizationStatus.AUTH && <ButtonAddComment />}
+
                 </div>
               </div>
             </div>
@@ -137,13 +142,15 @@ class FilmPage extends PureComponent {
 }
 
 FilmPage.propTypes = {
+  authorizationStatus: string.isRequired,
   currentOpenFilm: filmPropTypes,
   currentTypeTab: string.isRequired,
   onTabClick: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  currentOpenFilm: getCurrentOpenFilm(state)
+  currentOpenFilm: getCurrentOpenFilm(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 export {

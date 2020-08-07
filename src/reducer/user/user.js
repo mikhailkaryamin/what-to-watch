@@ -1,10 +1,6 @@
 import {extend} from '../../utils/utils.js';
+import {AuthorizationStatus} from '../../const.js';
 import User from '../../models/user.js';
-
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
 
 const RESPONSE_STATUS_OK = 200;
 

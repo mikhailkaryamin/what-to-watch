@@ -11,7 +11,8 @@ import {API_COMMENT} from '../../mocks/testMock.js';
 
 const api = createAPI(() => {});
 const initialState = {
-  comments: []
+  comments: [],
+  statusUploadComment: null,
 };
 
 describe(`comment`, () => {
@@ -33,7 +34,8 @@ describe(`comment`, () => {
       ).toEqual({
         comments: [{
           comment: `some text`
-        }]
+        }],
+        statusUploadComment: null,
       });
     });
   });
