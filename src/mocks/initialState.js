@@ -169,6 +169,9 @@ const initialState = {
       starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
       video: `some/link`,
     },
+  },
+  USER: {
+    authorizationStatus: `NO_AUTH`,
   }
 };
 
@@ -361,7 +364,10 @@ const initialStateWithOpenFilm = {
       starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
       video: `some/link`,
     },
-  }
+  },
+  USER: {
+    authorizationStatus: `NO_AUTH`,
+  },
 };
 
 const initialStateWithWatchedFilm = {
@@ -552,6 +558,9 @@ const initialStateWithWatchedFilm = {
       starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
       video: `some/link`,
     },
+  },
+  USER: {
+    authorizationStatus: `NO_AUTH`,
   }
 };
 

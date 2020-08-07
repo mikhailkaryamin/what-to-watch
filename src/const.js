@@ -1,4 +1,10 @@
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
 const ButtonType = {
+  ADD_REVIEW: `ADD_REVIEW`,
   PLAY: `play`,
   LIST: `list`,
 };
@@ -25,6 +31,7 @@ const SpaceKeyName = {
 };
 
 export {
+  AuthorizationStatus,
   ButtonType,
   EscKeyName,
   FilmCardsListType,

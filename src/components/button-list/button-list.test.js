@@ -1,16 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {ButtonType} from '../../const.js';
+import ButtonList from './button-list.jsx';
 
-import Button from './button.jsx';
-
-describe(`Button component`, () => {
+describe(`ButtonList component`, () => {
 
   test(`should render Add button`, () => {
     const wrapper = renderer
       .create(
-          <Button sign={ButtonType.LIST}/>
+          <ButtonList />
       ).toJSON();
 
     expect(wrapper).toMatchSnapshot();

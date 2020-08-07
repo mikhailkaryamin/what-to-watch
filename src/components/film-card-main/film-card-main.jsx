@@ -2,11 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {filmPropTypes} from '../../types.js';
-import {ButtonType} from '../../const.js';
 import {getPromoFilm} from '../../reducer/films/selectors.js';
 
 import Header from '../header/header.jsx';
-import Button from '../button/button.jsx';
+import ButtonList from '../button-list/button-list.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
 
 const FilmCardMain = (props) => {
@@ -48,7 +47,7 @@ const FilmCardMain = (props) => {
             <div className="movie-card__buttons" >
               <ButtonPlay film={promoFilm} />
 
-              <Button sign={ButtonType.LIST} />
+              <ButtonList />
             </div>
           </div>
         </div>
