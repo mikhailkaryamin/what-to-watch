@@ -3,13 +3,16 @@ import {connect} from 'react-redux';
 
 import {filmPropTypes} from '../../types.js';
 import {getPromoFilm} from '../../reducer/films/selectors.js';
+import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 
 import Header from '../header/header.jsx';
 import ButtonList from '../button-list/button-list.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
+import { string } from 'prop-types';
 
 const FilmCardMain = (props) => {
   const {
+    authorizationStatus,
     promoFilm
   } = props;
 
@@ -28,6 +31,7 @@ const FilmCardMain = (props) => {
   return (
     <section className="movie-card">
       <Header
+        authorizationStatus={authorizationStatus}
         backgroundImage={backgroundImage}
       />
 
@@ -57,10 +61,12 @@ const FilmCardMain = (props) => {
 };
 
 FilmCardMain.propTypes = {
+  authorizationStatus: string.isRequired,
   promoFilm: filmPropTypes,
 };
 
 const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
   promoFilm: getPromoFilm(state),
 });
 
