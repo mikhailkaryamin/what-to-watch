@@ -2,7 +2,7 @@ import React, {
   PureComponent
 } from 'react';
 import {
-  BrowserRouter,
+  Router,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -18,6 +18,7 @@ import {
   getCurrentWatchedFilm,
 } from '../../reducer/current-state/selectors.js';
 import {Operation as UserOperation} from '../../reducer/user/user.js';
+import history from '../../history.js';
 
 import Comment from '../comment/comment.jsx';
 import Main from '../main/main.jsx';
@@ -43,7 +44,9 @@ class App extends PureComponent {
     } = this.props;
 
     return (
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
           <Route
             exact
@@ -52,18 +55,11 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route
-            path="/dev-component"
-          >
-            <SignInWrapped
-              signIn={signIn}
-            />
-          </Route>
-          <Route
-            path="/dev-comment">
-            <Comment />
-          </Route>
+            exact
+            path="/login"
+          ></Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 
