@@ -26,7 +26,7 @@ ButtonExitPlayer.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onButtonExitClick() {
-    dispatch(CurrentStateCreator.resetCurrentWatchedFilm());
+    dispatch(CurrentStateCreator.resetCurrentPlayingFilm());
   }
 });
 

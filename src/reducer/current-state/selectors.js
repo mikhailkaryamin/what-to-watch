@@ -8,17 +8,12 @@ const getCurrentGenre = (state) => {
   return state[NameSpace.CURRENT_STATE].currentGenre;
 };
 
-const getCurrentOpenFilm = (state) => {
-  return state[NameSpace.CURRENT_STATE].currentOpenFilm;
-};
-
-const getCurrentWatchedFilm = (state) => {
-  return state[NameSpace.CURRENT_STATE].currentWatchedFilm;
+const getCurrentPlayingFilm = (state) => {
+  return state[NameSpace.CURRENT_STATE].currentPlayingFilm;
 };
 
 export {
   getAmountRenderFilmCard,
   getCurrentGenre,
-  getCurrentOpenFilm,
-  getCurrentWatchedFilm,
+  getCurrentPlayingFilm,
 };

@@ -1,10 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
+import {AppRoute} from '../../const.js';
 
 const ButtonSignIn = () => {
   return (
-    <a href="sign-in.html" className="user-block__link">
+    <Link to={AppRoute.LOGIN} className="user-block__link">
       Sign in
-    </a>
+    </Link>
   );
 };
 

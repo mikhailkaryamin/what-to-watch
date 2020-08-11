@@ -1,3 +1,12 @@
+const AppRoute = {
+  ADD_COMMENT: `/films/:id/review`,
+  FILM: `/films/:id`,
+  LOGIN: `/login`,
+  MY_LIST: `/mylist`,
+  PLAYER: `/player/:id`,
+  ROOT: `/`,
+};
+
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
@@ -31,6 +40,7 @@ const SpaceKeyName = {
 };
 
 export {
+  AppRoute,
   AuthorizationStatus,
   ButtonType,
   EscKeyName,

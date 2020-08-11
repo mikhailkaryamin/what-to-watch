@@ -71,8 +71,8 @@ const withVideoPlayer = (Component) => {
 
     render() {
       const {
+        posterImage,
         video,
-        posterImage
       } = this.props;
 
       return (
