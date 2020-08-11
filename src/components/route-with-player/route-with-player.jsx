@@ -43,11 +43,11 @@ class RouteWithPlayer extends PureComponent {
         exact
         path={AppRoute.PLAYER}
         render={(renderProps) => {
-          const currentPlayingFilmId = parseInt(renderProps.match.params.id, 10);
-
-          this._setCurrentPlayingFilm(currentPlayingFilmId);
 
           if (this.props.currentPlayingFilm === null) {
+            const currentPlayingFilmId = parseInt(renderProps.match.params.id, 10);
+
+            this._setCurrentPlayingFilm(currentPlayingFilmId);
             return ``;
           }
 

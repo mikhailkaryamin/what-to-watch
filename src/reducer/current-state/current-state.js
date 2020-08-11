@@ -24,7 +24,7 @@ const ActionCreator = {
   }),
 
   resetCurrentPlayingFilm: () => ({
-    type: ActionType.RESET_CURRENT_WATCHED_FILM,
+    type: ActionType.RESET_CURRENT_PLAYING_FILM,
     payload: null,
   }),
 
