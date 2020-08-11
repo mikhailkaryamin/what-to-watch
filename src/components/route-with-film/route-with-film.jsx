@@ -5,7 +5,10 @@ import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {
-  arrayOf, func, bool
+  arrayOf,
+  bool,
+  func,
+  string,
 } from 'prop-types';
 
 import {AppRoute} from '../../const.js';
@@ -14,21 +17,26 @@ import {
   getFilms,
   getStatusLoad,
 } from '../../reducer/films/selectors.js';
-import {getCurrentPlayingFilm} from '../../reducer/current-state/selectors.js';
+import {getCurrentFilm} from '../../reducer/current-state/selectors.js';
 import {filmPropTypes} from '../../types.js';
 
+import FilmDetailed from '../film-detailed/film-detailed.jsx';
 import VideoPlayer from '../video-player/video-player.jsx';
+
+import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
+const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
 const VideoPlayerWrapped = withVideoPlayer(VideoPlayer);
 
-class RouteWithPlayer extends PureComponent {
+class RouteWithFilm extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   render() {
     const {
+      path,
       statusLoadFilms,
     } = this.props;
 
@@ -41,22 +49,31 @@ class RouteWithPlayer extends PureComponent {
     return (
       <Route
         exact
-        path={AppRoute.PLAYER}
+        path={path}
         render={(renderProps) => {
 
-          if (this.props.currentPlayingFilm === null) {
+          if (this.props.currentFilm === null) {
             const currentPlayingFilmId = parseInt(renderProps.match.params.id, 10);
 
             this._setCurrentPlayingFilm(currentPlayingFilmId);
             return ``;
           }
 
-          return (
-            <VideoPlayerWrapped
-              posterImage={this.props.currentPlayingFilm.posterImage}
-              video={this.props.currentPlayingFilm.video}
-            />
-          );
+          switch (path) {
+            case AppRoute.PLAYER: {
+              return <VideoPlayerWrapped
+                posterImage={this.props.currentFilm.posterImage}
+                video={this.props.currentFilm.video}
+              />;
+            }
+            case AppRoute.FILM: {
+              return <FilmDetailedWrapped
+                film={this.props.currentFilm}
+              />;
+            }
+          }
+
+          return ``;
         }}
       />
     );
@@ -65,35 +82,37 @@ class RouteWithPlayer extends PureComponent {
   _setCurrentPlayingFilm(id) {
     const {
       films,
-      onSetCurrentPlayingFilm,
+      onSetCurrentFilm,
     } = this.props;
 
-    const currentPlayingFilm = films.find((film) => film.id === id);
+    const currentFilm = films.find((film) => film.id === id);
 
-    onSetCurrentPlayingFilm(currentPlayingFilm);
+    onSetCurrentFilm(currentFilm);
   }
 }
-RouteWithPlayer.propTypes = {
-  currentPlayingFilm: filmPropTypes,
+
+RouteWithFilm.propTypes = {
+  currentFilm: filmPropTypes,
   films: arrayOf(filmPropTypes),
-  onSetCurrentPlayingFilm: func.isRequired,
+  onSetCurrentFilm: func.isRequired,
+  path: string.isRequired,
   statusLoadFilms: bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  currentPlayingFilm: getCurrentPlayingFilm(state),
+  currentFilm: getCurrentFilm(state),
   films: getFilms(state),
   statusLoadFilms: getStatusLoad(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSetCurrentPlayingFilm(film) {
-    dispatch(CurrentStateCreator.setCurrentPlayingFilm(film));
+  onSetCurrentFilm(film) {
+    dispatch(CurrentStateCreator.setCurrentFilm(film));
   }
 });
 
 export {
-  RouteWithPlayer
+  RouteWithFilm
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RouteWithPlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(RouteWithFilm);

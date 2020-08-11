@@ -7,28 +7,21 @@ import {
   Switch,
 } from 'react-router-dom';
 import {connect} from 'react-redux';
-import {func} from 'prop-types';
+import {func, bool} from 'prop-types';
 
-import {
-  filmPropTypes,
-} from '../../types.js';
 import {AppRoute} from '../../const.js';
 
 import {Operation as UserOperation} from '../../reducer/user/user.js';
+import {
+  getStatusLoad,
+} from '../../reducer/films/selectors.js';
 
-import Comment from '../comment/comment.jsx';
 import Main from '../main/main.jsx';
-import FilmDetailed from '../film-detailed/film-detailed.jsx';
-import RouteWithPlayer from '../route-with-player/route-with-player.jsx';
+import RouteWithFilm from '../route-with-film/route-with-film.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
-import VideoPlayer from '../video-player/video-player.jsx';
 import withAuthorization from '../../hocs/with-authorization/with-authorization.jsx';
-import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.jsx';
-import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
-const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
 const SignInWrapped = withAuthorization(SignIn);
-const VideoPlayerWrapped = withVideoPlayer(VideoPlayer);
 
 class App extends PureComponent {
   constructor(props) {
@@ -38,7 +31,14 @@ class App extends PureComponent {
   render() {
     const {
       signIn,
+      statusLoadFilms,
     } = this.props;
+
+    const isLoading = statusLoadFilms !== true;
+
+    if (isLoading) {
+      return ``;
+    }
 
     return (
       <BrowserRouter>
@@ -47,8 +47,7 @@ class App extends PureComponent {
             exact
             path={AppRoute.ROOT}
             render={() => <Main />}
-          >
-          </Route>
+          />
           <Route
             exact
             path={AppRoute.LOGIN}
@@ -59,10 +58,13 @@ class App extends PureComponent {
                 />
               );
             }}
-          >
-          </Route>
-          <RouteWithPlayer>
-          </RouteWithPlayer>
+          />
+          <RouteWithFilm
+            path={AppRoute.PLAYER}
+          />
+          <RouteWithFilm
+            path={AppRoute.FILM}
+          />
         </Switch>
       </BrowserRouter>
     );
@@ -70,10 +72,13 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  currentOpenFilm: filmPropTypes,
-  currentWatchedFilm: filmPropTypes,
   signIn: func.isRequired,
+  statusLoadFilms: bool.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  statusLoadFilms: getStatusLoad(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   signIn: (user) => {
@@ -85,4 +90,4 @@ export {
   App,
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

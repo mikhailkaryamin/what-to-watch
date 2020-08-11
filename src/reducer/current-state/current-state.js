@@ -6,7 +6,7 @@ const DEFAULT_GENRE = `All genres`;
 const initialState = {
   amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
   currentGenre: DEFAULT_GENRE,
-  currentPlayingFilm: null,
+  currentFilm: null,
 };
 
 const ActionType = {
@@ -14,7 +14,7 @@ const ActionType = {
   RESET_CURRENT_PLAYING_FILM: `RESET_CURRENT_WATCHED_FILM`,
   SET_AMOUNT_RENDER_FILM_CARD: `SET_AMOUNT_RENDER_FILM_CARD`,
   SET_CURRENT_GENRE: `SET_CURRENT_GENRE`,
-  SET_CURRENT_PLAYING_FILM: `SET_CURRENT_PLAYING_FILM`,
+  SET_CURRENT_FILM: `SET_CURRENT_FILM`,
 };
 
 const ActionCreator = {
@@ -38,10 +38,11 @@ const ActionCreator = {
     payload: genre,
   }),
 
-  setCurrentPlayingFilm: (film) => ({
-    type: ActionType.SET_CURRENT_PLAYING_FILM,
+  setCurrentFilm: (film) => ({
+    type: ActionType.SET_CURRENT_FILM,
     payload: film,
-  })
+  }),
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -70,9 +71,9 @@ const reducer = (state = initialState, action) => {
         currentGenre: action.payload,
       });
 
-    case ActionType.SET_CURRENT_PLAYING_FILM:
+    case ActionType.SET_CURRENT_FILM:
       return extend(state, {
-        currentPlayingFilm: action.payload,
+        currentFilm: action.payload,
       });
   }
 
