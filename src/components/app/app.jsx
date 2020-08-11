@@ -2,7 +2,7 @@ import React, {
   PureComponent
 } from 'react';
 import {
-  Router,
+  BrowserRouter,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -12,17 +12,14 @@ import {func} from 'prop-types';
 import {
   filmPropTypes,
 } from '../../types.js';
-import {FilmCardsListType} from '../../const.js';
-import {
-  getCurrentOpenFilm,
-  getCurrentWatchedFilm,
-} from '../../reducer/current-state/selectors.js';
+import {AppRoute} from '../../const.js';
+
 import {Operation as UserOperation} from '../../reducer/user/user.js';
-import history from '../../history.js';
 
 import Comment from '../comment/comment.jsx';
 import Main from '../main/main.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
+import RouteWithPlayer from '../route-with-player/route-with-player.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
 import VideoPlayer from '../video-player/video-player.jsx';
 import withAuthorization from '../../hocs/with-authorization/with-authorization.jsx';
@@ -40,54 +37,35 @@ class App extends PureComponent {
 
   render() {
     const {
-      signIn
+      signIn,
     } = this.props;
 
     return (
-      <Router
-        history={history}
-      >
+      <BrowserRouter>
         <Switch>
           <Route
             exact
-            path="/"
+            path={AppRoute.ROOT}
+            render={() => <Main />}
           >
-            {this._renderApp()}
           </Route>
           <Route
             exact
-            path="/login"
-          ></Route>
+            path={AppRoute.LOGIN}
+            render={ () => {
+              return (
+                <SignInWrapped
+                  signIn={signIn}
+                />
+              );
+            }}
+          >
+          </Route>
+          <RouteWithPlayer>
+          </RouteWithPlayer>
         </Switch>
-      </Router>
+      </BrowserRouter>
     );
-  }
-
-  _renderApp() {
-    const {
-      currentOpenFilm,
-      currentWatchedFilm,
-    } = this.props;
-
-    switch (true) {
-      case (currentWatchedFilm !== null && !undefined):
-        return (
-          <VideoPlayerWrapped
-            posterImage={currentWatchedFilm.posterImage}
-            video={currentWatchedFilm.video}
-          />
-        );
-      case (currentOpenFilm !== null && !undefined):
-        return (
-          <FilmDetailedWrapped
-            sign={FilmCardsListType.LIKE_THIS}
-          />
-        );
-      default:
-        return (
-          <Main />
-        );
-    }
   }
 }
 
@@ -96,11 +74,6 @@ App.propTypes = {
   currentWatchedFilm: filmPropTypes,
   signIn: func.isRequired,
 };
-
-const mapStateToProps = (state) => ({
-  currentOpenFilm: getCurrentOpenFilm(state),
-  currentWatchedFilm: getCurrentWatchedFilm(state),
-});
 
 const mapDispatchToProps = (dispatch) => ({
   signIn: (user) => {
@@ -112,4 +85,4 @@ export {
   App,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

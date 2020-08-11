@@ -1,10 +1,15 @@
 import React from 'react';
 import {string} from 'prop-types';
 
+import {AuthorizationStatus} from '../../const.js';
+
+import ButtonSignIn from '../button-sign-in/button-sign-in.jsx';
+import ButtonUser from '../button-user/button-user.jsx';
 import Logotype from '../logotype/logotype.jsx';
 
 const Header = (props) => {
   const {
+    authorizationStatus,
     backgroundImage,
   } = props;
 
@@ -20,9 +25,13 @@ const Header = (props) => {
         <Logotype />
 
         <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
+          {authorizationStatus === AuthorizationStatus.AUTH &&
+            <ButtonUser />
+          }
+
+          {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+            <ButtonSignIn />
+          }
         </div>
       </header>
     </React.Fragment>
@@ -30,7 +39,8 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  backgroundImage: string,
+  authorizationStatus: string.isRequired,
+  backgroundImage: string.isRequired,
 };
 
 export default Header;

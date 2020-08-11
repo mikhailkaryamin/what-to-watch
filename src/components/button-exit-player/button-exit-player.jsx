@@ -1,22 +1,30 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+
 import {func} from 'prop-types';
 
+import {AppRoute} from '../../const.js';
 import {ActionCreator as CurrentStateCreator} from '../../reducer/current-state/current-state.js';
 
 const ButtonExitPlayer = (props) => {
   const {onButtonExitClick} = props;
 
   return (
-    <button
-      type="button"
-      className="player__exit"
-      onClick={() => {
-        onButtonExitClick();
-      }}
+    <Link
+      to={AppRoute.ROOT}
     >
-      Exit
-    </button>
+      <button
+        type="button"
+        className="player__exit"
+        onClick={() => {
+          onButtonExitClick();
+        }}
+      >
+        Exit
+      </button>
+    </Link>
+
   );
 };
 
@@ -26,7 +34,7 @@ ButtonExitPlayer.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onButtonExitClick() {
-    dispatch(CurrentStateCreator.resetCurrentWatchedFilm());
+    dispatch(CurrentStateCreator.resetCurrentPlayingFilm());
   }
 });
 

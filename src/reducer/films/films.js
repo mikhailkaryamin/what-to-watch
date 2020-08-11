@@ -4,11 +4,13 @@ import {extend} from '../../utils/utils.js';
 const initialState = {
   films: [],
   promoFilm: null,
+  statusLoad: false,
 };
 
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
+  SET_STATUS_LOAD_FILMS: `SET_STATUS_LOAD_FILMS`,
 };
 
 const ActionCreator = {
@@ -21,6 +23,11 @@ const ActionCreator = {
     type: ActionType.LOAD_PROMO_FILM,
     payload: film,
   }),
+
+  setStatusLoadFilms: () => ({
+    type: ActionType.SET_STATUS_LOAD_FILMS,
+    payload: true,
+  })
 };
 
 const Operation = {
@@ -31,6 +38,7 @@ const Operation = {
       .then((response) => {
         const films = Film.parseFilms(response.data);
         dispatch(ActionCreator.loadFilms(films));
+        dispatch(ActionCreator.setStatusLoadFilms());
       });
   },
 
@@ -55,6 +63,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_PROMO_FILM:
       return extend(state, {
         promoFilm: action.payload,
+      });
+
+    case ActionType.SET_STATUS_LOAD_FILMS:
+      return extend(state, {
+        statusLoad: action.payload,
       });
   }
 
