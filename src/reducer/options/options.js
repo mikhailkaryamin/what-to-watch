@@ -11,7 +11,7 @@ const initialState = {
 
 const ActionType = {
   RESET_AMOUNT_RENDER_FILM_CARD: `RESET_AMOUNT_RENDER_FILM_CARD`,
-  RESET_PLAYING_FILM: `RESET_PLAYING_FILM`,
+  RESET_FILM: `RESET_FILM`,
   SET_AMOUNT_RENDER_FILM_CARD: `SET_AMOUNT_RENDER_FILM_CARD`,
   SET_GENRE: `SET_CURRENT_GENRE`,
   SET_FILM: `SET_CURRENT_FILM`,
@@ -23,8 +23,8 @@ const ActionCreator = {
     payload: null,
   }),
 
-  resetPlayingFilm: () => ({
-    type: ActionType.RESET_PLAYING_FILM,
+  resetFilm: () => ({
+    type: ActionType.RESET_FILM,
     payload: null,
   }),
 
@@ -53,7 +53,7 @@ const reducer = (state = initialState, action) => {
       });
     }
 
-    case (ActionType.RESET_PLAYING_FILM): {
+    case (ActionType.RESET_FILM): {
       return extend(state, {
         film: action.payload,
       });

@@ -34,7 +34,7 @@ ButtonExitPlayer.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onButtonExitClick() {
-    dispatch(ActionOptions.resetPlayingFilm());
+    dispatch(ActionOptions.resetFilm());
   }
 });
 
