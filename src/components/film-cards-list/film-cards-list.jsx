@@ -10,7 +10,7 @@ import {
 
 import {filmPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
-import {getAmountRenderFilmCard} from '../../reducer/current-state/selectors.js';
+import {getAmountRenderFilmCard} from '../../reducer/options/selectors.js';
 import {
   getFilmsByGenre,
   getFilmsLikeThis,

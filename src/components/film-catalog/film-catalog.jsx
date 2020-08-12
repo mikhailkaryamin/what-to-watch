@@ -8,7 +8,7 @@ import {
 
 import {FilmCardsListType} from '../../const.js';
 import {filmPropTypes} from '../../types.js';
-import {getAmountRenderFilmCard} from '../../reducer/current-state/selectors.js';
+import {getAmountRenderFilmCard} from '../../reducer/options/selectors.js';
 import {getFilmsByGenre} from '../../reducer/films/selectors.js';
 
 import FilmCardsList from '../film-cards-list/film-cards-list.jsx';

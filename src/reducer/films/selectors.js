@@ -11,15 +11,15 @@ const getFilms = (state) => {
 };
 
 const getCurrentFilterGenre = (state) => {
-  return state[NameSpace.CURRENT_STATE].currentGenre;
+  return state[NameSpace.OPTIONS].genre;
 };
 
 const getOpenFilmGenre = (state) => {
-  if (state[NameSpace.CURRENT_STATE].currentFilm === null) {
+  if (state[NameSpace.OPTIONS].film === null) {
     return null;
   }
 
-  return state[NameSpace.CURRENT_STATE].currentFilm.genre;
+  return state[NameSpace.OPTIONS].film.genre;
 };
 
 const getPromoFilm = (state) => {

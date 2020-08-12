@@ -5,16 +5,16 @@ const DEFAULT_GENRE = `All genres`;
 
 const initialState = {
   amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
-  currentGenre: DEFAULT_GENRE,
-  currentFilm: null,
+  genre: DEFAULT_GENRE,
+  film: null,
 };
 
 const ActionType = {
   RESET_AMOUNT_RENDER_FILM_CARD: `RESET_AMOUNT_RENDER_FILM_CARD`,
-  RESET_CURRENT_PLAYING_FILM: `RESET_CURRENT_WATCHED_FILM`,
+  RESET_FILM: `RESET_FILM`,
   SET_AMOUNT_RENDER_FILM_CARD: `SET_AMOUNT_RENDER_FILM_CARD`,
-  SET_CURRENT_GENRE: `SET_CURRENT_GENRE`,
-  SET_CURRENT_FILM: `SET_CURRENT_FILM`,
+  SET_GENRE: `SET_CURRENT_GENRE`,
+  SET_FILM: `SET_CURRENT_FILM`,
 };
 
 const ActionCreator = {
@@ -23,8 +23,8 @@ const ActionCreator = {
     payload: null,
   }),
 
-  resetCurrentPlayingFilm: () => ({
-    type: ActionType.RESET_CURRENT_PLAYING_FILM,
+  resetFilm: () => ({
+    type: ActionType.RESET_FILM,
     payload: null,
   }),
 
@@ -33,13 +33,13 @@ const ActionCreator = {
     payload: null,
   }),
 
-  setCurrentGenre: (genre) => ({
-    type: ActionType.SET_CURRENT_GENRE,
+  setGenre: (genre) => ({
+    type: ActionType.SET_GENRE,
     payload: genre,
   }),
 
-  setCurrentFilm: (film) => ({
-    type: ActionType.SET_CURRENT_FILM,
+  setFilm: (film) => ({
+    type: ActionType.SET_FILM,
     payload: film,
   }),
 
@@ -53,9 +53,9 @@ const reducer = (state = initialState, action) => {
       });
     }
 
-    case (ActionType.RESET_CURRENT_PLAYING_FILM): {
+    case (ActionType.RESET_FILM): {
       return extend(state, {
-        currentPlayingFilm: action.payload,
+        film: action.payload,
       });
     }
 
@@ -66,14 +66,14 @@ const reducer = (state = initialState, action) => {
       });
     }
 
-    case ActionType.SET_CURRENT_GENRE:
+    case ActionType.SET_GENRE:
       return extend(state, {
-        currentGenre: action.payload,
+        genre: action.payload,
       });
 
-    case ActionType.SET_CURRENT_FILM:
+    case ActionType.SET_FILM:
       return extend(state, {
-        currentFilm: action.payload,
+        film: action.payload,
       });
   }
 

@@ -6,11 +6,9 @@ import {
   string,
 } from 'prop-types';
 
-import {ActionCreator as ActionCurrentState} from '../../reducer/current-state/current-state.js';
-import {getCurrentGenre} from '../../reducer/current-state/selectors.js';
-import {
-  getGenres,
-} from '../../reducer/films/selectors.js';
+import {ActionCreator as ActionOptions} from '../../reducer/options/options.js';
+import {getGenre} from '../../reducer/options/selectors.js';
+import {getGenres} from '../../reducer/films/selectors.js';
 
 const GenresList = (props) => {
   const {
@@ -48,14 +46,14 @@ export {
 };
 
 const mapStateToProps = (state) => ({
-  currentGenre: getCurrentGenre(state),
+  currentGenre: getGenre(state),
   genres: getGenres(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreClick(genre) {
-    dispatch(ActionCurrentState.resetAmountRenderFilmCard());
-    dispatch(ActionCurrentState.setCurrentGenre(genre));
+    dispatch(ActionOptions.resetAmountRenderFilmCard());
+    dispatch(ActionOptions.setGenre(genre));
   }
 });
 

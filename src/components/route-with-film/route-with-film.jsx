@@ -15,8 +15,8 @@ import {filmPropTypes} from '../../types.js';
 import {AppRoute} from '../../const.js';
 
 import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
-import {ActionCreator as CurrentStateCreator} from '../../reducer/current-state/current-state.js';
-import {getCurrentFilm} from '../../reducer/current-state/selectors.js';
+import {ActionCreator as OptionsCreator} from '../../reducer/options/options.js';
+import {getFilm} from '../../reducer/options/selectors.js';
 import {
   getFilms,
   getStatusLoad,
@@ -57,22 +57,22 @@ class RouteWithFilm extends PureComponent {
 
           const filmId = parseInt(renderProps.match.params.id, 10);
 
-          if (this.props.currentFilm === null || this.props.currentFilm.id !== filmId) {
+          if (this.props.film === null || this.props.film.id !== filmId) {
             onLoadComment(filmId);
-            this._setCurrentPlayingFilm(filmId);
+            this._setFilm(filmId);
             return ``;
           }
 
           switch (path) {
             case AppRoute.PLAYER: {
               return <VideoPlayerWrapped
-                posterImage={this.props.currentFilm.posterImage}
-                video={this.props.currentFilm.video}
+                posterImage={this.props.film.posterImage}
+                video={this.props.film.video}
               />;
             }
             case AppRoute.FILM: {
               return <FilmDetailedWrapped
-                film={this.props.currentFilm}
+                film={this.props.film}
               />;
             }
           }
@@ -82,7 +82,7 @@ class RouteWithFilm extends PureComponent {
       />
     );
   }
-  _setCurrentPlayingFilm(id) {
+  _setFilm(id) {
     const {
       films,
       onSetCurrentFilm,
@@ -95,7 +95,7 @@ class RouteWithFilm extends PureComponent {
 }
 
 RouteWithFilm.propTypes = {
-  currentFilm: filmPropTypes,
+  film: filmPropTypes,
   films: arrayOf(filmPropTypes),
   onLoadComment: func.isRequired,
   onSetCurrentFilm: func.isRequired,
@@ -104,7 +104,7 @@ RouteWithFilm.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentFilm: getCurrentFilm(state),
+  film: getFilm(state),
   films: getFilms(state),
   statusLoadFilms: getStatusLoad(state),
 });
@@ -114,7 +114,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(CommentOperation.loadComments(id));
   },
   onSetCurrentFilm(film) {
-    dispatch(CurrentStateCreator.setCurrentFilm(film));
+    dispatch(OptionsCreator.setFilm(film));
   },
 });
 

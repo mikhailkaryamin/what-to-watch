@@ -1,7 +1,7 @@
 const NameSpace = {
   COMMENT: `COMMENT`,
-  CURRENT_STATE: `CURRENT_STATE`,
   FILMS: `FILMS`,
+  OPTIONS: `OPTIONS`,
   USER: `USER`,
 };
 
