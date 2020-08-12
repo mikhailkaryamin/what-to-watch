@@ -22,7 +22,9 @@ class Main extends PureComponent {
           <FilmCatalog
             sign={FilmCardsListType.MAIN}
           />
-          <Footer />
+          <Footer
+            isLink={false}
+          />
         </div>
       </React.Fragment>
     );

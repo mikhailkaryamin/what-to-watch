@@ -1,14 +1,20 @@
 import React from 'react';
+import {bool} from 'prop-types';
 
 import Logotype from '../logotype/logotype.jsx';
 
 const MODIFICATOR_CLASS = `logo__link--light`;
 
-const Footer = () => {
+const Footer = (props) => {
+  const {
+    isLink
+  } = props;
+
   return (
     <footer className="page-footer">
 
       <Logotype
+        isLink={isLink}
         modificatorClass={MODIFICATOR_CLASS}
       />
 
@@ -17,6 +23,10 @@ const Footer = () => {
       </div>
     </footer>
   );
+};
+
+Footer.propTypes = {
+  isLink: bool.isRequired,
 };
 
 export default Footer;

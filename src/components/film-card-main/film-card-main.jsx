@@ -33,6 +33,7 @@ const FilmCardMain = (props) => {
       <Header
         authorizationStatus={authorizationStatus}
         backgroundImage={backgroundImage}
+        isLink={false}
       />
 
       <div className="movie-card__wrap">

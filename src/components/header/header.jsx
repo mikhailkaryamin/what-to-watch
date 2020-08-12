@@ -1,5 +1,5 @@
 import React from 'react';
-import {string} from 'prop-types';
+import {string, bool} from 'prop-types';
 
 import {AuthorizationStatus} from '../../const.js';
 
@@ -11,6 +11,7 @@ const Header = (props) => {
   const {
     authorizationStatus,
     backgroundImage,
+    isLink,
   } = props;
 
   return (
@@ -22,7 +23,9 @@ const Header = (props) => {
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header movie-card__head">
-        <Logotype />
+        <Logotype
+          isLink={isLink}
+        />
 
         <div className="user-block">
           {authorizationStatus === AuthorizationStatus.AUTH &&
@@ -41,6 +44,7 @@ const Header = (props) => {
 Header.propTypes = {
   authorizationStatus: string.isRequired,
   backgroundImage: string.isRequired,
+  isLink: bool.isRequired,
 };
 
 export default Header;

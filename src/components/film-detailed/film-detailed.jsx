@@ -57,6 +57,7 @@ class FilmDetailed extends PureComponent {
             <Header
               authorizationStatus={authorizationStatus}
               backgroundImage={backgroundImage}
+              isLink={true}
             />
 
             <div className="movie-card__wrap">
@@ -98,7 +99,9 @@ class FilmDetailed extends PureComponent {
           <FilmCatalog
             sign={FilmCardsListType.LIKE_THIS}
           />
-          <Footer />
+          <Footer
+            isLink={true}
+          />
         </div>
       </React.Fragment>
     );
