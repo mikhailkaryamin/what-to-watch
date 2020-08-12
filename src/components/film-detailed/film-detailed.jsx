@@ -55,6 +55,7 @@ class FilmDetailed extends PureComponent {
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <Header
+              authorizationStatus={authorizationStatus}
               backgroundImage={backgroundImage}
             />
 

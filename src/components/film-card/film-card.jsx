@@ -85,7 +85,6 @@ class FilmCard extends PureComponent {
 FilmCard.propTypes = {
   film: filmPropTypes.isRequired,
   isPlayVideo: bool.isRequired,
-  onFilmCardClick: func.isRequired,
   onMouseEnter: func.isRequired,
   onMouseLeave: func.isRequired,
   onStopPreviewClick: func.isRequired,

@@ -10,15 +10,17 @@ import {
   func,
   string,
 } from 'prop-types';
+import {filmPropTypes} from '../../types.js';
 
 import {AppRoute} from '../../const.js';
+
+import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
 import {ActionCreator as CurrentStateCreator} from '../../reducer/current-state/current-state.js';
+import {getCurrentFilm} from '../../reducer/current-state/selectors.js';
 import {
   getFilms,
   getStatusLoad,
 } from '../../reducer/films/selectors.js';
-import {getCurrentFilm} from '../../reducer/current-state/selectors.js';
-import {filmPropTypes} from '../../types.js';
 
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
 import VideoPlayer from '../video-player/video-player.jsx';
@@ -36,6 +38,7 @@ class RouteWithFilm extends PureComponent {
 
   render() {
     const {
+      onLoadComment,
       path,
       statusLoadFilms,
     } = this.props;
@@ -52,10 +55,11 @@ class RouteWithFilm extends PureComponent {
         path={path}
         render={(renderProps) => {
 
-          if (this.props.currentFilm === null) {
-            const currentPlayingFilmId = parseInt(renderProps.match.params.id, 10);
+          const filmId = parseInt(renderProps.match.params.id, 10);
 
-            this._setCurrentPlayingFilm(currentPlayingFilmId);
+          if (this.props.currentFilm === null || this.props.currentFilm.id !== filmId) {
+            onLoadComment(filmId);
+            this._setCurrentPlayingFilm(filmId);
             return ``;
           }
 
@@ -78,7 +82,6 @@ class RouteWithFilm extends PureComponent {
       />
     );
   }
-
   _setCurrentPlayingFilm(id) {
     const {
       films,
@@ -94,6 +97,7 @@ class RouteWithFilm extends PureComponent {
 RouteWithFilm.propTypes = {
   currentFilm: filmPropTypes,
   films: arrayOf(filmPropTypes),
+  onLoadComment: func.isRequired,
   onSetCurrentFilm: func.isRequired,
   path: string.isRequired,
   statusLoadFilms: bool.isRequired,
@@ -106,9 +110,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onLoadComment(id) {
+    dispatch(CommentOperation.loadComments(id));
+  },
   onSetCurrentFilm(film) {
     dispatch(CurrentStateCreator.setCurrentFilm(film));
-  }
+  },
 });
 
 export {
