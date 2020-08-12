@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {func} from 'prop-types';
 
-import {ActionCreator as CurrentStateCreator} from '../../reducer/current-state/current-state.js';
+import {ActionCreator as ActionOptions} from '../../reducer/options/options.js';
 
 const ShowMoreButton = (props) => {
   const {
@@ -30,7 +30,7 @@ ShowMoreButton.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onShowMoreButtonClick() {
-    dispatch(CurrentStateCreator.setAmountRenderFilmCard());
+    dispatch(ActionOptions.setAmountRenderFilmCard());
   }
 });
 

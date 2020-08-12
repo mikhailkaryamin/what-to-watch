@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {func} from 'prop-types';
 
 import {AppRoute} from '../../const.js';
-import {ActionCreator as CurrentStateCreator} from '../../reducer/current-state/current-state.js';
+import {ActionCreator as ActionOptions} from '../../reducer/options/options.js';
 
 const ButtonExitPlayer = (props) => {
   const {onButtonExitClick} = props;
@@ -34,7 +34,7 @@ ButtonExitPlayer.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onButtonExitClick() {
-    dispatch(CurrentStateCreator.resetCurrentPlayingFilm());
+    dispatch(ActionOptions.resetPlayingFilm());
   }
 });
 
