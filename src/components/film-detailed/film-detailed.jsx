@@ -45,6 +45,7 @@ class FilmDetailed extends PureComponent {
     const {
       backgroundImage,
       genre,
+      id,
       name,
       posterImage,
       released,
@@ -73,7 +74,11 @@ class FilmDetailed extends PureComponent {
 
                   <ButtonList />
 
-                  {authStatus === AuthStatus.AUTH && <ButtonAddComment />}
+                  {authStatus === AuthStatus.AUTH &&
+                    <ButtonAddComment
+                      id={id}
+                    />
+                  }
 
                 </div>
               </div>

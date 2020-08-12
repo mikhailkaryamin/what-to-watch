@@ -1,11 +1,24 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {number} from 'prop-types';
 
-const ButtonAddComment = () => {
+const ButtonAddComment = (props) => {
+  const {
+    id
+  } = props;
+
   return (
-    <a href="add-review.html" className="btn movie-card__button">
+    <Link
+      className="btn movie-card__button"
+      to={`/films/${id}/review`}
+    >
       Add review
-    </a>
+    </Link>
   );
+};
+
+ButtonAddComment.propTypes = {
+  id: number.isRequired,
 };
 
 export default ButtonAddComment;

@@ -54,7 +54,6 @@ class RouteWithFilm extends PureComponent {
         exact
         path={path}
         render={(renderProps) => {
-
           const filmId = parseInt(renderProps.match.params.id, 10);
 
           if (this.props.film === null || this.props.film.id !== filmId) {
