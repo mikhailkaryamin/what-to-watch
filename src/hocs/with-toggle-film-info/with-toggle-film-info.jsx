@@ -22,7 +22,7 @@ const withToggleFilmInfo = (Component) => {
 
       return (
         <Component
-          {...this._props}
+          {...this.props}
           currentTypeTab={currentTypeTab}
           onTabClick={this._handleTabTypeChange}
         />

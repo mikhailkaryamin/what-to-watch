@@ -15,7 +15,7 @@ import {
   FilmCardsListType,
   FilmDetailedTabsType,
 } from '../../const.js';
-import {getCurrentOpenFilm} from '../../reducer/current-state/selectors.js';
+
 import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 
 import ButtonAddComment from '../button-add-comment/button-add-comment.jsx';
@@ -29,7 +29,7 @@ import TabOverview from '../tab-overview/tab-overview.jsx';
 import Footer from '../footer/footer.jsx';
 import Header from '../header/header.jsx';
 
-class FilmPage extends PureComponent {
+class FilmDetailed extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -37,7 +37,7 @@ class FilmPage extends PureComponent {
   render() {
     const {
       authorizationStatus,
-      currentOpenFilm,
+      film,
       currentTypeTab,
       onTabClick,
     } = this.props;
@@ -48,13 +48,14 @@ class FilmPage extends PureComponent {
       name,
       posterImage,
       released,
-    } = currentOpenFilm;
+    } = film;
 
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <Header
+              authorizationStatus={authorizationStatus}
               backgroundImage={backgroundImage}
             />
 
@@ -67,7 +68,7 @@ class FilmPage extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <ButtonPlay film={currentOpenFilm} />
+                  <ButtonPlay film={film} />
 
                   <ButtonList />
 
@@ -105,7 +106,7 @@ class FilmPage extends PureComponent {
 
   _changeTabs(currentTypeTab) {
     const {
-      currentOpenFilm,
+      film,
     } = this.props;
     const {
       description,
@@ -116,7 +117,7 @@ class FilmPage extends PureComponent {
       runTime,
       scoreCount,
       starring,
-    } = currentOpenFilm;
+    } = film;
 
     switch (currentTypeTab) {
       case (FilmDetailedTabsType.DETAILS):
@@ -141,21 +142,20 @@ class FilmPage extends PureComponent {
   }
 }
 
-FilmPage.propTypes = {
+FilmDetailed.propTypes = {
   authorizationStatus: string.isRequired,
-  currentOpenFilm: filmPropTypes,
+  film: filmPropTypes,
   currentTypeTab: string.isRequired,
   onTabClick: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  currentOpenFilm: getCurrentOpenFilm(state),
   authorizationStatus: getAuthorizationStatus(state),
 });
 
 export {
-  FilmPage
+  FilmDetailed
 };
 
-export default connect(mapStateToProps)(FilmPage);
+export default connect(mapStateToProps)(FilmDetailed);
 

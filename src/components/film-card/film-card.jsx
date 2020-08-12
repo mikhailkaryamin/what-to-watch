@@ -1,14 +1,12 @@
 import React, {
   PureComponent
 } from 'react';
-import {connect} from 'react-redux';
 import {
   bool,
   func,
 } from 'prop-types';
+import {Link} from 'react-router-dom';
 
-import {ActionCreator as CurrentStateAction} from '../../reducer/current-state/current-state.js';
-import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
 import {filmPropTypes} from '../../types.js';
 
 import VideoPlayer from '../preview-video/preview-video.jsx';
@@ -21,13 +19,13 @@ class FilmCard extends PureComponent {
   render() {
     const {
       isPlayVideo,
-      onFilmCardClick,
       onMouseEnter,
       onMouseLeave,
       onStopPreviewClick,
     } = this.props;
 
     const {
+      id,
       posterImage,
       previewImage,
       previewVideoLink,
@@ -38,7 +36,6 @@ class FilmCard extends PureComponent {
       <article
         className="small-movie-card catalog__movies-card"
         onClick={() => {
-          onFilmCardClick(this.props.film);
           onStopPreviewClick();
         }}
 
@@ -50,30 +47,35 @@ class FilmCard extends PureComponent {
           onMouseLeave();
         }}
       >
-        <div
-          className="small-movie-card__image"
+        <Link
+          to={`/films/${id}`}
         >
-          {isPlayVideo || <img
-            src={previewImage}
-            alt={name}
-            width="280"
-            height="175"
-          />}
+          <div
+            className="small-movie-card__image"
+          >
+            {isPlayVideo || <img
+              src={previewImage}
+              alt={name}
+              width="280"
+              height="175"
+            />}
 
-          {isPlayVideo && <VideoPlayer
-            posterImage={posterImage}
-            previewVideoLink={previewVideoLink}
-          />}
-        </div>
+            {isPlayVideo && <VideoPlayer
+              posterImage={posterImage}
+              previewVideoLink={previewVideoLink}
+            />}
+          </div>
+        </Link>
         <h3
           className="small-movie-card__title"
         >
-          <a
+          <Link
             className="small-movie-card__link"
             href="#"
+            to={`/films/${id}`}
           >
             {name}
-          </a>
+          </Link>
         </h3>
       </article>
     );
@@ -83,21 +85,9 @@ class FilmCard extends PureComponent {
 FilmCard.propTypes = {
   film: filmPropTypes.isRequired,
   isPlayVideo: bool.isRequired,
-  onFilmCardClick: func.isRequired,
   onMouseEnter: func.isRequired,
   onMouseLeave: func.isRequired,
   onStopPreviewClick: func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onFilmCardClick(film) {
-    dispatch(CurrentStateAction.setCurrentOpenFilm(film));
-    dispatch(CommentOperation.loadComments());
-  }
-});
-
-export {
-  FilmCard
-};
-
-export default connect(null, mapDispatchToProps)(FilmCard);
+export default FilmCard;

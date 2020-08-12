@@ -35,14 +35,8 @@ const ActionCreator = {
 };
 
 const Operation = {
-  loadComments: () => (dispatch, getState, api) => {
-    const currentOpenFilm = getState()[NameSpace.CURRENT_STATE].currentOpenFilm;
-
-    if (currentOpenFilm === null) {
-      return new Error(`currentOpenFilm = null`);
-    }
-
-    const URL = `/comments/${currentOpenFilm.id}`;
+  loadComments: (id) => (dispatch, getState, api) => {
+    const URL = `/comments/${id}`;
 
     return api.get(URL)
       .then((response) => {

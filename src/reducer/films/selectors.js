@@ -4,13 +4,22 @@ import {
 import NameSpace from '../name-space.js';
 
 const DEFAULT_GENRES = [`All genres`];
+const LIKE_THIS_CARDS_COUNT = 4;
 
 const getFilms = (state) => {
   return state[NameSpace.FILMS].films;
 };
 
-const getCurrentGenre = (state) => {
+const getCurrentFilterGenre = (state) => {
   return state[NameSpace.CURRENT_STATE].currentGenre;
+};
+
+const getOpenFilmGenre = (state) => {
+  if (state[NameSpace.CURRENT_STATE].currentFilm === null) {
+    return null;
+  }
+
+  return state[NameSpace.CURRENT_STATE].currentFilm.genre;
 };
 
 const getPromoFilm = (state) => {
@@ -23,7 +32,7 @@ const getStatusLoad = (state) => {
 
 const getFilmsByGenre = createSelector(
     getFilms,
-    getCurrentGenre,
+    getCurrentFilterGenre,
 
     (films, currentGenre) => {
       if (currentGenre === DEFAULT_GENRES[0]) {
@@ -38,12 +47,12 @@ const getFilmsByGenre = createSelector(
 
 const getFilmsLikeThis = createSelector(
     getFilms,
-    getCurrentGenre,
+    getOpenFilmGenre,
 
     (films, currentGenre) => {
       return films
         .filter((film) => film.genre === currentGenre)
-        .slice(0, 4);
+        .slice(0, LIKE_THIS_CARDS_COUNT);
     }
 );
 

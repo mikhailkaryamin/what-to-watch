@@ -21,8 +21,6 @@ import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video.j
 
 const FilmCardWrapped = withPreviewVideo(FilmCard);
 
-const LIKE_THIS_CARDS_COUNT = 4;
-
 class FilmCardsList extends PureComponent {
   constructor(props) {
     super(props);
@@ -36,28 +34,32 @@ class FilmCardsList extends PureComponent {
     return (
       <div className={`catalog__movies-list ${sign === FilmCardsListType.MAIN ? `` : `catalog--like-this`}`}>
 
-        {this._getFilmCardsMarkup()}
+        {sign === FilmCardsListType.MAIN && this._getFilmCardsMainMarkup()}
 
+        {sign === FilmCardsListType.LIKE_THIS && this._getFilmCardsLikeThisMarkup()}
       </div>
     );
   }
 
-  _getFilmCardsMarkup() {
+  _getFilmCardsLikeThisMarkup() {
+    const {
+      filmsLikeThis,
+    } = this.props;
+
+    return filmsLikeThis.map((film) => {
+      return <FilmCardWrapped
+        film={film}
+        key={film.id}
+      />;
+    });
+
+  }
+
+  _getFilmCardsMainMarkup() {
     const {
       amountRenderFilmCard,
       filmsByGenre,
-      filmsLikeThis,
-      sign,
     } = this.props;
-
-    if (sign === FilmCardsListType.LIKE_THIS) {
-      return filmsLikeThis.slice(0, LIKE_THIS_CARDS_COUNT).map((film) => {
-        return <FilmCardWrapped
-          film={film}
-          key={film.id}
-        />;
-      });
-    }
 
     return filmsByGenre.slice(0, amountRenderFilmCard).map((film) => {
       return <FilmCardWrapped
