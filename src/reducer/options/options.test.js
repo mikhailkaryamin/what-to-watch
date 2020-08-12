@@ -8,8 +8,8 @@ const DEFAULT_GENRE = `All genres`;
 
 const initialState = {
   amountRenderFilmCard: AMOUNT_RENDER_FILM_CARD,
-  currentGenre: DEFAULT_GENRE,
-  currentPlayingFilm: null,
+  genre: DEFAULT_GENRE,
+  film: null,
 };
 
 describe(`current state`, () => {
@@ -21,9 +21,9 @@ describe(`current state`, () => {
       });
     });
 
-    test(`resetCurrentPlayingFilm should create RESET_CURRENT_PLAYING_FILM action`, () => {
-      expect(ActionCreator.resetCurrentPlayingFilm()).toEqual({
-        type: `RESET_CURRENT_WATCHED_FILM`,
+    test(`resetFilm should create RESET_FILM action`, () => {
+      expect(ActionCreator.resetFilm()).toEqual({
+        type: `RESET_FILM`,
         payload: null,
       });
     });
@@ -35,16 +35,16 @@ describe(`current state`, () => {
       });
     });
 
-    test(`setCurrentGenre should create SET_CURRENT_GENRE action`, () => {
-      expect(ActionCreator.setCurrentGenre(`genre`)).toEqual({
-        type: `SET_CURRENT_GENRE`,
+    test(`setGenre should create SET_GENRE action`, () => {
+      expect(ActionCreator.setGenre(`genre`)).toEqual({
+        type: `SET_GENRE`,
         payload: `genre`,
       });
     });
 
-    test(`setCurrentPlayingFilm should SET_CURRENT_PLAYING_FILM action`, () => {
-      expect(ActionCreator.setCurrentPlayingFilm(`film`)).toEqual({
-        type: `SET_CURRENT_PLAYING_FILM`,
+    test(`setFilm should SET_FILM action`, () => {
+      expect(ActionCreator.setFilm(`film`)).toEqual({
+        type: `SET_FILM`,
         payload: `film`,
       });
     });
@@ -71,18 +71,18 @@ describe(`current state`, () => {
       );
     });
 
-    test(`should handle RESET_CURRENT_PLAYING_FILM`, () => {
+    test(`should handle RESET_FILM`, () => {
       expect(
           reducer({
-            currentPlayingFilm: {
+            film: {
               film: `name film`
             },
           }, {
-            type: `RESET_CURRENT_PLAYING_FILM`,
+            type: `RESET_FILM`,
             payload: null,
           })).toEqual(
           {
-            currentPlayingFilm: null,
+            film: null,
           }
       );
     });
@@ -101,31 +101,31 @@ describe(`current state`, () => {
       );
     });
 
-    test(`should handle SET_CURRENT_GENRE`, () => {
+    test(`should handle SET_GENRE`, () => {
       expect(
           reducer({
-            currentGenre: `All genres`,
+            genre: `All genres`,
           }, {
-            type: `SET_CURRENT_GENRE`,
+            type: `SET_GENRE`,
             payload: `Western`
           })).toEqual(
           {
-            currentGenre: `Western`
+            genre: `Western`
           });
     });
 
-    test(`should handle SET_CURRENT_PLAYING_FILM`, () => {
+    test(`should handle SET_FILM`, () => {
       expect(
           reducer({
-            currentPlayingFilm: null,
+            film: null,
           }, {
-            type: `SET_CURRENT_PLAYING_FILM`,
+            type: `SET_FILM`,
             payload: {
               name: `some film`
             }
           })).toEqual(
           {
-            currentPlayingFilm: {
+            film: {
               name: `some film`
             }
           });
