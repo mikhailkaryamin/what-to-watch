@@ -171,7 +171,7 @@ const initialState = {
     },
   },
   USER: {
-    authorizationStatus: `NO_AUTH`,
+    authStatus: `NO_AUTH`,
   }
 };
 
@@ -366,7 +366,7 @@ const initialStateWithOpenFilm = {
     },
   },
   USER: {
-    authorizationStatus: `NO_AUTH`,
+    authStatus: `NO_AUTH`,
   },
 };
 
@@ -560,7 +560,7 @@ const initialStateWithWatchedFilm = {
     },
   },
   USER: {
-    authorizationStatus: `NO_AUTH`,
+    authStatus: `NO_AUTH`,
   }
 };
 

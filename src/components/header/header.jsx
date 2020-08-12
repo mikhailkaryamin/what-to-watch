@@ -1,7 +1,7 @@
 import React from 'react';
-import {string} from 'prop-types';
+import {string, bool} from 'prop-types';
 
-import {AuthorizationStatus} from '../../const.js';
+import {AuthStatus} from '../../const.js';
 
 import ButtonSignIn from '../button-sign-in/button-sign-in.jsx';
 import ButtonUser from '../button-user/button-user.jsx';
@@ -9,8 +9,9 @@ import Logotype from '../logotype/logotype.jsx';
 
 const Header = (props) => {
   const {
-    authorizationStatus,
+    authStatus,
     backgroundImage,
+    isLink,
   } = props;
 
   return (
@@ -22,14 +23,16 @@ const Header = (props) => {
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header movie-card__head">
-        <Logotype />
+        <Logotype
+          isLink={isLink}
+        />
 
         <div className="user-block">
-          {authorizationStatus === AuthorizationStatus.AUTH &&
+          {authStatus === AuthStatus.AUTH &&
             <ButtonUser />
           }
 
-          {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+          {authStatus === AuthStatus.NO_AUTH &&
             <ButtonSignIn />
           }
         </div>
@@ -39,8 +42,9 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  authorizationStatus: string.isRequired,
+  authStatus: string.isRequired,
   backgroundImage: string.isRequired,
+  isLink: bool.isRequired,
 };
 
 export default Header;

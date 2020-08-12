@@ -2,8 +2,8 @@ import NameSpace from '../name-space.js';
 
 const NAME_SPACE = NameSpace.USER;
 
-const getAuthorizationStatus = (state) => {
-  return state[NAME_SPACE].authorizationStatus;
+const getAuthStatus = (state) => {
+  return state[NAME_SPACE].authStatus;
 };
 
 const getUser = (state) => {
@@ -11,7 +11,7 @@ const getUser = (state) => {
 };
 
 export {
-  getAuthorizationStatus,
+  getAuthStatus,
   getUser,
 };
 

@@ -1,11 +1,22 @@
 import React from 'react';
+import {func, bool} from 'prop-types';
 
 const STARS_RATING = [1, 2, 3, 4, 5];
 
-const getMarkupStar = (number) => {
+const getMarkupStar = (number, onChange) => {
   return (
     <React.Fragment key={number}>
-      <input className="rating__input" id={`star-${number}`} type="radio" name="rating" value={number} />
+      <input
+        className="rating__input"
+        id={`star-${number}`}
+        onChange={(evt) => onChange({
+          type: `rating`,
+          value: evt.target.value,
+        })}
+        name="rating"
+        type="radio"
+        value={number}
+      />
       <label className="rating__label" htmlFor={`star-${number}`}>
         Rating {number}
       </label>
@@ -13,28 +24,59 @@ const getMarkupStar = (number) => {
   );
 };
 
-const Comment = () => {
+const Comment = (props) => {
+  const {
+    isDisabledForm,
+    onChange,
+    onSubmit,
+  } = props;
+
   return (
     <div className="add-review">
-      <form action="#" className="add-review__form">
+      <form
+        action="#"
+        className="add-review__form"
+        onSubmit={onSubmit}
+      >
         <div className="rating">
           <div className="rating__stars">
             {STARS_RATING.map((el) => {
-              return getMarkupStar(el);
+              return getMarkupStar(el, onChange);
             })}
           </div>
         </div>
 
         <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
+          <textarea
+            className="add-review__textarea"
+            name="review-text"
+            id="review-text"
+            placeholder="Review text"
+            onChange={(evt) => onChange({
+              type: `comment`,
+              value: evt.target.value,
+            })}
+          />
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+            <button
+              className="add-review__btn"
+              disabled={isDisabledForm}
+              type="submit"
+            >
+              Post
+            </button>
           </div>
 
         </div>
       </form>
     </div>
   );
+};
+
+Comment.propTypes = {
+  isDisabledForm: bool.isRequired,
+  onChange: func.isRequired,
+  onSubmit: func.isRequired
 };
 
 export default Comment;

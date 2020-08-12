@@ -45,20 +45,12 @@ const Operation = {
       });
   },
 
-  uploadComment: (commentData) => (dispatch, getState, api) => {
-    const currentOpenFilm = getState()[NameSpace.CURRENT_STATE].currentOpenFilm;
-
-    if (currentOpenFilm === null) {
-      dispatch(ActionCreator.statusUploadComment(StatusUploadComment.ERROR));
-
-      return new Error(`currentOpenFilm = null`);
-    }
-
-    const URL = `/comments/${currentOpenFilm.id}`;
+  uploadComment: (commentData, id) => (dispatch, getState, api) => {
+    const URL = `/comments/${id}`;
 
     return api.post(URL, {
       rating: commentData.rating,
-      comment: commentData.text,
+      comment: commentData.comment,
     })
       .then((response) => {
         const responseStatus = response.status;

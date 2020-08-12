@@ -11,12 +11,12 @@ import {
   filmPropTypes
 } from '../../types.js';
 import {
-  AuthorizationStatus,
+  AuthStatus,
   FilmCardsListType,
   FilmDetailedTabsType,
 } from '../../const.js';
 
-import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
+import {getAuthStatus} from '../../reducer/user/selectors.js';
 
 import ButtonAddComment from '../button-add-comment/button-add-comment.jsx';
 import ButtonList from '../button-list/button-list.jsx';
@@ -36,7 +36,7 @@ class FilmDetailed extends PureComponent {
 
   render() {
     const {
-      authorizationStatus,
+      authStatus,
       film,
       currentTypeTab,
       onTabClick,
@@ -45,6 +45,7 @@ class FilmDetailed extends PureComponent {
     const {
       backgroundImage,
       genre,
+      id,
       name,
       posterImage,
       released,
@@ -55,8 +56,9 @@ class FilmDetailed extends PureComponent {
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <Header
-              authorizationStatus={authorizationStatus}
+              authStatus={authStatus}
               backgroundImage={backgroundImage}
+              isLink={true}
             />
 
             <div className="movie-card__wrap">
@@ -72,7 +74,11 @@ class FilmDetailed extends PureComponent {
 
                   <ButtonList />
 
-                  {authorizationStatus === AuthorizationStatus.AUTH && <ButtonAddComment />}
+                  {authStatus === AuthStatus.AUTH &&
+                    <ButtonAddComment
+                      id={id}
+                    />
+                  }
 
                 </div>
               </div>
@@ -98,7 +104,9 @@ class FilmDetailed extends PureComponent {
           <FilmCatalog
             sign={FilmCardsListType.LIKE_THIS}
           />
-          <Footer />
+          <Footer
+            isLink={true}
+          />
         </div>
       </React.Fragment>
     );
@@ -143,14 +151,14 @@ class FilmDetailed extends PureComponent {
 }
 
 FilmDetailed.propTypes = {
-  authorizationStatus: string.isRequired,
+  authStatus: string.isRequired,
   film: filmPropTypes,
   currentTypeTab: string.isRequired,
   onTabClick: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
+  authStatus: getAuthStatus(state),
 });
 
 export {
