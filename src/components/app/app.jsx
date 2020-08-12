@@ -7,11 +7,15 @@ import {
   Switch,
 } from 'react-router-dom';
 import {connect} from 'react-redux';
-import {func, bool} from 'prop-types';
+import {func, bool, string} from 'prop-types';
 
-import {AppRoute} from '../../const.js';
+import {
+  AppRoute,
+  AuthStatus,
+} from '../../const.js';
 
 import {Operation as UserOperation} from '../../reducer/user/user.js';
+import {getAuthStatus} from '../../reducer/user/selectors.js';
 import {
   getStatusLoad,
 } from '../../reducer/films/selectors.js';
@@ -30,10 +34,12 @@ class App extends PureComponent {
 
   render() {
     const {
+      authStatus,
       signIn,
       statusLoadFilms,
     } = this.props;
 
+    const isAuth = authStatus === AuthStatus.AUTH;
     const isLoading = statusLoadFilms !== true;
 
     if (isLoading) {
@@ -54,6 +60,7 @@ class App extends PureComponent {
             render={ () => {
               return (
                 <SignInWrapped
+                  isAuth={isAuth}
                   signIn={signIn}
                 />
               );
@@ -72,11 +79,13 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  authStatus: string.isRequired,
   signIn: func.isRequired,
   statusLoadFilms: bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  authStatus: getAuthStatus(state),
   statusLoadFilms: getStatusLoad(state),
 });
 

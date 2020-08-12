@@ -14,12 +14,12 @@ import {createAPI} from './api.js';
 import {Operation as FilmOperation} from './reducer/films/films.js';
 import {
   ActionCreator as UserAction,
-  AuthorizationStatus,
+  AuthStatus,
   Operation as UserOperation,
 } from './reducer/user/user.js';
 
 const onUnauthorized = () => {
-  store.dispatch(UserAction.checkAuthorization(AuthorizationStatus.NO_AUTH));
+  store.dispatch(UserAction.checkAuthorization(AuthStatus.NO_AUTH));
 };
 
 const api = createAPI(onUnauthorized);

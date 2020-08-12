@@ -1,5 +1,5 @@
 import {extend} from '../../utils/utils.js';
-import {AuthorizationStatus} from '../../const.js';
+import {AuthStatus} from '../../const.js';
 import User from '../../models/user.js';
 
 const RESPONSE_STATUS_OK = 200;
@@ -12,7 +12,7 @@ const DEFAULT_USER = {
 };
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authStatus: AuthStatus.NO_AUTH,
   user: DEFAULT_USER,
 };
 
@@ -40,7 +40,7 @@ const ActionCreator = {
 const onUserSignInSuccess = (response, dispatch) => {
   const user = User.parseUser(response.data);
 
-  dispatch(ActionCreator.checkAuthorization(AuthorizationStatus.AUTH));
+  dispatch(ActionCreator.checkAuthorization(AuthStatus.AUTH));
   dispatch(ActionCreator.signIn(user));
 };
 
@@ -78,7 +78,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHECK_AUTHORIZATION:
       return extend(state, {
-        authorizationStatus: action.payload,
+        authStatus: action.payload,
       });
 
     case ActionType.SET_USER:
@@ -91,7 +91,7 @@ const reducer = (state = initialState, action) => {
 };
 
 export {
-  AuthorizationStatus,
+  AuthStatus,
   ActionType,
   ActionCreator,
   DEFAULT_USER,

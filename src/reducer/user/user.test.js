@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../../api.js';
 import {
-  AuthorizationStatus,
+  AuthStatus,
   ActionCreator,
   Operation,
   reducer,
@@ -26,7 +26,7 @@ const NEXT_USER = {
 const api = createAPI(() => {});
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authStatus: AuthStatus.NO_AUTH,
   user: DEFAULT_USER,
 };
 
@@ -41,13 +41,13 @@ describe(`user`, () => {
     test(`should handle CHECK_AUTHORIZATION`, () => {
       expect(
           reducer({
-            authorizationStatus: AuthorizationStatus.NO_AUTH
+            authStatus: AuthStatus.NO_AUTH
           }, {
             type: `CHECK_AUTHORIZATION`,
-            payload: AuthorizationStatus.AUTH,
+            payload: AuthStatus.AUTH,
           })
       ).toEqual({
-        authorizationStatus: AuthorizationStatus.AUTH
+        authStatus: AuthStatus.AUTH
       });
     });
 

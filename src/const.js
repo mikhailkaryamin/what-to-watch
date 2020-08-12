@@ -7,7 +7,7 @@ const AppRoute = {
   ROOT: `/`,
 };
 
-const AuthorizationStatus = {
+const AuthStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
@@ -41,7 +41,7 @@ const SpaceKeyName = {
 
 export {
   AppRoute,
-  AuthorizationStatus,
+  AuthStatus,
   ButtonType,
   EscKeyName,
   FilmCardsListType,

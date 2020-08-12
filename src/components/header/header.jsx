@@ -1,7 +1,7 @@
 import React from 'react';
 import {string, bool} from 'prop-types';
 
-import {AuthorizationStatus} from '../../const.js';
+import {AuthStatus} from '../../const.js';
 
 import ButtonSignIn from '../button-sign-in/button-sign-in.jsx';
 import ButtonUser from '../button-user/button-user.jsx';
@@ -9,7 +9,7 @@ import Logotype from '../logotype/logotype.jsx';
 
 const Header = (props) => {
   const {
-    authorizationStatus,
+    authStatus,
     backgroundImage,
     isLink,
   } = props;
@@ -28,11 +28,11 @@ const Header = (props) => {
         />
 
         <div className="user-block">
-          {authorizationStatus === AuthorizationStatus.AUTH &&
+          {authStatus === AuthStatus.AUTH &&
             <ButtonUser />
           }
 
-          {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+          {authStatus === AuthStatus.NO_AUTH &&
             <ButtonSignIn />
           }
         </div>
@@ -42,7 +42,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  authorizationStatus: string.isRequired,
+  authStatus: string.isRequired,
   backgroundImage: string.isRequired,
   isLink: bool.isRequired,
 };
