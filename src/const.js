@@ -39,6 +39,11 @@ const SpaceKeyName = {
   TEXT: `Space`,
 };
 
+const StatusUploadComment = {
+  FAIL: `fail`,
+  SUCCESS: `success`,
+};
+
 export {
   AppRoute,
   AuthStatus,
@@ -47,4 +52,5 @@ export {
   FilmCardsListType,
   FilmDetailedTabsType,
   SpaceKeyName,
+  StatusUploadComment
 };

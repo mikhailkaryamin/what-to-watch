@@ -17,10 +17,7 @@ import {AppRoute} from '../../const.js';
 import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
 import {ActionCreator as OptionsCreator} from '../../reducer/options/options.js';
 import {getFilm} from '../../reducer/options/selectors.js';
-import {
-  getFilms,
-  getStatusLoad,
-} from '../../reducer/films/selectors.js';
+import {getFilms} from '../../reducer/films/selectors.js';
 
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
 import VideoPlayer from '../video-player/video-player.jsx';
@@ -105,7 +102,6 @@ RouteWithFilm.propTypes = {
 const mapStateToProps = (state) => ({
   film: getFilm(state),
   films: getFilms(state),
-  statusLoadFilms: getStatusLoad(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
