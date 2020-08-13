@@ -11,6 +11,8 @@ import {
   bool,
   func,
   string,
+  oneOf,
+  oneOfType,
 } from 'prop-types';
 
 import {
@@ -20,10 +22,10 @@ import {
 
 import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
 import {Operation as UserOperation} from '../../reducer/user/user.js';
+
+import {getStatus as getStatusCommentUpload} from '../../reducer/comment/selectors.js';
+import {getStatus as getStatusFilmsLoad} from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
-import {
-  getStatusLoad,
-} from '../../reducer/films/selectors.js';
 
 import Comment from '../comment/comment.jsx';
 import Main from '../main/main.jsx';
@@ -48,6 +50,7 @@ class App extends PureComponent {
       commentUpload,
       signIn,
       statusLoadFilms,
+      statusUploadComment,
     } = this.props;
 
     const isAuth = authStatus === AuthStatus.AUTH;
@@ -84,10 +87,12 @@ class App extends PureComponent {
           <RouteWithFilm
             exact
             path={AppRoute.PLAYER}
+            statusLoadFilms={statusLoadFilms}
           />
           <RouteWithFilm
             exact
             path={AppRoute.FILM}
+            statusLoadFilms={statusLoadFilms}
           />
           <RoutePrivate
             exact
@@ -100,6 +105,7 @@ class App extends PureComponent {
                 <CommentWrapped
                   filmId={filmId}
                   commentUpload={commentUpload}
+                  statusUploadComment={statusUploadComment}
                 />
               );
             }}
@@ -116,11 +122,16 @@ App.propTypes = {
   commentUpload: func.isRequired,
   signIn: func.isRequired,
   statusLoadFilms: bool.isRequired,
+  statusUploadComment: oneOfType([
+    string.isRequired,
+    oneOf([null]).isRequired,
+  ]),
 };
 
 const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
-  statusLoadFilms: getStatusLoad(state),
+  statusLoadFilms: getStatusFilmsLoad(state),
+  statusUploadComment: getStatusCommentUpload(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

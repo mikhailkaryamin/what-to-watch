@@ -26,7 +26,7 @@ const getPromoFilm = (state) => {
   return state[NameSpace.FILMS].promoFilm;
 };
 
-const getStatusLoad = (state) => {
+const getStatus = (state) => {
   return state[NameSpace.FILMS].statusLoad;
 };
 
@@ -71,5 +71,5 @@ export {
   getFilmsLikeThis,
   getGenres,
   getPromoFilm,
-  getStatusLoad,
+  getStatus,
 };

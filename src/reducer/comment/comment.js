@@ -1,12 +1,9 @@
 import Comment from '../../models/comment.js';
+
+import {StatusUploadComment} from '../../const.js';
 import {extend} from '../../utils/utils.js';
-import NameSpace from '../name-space.js';
 
 const RESPONSE_STATUS_OK = 200;
-const StatusUploadComment = {
-  OK: `OK`,
-  ERROR: `ERROR`,
-};
 
 const initialState = {
   comments: [],
@@ -15,7 +12,8 @@ const initialState = {
 
 const ActionType = {
   LOAD_COMMENTS: `LOAD_COMMENTS`,
-  STATUS_UPLOAD_COMMENT: `STATUS_UPLOAD_COMMENT`,
+  RESET_STATUS_UPLOAD: `RESET_STATUS_UPLOAD`,
+  SET_STATUS_UPLOAD: `SET_STATUS_UPLOAD`,
   UPLOAD_COMMENT: `UPLOAD_COMMENT`,
 };
 
@@ -24,10 +22,16 @@ const ActionCreator = {
     type: ActionType.LOAD_COMMENTS,
     payload: comments,
   }),
-  statusUploadComment: (status) => ({
-    type: ActionType.STATUS_UPLOAD_COMMENT,
+
+  resetStatusUpload: () => ({
+    type: ActionType.RESET_STATUS_UPLOAD,
+  }),
+
+  setStatusUpload: (status) => ({
+    type: ActionType.SET_STATUS_UPLOAD,
     payload: status,
   }),
+
   uploadComment: (comment) => ({
     type: ActionType.UPLOAD_COMMENT,
     payload: comment,
@@ -57,8 +61,15 @@ const Operation = {
 
         if (responseStatus === RESPONSE_STATUS_OK) {
           const comments = Comment.parseComments(response.data);
+          dispatch(ActionCreator.setStatusUpload(StatusUploadComment.SUCCESS));
           dispatch(ActionCreator.uploadComment(comments));
+        } else {
+          dispatch(ActionCreator.setStatusUpload(StatusUploadComment.FAIL));
         }
+      })
+      .catch((err) => {
+        dispatch(ActionCreator.setStatusUpload(StatusUploadComment.FAIL));
+        throw err;
       });
   }
 };
@@ -68,6 +79,16 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_COMMENTS:
       return extend(state, {
         comments: action.payload,
+      });
+
+    case ActionType.RESET_STATUS_UPLOAD:
+      return extend(state, {
+        statusUploadComment: null,
+      });
+
+    case ActionType.SET_STATUS_UPLOAD:
+      return extend(state, {
+        statusUploadComment: action.payload,
       });
 
     case ActionType.UPLOAD_COMMENT:
