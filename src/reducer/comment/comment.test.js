@@ -56,22 +56,16 @@ describe(`comment`, () => {
       const apiMock = new MockAdapter(api);
       const currentOpenFilmId = 100;
       const dispatch = jest.fn();
-      const loaderComments = Operation.loadComments();
+      const getMockState = () => ({});
+      const loaderComments = Operation.loadComments(currentOpenFilmId);
       const modelComment = Comment.parseComments(API_COMMENT);
-      const mockState = () => ({
-        CURRENT_STATE: {
-          currentOpenFilm: {
-            id: currentOpenFilmId,
-          }
-        }
-      });
       const URL = `/comments/${currentOpenFilmId}`;
 
       apiMock
         .onGet(URL)
         .reply(200, API_COMMENT);
 
-      return loaderComments(dispatch, mockState, api)
+      return loaderComments(dispatch, getMockState, api)
         .then(() => {
           expect(dispatch).toHaveBeenCalledTimes(1);
           expect(dispatch).toHaveBeenNthCalledWith(1, {

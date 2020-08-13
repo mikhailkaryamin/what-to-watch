@@ -71,8 +71,6 @@ const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
 });
 
-export {
-  FilmCardMain
-};
+export {FilmCardMain};
 
 export default connect(mapStateToProps)(FilmCardMain);

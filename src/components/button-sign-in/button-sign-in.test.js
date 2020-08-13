@@ -1,21 +1,18 @@
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
-
 import renderer from 'react-test-renderer';
 
-import {ButtonExitPlayer} from './button-exit-player.jsx';
+import ButtonSignIn from './button-sign-in.jsx';
 
-describe(`button exit player`, () => {
+describe(`button sign in`, () => {
   const wrapper = renderer
     .create(
         <Router>
-          <ButtonExitPlayer
-            onButtonExitClick={() => {}}
-          />
+          <ButtonSignIn />
         </Router>
     ).toJSON();
 
-  test(`should render button exit player`, () => {
+  test(`should render button sign in`, () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

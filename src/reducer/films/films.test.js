@@ -15,6 +15,7 @@ import {
 const initialState = {
   films: [],
   promoFilm: null,
+  statusLoad: false,
 };
 
 const api = createAPI(() => {});
@@ -40,6 +41,7 @@ describe(`films`, () => {
           films: `some text`
         }],
         promoFilm: null,
+        statusLoad: false,
       });
     });
 
@@ -56,6 +58,7 @@ describe(`films`, () => {
         promoFilm: [{
           promoFilm: `some text`
         }],
+        statusLoad: false,
       });
     });
   });
@@ -95,7 +98,7 @@ describe(`films`, () => {
 
       return loaderFilms(dispatch, mockState, api)
         .then(() => {
-          expect(dispatch).toHaveBeenCalledTimes(1);
+          expect(dispatch).toHaveBeenCalledTimes(2);
           expect(dispatch).toHaveBeenNthCalledWith(1, {
             type: ActionType.LOAD_FILMS,
             payload: modelFilms,

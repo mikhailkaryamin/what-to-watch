@@ -25,7 +25,7 @@ const withComment = (Component) => {
       return (
         <Component
           {...this.props}
-          isDisabledForm={this._checkComment()}
+          isDisabledSubmitButton={this._checkComment()}
           onChange={this._handleInputChange}
           onSubmit={this._handleFormSubmit}
         />

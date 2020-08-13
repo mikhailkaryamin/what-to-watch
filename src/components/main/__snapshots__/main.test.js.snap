@@ -47,16 +47,13 @@ Array [
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <a
+          className="user-block__link"
+          href="/login"
+          onClick={[Function]}
         >
-          <img
-            alt="User avatar"
-            height="63"
-            src="img/avatar.jpg"
-            width="63"
-          />
-        </div>
+          Sign in
+        </a>
       </div>
     </header>
     <div
@@ -100,24 +97,33 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
-              className="btn btn--play movie-card__button"
+            <a
+              href="/player/1"
               onClick={[Function]}
-              type="button"
+              style={
+                Object {
+                  "textDecoration": "none",
+                }
+              }
             >
-              <svg
-                height="19"
-                viewBox="0 0 19 19"
-                width="19"
+              <button
+                className="btn btn--play movie-card__button"
+                type="button"
               >
-                <use
-                  xlinkHref="#play-s"
-                />
-              </svg>
-              <span>
-                Play
-              </span>
-            </button>
+                <svg
+                  height="19"
+                  viewBox="0 0 19 19"
+                  width="19"
+                >
+                  <use
+                    xlinkHref="#play-s"
+                  />
+                </svg>
+                <span>
+                  Play
+                </span>
+              </button>
+            </a>
             <button
               className="btn movie-card__button btn--list"
               type="button"
@@ -155,7 +161,7 @@ Array [
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item catalog__genres-item--active"
           onClick={[Function]}
         >
           <a
@@ -179,7 +185,107 @@ Array [
       </ul>
       <div
         className="catalog__movies-list "
-      />
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            href="/films/1"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <img
+                alt="Devin Albert"
+                height="175"
+                src="img/aviator.jpg"
+                width="280"
+              />
+            </div>
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/1"
+              onClick={[Function]}
+            >
+              Devin Albert
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            href="/films/2"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <img
+                alt="Devin Albert"
+                height="175"
+                src="img/aviator.jpg"
+                width="280"
+              />
+            </div>
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/2"
+              onClick={[Function]}
+            >
+              Devin Albert
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            href="/films/3"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <img
+                alt="Devin Albert"
+                height="175"
+                src="img/aviator.jpg"
+                width="280"
+              />
+            </div>
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/3"
+              onClick={[Function]}
+            >
+              Devin Albert
+            </a>
+          </h3>
+        </article>
+      </div>
       
     </section>
     <footer

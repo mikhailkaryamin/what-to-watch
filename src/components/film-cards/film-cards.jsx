@@ -10,6 +10,7 @@ import {
 
 import {filmPropTypes} from '../../types.js';
 import {FilmCardsListType} from '../../const.js';
+
 import {getAmountRenderFilmCard} from '../../reducer/options/selectors.js';
 import {
   getFilmsByGenre,
@@ -21,7 +22,7 @@ import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video.j
 
 const FilmCardWrapped = withPreviewVideo(FilmCard);
 
-class FilmCardsList extends PureComponent {
+class FilmCards extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -70,7 +71,7 @@ class FilmCardsList extends PureComponent {
   }
 }
 
-FilmCardsList.propTypes = {
+FilmCards.propTypes = {
   amountRenderFilmCard: number,
   filmsByGenre: arrayOf(filmPropTypes).isRequired,
   filmsLikeThis: arrayOf(filmPropTypes),
@@ -83,8 +84,6 @@ const mapStateToProps = (state) => ({
   filmsLikeThis: getFilmsLikeThis(state),
 });
 
-export {
-  FilmCardsList
-};
+export {FilmCards};
 
-export default connect(mapStateToProps)(FilmCardsList);
+export default connect(mapStateToProps)(FilmCards);

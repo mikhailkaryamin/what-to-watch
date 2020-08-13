@@ -6,7 +6,9 @@ import Footer from './footer.jsx';
 describe(`Footer`, () => {
   const wrapper = renderer
     .create(
-        <Footer />
+        <Footer
+          isLink={false}
+        />
     ).toJSON();
 
   test(`should render footer`, () => {

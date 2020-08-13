@@ -1,7 +1,7 @@
 import {
   ActionCreator,
   reducer,
-} from './current-state.js';
+} from './options.js';
 
 const AMOUNT_RENDER_FILM_CARD = 8;
 const DEFAULT_GENRE = `All genres`;

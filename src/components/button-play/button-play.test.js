@@ -1,7 +1,9 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
+
 import renderer from 'react-test-renderer';
 
-import {ButtonPlay} from './button-play.jsx';
+import ButtonPlay from './button-play.jsx';
 
 describe(`button play`, () => {
   const FILM = {
@@ -25,10 +27,11 @@ describe(`button play`, () => {
 
   const wrapper = renderer
     .create(
-        <ButtonPlay
-          film={FILM}
-          onPlayButtonClick={() => {}}
-        />
+        <Router>
+          <ButtonPlay
+            film={FILM}
+          />
+        </Router>
     ).toJSON();
 
   test(`should render button play`, () => {

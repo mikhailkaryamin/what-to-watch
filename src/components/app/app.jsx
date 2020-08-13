@@ -2,7 +2,7 @@ import React, {
   PureComponent
 } from 'react';
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -61,7 +61,7 @@ class App extends PureComponent {
     }
 
     return (
-      <BrowserRouter>
+      <Router>
         <Switch>
           <Route
             exact
@@ -112,7 +112,7 @@ class App extends PureComponent {
           />
 
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

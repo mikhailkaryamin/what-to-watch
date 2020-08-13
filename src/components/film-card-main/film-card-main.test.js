@@ -1,8 +1,10 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
+import {AuthStatus} from '../../const.js';
 import {initialState} from '../../mocks/initialState.js';
 
 import {FilmCardMain} from './film-card-main.jsx';
@@ -34,9 +36,12 @@ describe(`Film card main`, () => {
   const wrapper = renderer
     .create(
         <Provider store={store}>
-          <FilmCardMain
-            promoFilm={FILM_CARD}
-          />
+          <Router>
+            <FilmCardMain
+              authStatus={AuthStatus.NO_AUTH}
+              promoFilm={FILM_CARD}
+            />
+          </Router>
         </Provider>
     ).toJSON();
 

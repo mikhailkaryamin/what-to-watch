@@ -11,7 +11,7 @@ import {filmPropTypes} from '../../types.js';
 import {getAmountRenderFilmCard} from '../../reducer/options/selectors.js';
 import {getFilmsByGenre} from '../../reducer/films/selectors.js';
 
-import FilmCardsList from '../film-cards-list/film-cards-list.jsx';
+import FilmCards from '../film-cards/film-cards.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 
@@ -28,7 +28,7 @@ const FilmCatalog = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         <GenresList />
 
-        <FilmCardsList
+        <FilmCards
           sign={FilmCardsListType.MAIN}
         />
 
@@ -40,7 +40,7 @@ const FilmCatalog = (props) => {
           More like this
         </h2>
 
-        <FilmCardsList
+        <FilmCards
           sign={FilmCardsListType.LIKE_THIS}
         />
       </React.Fragment>}

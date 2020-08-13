@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
 import SignIn from './sign-in.jsx';
@@ -10,11 +11,14 @@ describe(`sing in`, () => {
 
   const wrapper = renderer
     .create(
-        <SignIn
-          isDisabledSubmitButton={isDisabledSubmitButton}
-          onChange={onChange}
-          onSubmit={onSubmit}
-        />
+        <Router>
+          <SignIn
+            isAuth={false}
+            isDisabledSubmitButton={isDisabledSubmitButton}
+            onChange={onChange}
+            onSubmit={onSubmit}
+          />
+        </Router>
     ).toJSON();
 
   test(`should sign in render`, () => {
