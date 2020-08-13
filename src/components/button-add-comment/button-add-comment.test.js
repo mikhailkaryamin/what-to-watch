@@ -1,13 +1,20 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
 import ButtonAddComment from './button-add-comment.jsx';
 
 describe(`ButtonAddComment render`, () => {
+  const FILM_ID = 10;
+
   test(`should render buttonAddComment`, () => {
     const wrapper = renderer
       .create(
-          <ButtonAddComment />
+          <Router>
+            <ButtonAddComment
+              id={FILM_ID}
+            />
+          </Router>
       ).toJSON();
 
     expect(wrapper).toMatchSnapshot();

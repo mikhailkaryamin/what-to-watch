@@ -7,9 +7,7 @@ import {
   string
 } from 'prop-types';
 
-import {
-  filmPropTypes
-} from '../../types.js';
+import {filmPropTypes} from '../../types.js';
 import {
   AuthStatus,
   FilmCardsListType,
@@ -161,9 +159,7 @@ const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
 });
 
-export {
-  FilmDetailed
-};
+export {FilmDetailed};
 
 export default connect(mapStateToProps)(FilmDetailed);
 

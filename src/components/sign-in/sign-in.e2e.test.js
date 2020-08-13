@@ -18,6 +18,7 @@ describe(`sign in`, () => {
   test(`disabled submit should block onSubmit`, () => {
     const wrapper = shallow(
         <SignIn
+          isAuth={false}
           isDisabledSubmitButton={true}
           onChange={onChange}
           onSubmit={onSubmit}
@@ -32,6 +33,7 @@ describe(`sign in`, () => {
   test(`submit should call onSubmit`, () => {
     const wrapper = shallow(
         <SignIn
+          isAuth={false}
           isDisabledSubmitButton={false}
           onChange={onChange}
           onSubmit={onSubmit}

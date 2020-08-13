@@ -38,7 +38,7 @@ const getMarkupStar = (starNumber, onChange) => {
 const Comment = (props) => {
   const {
     filmId,
-    isDisabledForm,
+    isDisabledSubmitButton,
     onChange,
     onSubmit,
     statusUploadComment,
@@ -77,7 +77,7 @@ const Comment = (props) => {
             <div className="add-review__submit">
               <button
                 className="add-review__btn"
-                disabled={isDisabledForm}
+                disabled={isDisabledSubmitButton}
                 type="submit"
               >
                 Post
@@ -92,7 +92,7 @@ const Comment = (props) => {
 
 Comment.propTypes = {
   filmId: number.isRequired,
-  isDisabledForm: bool.isRequired,
+  isDisabledSubmitButton: bool.isRequired,
   onChange: func.isRequired,
   onSubmit: func.isRequired,
   statusUploadComment: oneOfType([

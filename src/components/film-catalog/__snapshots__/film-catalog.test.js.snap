@@ -28,7 +28,7 @@ exports[`FilmCatalog should render film catalog for main 1`] = `
     className="catalog__genres-list"
   >
     <li
-      className="catalog__genres-item"
+      className="catalog__genres-item catalog__genres-item--active"
       onClick={[Function]}
     >
       <a
@@ -52,7 +52,107 @@ exports[`FilmCatalog should render film catalog for main 1`] = `
   </ul>
   <div
     className="catalog__movies-list "
-  />
+  >
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        href="/films/1"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <img
+            alt="Devin Albert"
+            height="175"
+            src="img/aviator.jpg"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/1"
+          onClick={[Function]}
+        >
+          Devin Albert
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        href="/films/2"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <img
+            alt="Devin Albert"
+            height="175"
+            src="img/aviator.jpg"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/2"
+          onClick={[Function]}
+        >
+          Devin Albert
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        href="/films/3"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <img
+            alt="Devin Albert"
+            height="175"
+            src="img/aviator.jpg"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/3"
+          onClick={[Function]}
+        >
+          Devin Albert
+        </a>
+      </h3>
+    </article>
+  </div>
   
 </section>
 `;

@@ -1,10 +1,20 @@
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import {Provider} from 'react-redux';
 
-import FilmCard from './film-card.jsx';
+import {initialState} from '../../mocks/initialState.js';
+import {
+  AuthStatus,
+  FilmDetailedTabsType
+} from '../../const.js';
 
-describe(`Film card`, () => {
+import {FilmDetailed} from './film-detailed.jsx';
+
+const mockStore = configureStore([]);
+
+describe(`Film detailed`, () => {
   const FILM_CARD = {
     backgroundImage: `img/aviator.jpg`,
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -24,21 +34,23 @@ describe(`Film card`, () => {
     video: `some/link`,
   };
 
+  const store = mockStore(initialState);
+
   const wrapper = renderer
     .create(
-        <Router>
-          <FilmCard
-            film={FILM_CARD}
-            isPlayVideo={false}
-            onMouseEnter={() => {}}
-            onMouseLeave={() => {}}
-            onStopPreviewClick={() => {}}
-          />
-        </Router>
+        <Provider store={store}>
+          <Router>
+            <FilmDetailed
+              authStatus={AuthStatus.NO_AUTH}
+              currentTypeTab={FilmDetailedTabsType.OVERVIEW}
+              film={FILM_CARD}
+              onTabClick={() => {}}
+            />
+          </Router>
+        </Provider>
     ).toJSON();
 
-  test(`should render film card`, () => {
+  test(`should render film detailed`, () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
-

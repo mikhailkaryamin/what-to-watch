@@ -34,9 +34,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {
-  ShowMoreButton,
-};
+export {ShowMoreButton};
 
 export default connect(null, mapDispatchToProps)(ShowMoreButton);
 

@@ -1,14 +1,13 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
+
 import {FilmCardsListType} from '../../const.js';
+import {initialState} from '../../mocks/initialState.js';
 
-import {
-  initialState,
-} from '../../mocks/initialState.js';
-
-import FilmCardsList from './film-cards-list.jsx';
+import FilmCards from './film-cards.jsx';
 
 const mockStore = configureStore([]);
 
@@ -19,7 +18,7 @@ describe(`Film cards list`, () => {
     const wrapper = renderer
     .create(
         <Provider store={store}>
-          <FilmCardsList
+          <FilmCards
             sign={FilmCardsListType.LIKE_THIS}
           />
         </Provider>
@@ -32,9 +31,11 @@ describe(`Film cards list`, () => {
     const wrapper = renderer
     .create(
         <Provider store={store}>
-          <FilmCardsList
-            sign={FilmCardsListType.MAIN}
-          />
+          <Router>
+            <FilmCards
+              sign={FilmCardsListType.MAIN}
+            />
+          </Router>
         </Provider>
     ).toJSON();
 

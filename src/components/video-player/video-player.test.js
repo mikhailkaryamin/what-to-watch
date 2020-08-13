@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
@@ -24,15 +25,17 @@ describe(`video player`, () => {
   const wrapper = renderer
     .create(
         <Provider store={store}>
-          <VideoPlayer
-            isPlay={isPlay}
-            progress={progress}
-            playBackTime={playBackTime}
-            onPlayButtonClick={onPlayButtonClick}
-            onFullScreenButtonClick={onFullScreenButtonClick}
-          >
-            {children}
-          </VideoPlayer>
+          <Router>
+            <VideoPlayer
+              isPlay={isPlay}
+              progress={progress}
+              playBackTime={playBackTime}
+              onPlayButtonClick={onPlayButtonClick}
+              onFullScreenButtonClick={onFullScreenButtonClick}
+            >
+              {children}
+            </VideoPlayer>
+          </Router>
         </Provider>
     ).toJSON();
 

@@ -7,22 +7,28 @@ exports[`Film card should render film card 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <div
-    className="small-movie-card__image"
+  <a
+    href="/films/1"
+    onClick={[Function]}
   >
-    <img
-      alt="Devin Albert"
-      height="175"
-      src="img/aviator.jpg"
-      width="280"
-    />
-  </div>
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Devin Albert"
+        height="175"
+        src="img/aviator.jpg"
+        width="280"
+      />
+    </div>
+  </a>
   <h3
     className="small-movie-card__title"
   >
     <a
       className="small-movie-card__link"
-      href="#"
+      href="/films/1"
+      onClick={[Function]}
     >
       Devin Albert
     </a>

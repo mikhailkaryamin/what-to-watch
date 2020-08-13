@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
@@ -17,9 +18,11 @@ describe(`FilmCatalog`, () => {
     const wrapper = renderer
       .create(
           <Provider store={store}>
-            <FilmCatalog
-              sign={FilmCardsListType.MAIN}
-            />
+            <Router>
+              <FilmCatalog
+                sign={FilmCardsListType.MAIN}
+              />
+            </Router>
           </Provider>
       ).toJSON();
 

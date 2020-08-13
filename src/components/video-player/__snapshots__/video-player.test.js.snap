@@ -5,13 +5,18 @@ exports[`video player should render video player 1`] = `
   className="player"
 >
   <div />
-  <button
-    className="player__exit"
+  <a
+    href="/"
     onClick={[Function]}
-    type="button"
   >
-    Exit
-  </button>
+    <button
+      className="player__exit"
+      onClick={[Function]}
+      type="button"
+    >
+      Exit
+    </button>
+  </a>
   <div
     className="player__controls"
   >

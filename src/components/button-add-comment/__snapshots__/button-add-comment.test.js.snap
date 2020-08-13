@@ -3,7 +3,8 @@
 exports[`ButtonAddComment render should render buttonAddComment 1`] = `
 <a
   className="btn movie-card__button"
-  href="add-review.html"
+  href="/films/10/review"
+  onClick={[Function]}
 >
   Add review
 </a>
