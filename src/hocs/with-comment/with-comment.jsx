@@ -42,7 +42,7 @@ const withComment = (Component) => {
 
     _handleFormSubmit(evt) {
       const {
-        commentUpload,
+        uploadComment,
         filmId,
       } = this.props;
 
@@ -52,7 +52,7 @@ const withComment = (Component) => {
         comment: this.state.comment,
       };
 
-      commentUpload(commentData, filmId);
+      uploadComment(commentData, filmId);
     }
 
     _handleInputChange(data) {
@@ -72,7 +72,7 @@ const withComment = (Component) => {
   }
 
   WithComment.propTypes = {
-    commentUpload: func.isRequired,
+    uploadComment: func.isRequired,
     filmId: number.isRequired,
   };
 

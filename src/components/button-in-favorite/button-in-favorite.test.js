@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import ButtonList from './button-list.jsx';
+import ButtonList from './button-in-favorite.jsx';
 
-describe(`ButtonList component`, () => {
+describe(`Button in favorite component`, () => {
 
-  test(`should render Add button`, () => {
+  test(`should render button in favorite`, () => {
     const wrapper = renderer
       .create(
           <ButtonList />
