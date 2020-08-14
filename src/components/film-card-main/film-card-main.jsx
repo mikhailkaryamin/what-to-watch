@@ -4,12 +4,15 @@ import {connect} from 'react-redux';
 import {string} from 'prop-types';
 import {filmPropTypes} from '../../types.js';
 
-import {FavoriteButtonPlace} from '../../const.js';
+import {
+  AuthStatus,
+  FavoriteButtonPlace
+} from '../../const.js';
 
 import {getPromoFilm} from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
-import Header from '../header/header.jsx';
+import HeaderWithBg from '../header-with-bg/header-with-bg.jsx';
 import ButtonInFavorite from '../button-in-favorite/button-in-favorite.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
 import ButtonRemoveFavorite from '../button-remove-favorite/button-remove-favorite.jsx';
@@ -33,10 +36,12 @@ const FilmCardMain = (props) => {
     released,
   } = promoFilm;
 
+  const isAuth = authStatus === AuthStatus.AUTH;
+
   return (
     <section className="movie-card">
-      <Header
-        authStatus={authStatus}
+      <HeaderWithBg
+        isAuth={isAuth}
         backgroundImage={backgroundImage}
         isLink={false}
       />

@@ -7,12 +7,12 @@ import {
 } from 'prop-types';
 
 import Footer from '../footer/footer.jsx';
-import Logotype from '../logotype/logotype.jsx';
+import Header from '../header/header.jsx';
 import SignInInput from '../sign-in-input/sign-in-input.jsx';
 
 import {AppRoute} from '../../const.js';
 
-
+const HEADLINE_HEADER = `Sign in`;
 const MODIFICATOR_CLASS = `logo__link--light`;
 
 const SignIn = (props) => {
@@ -31,15 +31,13 @@ const SignIn = (props) => {
 
       {isAuth ||
         <div className="user-page">
-          <header className="page-header user-page__head">
-            <Logotype
-              isLink={true}
-            />
 
-            <h1 className="page-title user-page__title">
-              Sign in
-            </h1>
-          </header>
+          <Header
+            headline={HEADLINE_HEADER}
+            isAuth={isAuth}
+            isLink={true}
+            isSignIn={true}
+          />
 
           <div className="sign-in user-page__content">
             <form

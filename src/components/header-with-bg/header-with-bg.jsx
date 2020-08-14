@@ -1,8 +1,6 @@
 import React from 'react';
 import {
   bool,
-  oneOf,
-  oneOfType,
   string,
 } from 'prop-types';
 
@@ -10,42 +8,43 @@ import ButtonSignIn from '../button-sign-in/button-sign-in.jsx';
 import ButtonUser from '../button-user/button-user.jsx';
 import Logotype from '../logotype/logotype.jsx';
 
-const Header = (props) => {
+const HeaderWithBg = (props) => {
   const {
-    headline,
+    backgroundImage,
     isAuth,
     isLink,
-    isSignIn,
   } = props;
 
   return (
-    <header className="page-header user-page__head">
-      <Logotype
-        isLink={isLink}
-      />
+    <React.Fragment>
+      <div className="movie-card__bg">
+        <img src={backgroundImage} alt="The Grand Budapest Hotel" />
+      </div>
 
-      <h1 className="page-title user-page__title">{headline}</h1>
+      <h1 className="visually-hidden">WTW</h1>
 
-      {isSignIn ||
+      <header className="page-header movie-card__head">
+        <Logotype
+          isLink={isLink}
+        />
+
         <div className="user-block">
+
           {isAuth
             ? <ButtonUser />
             : <ButtonSignIn />
           }
+
         </div>
-      }
-    </header>
+      </header>
+    </React.Fragment>
   );
 };
 
-Header.propTypes = {
-  headline: oneOfType([
-    string.isRequired,
-    oneOf([undefined]).isRequired,
-  ]),
+HeaderWithBg.propTypes = {
+  backgroundImage: string.isRequired,
   isAuth: bool.isRequired,
   isLink: bool.isRequired,
-  isSignIn: bool.isRequired,
 };
 
-export default Header;
+export default HeaderWithBg;

@@ -28,7 +28,7 @@ import TabComments from '../tab-comments/tab-comments.jsx';
 import TabDetails from '../tab-details/tab-details.jsx';
 import TabOverview from '../tab-overview/tab-overview.jsx';
 import Footer from '../footer/footer.jsx';
-import Header from '../header/header.jsx';
+import HeaderWithBg from '../header-with-bg/header-with-bg.jsx';
 
 class FilmDetailed extends PureComponent {
   constructor(props) {
@@ -57,7 +57,7 @@ class FilmDetailed extends PureComponent {
       <React.Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
-            <Header
+            <HeaderWithBg
               authStatus={authStatus}
               backgroundImage={backgroundImage}
               isLink={true}
