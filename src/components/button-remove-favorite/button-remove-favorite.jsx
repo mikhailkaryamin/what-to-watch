@@ -3,14 +3,16 @@ import {connect} from 'react-redux';
 
 import {
   func,
-  number
+  string,
 } from 'prop-types';
+import {filmPropTypes} from '../../types.js';
 
 import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite.js';
 
 const ButtonRemoveFavorite = (props) => {
   const {
-    id,
+    film,
+    place,
     removeFavorite,
   } = props;
 
@@ -18,7 +20,7 @@ const ButtonRemoveFavorite = (props) => {
     <button
       className="btn movie-card__button btn--list"
       type="button"
-      onClick={() => removeFavorite(id)}
+      onClick={() => removeFavorite(film, place)}
     >
       <svg width="18" height="14" viewBox="0 0 18 14">
         <use xlinkHref="#in-list"></use>
@@ -32,13 +34,14 @@ const ButtonRemoveFavorite = (props) => {
 };
 
 ButtonRemoveFavorite.propTypes = {
-  id: number.isRequired,
+  film: filmPropTypes,
+  place: string.isRequired,
   removeFavorite: func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  removeFavorite: (id) => {
-    dispatch(FavoriteOperation.removeFavoriteFilm(id));
+  removeFavorite: (film, place) => {
+    dispatch(FavoriteOperation.removeFavoriteFilm(film, place));
   }
 });
 

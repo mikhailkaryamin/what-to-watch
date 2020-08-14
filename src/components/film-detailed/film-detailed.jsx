@@ -2,14 +2,16 @@ import React, {
   PureComponent
 } from 'react';
 import {connect} from 'react-redux';
+
 import {
   func,
   string
 } from 'prop-types';
-
 import {filmPropTypes} from '../../types.js';
+
 import {
   AuthStatus,
+  FavoriteButtonPlace,
   FilmCardsListType,
   FilmDetailedTabsType,
 } from '../../const.js';
@@ -73,8 +75,14 @@ class FilmDetailed extends PureComponent {
                   <ButtonPlay film={film} />
 
                   {isFavorite
-                    ? <ButtonRemoveFavorite id={id} />
-                    : <ButtonInFavorite id={id} />
+                    ? <ButtonRemoveFavorite
+                      film={film}
+                      place={FavoriteButtonPlace.DETAILED}
+                    />
+                    : <ButtonInFavorite
+                      film={film}
+                      place={FavoriteButtonPlace.DETAILED}
+                    />
                   }
 
                   {authStatus === AuthStatus.AUTH &&
