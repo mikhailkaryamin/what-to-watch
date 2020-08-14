@@ -34,6 +34,11 @@ const FilmDetailedTabsType = {
   REVIEWS: `Reviews`,
 };
 
+const FavoriteButtonPlace = {
+  DETAILED: `DETAILED`,
+  MAIN: `MAIN`,
+};
+
 const SpaceKeyName = {
   CODE: 32,
   TEXT: `Space`,
@@ -49,6 +54,7 @@ export {
   AuthStatus,
   ButtonType,
   EscKeyName,
+  FavoriteButtonPlace,
   FilmCardsListType,
   FilmDetailedTabsType,
   SpaceKeyName,

@@ -1,7 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import {string} from 'prop-types';
 import {filmPropTypes} from '../../types.js';
+
+import {FavoriteButtonPlace} from '../../const.js';
+
 import {getPromoFilm} from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
@@ -9,7 +13,6 @@ import Header from '../header/header.jsx';
 import ButtonInFavorite from '../button-in-favorite/button-in-favorite.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
 import ButtonRemoveFavorite from '../button-remove-favorite/button-remove-favorite.jsx';
-import {string} from 'prop-types';
 
 const FilmCardMain = (props) => {
   const {
@@ -24,7 +27,6 @@ const FilmCardMain = (props) => {
   const {
     backgroundImage,
     genre,
-    id,
     isFavorite,
     name,
     posterImage,
@@ -56,8 +58,14 @@ const FilmCardMain = (props) => {
               <ButtonPlay film={promoFilm} />
 
               {isFavorite
-                ? <ButtonRemoveFavorite id={id} />
-                : <ButtonInFavorite id={id} />
+                ? <ButtonRemoveFavorite
+                  film={promoFilm}
+                  place={FavoriteButtonPlace.MAIN}
+                />
+                : <ButtonInFavorite
+                  film={promoFilm}
+                  place={FavoriteButtonPlace.MAIN}
+                />
               }
             </div>
           </div>

@@ -10,6 +10,7 @@ const initialState = {
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
+  SET_PROMO_FILM: `SET_PROMO_FILM`,
   SET_STATUS_LOAD_FILMS: `SET_STATUS_LOAD_FILMS`,
 };
 
@@ -21,6 +22,11 @@ const ActionCreator = {
 
   loadPromoFilm: (film) => ({
     type: ActionType.LOAD_PROMO_FILM,
+    payload: film,
+  }),
+
+  setPromoFilm: (film) => ({
+    type: ActionType.SET_PROMO_FILM,
     payload: film,
   }),
 
@@ -61,6 +67,11 @@ const reducer = (state = initialState, action) => {
       });
 
     case ActionType.LOAD_PROMO_FILM:
+      return extend(state, {
+        promoFilm: action.payload,
+      });
+
+    case ActionType.SET_PROMO_FILM:
       return extend(state, {
         promoFilm: action.payload,
       });

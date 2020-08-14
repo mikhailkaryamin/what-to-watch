@@ -1,8 +1,10 @@
 import Film from '../../models/film.js';
 
+import {FavoriteButtonPlace} from '../../const.js';
 import {extend} from '../../utils/utils.js';
 
-import {ActionCreator as ActionFilm} from '../options/options.js';
+import {ActionCreator as ActionFilms} from '../films/films.js';
+import {ActionCreator as ActionOptions} from '../options/options.js';
 
 const RESPONSE_STATUS_OK = 200;
 
@@ -33,6 +35,16 @@ const ActionCreator = {
   })
 };
 
+const onFilmFavoriteChange = (film, place, dispatch) => {
+  if (FavoriteButtonPlace.MAIN === place) {
+    dispatch(ActionFilms.setPromoFilm(film));
+  }
+
+  if (FavoriteButtonPlace.DETAILED === place) {
+    dispatch(ActionOptions.setFilm(film));
+  }
+};
+
 const Operation = {
   loadFavoriteFilms: () => (dispatch, getState, api) => {
     const URL = `/favorite`;
@@ -47,36 +59,45 @@ const Operation = {
       });
   },
 
-  removeFavoriteFilm: (id) => (dispatch, getState, api) => {
-    const URL = `/favorite/${id}/0`;
+  removeFavoriteFilm: (film, place) => (dispatch, getState, api) => {
+    const URL = `/favorite/${film.id}/0`;
 
     return api.post(URL)
       .then((response) => {
         const responseStatus = response.status;
 
+        const filmNotFavorite = extend(film, {
+          isFavorite: false,
+        });
+
         if (responseStatus === RESPONSE_STATUS_OK) {
-          const film = Film.parseFilm(response.data);
-          dispatch(ActionCreator.removeFavoriteFilm(film));
-          dispatch(ActionFilm.setFilm(film));
+          dispatch(ActionCreator.removeFavoriteFilm(filmNotFavorite));
         }
+
+        onFilmFavoriteChange(filmNotFavorite, place, dispatch);
+
       })
       .catch((err) => {
         throw err;
       });
   },
 
-  setFavoriteFilm: (id) => (dispatch, getState, api) => {
-    const URL = `/favorite/${id}/1`;
+  setFavoriteFilm: (film, place) => (dispatch, getState, api) => {
+    const URL = `/favorite/${film.id}/1`;
 
     return api.post(URL)
       .then((response) => {
         const responseStatus = response.status;
+        const filmFavorite = extend(film, {
+          isFavorite: true,
+        });
 
         if (responseStatus === RESPONSE_STATUS_OK) {
-          const film = Film.parseFilm(response.data);
-          dispatch(ActionCreator.setFavoriteFilm(film));
-          dispatch(ActionFilm.setFilm(film));
+          dispatch(ActionCreator.setFavoriteFilm(filmFavorite));
         }
+
+        onFilmFavoriteChange(filmFavorite, place, dispatch);
+
       })
       .catch((err) => {
         throw err;
