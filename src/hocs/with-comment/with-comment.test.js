@@ -29,22 +29,22 @@ describe(`with comment HOC`, () => {
 
   const MockComponent = () => <div />;
   const MockComponentWrapped = withComment(MockComponent);
-  const commentUpload = jest.fn();
+  const uploadComment = jest.fn();
   let wrapper;
 
   beforeEach(() => {
     wrapper = shallow(
         <MockComponentWrapped
-          commentUpload={commentUpload}
+          uploadComment={uploadComment}
           filmId={10}
         />
     );
   });
 
-  test(`should call commentUpload`, () => {
+  test(`should call uploadComment`, () => {
     wrapper.props().onSubmit(EVT_MOCK);
 
-    expect(commentUpload.mock.calls.length).toBe(1);
+    expect(uploadComment.mock.calls.length).toBe(1);
   });
 
   test(`should change state: rating and comment`, () => {

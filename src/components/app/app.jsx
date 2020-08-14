@@ -21,6 +21,7 @@ import {
 } from '../../const.js';
 
 import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
+import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite.js';
 import {Operation as UserOperation} from '../../reducer/user/user.js';
 
 import {getStatus as getStatusCommentUpload} from '../../reducer/comment/selectors.js';
@@ -47,10 +48,11 @@ class App extends PureComponent {
   render() {
     const {
       authStatus,
-      commentUpload,
+      loadFavorite,
       signIn,
       statusLoadFilms,
       statusUploadComment,
+      uploadComment,
     } = this.props;
 
     const isAuth = authStatus === AuthStatus.AUTH;
@@ -58,6 +60,10 @@ class App extends PureComponent {
 
     if (isLoading) {
       return ``;
+    }
+
+    if (isAuth) {
+      loadFavorite();
     }
 
     return (
@@ -104,7 +110,7 @@ class App extends PureComponent {
               return (
                 <CommentWrapped
                   filmId={filmId}
-                  commentUpload={commentUpload}
+                  uploadComment={uploadComment}
                   statusUploadComment={statusUploadComment}
                 />
               );
@@ -119,13 +125,14 @@ class App extends PureComponent {
 
 App.propTypes = {
   authStatus: string.isRequired,
-  commentUpload: func.isRequired,
+  loadFavorite: func.isRequired,
   signIn: func.isRequired,
   statusLoadFilms: bool.isRequired,
   statusUploadComment: oneOfType([
     string.isRequired,
     oneOf([null]).isRequired,
   ]),
+  uploadComment: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -135,12 +142,15 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  commentUpload: (commentData, id) => {
-    dispatch(CommentOperation.uploadComment(commentData, id));
+  loadFavorite: () => {
+    dispatch(FavoriteOperation.loadFavoriteFilms());
   },
   signIn: (user) => {
     dispatch(UserOperation.signIn(user));
-  }
+  },
+  uploadComment: (commentData, id) => {
+    dispatch(CommentOperation.uploadComment(commentData, id));
+  },
 });
 
 export {

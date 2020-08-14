@@ -6,8 +6,9 @@ import {getPromoFilm} from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
 import Header from '../header/header.jsx';
-import ButtonList from '../button-list/button-list.jsx';
+import ButtonInFavorite from '../button-in-favorite/button-in-favorite.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
+import ButtonRemoveFavorite from '../button-remove-favorite/button-remove-favorite.jsx';
 import {string} from 'prop-types';
 
 const FilmCardMain = (props) => {
@@ -23,6 +24,8 @@ const FilmCardMain = (props) => {
   const {
     backgroundImage,
     genre,
+    id,
+    isFavorite,
     name,
     posterImage,
     released,
@@ -52,7 +55,10 @@ const FilmCardMain = (props) => {
             <div className="movie-card__buttons" >
               <ButtonPlay film={promoFilm} />
 
-              <ButtonList />
+              {isFavorite
+                ? <ButtonRemoveFavorite id={id} />
+                : <ButtonInFavorite id={id} />
+              }
             </div>
           </div>
         </div>

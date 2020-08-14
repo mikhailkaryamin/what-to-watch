@@ -17,8 +17,9 @@ import {
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
 import ButtonAddComment from '../button-add-comment/button-add-comment.jsx';
-import ButtonList from '../button-list/button-list.jsx';
+import ButtonInFavorite from '../button-in-favorite/button-in-favorite.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
+import ButtonRemoveFavorite from '../button-remove-favorite/button-remove-favorite.jsx';
 import FilmCatalog from '../film-catalog/film-catalog.jsx';
 import FilmDetailedTabs from '../film-detailed-tabs/film-detailed-tabs.jsx';
 import TabComments from '../tab-comments/tab-comments.jsx';
@@ -43,6 +44,7 @@ class FilmDetailed extends PureComponent {
     const {
       backgroundImage,
       genre,
+      isFavorite,
       id,
       name,
       posterImage,
@@ -70,7 +72,10 @@ class FilmDetailed extends PureComponent {
                 <div className="movie-card__buttons">
                   <ButtonPlay film={film} />
 
-                  <ButtonList />
+                  {isFavorite
+                    ? <ButtonRemoveFavorite id={id} />
+                    : <ButtonInFavorite id={id} />
+                  }
 
                   {authStatus === AuthStatus.AUTH &&
                     <ButtonAddComment
