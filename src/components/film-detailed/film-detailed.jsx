@@ -53,13 +53,15 @@ class FilmDetailed extends PureComponent {
       released,
     } = film;
 
+    const isAuth = authStatus === AuthStatus.AUTH;
+
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <HeaderWithBg
-              authStatus={authStatus}
               backgroundImage={backgroundImage}
+              isAuth={isAuth}
               isLink={true}
             />
 
