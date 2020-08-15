@@ -26,7 +26,7 @@ const NEXT_USER = {
 const api = createAPI(() => {});
 
 const initialState = {
-  authStatus: AuthStatus.NO_AUTH,
+  authStatus: null,
   user: DEFAULT_USER,
 };
 
