@@ -1,7 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {string} from 'prop-types';
+import {
+  oneOf,
+  oneOfType,
+  string,
+} from 'prop-types';
 import {filmPropTypes} from '../../types.js';
 
 import {
@@ -81,7 +85,10 @@ const FilmCardMain = (props) => {
 };
 
 FilmCardMain.propTypes = {
-  authStatus: string.isRequired,
+  authStatus: oneOfType([
+    string.isRequired,
+    oneOf([null]).isRequired,
+  ]),
   promoFilm: filmPropTypes,
 };
 

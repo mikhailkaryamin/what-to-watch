@@ -9,6 +9,7 @@ import {
 import Footer from '../footer/footer.jsx';
 import Header from '../header/header.jsx';
 import SignInInput from '../sign-in-input/sign-in-input.jsx';
+import UserPage from '../user-page/user-page.jsx';
 
 import {AppRoute} from '../../const.js';
 
@@ -30,7 +31,7 @@ const SignIn = (props) => {
       }
 
       {isAuth ||
-        <div className="user-page">
+        <UserPage>
 
           <Header
             headline={HEADLINE_HEADER}
@@ -66,7 +67,7 @@ const SignIn = (props) => {
             isLink={true}
             modificatorClass={MODIFICATOR_CLASS}
           />
-        </div>
+        </UserPage>
       }
     </React.Fragment>
   );

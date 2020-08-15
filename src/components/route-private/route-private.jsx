@@ -13,6 +13,7 @@ import {AppRoute} from '../../const.js';
 
 const RoutePrivate = (props) => {
   const {
+    exact,
     isAuth,
     path,
     render,
@@ -20,6 +21,7 @@ const RoutePrivate = (props) => {
 
   return (
     <Route
+      exact={exact}
       path={path}
       render={(routeProps) => {
         return (
@@ -39,6 +41,7 @@ const RoutePrivate = (props) => {
 };
 
 RoutePrivate.propTypes = {
+  exact: bool.isRequired,
   isAuth: bool.isRequired,
   path: string.isRequired,
   render: func.isRequired,

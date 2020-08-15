@@ -12,7 +12,7 @@ const DEFAULT_USER = {
 };
 
 const initialState = {
-  authStatus: AuthStatus.NO_AUTH,
+  authStatus: null,
   user: DEFAULT_USER,
 };
 
@@ -53,6 +53,7 @@ const Operation = {
         onUserSignInSuccess(response, dispatch);
       })
       .catch((err) => {
+        dispatch(ActionCreator.checkAuthorization(AuthStatus.NO_AUTH));
         throw err;
       });
   },

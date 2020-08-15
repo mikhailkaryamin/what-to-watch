@@ -24,6 +24,7 @@ const EscKeyName = {
 };
 
 const FilmCardsListType = {
+  FAVORITES: `favorites`,
   MAIN: `main`,
   LIKE_THIS: `like-this`,
 };

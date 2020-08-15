@@ -8,6 +8,8 @@ import {
 
 import {FilmCardsListType} from '../../const.js';
 import {filmPropTypes} from '../../types.js';
+
+import {getFavoriteFilms} from '../../reducer/favorite/selectors.js';
 import {getAmountRenderFilmCard} from '../../reducer/options/selectors.js';
 import {
   getFilmsByGenre,
@@ -21,6 +23,7 @@ import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 const FilmCatalog = (props) => {
   const {
     amountRenderFilmCard,
+    filmsFavorite,
     filmsByGenre,
     filmsLikeThis,
     sign,
@@ -28,6 +31,17 @@ const FilmCatalog = (props) => {
 
   return (
     <section className="catalog">
+
+      {sign === FilmCardsListType.FAVORITES &&
+              <React.Fragment>
+                <h2 className="catalog__title visually-hidden">Catalog</h2>
+
+                <FilmCards
+                  films={filmsFavorite}
+                />
+              </React.Fragment>
+      }
+
       {sign === FilmCardsListType.MAIN &&
         <React.Fragment>
           <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -60,6 +74,7 @@ const FilmCatalog = (props) => {
 
 FilmCatalog.propTypes = {
   amountRenderFilmCard: number.isRequired,
+  filmsFavorite: arrayOf(filmPropTypes),
   filmsByGenre: arrayOf(filmPropTypes),
   filmsLikeThis: arrayOf(filmPropTypes),
   sign: string.isRequired,
@@ -67,6 +82,7 @@ FilmCatalog.propTypes = {
 
 const mapStateToProps = (state) => ({
   amountRenderFilmCard: getAmountRenderFilmCard(state),
+  filmsFavorite: getFavoriteFilms(state),
   filmsByGenre: getFilmsByGenre(state),
   filmsLikeThis: getFilmsLikeThis(state),
 });
