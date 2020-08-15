@@ -9,7 +9,7 @@ import {
 import Film from '../../models/film.js';
 import {
   API_FILMS,
-  API_PROMO_FILM,
+  API_FILM,
 } from '../../mocks/testMock.js';
 
 const initialState = {
@@ -110,13 +110,13 @@ describe(`films`, () => {
       const apiMock = new MockAdapter(api);
       const dispatch = jest.fn();
       const loaderPromoFilm = Operation.loadPromoFilm();
-      const modelFilm = Film.parseFilm(API_PROMO_FILM);
+      const modelFilm = Film.parseFilm(API_FILM);
       const mockState = () => {};
       const URL = `/films/promo`;
 
       apiMock
         .onGet(URL)
-        .reply(200, API_PROMO_FILM);
+        .reply(200, API_FILM);
 
       return loaderPromoFilm(dispatch, mockState, api)
         .then(() => {

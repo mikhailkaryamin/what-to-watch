@@ -29,77 +29,100 @@ const API_COMMENT = [{
   'date': 12938034343183,
 }];
 
-const API_FILMS = [
-  {
-    'backgroundImage': `img/aviator.jpg`,
-    'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
-    'director': `Arthur Agee`,
-    'genre': `Comedy`,
-    'id': 1,
-    'name': `Devin Albert`,
-    'posterImage': `img/aviator.jpg`,
-    'previewVideoLink': `link`,
-    'rating': 3,
-    'released': 2015,
-    'runTime': 100,
-    'scoreCount': 300,
-    'starring': [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
-    'video': `some/link`,
-  },
-  {
-    'backgroundImage': `img/aviator.jpg`,
-    'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
-    'director': `Arthur Agee`,
-    'genre': `Comedy`,
-    'id': 2,
-    'name': `Devin Albert`,
-    'posterImage': `img/aviator.jpg`,
-    'previewVideoLink': `link`,
-    'rating': 2,
-    'released': 2015,
-    'runTime': 100,
-    'scoreCount': 300,
-    'starring': [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
-    'video': `some/link`,
-  },
-  {
-    'backgroundImage': `img/aviator.jpg`,
-    'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
-    'director': `Arthur Agee`,
-    'genre': `Comedy`,
-    'id': 3,
-    'name': `Devin Albert`,
-    'posterImage': `img/aviator.jpg`,
-    'previewVideoLink': `link`,
-    'rating': 3,
-    'released': 2015,
-    'runTime': 100,
-    'scoreCount': 300,
-    'starring': [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
-    'video': `some/link`,
-  }
-];
-
-const API_PROMO_FILM = {
-  'backgroundImage': `img/aviator.jpg`,
+const API_FILM = {
+  'background_image': `img/aviator.jpg`,
   'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
   Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
   'director': `Arthur Agee`,
   'genre': `Comedy`,
   'id': 1,
+  'is_favorite': false,
   'name': `Devin Albert`,
-  'posterImage': `img/aviator.jpg`,
-  'previewVideoLink': `link`,
+  'poster_image': `img/aviator.jpg`,
+  'preview_video_link': `link`,
   'rating': 3,
   'released': 2015,
-  'runTime': 100,
-  'scoreCount': 300,
+  'run_time': 100,
+  'scores_count': 300,
   'starring': [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
   'video': `some/link`,
 };
+
+const API_FILM_FAVORITE = {
+  'background_image': `img/aviator.jpg`,
+  'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+  Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+  'director': `Arthur Agee`,
+  'genre': `Comedy`,
+  'id': 1,
+  'is_favorite': true,
+  'name': `Devin Albert`,
+  'poster_image': `img/aviator.jpg`,
+  'preview_video_link': `link`,
+  'rating': 3,
+  'released': 2015,
+  'run_time': 100,
+  'scores_count': 300,
+  'starring': [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+  'video': `some/link`,
+};
+
+const API_FILMS = [
+  {
+    'background_image': `img/aviator.jpg`,
+    'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+    'director': `Arthur Agee`,
+    'genre': `Comedy`,
+    'id': 1,
+    'is_favorite': false,
+    'name': `Devin Albert`,
+    'poster_image': `img/aviator.jpg`,
+    'preview_video_link': `link`,
+    'rating': 3,
+    'released': 2015,
+    'run_time': 100,
+    'scores_count': 300,
+    'starring': [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+    'video': `some/link`,
+  },
+  {
+    'background_image': `img/aviator.jpg`,
+    'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+    'director': `Arthur Agee`,
+    'genre': `Comedy`,
+    'id': 2,
+    'is_favorite': false,
+    'name': `Devin Albert`,
+    'poster_image': `img/aviator.jpg`,
+    'preview_video_link': `link`,
+    'rating': 2,
+    'released': 2015,
+    'run_time': 100,
+    'scores_count': 300,
+    'starring': [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+    'video': `some/link`,
+  },
+  {
+    'background_image': `img/aviator.jpg`,
+    'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+    'director': `Arthur Agee`,
+    'genre': `Comedy`,
+    'id': 3,
+    'is_favorite': false,
+    'name': `Devin Albert`,
+    'poster_image': `img/aviator.jpg`,
+    'preview_video_link': `link`,
+    'rating': 3,
+    'released': 2015,
+    'run_time': 100,
+    'scores_count': 300,
+    'starring': [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+    'video': `some/link`,
+  }
+];
 
 const API_USER = {
   'avatar_url': `avatarUrl`,
@@ -110,7 +133,8 @@ const API_USER = {
 
 export {
   API_COMMENT,
+  API_FILM,
+  API_FILM_FAVORITE,
   API_FILMS,
-  API_PROMO_FILM,
   API_USER,
 };
