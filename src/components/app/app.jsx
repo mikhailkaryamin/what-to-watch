@@ -29,6 +29,7 @@ import {getStatus as getStatusFilmsLoad} from '../../reducer/films/selectors.js'
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
 import Comment from '../comment/comment.jsx';
+import Favorites from '../favorites/favorites.jsx';
 import Main from '../main/main.jsx';
 import RouteWithFilm from '../route-with-film/route-with-film.jsx';
 import RoutePrivate from '../route-private/route-private.jsx';
@@ -56,7 +57,7 @@ class App extends PureComponent {
     } = this.props;
 
     const isAuth = authStatus === AuthStatus.AUTH;
-    const isLoading = statusLoadFilms !== true;
+    const isLoading = statusLoadFilms !== true || authStatus === null;
 
     if (isLoading) {
       return ``;
@@ -78,10 +79,11 @@ class App extends PureComponent {
               );
             }}
           />
+
           <Route
             exact
             path={AppRoute.LOGIN}
-            render={ () => {
+            render={() => {
               return (
                 <SignInWrapped
                   isAuth={isAuth}
@@ -90,18 +92,34 @@ class App extends PureComponent {
               );
             }}
           />
+
           <RouteWithFilm
             exact
             path={AppRoute.PLAYER}
             statusLoadFilms={statusLoadFilms}
           />
+
           <RouteWithFilm
             exact
             path={AppRoute.FILM}
             statusLoadFilms={statusLoadFilms}
           />
+
           <RoutePrivate
-            exact
+            exact={true}
+            isAuth={isAuth}
+            path={AppRoute.MY_LIST}
+            render={() => {
+              return (
+                <Favorites
+                  isAuth={isAuth}
+                />
+              );
+            }}
+          />
+
+          <RoutePrivate
+            exact={true}
             isAuth={isAuth}
             path={AppRoute.ADD_COMMENT}
             render={(renderProps) => {
@@ -124,7 +142,10 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  authStatus: string.isRequired,
+  authStatus: oneOfType([
+    string.isRequired,
+    oneOf([null]).isRequired,
+  ]),
   loadFavorite: func.isRequired,
   signIn: func.isRequired,
   statusLoadFilms: bool.isRequired,
