@@ -125,6 +125,7 @@ exports[`Film card main should render film card main 1`] = `
           </a>
           <button
             className="btn movie-card__button btn--list"
+            onClick={[Function]}
             type="button"
           >
             <svg

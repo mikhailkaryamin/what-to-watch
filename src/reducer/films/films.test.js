@@ -61,6 +61,35 @@ describe(`films`, () => {
         statusLoad: false,
       });
     });
+
+    test(`should handle SET_PROMO_FILM`, () => {
+      expect(
+          reducer(initialState, {
+            type: ActionType.SET_PROMO_FILM,
+            payload: [{
+              promoFilm: `some text`
+            }]
+          })
+      ).toEqual({
+        films: [],
+        promoFilm: [{
+          promoFilm: `some text`
+        }],
+        statusLoad: false,
+      });
+    });
+
+    test(`should handle SET_STATUS_LOAD_FILMS`, () => {
+      expect(
+          reducer(initialState, {
+            type: ActionType.SET_STATUS_LOAD_FILMS,
+          })
+      ).toEqual({
+        films: [],
+        promoFilm: null,
+        statusLoad: true,
+      });
+    });
   });
 
   describe(`action creator`, () => {
@@ -79,6 +108,23 @@ describe(`films`, () => {
       ).toEqual({
         type: `LOAD_PROMO_FILM`,
         payload: `film`,
+      });
+    });
+
+    test(`setPromoFilm should create SET_PROMO_FILM action`, () => {
+      expect(
+          ActionCreator.setPromoFilm(`film`)
+      ).toEqual({
+        type: `SET_PROMO_FILM`,
+        payload: `film`,
+      });
+    });
+
+    test(`setStatusLoadFilms should create SET_STATUS_LOAD_FILMS action`, () => {
+      expect(
+          ActionCreator.setStatusLoadFilms()
+      ).toEqual({
+        type: `SET_STATUS_LOAD_FILMS`,
       });
     });
   });

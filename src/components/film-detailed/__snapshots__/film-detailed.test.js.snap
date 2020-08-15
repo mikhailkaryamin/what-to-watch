@@ -118,6 +118,7 @@ Array [
             </a>
             <button
               className="btn movie-card__button btn--list"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -261,7 +262,7 @@ Array [
         More like this
       </h2>
       <div
-        className="catalog__movies-list catalog--like-this"
+        className="catalog__movies-list like-this"
       />
     </section>
     <footer

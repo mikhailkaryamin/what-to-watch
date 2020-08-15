@@ -32,7 +32,6 @@ const ActionCreator = {
 
   setStatusLoadFilms: () => ({
     type: ActionType.SET_STATUS_LOAD_FILMS,
-    payload: true,
   })
 };
 
@@ -78,7 +77,7 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.SET_STATUS_LOAD_FILMS:
       return extend(state, {
-        statusLoad: action.payload,
+        statusLoad: true,
       });
   }
 

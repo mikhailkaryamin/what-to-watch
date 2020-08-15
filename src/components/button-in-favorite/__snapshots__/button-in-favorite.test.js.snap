@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button in favorite component should render button in favorite 1`] = `
+<button
+  className="btn movie-card__button btn--list"
+  onClick={[Function]}
+  type="button"
+>
+  <svg
+    height="20"
+    viewBox="0 0 19 20"
+    width="19"
+  >
+    <use
+      xlinkHref="#add"
+    />
+  </svg>
+  <span>
+    My list
+  </span>
+</button>
+`;

@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Film cards list should render for like this 1`] = `
-<div
-  className="catalog__movies-list catalog--like-this"
-/>
-`;
-
-exports[`Film cards list should render for main 1`] = `
+exports[`Film cards list should render film cards 1`] = `
 <div
   className="catalog__movies-list "
 >
