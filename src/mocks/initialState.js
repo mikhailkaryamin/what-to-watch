@@ -32,6 +32,27 @@ const initialState = {
     }],
     statusUploadComment: null,
   },
+  FAVORITE: {
+    favoriteFilms: [{
+      backgroundImage: `img/aviator.jpg`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+      director: `Arthur Agee`,
+      genre: `Comedy`,
+      id: 1,
+      isFavorite: true,
+      name: `Devin Albert`,
+      posterImage: `img/aviator.jpg`,
+      previewImage: `img/aviator.jpg`,
+      previewVideoLink: `link`,
+      rating: 3,
+      released: 2015,
+      runTime: 100,
+      scoreCount: 300,
+      starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+      video: `some/link`,
+    }]
+  },
   FILMS: {
     films: [
       {
@@ -41,6 +62,7 @@ const initialState = {
         director: `Arthur Agee`,
         genre: `Comedy`,
         id: 1,
+        isFavorite: true,
         name: `Devin Albert`,
         posterImage: `img/aviator.jpg`,
         previewImage: `img/aviator.jpg`,
@@ -59,6 +81,7 @@ const initialState = {
         director: `Arthur Agee`,
         genre: `Comedy`,
         id: 2,
+        isFavorite: false,
         name: `Devin Albert`,
         posterImage: `img/aviator.jpg`,
         previewImage: `img/aviator.jpg`,
@@ -77,6 +100,7 @@ const initialState = {
         director: `Arthur Agee`,
         genre: `Comedy`,
         id: 3,
+        isFavorite: false,
         name: `Devin Albert`,
         posterImage: `img/aviator.jpg`,
         previewImage: `img/aviator.jpg`,
@@ -96,6 +120,7 @@ const initialState = {
       director: `Arthur Agee`,
       genre: `Comedy`,
       id: 1,
+      isFavorite: true,
       name: `Devin Albert`,
       posterImage: `img/aviator.jpg`,
       previewImage: `img/aviator.jpg`,
@@ -115,7 +140,7 @@ const initialState = {
     film: null,
   },
   USER: {
-    authStatus: `NO_AUTH`,
+    authStatus: `AUTH`,
     user: {
       id: 777,
       email: `mail@hotmail.com`,

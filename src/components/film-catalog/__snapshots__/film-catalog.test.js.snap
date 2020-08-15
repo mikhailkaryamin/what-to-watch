@@ -10,7 +10,7 @@ exports[`FilmCatalog should render film catalog for like this 1`] = `
     More like this
   </h2>
   <div
-    className="catalog__movies-list catalog--like-this"
+    className="catalog__movies-list like-this"
   />
 </section>
 `;
