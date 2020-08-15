@@ -2,8 +2,6 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
-import {AuthStatus} from '../../const.js';
-
 import HeaderWithBg from './header-with-bg.jsx';
 
 describe(`HeaderWithBg`, () => {
@@ -13,8 +11,8 @@ describe(`HeaderWithBg`, () => {
     .create(
         <Router>
           <HeaderWithBg
-            authStatus={AuthStatus.NO_AUTH}
             backgroundImage={BG_IMAGE}
+            isAuth={false}
             isLink={false}
           />
         </Router>

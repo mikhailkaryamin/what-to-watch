@@ -22,6 +22,7 @@ describe(`route private`, () => {
         >
           <Router>
             <RoutePrivate
+              exact={true}
               isAuth={true}
               path={``}
               render={render}
