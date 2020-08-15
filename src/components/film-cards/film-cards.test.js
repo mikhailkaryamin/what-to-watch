@@ -1,44 +1,81 @@
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
-import {Provider} from 'react-redux';
-
-import {FilmCardsListType} from '../../const.js';
-import {initialState} from '../../mocks/initialState.js';
 
 import FilmCards from './film-cards.jsx';
 
-const mockStore = configureStore([]);
-
 describe(`Film cards list`, () => {
-  const store = mockStore(initialState);
+  const FILMS = [
+    {
+      backgroundImage: `img/aviator.jpg`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+      director: `Arthur Agee`,
+      genre: `Comedy`,
+      id: 1,
+      isFavorite: true,
+      name: `Devin Albert`,
+      posterImage: `img/aviator.jpg`,
+      previewImage: `img/aviator.jpg`,
+      previewVideoLink: `link`,
+      rating: 3,
+      released: 2015,
+      runTime: 100,
+      scoreCount: 300,
+      starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+      video: `some/link`,
+    },
+    {
+      backgroundImage: `img/aviator.jpg`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+      director: `Arthur Agee`,
+      genre: `Comedy`,
+      id: 2,
+      isFavorite: false,
+      name: `Devin Albert`,
+      posterImage: `img/aviator.jpg`,
+      previewImage: `img/aviator.jpg`,
+      previewVideoLink: `link`,
+      rating: 2,
+      released: 2015,
+      runTime: 100,
+      scoreCount: 300,
+      starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+      video: `some/link`,
+    },
+    {
+      backgroundImage: `img/aviator.jpg`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Aliquam a justo elit. Nulla vitae hendrerit dolor. Sed luctus massa lectus.`,
+      director: `Arthur Agee`,
+      genre: `Comedy`,
+      id: 3,
+      isFavorite: false,
+      name: `Devin Albert`,
+      posterImage: `img/aviator.jpg`,
+      previewImage: `img/aviator.jpg`,
+      previewVideoLink: `link`,
+      rating: 3,
+      released: 2015,
+      runTime: 100,
+      scoreCount: 300,
+      starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
+      video: `some/link`,
+    }
+  ];
 
-  test(`should render for like this`, () => {
+  test(`should render film cards`, () => {
     const wrapper = renderer
     .create(
-        <Provider store={store}>
+        <Router>
           <FilmCards
-            sign={FilmCardsListType.LIKE_THIS}
+            films={FILMS}
           />
-        </Provider>
+        </Router>
     ).toJSON();
 
     expect(wrapper).toMatchSnapshot();
   });
 
-  test(`should render for main`, () => {
-    const wrapper = renderer
-    .create(
-        <Provider store={store}>
-          <Router>
-            <FilmCards
-              sign={FilmCardsListType.MAIN}
-            />
-          </Router>
-        </Provider>
-    ).toJSON();
-
-    expect(wrapper).toMatchSnapshot();
-  });
 });
