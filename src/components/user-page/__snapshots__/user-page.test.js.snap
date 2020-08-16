@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`user page should render user page 1`] = `
+<div
+  className="user-page"
+>
+  <div />
+</div>
+`;
