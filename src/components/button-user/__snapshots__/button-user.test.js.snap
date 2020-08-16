@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button user should render button user 1`] = `
+<a
+  href="/mylist"
+  onClick={[Function]}
+>
+  <div
+    className="user-block__avatar"
+  >
+    <img
+      alt="User avatar"
+      height="63"
+      src="https://htmlacademy-react-3.appspot.com//img/pic.jpg"
+      width="63"
+    />
+  </div>
+</a>
+`;
