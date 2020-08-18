@@ -2,6 +2,7 @@ import React, {
   PureComponent
 } from 'react';
 import {Route} from 'react-router-dom';
+import ReactPlayer from 'react-player';
 import {connect} from 'react-redux';
 
 import {
@@ -10,6 +11,7 @@ import {
   func,
   string,
 } from 'prop-types';
+
 import {filmPropTypes} from '../../types.js';
 
 import {AppRoute} from '../../const.js';
@@ -19,14 +21,12 @@ import {ActionCreator as OptionsCreator} from '../../reducer/options/options.js'
 import {getFilm} from '../../reducer/options/selectors.js';
 import {getFilms} from '../../reducer/films/selectors.js';
 
+import ButtonExitPlayer from '../button-exit-player/button-exit-player.jsx';
 import FilmDetailed from '../film-detailed/film-detailed.jsx';
-import VideoPlayer from '../video-player/video-player.jsx';
 
 import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.jsx';
-import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
 const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
-const VideoPlayerWrapped = withVideoPlayer(VideoPlayer);
 
 class RouteWithFilm extends PureComponent {
   constructor(props) {
@@ -61,10 +61,19 @@ class RouteWithFilm extends PureComponent {
 
           switch (path) {
             case AppRoute.PLAYER: {
-              return <VideoPlayerWrapped
-                posterImage={this.props.film.posterImage}
-                video={this.props.film.video}
-              />;
+              return (
+                <div className="player">
+                  <ButtonExitPlayer />
+                  <ReactPlayer
+                    className={`react-player`}
+                    controls={true}
+                    playing={true}
+                    url={this.props.film.video}
+                    width={`100%`}
+                    height={`100%`}
+                  />
+                </div>
+              );
             }
             case AppRoute.FILM: {
               return <FilmDetailedWrapped
@@ -78,6 +87,7 @@ class RouteWithFilm extends PureComponent {
       />
     );
   }
+
   _setFilm(id) {
     const {
       films,
