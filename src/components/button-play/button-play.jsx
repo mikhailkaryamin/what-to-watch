@@ -10,20 +10,16 @@ const ButtonPlay = (props) => {
 
   return (
     <Link
+      className="btn btn--play movie-card__button"
       to={`/player/${film.id}`}
       style={{textDecoration: `none`}}
     >
-      <button
-        className="btn btn--play movie-card__button"
-        type="button"
-      >
-        <svg viewBox="0 0 19 19" width="19" height="19">
-          <use xlinkHref="#play-s"></use>
-        </svg>
-        <span>
-          Play
-        </span>
-      </button>
+      <svg viewBox="0 0 19 19" width="19" height="19">
+        <use xlinkHref="#play-s"></use>
+      </svg>
+      <span>
+        Play
+      </span>
     </Link>
   );
 };
