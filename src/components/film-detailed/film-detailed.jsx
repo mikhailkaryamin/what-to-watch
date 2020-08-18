@@ -19,9 +19,8 @@ import {
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
 import ButtonAddComment from '../button-add-comment/button-add-comment.jsx';
-import ButtonInFavorite from '../button-in-favorite/button-in-favorite.jsx';
+import ButtonFavorite from '../button-favorite/button-favorite.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
-import ButtonRemoveFavorite from '../button-remove-favorite/button-remove-favorite.jsx';
 import FilmCatalog from '../film-catalog/film-catalog.jsx';
 import FilmDetailedTabs from '../film-detailed-tabs/film-detailed-tabs.jsx';
 import TabComments from '../tab-comments/tab-comments.jsx';
@@ -46,8 +45,8 @@ class FilmDetailed extends PureComponent {
     const {
       backgroundImage,
       genre,
-      isFavorite,
       id,
+      isFavorite,
       name,
       posterImage,
       released,
@@ -76,21 +75,17 @@ class FilmDetailed extends PureComponent {
                 <div className="movie-card__buttons">
                   <ButtonPlay film={film} />
 
-                  {isFavorite
-                    ? <ButtonRemoveFavorite
-                      film={film}
-                      place={FavoriteButtonPlace.DETAILED}
-                    />
-                    : <ButtonInFavorite
-                      film={film}
-                      place={FavoriteButtonPlace.DETAILED}
-                    />
-                  }
-
-                  {authStatus === AuthStatus.AUTH &&
-                    <ButtonAddComment
-                      id={id}
-                    />
+                  {isAuth &&
+                    <React.Fragment>
+                      <ButtonFavorite
+                        film={film}
+                        isFavorite={isFavorite}
+                        place={FavoriteButtonPlace.DETAILED}
+                      />
+                      <ButtonAddComment
+                        id={id}
+                      />
+                    </React.Fragment>
                   }
 
                 </div>

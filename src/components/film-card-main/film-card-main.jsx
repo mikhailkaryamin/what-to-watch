@@ -17,9 +17,8 @@ import {getPromoFilm} from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
 import HeaderWithBg from '../header-with-bg/header-with-bg.jsx';
-import ButtonInFavorite from '../button-in-favorite/button-in-favorite.jsx';
+import ButtonFavorite from '../button-favorite/button-favorite.jsx';
 import ButtonPlay from '../button-play/button-play.jsx';
-import ButtonRemoveFavorite from '../button-remove-favorite/button-remove-favorite.jsx';
 
 const FilmCardMain = (props) => {
   const {
@@ -66,16 +65,12 @@ const FilmCardMain = (props) => {
             <div className="movie-card__buttons" >
               <ButtonPlay film={promoFilm} />
 
-              {isFavorite
-                ? <ButtonRemoveFavorite
-                  film={promoFilm}
-                  place={FavoriteButtonPlace.MAIN}
-                />
-                : <ButtonInFavorite
-                  film={promoFilm}
-                  place={FavoriteButtonPlace.MAIN}
-                />
-              }
+              {isAuth && <ButtonFavorite
+                film={promoFilm}
+                isFavorite={isFavorite}
+                place={FavoriteButtonPlace.MAIN}
+              />}
+
             </div>
           </div>
         </div>
