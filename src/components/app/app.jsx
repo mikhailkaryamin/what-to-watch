@@ -13,7 +13,9 @@ import {
   string,
   oneOf,
   oneOfType,
+  arrayOf,
 } from 'prop-types';
+import {filmPropTypes} from '../../types.js';
 
 import {
   AppRoute,
@@ -25,12 +27,16 @@ import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite.js
 import {Operation as UserOperation} from '../../reducer/user/user.js';
 
 import {getStatus as getStatusCommentUpload} from '../../reducer/comment/selectors.js';
-import {getStatus as getStatusFilmsLoad} from '../../reducer/films/selectors.js';
+import {
+  getStatus as getStatusFilmsLoad,
+  getFilms,
+} from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
 import Comment from '../comment/comment.jsx';
 import Favorites from '../favorites/favorites.jsx';
 import Main from '../main/main.jsx';
+import NoAvailableFilms from '../no-available-films/no-available-films.jsx';
 import RouteWithFilm from '../route-with-film/route-with-film.jsx';
 import RoutePrivate from '../route-private/route-private.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
@@ -49,6 +55,7 @@ class App extends PureComponent {
   render() {
     const {
       authStatus,
+      films,
       loadFavorite,
       signIn,
       statusLoadFilms,
@@ -57,6 +64,7 @@ class App extends PureComponent {
     } = this.props;
 
     const isAuth = authStatus === AuthStatus.AUTH;
+    const isEmptyListFilms = films.length === 0;
     const isLoading = statusLoadFilms !== true || authStatus === null;
 
     if (isLoading) {
@@ -75,7 +83,11 @@ class App extends PureComponent {
             path={AppRoute.ROOT}
             render={() => {
               return (
-                <Main />
+                (!isLoading && isEmptyListFilms)
+                  ? <NoAvailableFilms
+                    isAuth={isAuth}
+                  />
+                  : <Main />
               );
             }}
           />
@@ -146,6 +158,7 @@ App.propTypes = {
     string.isRequired,
     oneOf([null]).isRequired,
   ]),
+  films: arrayOf(filmPropTypes),
   loadFavorite: func.isRequired,
   signIn: func.isRequired,
   statusLoadFilms: bool.isRequired,
@@ -158,6 +171,7 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
+  films: getFilms(state),
   statusLoadFilms: getStatusFilmsLoad(state),
   statusUploadComment: getStatusCommentUpload(state),
 });
