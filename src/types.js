@@ -1,5 +1,6 @@
 import {
   arrayOf,
+  bool,
   number,
   shape,
   string,
@@ -10,6 +11,7 @@ const filmPropTypes = shape({
   description: string.isRequired,
   director: string.isRequired,
   genre: string.isRequired,
+  isFavorite: bool.isRequired,
   id: number.isRequired,
   name: string.isRequired,
   posterImage: string.isRequired,
