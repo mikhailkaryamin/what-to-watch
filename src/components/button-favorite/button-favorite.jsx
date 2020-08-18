@@ -15,8 +15,8 @@ const ButtonFavorite = (props) => {
     film,
     isFavorite,
     place,
-    removeFavorite,
-    setFavorite,
+    onRemoveFavorite,
+    onSetFavorite,
   } = props;
 
   const getButtonInFavorite = () => {
@@ -24,7 +24,7 @@ const ButtonFavorite = (props) => {
       <button
         className="btn movie-card__button btn--list"
         type="button"
-        onClick={() => setFavorite(film, place)}
+        onClick={() => onSetFavorite(film, place)}
       >
 
         <svg width="19" height="20" viewBox="0 0 19 20">
@@ -43,7 +43,7 @@ const ButtonFavorite = (props) => {
       <button
         className="btn movie-card__button btn--list"
         type="button"
-        onClick={() => removeFavorite(film, place)}
+        onClick={() => onRemoveFavorite(film, place)}
       >
         <svg width="18" height="14" viewBox="0 0 18 14">
           <use xlinkHref="#in-list"></use>
@@ -67,15 +67,15 @@ ButtonFavorite.propTypes = {
   film: filmPropTypes,
   isFavorite: bool.isRequired,
   place: string.isRequired,
-  setFavorite: func.isRequired,
-  removeFavorite: func.isRequired,
+  onSetFavorite: func.isRequired,
+  onRemoveFavorite: func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  removeFavorite: (film, place) => {
+  onRemoveFavorite: (film, place) => {
     dispatch(FavoriteOperation.removeFavoriteFilm(film, place));
   },
-  setFavorite: (film, place) => {
+  onSetFavorite: (film, place) => {
     dispatch(FavoriteOperation.setFavoriteFilm(film, place));
   }
 });

@@ -7,15 +7,29 @@ import {ButtonFavorite} from './button-favorite.jsx';
 
 describe(`button favorite`, () => {
 
-  test(`should render button favorite`, () => {
+  test(`should render button remove favorite`, () => {
 
     const wrapper = renderer
       .create(
           <ButtonFavorite
             isFavorite={true}
             place={FavoriteButtonPlace.DETAILED}
-            removeFavorite={()=>{}}
-            setFavorite={()=>{}}
+            onRemoveFavorite={()=>{}}
+            onSetFavorite={()=>{}}
+          />
+      ).toJSON();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test(`should render button in favorite`, () => {
+
+    const wrapper = renderer
+      .create(
+          <ButtonFavorite
+            isFavorite={false}
+            place={FavoriteButtonPlace.DETAILED}
+            onRemoveFavorite={()=>{}}
+            onSetFavorite={()=>{}}
           />
       ).toJSON();
     expect(wrapper).toMatchSnapshot();
