@@ -3,7 +3,7 @@
 exports[`button play should render button play 1`] = `
 <a
   className="btn btn--play movie-card__button"
-  href="/player/3"
+  href="/player/1"
   onClick={[Function]}
   style={
     Object {
