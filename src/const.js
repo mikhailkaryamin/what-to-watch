@@ -4,6 +4,7 @@ const AppRoute = {
   LOGIN: `/login`,
   MY_LIST: `/mylist`,
   PLAYER: `/player/:id`,
+  NOT_FOUND: `*`,
   ROOT: `/`,
 };
 
@@ -40,6 +41,11 @@ const FavoriteButtonPlace = {
   MAIN: `MAIN`,
 };
 
+const NoAvailableMessage = {
+  FILMS: `Sorry, no available films...`,
+  PAGE: `Sorry, page not found...`
+};
+
 const SpaceKeyName = {
   CODE: 32,
   TEXT: `Space`,
@@ -58,6 +64,7 @@ export {
   FavoriteButtonPlace,
   FilmCardsListType,
   FilmDetailedTabsType,
+  NoAvailableMessage,
   SpaceKeyName,
   StatusUploadComment
 };

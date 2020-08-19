@@ -22,6 +22,7 @@ describe(`Film detailed`, () => {
     director: `Arthur Agee`,
     genre: `Comedy`,
     id: 1,
+    isFavorite: false,
     name: `Devin Albert`,
     posterImage: `img/aviator.jpg`,
     previewImage: `img/aviator.jpg`,

@@ -20,6 +20,7 @@ import {filmPropTypes} from '../../types.js';
 import {
   AppRoute,
   AuthStatus,
+  NoAvailableMessage,
 } from '../../const.js';
 
 import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
@@ -36,7 +37,7 @@ import {getAuthStatus} from '../../reducer/user/selectors.js';
 import Comment from '../comment/comment.jsx';
 import Favorites from '../favorites/favorites.jsx';
 import Main from '../main/main.jsx';
-import NoAvailableFilms from '../no-available-films/no-available-films.jsx';
+import NoAvailable from '../no-available/no-available.jsx';
 import RouteWithFilm from '../route-with-film/route-with-film.jsx';
 import RoutePrivate from '../route-private/route-private.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
@@ -84,8 +85,10 @@ class App extends PureComponent {
             render={() => {
               return (
                 (!isLoading && isEmptyListFilms)
-                  ? <NoAvailableFilms
+                  ? <NoAvailable
                     isAuth={isAuth}
+                    isLink={false}
+                    message={NoAvailableMessage.FILMS}
                   />
                   : <Main />
               );
@@ -142,6 +145,19 @@ class App extends PureComponent {
                   filmId={filmId}
                   uploadComment={uploadComment}
                   statusUploadComment={statusUploadComment}
+                />
+              );
+            }}
+          />
+
+          <Route
+            path={`*`}
+            render={() => {
+              return (
+                <NoAvailable
+                  isAuth={isAuth}
+                  isLink={true}
+                  message={NoAvailableMessage.PAGE}
                 />
               );
             }}
