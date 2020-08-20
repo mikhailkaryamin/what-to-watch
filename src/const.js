@@ -42,8 +42,9 @@ const FavoriteButtonPlace = {
 };
 
 const NoAvailableMessage = {
+  ERROR_SERVER: `Sorry, server not available. Please, check your connection to internet`,
   FILMS: `Sorry, no available films...`,
-  PAGE: `Sorry, page not found...`
+  PAGE: `Sorry, page not found...`,
 };
 
 const SpaceKeyName = {

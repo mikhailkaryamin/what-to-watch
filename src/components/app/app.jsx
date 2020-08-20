@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {
-  bool,
   func,
   string,
   oneOf,
@@ -21,6 +20,7 @@ import {
   AppRoute,
   AuthStatus,
   NoAvailableMessage,
+  StatusRequestServer,
 } from '../../const.js';
 
 import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
@@ -66,7 +66,17 @@ class App extends PureComponent {
 
     const isAuth = authStatus === AuthStatus.AUTH;
     const isEmptyListFilms = films.length === 0;
-    const isLoading = statusLoadFilms !== true || authStatus === null;
+    const isErrorNetwork = statusLoadFilms === StatusRequestServer.FAIL;
+    const isLoading = statusLoadFilms === null || AuthStatus === null;
+
+    if (isErrorNetwork) {
+      return <NoAvailable
+        isAuth={isAuth}
+        isLink={false}
+        isWithSignIn={false}
+        message={NoAvailableMessage.ERROR_SERVER}
+      />;
+    }
 
     if (isLoading) {
       return ``;
@@ -151,7 +161,7 @@ class App extends PureComponent {
           />
 
           <Route
-            path={`*`}
+            path={AppRoute.NOT_FOUND}
             render={() => {
               return (
                 <NoAvailable
@@ -177,7 +187,10 @@ App.propTypes = {
   films: arrayOf(filmPropTypes),
   loadFavorite: func.isRequired,
   signIn: func.isRequired,
-  statusLoadFilms: bool.isRequired,
+  statusLoadFilms: oneOfType([
+    string.isRequired,
+    oneOf([null]).isRequired,
+  ]),
   statusUploadComment: oneOfType([
     string.isRequired,
     oneOf([null]).isRequired,

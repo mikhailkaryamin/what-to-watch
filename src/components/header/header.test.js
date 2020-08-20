@@ -11,7 +11,7 @@ describe(`Header`, () => {
           <Header
             isAuth={false}
             isLink={false}
-            isSignIn={false}
+            isWithSignIn={false}
           />
         </Router>
     ).toJSON();

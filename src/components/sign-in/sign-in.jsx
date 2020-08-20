@@ -37,7 +37,7 @@ const SignIn = (props) => {
             headline={HEADLINE_HEADER}
             isAuth={isAuth}
             isLink={true}
-            isSignIn={true}
+            isWithSignIn={true}
           />
 
           <div className="sign-in user-page__content">

@@ -4,7 +4,7 @@ const StatusCode = {
   UNAUTHORIZED: 401,
 };
 
-const createAPI = (onUnauthorized) => {
+const createAPI = (onUnauthorized, onErrorNetwork) => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-3.appspot.com/wtw`,
     timeout: 5000,
@@ -20,10 +20,10 @@ const createAPI = (onUnauthorized) => {
       response
     } = err;
 
-    if (response.status === StatusCode.UNAUTHORIZED) {
+    if (err.message === `Network Error`) {
+      onErrorNetwork();
+    } else if (response.status === StatusCode.UNAUTHORIZED) {
       onUnauthorized();
-
-      throw err;
     }
 
     throw err;
