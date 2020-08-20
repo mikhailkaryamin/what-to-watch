@@ -26,7 +26,7 @@ const NoAvailableFilms = (props) => {
         isLink={isLink}
         isWithSignIn={isWithSignIn}
       />
-      <div className="sign-in user-page__content">
+      <div className="user-page__content user-page__content--message">
         <h2 className="page-title">
           {message}
         </h2>
