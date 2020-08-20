@@ -15,7 +15,7 @@ const Header = (props) => {
     headline,
     isAuth,
     isLink,
-    isSignIn,
+    isWithSignIn,
   } = props;
 
   return (
@@ -26,7 +26,7 @@ const Header = (props) => {
 
       <h1 className="page-title user-page__title">{headline}</h1>
 
-      {isSignIn ||
+      {isWithSignIn &&
         <div className="user-block">
           {isAuth
             ? <ButtonUser />
@@ -45,7 +45,7 @@ Header.propTypes = {
   ]),
   isAuth: bool.isRequired,
   isLink: bool.isRequired,
-  isSignIn: bool.isRequired,
+  isWithSignIn: bool.isRequired,
 };
 
 export default Header;

@@ -7,14 +7,18 @@ import {connect} from 'react-redux';
 
 import {
   arrayOf,
-  bool,
   func,
+  oneOf,
+  oneOfType,
   string,
 } from 'prop-types';
 
 import {filmPropTypes} from '../../types.js';
 
-import {AppRoute} from '../../const.js';
+import {
+  AppRoute,
+  StatusRequestServer,
+} from '../../const.js';
 
 import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
 import {ActionCreator as OptionsCreator} from '../../reducer/options/options.js';
@@ -40,7 +44,7 @@ class RouteWithFilm extends PureComponent {
       statusLoadFilms,
     } = this.props;
 
-    const isLoading = statusLoadFilms !== true;
+    const isLoading = statusLoadFilms !== StatusRequestServer.SUCCESS;
 
     if (isLoading) {
       return ``;
@@ -106,7 +110,10 @@ RouteWithFilm.propTypes = {
   onLoadComment: func.isRequired,
   onSetCurrentFilm: func.isRequired,
   path: string.isRequired,
-  statusLoadFilms: bool.isRequired,
+  statusLoadFilms: oneOfType([
+    string.isRequired,
+    oneOf([null]).isRequired,
+  ]),
 };
 
 const mapStateToProps = (state) => ({

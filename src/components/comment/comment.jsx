@@ -10,7 +10,7 @@ import {
   number,
 } from 'prop-types';
 
-import {StatusUploadComment} from '../../const.js';
+import {StatusRequestServer} from '../../const.js';
 
 const STARS_RATING = [1, 2, 3, 4, 5];
 
@@ -44,7 +44,7 @@ const Comment = (props) => {
     statusUploadComment,
   } = props;
 
-  const isSuccessUpload = statusUploadComment === StatusUploadComment.SUCCESS;
+  const isSuccessUpload = statusUploadComment === StatusRequestServer.SUCCESS;
 
   return (
     isSuccessUpload

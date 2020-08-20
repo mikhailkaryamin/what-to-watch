@@ -1,10 +1,11 @@
 import Film from '../../models/film.js';
 import {extend} from '../../utils/utils.js';
+import {StatusRequestServer} from '../../const.js';
 
 const initialState = {
   films: [],
   promoFilm: null,
-  statusLoad: false,
+  statusLoad: null,
 };
 
 const ActionType = {
@@ -30,8 +31,9 @@ const ActionCreator = {
     payload: film,
   }),
 
-  setStatusLoadFilms: () => ({
+  setStatusLoadFilms: (status) => ({
     type: ActionType.SET_STATUS_LOAD_FILMS,
+    payload: status,
   })
 };
 
@@ -43,7 +45,7 @@ const Operation = {
       .then((response) => {
         const films = Film.parseFilms(response.data);
         dispatch(ActionCreator.loadFilms(films));
-        dispatch(ActionCreator.setStatusLoadFilms());
+        dispatch(ActionCreator.setStatusLoadFilms(StatusRequestServer.SUCCESS));
       });
   },
 
@@ -77,7 +79,7 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.SET_STATUS_LOAD_FILMS:
       return extend(state, {
-        statusLoad: true,
+        statusLoad: action.payload,
       });
   }
 

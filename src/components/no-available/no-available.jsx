@@ -13,6 +13,7 @@ const NoAvailableFilms = (props) => {
   const {
     isAuth,
     isLink,
+    isWithSignIn,
     message,
   } = props;
 
@@ -23,7 +24,7 @@ const NoAvailableFilms = (props) => {
       <Header
         isAuth={isAuth}
         isLink={isLink}
-        isSignIn={false}
+        isWithSignIn={isWithSignIn}
       />
       <div className="sign-in user-page__content">
         <h2 className="page-title">
@@ -31,7 +32,7 @@ const NoAvailableFilms = (props) => {
         </h2>
       </div>
       <Footer
-        isLink={false}
+        isLink={isLink}
         modificatorClass={MODIFICATOR_CLASS}
       />
     </UserPage>
@@ -41,6 +42,7 @@ const NoAvailableFilms = (props) => {
 NoAvailableFilms.propTypes = {
   isAuth: bool.isRequired,
   isLink: bool.isRequired,
+  isWithSignIn: bool.isRequired,
   message: string.isRequired,
 };
 

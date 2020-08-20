@@ -22,7 +22,7 @@ const Favorites = (props) => {
         headline={HEADLINE_HEADER}
         isAuth={isAuth}
         isLink={true}
-        isSignIn={false}
+        isWithSignIn={false}
       />
       <FilmCatalog
         sign={FilmCardsListType.FAVORITES}
