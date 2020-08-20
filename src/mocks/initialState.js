@@ -132,7 +132,7 @@ const initialState = {
       starring: [`Arthur Agee`, `Robert Agnew`, `Alan Aisenberg`],
       video: `some/link`,
     },
-    statusLoad: false,
+    statusLoad: `success`,
   },
   OPTIONS: {
     amountRenderFilmCard: 8,

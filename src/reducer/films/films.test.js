@@ -15,7 +15,7 @@ import {
 const initialState = {
   films: [],
   promoFilm: null,
-  statusLoad: false,
+  statusLoad: null,
 };
 
 const api = createAPI(() => {});
@@ -41,7 +41,7 @@ describe(`films`, () => {
           films: `some text`
         }],
         promoFilm: null,
-        statusLoad: false,
+        statusLoad: null,
       });
     });
 
@@ -58,7 +58,7 @@ describe(`films`, () => {
         promoFilm: [{
           promoFilm: `some text`
         }],
-        statusLoad: false,
+        statusLoad: null,
       });
     });
 
@@ -75,7 +75,7 @@ describe(`films`, () => {
         promoFilm: [{
           promoFilm: `some text`
         }],
-        statusLoad: false,
+        statusLoad: null,
       });
     });
 
@@ -83,11 +83,12 @@ describe(`films`, () => {
       expect(
           reducer(initialState, {
             type: ActionType.SET_STATUS_LOAD_FILMS,
+            payload: `success`,
           })
       ).toEqual({
         films: [],
         promoFilm: null,
-        statusLoad: true,
+        statusLoad: `success`,
       });
     });
   });

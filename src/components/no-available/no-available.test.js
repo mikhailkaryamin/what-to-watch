@@ -11,6 +11,7 @@ describe(`no available`, () => {
           <NoAvailable
             isAuth={false}
             isLink={true}
+            isWithSignIn={true}
             message={`some message`}
           />
         </Router>

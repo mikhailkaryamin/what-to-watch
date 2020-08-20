@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 
 import {
   func,
-  string
+  oneOf,
+  oneOfType,
+  string,
 } from 'prop-types';
 import {filmPropTypes} from '../../types.js';
 
@@ -159,7 +161,10 @@ class FilmDetailed extends PureComponent {
 }
 
 FilmDetailed.propTypes = {
-  authStatus: string.isRequired,
+  authStatus: oneOfType([
+    string.isRequired,
+    oneOf([null]).isRequired,
+  ]),
   film: filmPropTypes,
   currentTypeTab: string.isRequired,
   onTabClick: func.isRequired,
