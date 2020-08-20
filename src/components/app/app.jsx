@@ -98,6 +98,7 @@ class App extends PureComponent {
                   ? <NoAvailable
                     isAuth={isAuth}
                     isLink={false}
+                    isWithSignIn={true}
                     message={NoAvailableMessage.FILMS}
                   />
                   : <Main />
