@@ -51,7 +51,7 @@ const SpaceKeyName = {
   TEXT: `Space`,
 };
 
-const StatusUploadComment = {
+const StatusRequestServer = {
   FAIL: `fail`,
   SUCCESS: `success`,
 };
@@ -66,5 +66,5 @@ export {
   FilmDetailedTabsType,
   NoAvailableMessage,
   SpaceKeyName,
-  StatusUploadComment
+  StatusRequestServer
 };

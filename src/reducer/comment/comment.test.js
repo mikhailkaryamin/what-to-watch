@@ -7,7 +7,7 @@ import {
   reducer,
 } from './comment.js';
 import Comment from '../../models/comment.js';
-import {StatusUploadComment} from '../../const.js';
+import {StatusRequestServer} from '../../const.js';
 import {API_COMMENT} from '../../mocks/testMock.js';
 
 const api = createAPI(() => {});
@@ -153,7 +153,7 @@ describe(`comment`, () => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.SET_STATUS_UPLOAD,
-          payload: StatusUploadComment.SUCCESS,
+          payload: StatusRequestServer.SUCCESS,
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.UPLOAD_COMMENT,

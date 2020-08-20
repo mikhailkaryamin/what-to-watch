@@ -1,6 +1,6 @@
 import Comment from '../../models/comment.js';
 
-import {StatusUploadComment} from '../../const.js';
+import {StatusRequestServer} from '../../const.js';
 import {extend} from '../../utils/utils.js';
 
 const RESPONSE_STATUS_OK = 200;
@@ -61,14 +61,14 @@ const Operation = {
 
         if (responseStatus === RESPONSE_STATUS_OK) {
           const comments = Comment.parseComments(response.data);
-          dispatch(ActionCreator.setStatusUpload(StatusUploadComment.SUCCESS));
+          dispatch(ActionCreator.setStatusUpload(StatusRequestServer.SUCCESS));
           dispatch(ActionCreator.uploadComment(comments));
         } else {
-          dispatch(ActionCreator.setStatusUpload(StatusUploadComment.FAIL));
+          dispatch(ActionCreator.setStatusUpload(StatusRequestServer.FAIL));
         }
       })
       .catch((err) => {
-        dispatch(ActionCreator.setStatusUpload(StatusUploadComment.FAIL));
+        dispatch(ActionCreator.setStatusUpload(StatusRequestServer.FAIL));
         throw err;
       });
   }
