@@ -1,6 +1,4 @@
-import React, {
-  PureComponent
-} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
@@ -13,27 +11,21 @@ import {
   string,
 } from 'prop-types';
 
-class ButtonUser extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const ButtonUser = (props) => {
+  const {
+    user,
+  } = props;
 
-  render() {
-    const {
-      user,
-    } = this.props;
-
-    return (
-      <Link
-        to={AppRoute.MY_LIST}
-      >
-        <div className="user-block__avatar">
-          <img src={`https://htmlacademy-react-3.appspot.com/${user.avatarUrl}`} alt="User avatar" width="63" height="63" />
-        </div>
-      </Link>
-    );
-  }
-}
+  return (
+    <Link
+      to={AppRoute.MY_LIST}
+    >
+      <div className="user-block__avatar">
+        <img src={`https://htmlacademy-react-3.appspot.com/${user.avatarUrl}`} alt="User avatar" width="63" height="63" />
+      </div>
+    </Link>
+  );
+};
 
 ButtonUser.propTypes = {
   user: shape({

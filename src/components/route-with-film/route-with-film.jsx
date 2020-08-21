@@ -1,6 +1,4 @@
-import React, {
-  PureComponent
-} from 'react';
+import React from 'react';
 import {Route} from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import {connect} from 'react-redux';
@@ -32,77 +30,68 @@ import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-fil
 
 const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
 
-class RouteWithFilm extends PureComponent {
-  constructor(props) {
-    super(props);
+const setFilm = (films, id, onSetCurrentFilm) => {
+  const currentFilm = films.find((film) => film.id === id);
+
+  onSetCurrentFilm(currentFilm);
+};
+
+const RouteWithFilm = (props) =>{
+  const {
+    films,
+    onLoadComment,
+    onSetCurrentFilm,
+    path,
+    statusLoadFilms,
+  } = props;
+
+  const isLoading = statusLoadFilms !== StatusRequestServer.SUCCESS;
+
+  if (isLoading) {
+    return ``;
   }
 
-  render() {
-    const {
-      onLoadComment,
-      path,
-      statusLoadFilms,
-    } = this.props;
+  return (
+    <Route
+      exact
+      path={path}
+      render={(renderProps) => {
+        const filmId = parseInt(renderProps.match.params.id, 10);
 
-    const isLoading = statusLoadFilms !== StatusRequestServer.SUCCESS;
-
-    if (isLoading) {
-      return ``;
-    }
-
-    return (
-      <Route
-        exact
-        path={path}
-        render={(renderProps) => {
-          const filmId = parseInt(renderProps.match.params.id, 10);
-
-          if (this.props.film === null || this.props.film.id !== filmId) {
-            onLoadComment(filmId);
-            this._setFilm(filmId);
-            return ``;
-          }
-
-          switch (path) {
-            case AppRoute.PLAYER: {
-              return (
-                <div className="player">
-                  <ButtonExitPlayer />
-                  <ReactPlayer
-                    className={`react-player`}
-                    controls={true}
-                    playing={true}
-                    url={this.props.film.video}
-                    width={`100%`}
-                    height={`100%`}
-                  />
-                </div>
-              );
-            }
-            case AppRoute.FILM: {
-              return <FilmDetailedWrapped
-                film={this.props.film}
-              />;
-            }
-          }
-
+        if (props.film === null || props.film.id !== filmId) {
+          onLoadComment(filmId);
+          setFilm(films, filmId, onSetCurrentFilm);
           return ``;
-        }}
-      />
-    );
-  }
+        }
 
-  _setFilm(id) {
-    const {
-      films,
-      onSetCurrentFilm,
-    } = this.props;
+        switch (path) {
+          case AppRoute.PLAYER: {
+            return (
+              <div className="player">
+                <ButtonExitPlayer />
+                <ReactPlayer
+                  className={`react-player`}
+                  controls={true}
+                  playing={true}
+                  url={props.film.video}
+                  width={`100%`}
+                  height={`100%`}
+                />
+              </div>
+            );
+          }
+          case AppRoute.FILM: {
+            return <FilmDetailedWrapped
+              film={props.film}
+            />;
+          }
+        }
 
-    const currentFilm = films.find((film) => film.id === id);
-
-    onSetCurrentFilm(currentFilm);
-  }
-}
+        return ``;
+      }}
+    />
+  );
+};
 
 RouteWithFilm.propTypes = {
   film: filmPropTypes,
