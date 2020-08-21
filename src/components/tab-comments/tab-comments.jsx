@@ -1,83 +1,75 @@
-import React, {
-  PureComponent
-} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {arrayOf} from 'prop-types';
 
 import {commentPropTypes} from '../../types.js';
 import {getComments} from '../../reducer/comment/selectors.js';
 
-class TabComments extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const getDateCommentFormat = (date) => {
+  const FORMAT_DATE = {
+    year: `numeric`,
+    day: `numeric`,
+    month: `long`,
+  };
 
-  render() {
-    const {
-      comments,
-    } = this.props;
+  const dateComment = new Date(date);
 
-    return (
-      <div className="movie-card__reviews movie-card__row">
-        <div className="movie-card__reviews-col">
+  return dateComment.toLocaleString(`en-US`, FORMAT_DATE);
+};
 
-          {comments.filter((el, i) => (i + 1) % 2).map((comment) =>
-            this._getMarkupComment(comment)
-          )}
+const getMarkupComment = (comment) => {
+  return (
+    <div
+      key={`${comment.id}-review`}
+      className="review"
+    >
+      <blockquote className="review__quote">
+        <p className="review__text">
+          {comment.text}
+        </p>
 
-        </div>
+        <footer className="review__details">
+          <cite className="review__author">
+            {comment.user.name}
+          </cite>
+          <time className="review__date" dateTime={new Date(comment.date)}>
+            {getDateCommentFormat(comment.date)}
+          </time>
+        </footer>
+      </blockquote>
 
-        <div className="movie-card__reviews-col">
-
-          {comments.filter((el, i) => !((i + 1) % 2)).map((comment) =>
-            this._getMarkupComment(comment)
-          )}
-
-        </div>
+      <div className="review__rating">
+        {comment.rating}
       </div>
-    );
-  }
+    </div>
+  );
+};
 
-  _getDateComment(date) {
-    const FORMAT_DATE = {
-      year: `numeric`,
-      day: `numeric`,
-      month: `long`,
-    };
+const TabComments = (props) => {
+  const {
+    comments,
+  } = props;
 
-    const dateComment = new Date(date);
+  return (
+    <div className="movie-card__reviews movie-card__row">
+      <div className="movie-card__reviews-col">
 
-    return dateComment.toLocaleString(`en-US`, FORMAT_DATE);
-  }
+        {comments.filter((el, i) => (i + 1) % 2).map((comment) =>
+          getMarkupComment(comment)
+        )}
 
-  _getMarkupComment(comment) {
-    return (
-      <div
-        key={`${comment.id}-review`}
-        className="review"
-      >
-        <blockquote className="review__quote">
-          <p className="review__text">
-            {comment.text}
-          </p>
-
-          <footer className="review__details">
-            <cite className="review__author">
-              {comment.user.name}
-            </cite>
-            <time className="review__date" dateTime={new Date(comment.date)}>
-              {this._getDateComment(comment.date)}
-            </time>
-          </footer>
-        </blockquote>
-
-        <div className="review__rating">
-          {comment.rating}
-        </div>
       </div>
-    );
-  }
-}
+
+      <div className="movie-card__reviews-col">
+
+        {comments.filter((el, i) => !((i + 1) % 2)).map((comment) =>
+          getMarkupComment(comment)
+        )}
+
+      </div>
+    </div>
+  );
+};
 
 TabComments.propTypes = {
   comments: arrayOf(commentPropTypes)
