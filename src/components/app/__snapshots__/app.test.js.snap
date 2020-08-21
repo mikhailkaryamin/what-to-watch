@@ -46,7 +46,7 @@ exports[`Render App should render app 1`] = `
     </div>
   </header>
   <div
-    className="sign-in user-page__content"
+    className="user-page__content user-page__content--message"
   >
     <h2
       className="page-title"

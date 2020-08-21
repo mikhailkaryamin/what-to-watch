@@ -1,11 +1,4 @@
-import React, {
-  PureComponent
-} from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import React from 'react';
 import {connect} from 'react-redux';
 import {
   func,
@@ -17,7 +10,6 @@ import {
 import {filmPropTypes} from '../../types.js';
 
 import {
-  AppRoute,
   AuthStatus,
   NoAvailableMessage,
   StatusRequestServer,
@@ -34,151 +26,54 @@ import {
 } from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
-import Comment from '../comment/comment.jsx';
-import Favorites from '../favorites/favorites.jsx';
-import Main from '../main/main.jsx';
 import NoAvailable from '../no-available/no-available.jsx';
-import RouteWithFilm from '../route-with-film/route-with-film.jsx';
-import RoutePrivate from '../route-private/route-private.jsx';
-import SignIn from '../sign-in/sign-in.jsx';
 
-import withAuthorization from '../../hocs/with-authorization/with-authorization.jsx';
-import withComment from '../../hocs/with-comment/with-comment.jsx';
+import {App as Router} from '../../routers/app/app.jsx';
 
-const CommentWrapped = withComment(Comment);
-const SignInWrapped = withAuthorization(SignIn);
+const App = (props) => {
+  const {
+    authStatus,
+    films,
+    loadFavorite,
+    signIn,
+    statusLoadFilms,
+    statusUploadComment,
+    uploadComment,
+  } = props;
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
+  const isAuth = authStatus === AuthStatus.AUTH;
+  const isErrorNetwork = statusLoadFilms === StatusRequestServer.FAIL;
+  const isLoading = statusLoadFilms === null || authStatus === null;
+
+  if (isErrorNetwork) {
+    return <NoAvailable
+      isAuth={isAuth}
+      isLink={false}
+      isWithSignIn={false}
+      message={NoAvailableMessage.ERROR_SERVER}
+    />;
   }
 
-  render() {
-    const {
-      authStatus,
-      films,
-      loadFavorite,
-      signIn,
-      statusLoadFilms,
-      statusUploadComment,
-      uploadComment,
-    } = this.props;
-
-    const isAuth = authStatus === AuthStatus.AUTH;
-    const isEmptyListFilms = films.length === 0;
-    const isErrorNetwork = statusLoadFilms === StatusRequestServer.FAIL;
-    const isLoading = statusLoadFilms === null || AuthStatus === null;
-
-    if (isErrorNetwork) {
-      return <NoAvailable
-        isAuth={isAuth}
-        isLink={false}
-        isWithSignIn={false}
-        message={NoAvailableMessage.ERROR_SERVER}
-      />;
-    }
-
-    if (isLoading) {
-      return ``;
-    }
-
-    if (isAuth) {
-      loadFavorite();
-    }
-
-    return (
-      <Router>
-        <Switch>
-          <Route
-            exact
-            path={AppRoute.ROOT}
-            render={() => {
-              return (
-                (!isLoading && isEmptyListFilms)
-                  ? <NoAvailable
-                    isAuth={isAuth}
-                    isLink={false}
-                    isWithSignIn={true}
-                    message={NoAvailableMessage.FILMS}
-                  />
-                  : <Main />
-              );
-            }}
-          />
-
-          <Route
-            exact
-            path={AppRoute.LOGIN}
-            render={() => {
-              return (
-                <SignInWrapped
-                  isAuth={isAuth}
-                  signIn={signIn}
-                />
-              );
-            }}
-          />
-
-          <RouteWithFilm
-            exact
-            path={AppRoute.PLAYER}
-            statusLoadFilms={statusLoadFilms}
-          />
-
-          <RouteWithFilm
-            exact
-            path={AppRoute.FILM}
-            statusLoadFilms={statusLoadFilms}
-          />
-
-          <RoutePrivate
-            exact={true}
-            isAuth={isAuth}
-            path={AppRoute.MY_LIST}
-            render={() => {
-              return (
-                <Favorites
-                  isAuth={isAuth}
-                />
-              );
-            }}
-          />
-
-          <RoutePrivate
-            exact={true}
-            isAuth={isAuth}
-            path={AppRoute.ADD_COMMENT}
-            render={(renderProps) => {
-              const filmId = parseInt(renderProps.match.params.id, 10);
-
-              return (
-                <CommentWrapped
-                  filmId={filmId}
-                  uploadComment={uploadComment}
-                  statusUploadComment={statusUploadComment}
-                />
-              );
-            }}
-          />
-
-          <Route
-            path={AppRoute.NOT_FOUND}
-            render={() => {
-              return (
-                <NoAvailable
-                  isAuth={isAuth}
-                  isLink={true}
-                  message={NoAvailableMessage.PAGE}
-                />
-              );
-            }}
-          />
-
-        </Switch>
-      </Router>
-    );
+  if (isLoading) {
+    return ``;
   }
-}
+
+  if (isAuth) {
+    loadFavorite();
+  }
+
+  return (
+    <Router
+      authStatus={authStatus}
+      films={films}
+      loadFavorite={loadFavorite}
+      signIn={signIn}
+      statusLoadFilms={statusLoadFilms}
+      statusUploadComment={statusUploadComment}
+      uploadComment={uploadComment}
+    />
+  );
+};
 
 App.propTypes = {
   authStatus: oneOfType([
