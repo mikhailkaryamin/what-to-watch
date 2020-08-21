@@ -1,84 +1,81 @@
-import React, {
-  PureComponent
-} from 'react';
+import React from 'react';
 import {
   arrayOf,
   number,
   string,
 } from 'prop-types';
 
-class TabDetails extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
-    const {
-      director,
-      genre,
-      released,
-    } = this.props;
-    return (<div className="movie-card__text movie-card__row">
-      <div className="movie-card__text-col">
-        <p className="movie-card__details-item">
-          <strong className="movie-card__details-name">Director</strong>
-          <span className="movie-card__details-value">
-            {director}
-          </span>
-        </p>
-        <p className="movie-card__details-item">
-          <strong className="movie-card__details-name">Starring</strong>
-          <span className="movie-card__details-value">
-            {this._getStarringMarkup()}
-          </span>
-        </p>
-      </div>
+const getFormattedRunTime = (runTime) => {
+  let hours = null;
+  let minutes = null;
 
-      <div className="movie-card__text-col">
-        <p className="movie-card__details-item">
-          <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">
-            {this._getFormattedRunTime()}
-          </span>
-        </p>
-        <p className="movie-card__details-item">
-          <strong className="movie-card__details-name">Genre</strong>
-          <span className="movie-card__details-value">
-            {genre}
-          </span>
-        </p>
-        <p className="movie-card__details-item">
-          <strong className="movie-card__details-name">Released</strong>
-          <span className="movie-card__details-value">
-            {released}
-          </span>
-        </p>
-      </div>
-    </div>);
-  }
+  hours = Math.floor(runTime / 60);
+  minutes = runTime % 60;
 
-  _getFormattedRunTime() {
-    let hours = null;
-    let minutes = null;
+  const hourFormat = hours >= 1 ? `${hours}${`h`}` : ``;
+  const minuteFormat = minutes ? `${minutes}${`m`}` : ``;
 
-    hours = Math.floor(this.props.runTime / 60);
-    minutes = this.props.runTime % 60;
+  return (
+    `${hourFormat} ${minuteFormat}`
+  );
+};
 
-    const hourFormat = (hours >= 1) ? `${hours}${`h`}` : ``;
-    const minuteFormat = (minutes) ? `${minutes}${`m`}` : ``;
-    return (
-      `${hourFormat} ${minuteFormat}`
-    );
-  }
+const getStarsMarkup = (starring) => {
+  return starring.map((star, i) =>
+    <React.Fragment key={`${star}` + i}>
+      {star}{(i < starring.length - 1) ? `, ` : ``} <br/>
+    </React.Fragment>
+  );
+};
 
-  _getStarringMarkup() {
-    return this.props.starring.map((star, i) =>
-      <React.Fragment key={`${star}` + i}>
-        {star}{(i < this.props.starring.length - 1) ? `, ` : ``} <br/>
-      </React.Fragment>
-    );
-  }
-}
+const TabDetails = (props) => {
+  const {
+    director,
+    genre,
+    released,
+    runTime,
+    starring
+  } = props;
+
+  return (<div className="movie-card__text movie-card__row">
+    <div className="movie-card__text-col">
+      <p className="movie-card__details-item">
+        <strong className="movie-card__details-name">Director</strong>
+        <span className="movie-card__details-value">
+          {director}
+        </span>
+      </p>
+      <p className="movie-card__details-item">
+        <strong className="movie-card__details-name">Starring</strong>
+        <span className="movie-card__details-value">
+          {getStarsMarkup(starring)}
+        </span>
+      </p>
+    </div>
+
+    <div className="movie-card__text-col">
+      <p className="movie-card__details-item">
+        <strong className="movie-card__details-name">Run Time</strong>
+        <span className="movie-card__details-value">
+          {getFormattedRunTime(runTime)}
+        </span>
+      </p>
+      <p className="movie-card__details-item">
+        <strong className="movie-card__details-name">Genre</strong>
+        <span className="movie-card__details-value">
+          {genre}
+        </span>
+      </p>
+      <p className="movie-card__details-item">
+        <strong className="movie-card__details-name">Released</strong>
+        <span className="movie-card__details-value">
+          {released}
+        </span>
+      </p>
+    </div>
+  </div>);
+};
 
 TabDetails.propTypes = {
   director: string,
