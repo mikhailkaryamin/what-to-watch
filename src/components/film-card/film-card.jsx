@@ -1,6 +1,4 @@
-import React, {
-  PureComponent
-} from 'react';
+import React from 'react';
 import {
   bool,
   func,
@@ -11,76 +9,70 @@ import {filmPropTypes} from '../../types.js';
 
 import VideoPlayer from '../preview-video/preview-video.jsx';
 
-class FilmCard extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const FilmCard = (props) => {
+  const {
+    isPlayVideo,
+    onMouseEnter,
+    onMouseLeave,
+    onStopPreviewClick,
+  } = props;
 
-  render() {
-    const {
-      isPlayVideo,
-      onMouseEnter,
-      onMouseLeave,
-      onStopPreviewClick,
-    } = this.props;
+  const {
+    id,
+    posterImage,
+    previewImage,
+    previewVideoLink,
+    name,
+  } = props.film;
 
-    const {
-      id,
-      posterImage,
-      previewImage,
-      previewVideoLink,
-      name,
-    } = this.props.film;
+  return (
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={() => {
+        onStopPreviewClick();
+      }}
 
-    return (
-      <article
-        className="small-movie-card catalog__movies-card"
-        onClick={() => {
-          onStopPreviewClick();
-        }}
+      onMouseEnter={() => {
+        onMouseEnter();
+      }}
 
-        onMouseEnter={() => {
-          onMouseEnter();
-        }}
+      onMouseLeave={() => {
+        onMouseLeave();
+      }}
+    >
+      <Link
+        to={`/films/${id}`}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          {isPlayVideo || <img
+            src={previewImage}
+            alt={name}
+            width="280"
+            height="175"
+          />}
 
-        onMouseLeave={() => {
-          onMouseLeave();
-        }}
+          {isPlayVideo && <VideoPlayer
+            posterImage={posterImage}
+            previewVideoLink={previewVideoLink}
+          />}
+        </div>
+      </Link>
+      <h3
+        className="small-movie-card__title"
       >
         <Link
+          className="small-movie-card__link"
+          href="#"
           to={`/films/${id}`}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            {isPlayVideo || <img
-              src={previewImage}
-              alt={name}
-              width="280"
-              height="175"
-            />}
-
-            {isPlayVideo && <VideoPlayer
-              posterImage={posterImage}
-              previewVideoLink={previewVideoLink}
-            />}
-          </div>
+          {name}
         </Link>
-        <h3
-          className="small-movie-card__title"
-        >
-          <Link
-            className="small-movie-card__link"
-            href="#"
-            to={`/films/${id}`}
-          >
-            {name}
-          </Link>
-        </h3>
-      </article>
-    );
-  }
-}
+      </h3>
+    </article>
+  );
+};
 
 FilmCard.propTypes = {
   film: filmPropTypes.isRequired,
