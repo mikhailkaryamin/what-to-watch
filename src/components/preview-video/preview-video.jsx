@@ -1,32 +1,22 @@
-import React, {
-  PureComponent
-} from 'react';
+import React from 'react';
 import {string} from 'prop-types';
 
-class VideoPlayer extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const VideoPlayer = (props) => {
+  const {
+    previewVideoLink,
+    posterImage,
+  } = props;
 
-  render() {
-    const {
-      previewVideoLink,
-      posterImage,
-    } = this.props;
-
-    return (
-      <video
-        autoPlay
-        muted
-        poster={posterImage}
-        src={previewVideoLink}
-        height="175"
-      >
-
-      </video>
-    );
-  }
-}
+  return (
+    <video
+      autoPlay
+      muted
+      poster={posterImage}
+      src={previewVideoLink}
+      height="175"
+    />
+  );
+};
 
 VideoPlayer.propTypes = {
   previewVideoLink: string,
