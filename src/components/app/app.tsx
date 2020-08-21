@@ -26,9 +26,9 @@ import {
 } from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
-import NoAvailable from '../no-available/no-available.jsx';
+import NoAvailable from '../no-available/no-available.tsx';
 
-import {App as Router} from '../../routers/app/app.jsx';
+import {App as Router} from '../../routers/app/app.tsx';
 
 const App = (props) => {
   const {

@@ -9,8 +9,8 @@ import {
 
 import {filmPropTypes} from '../../types.js';
 
-import FilmCard from '../film-card/film-card.jsx';
-import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video.jsx';
+import FilmCard from '../film-card/film-card.js';
+import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video.tsx';
 
 const FilmCardWrapped = withPreviewVideo(FilmCard);
 

@@ -2,9 +2,9 @@ import React from 'react';
 
 import {FilmCardsListType} from '../../const.js';
 
-import FilmCardMain from '../film-card-main/film-card-main.jsx';
-import FilmCatalog from '../film-catalog/film-catalog.jsx';
-import Footer from '../footer/footer.jsx';
+import FilmCardMain from '../film-card-main/film-card-main.js';
+import FilmCatalog from '../film-catalog/film-catalog.js';
+import Footer from '../footer/footer.js';
 
 const Main = () => {
   return (

@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 
 import {filmPropTypes} from '../../types.js';
 
-import VideoPlayer from '../preview-video/preview-video.jsx';
+import VideoPlayer from '../preview-video/preview-video.tsx';
 
 const FilmCard = (props) => {
   const {

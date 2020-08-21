@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import {FilmCardsListType} from '../../const.js';
 import {initialState} from '../../mocks/initialState.js';
 
-import FilmCatalog from './film-catalog.jsx';
+import FilmCatalog from './film-catalog.tsx';
 
 const mockStore = configureStore([]);
 

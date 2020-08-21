@@ -20,17 +20,17 @@ import {
   NoAvailableMessage,
 } from '../../const.js';
 
-import WithFilm from '../with-film/with-film.jsx';
-import Private from '../private/private.jsx';
+import WithFilm from '../with-film/with-film.tsx';
+import Private from '../private/private.tsx';
 
-import Comment from '../../components/comment/comment.jsx';
-import Favorites from '../../components/favorites/favorites.jsx';
-import Main from '../../components/main/main.jsx';
-import NoAvailable from '../../components/no-available/no-available.jsx';
-import SignIn from '../../components/sign-in/sign-in.jsx';
+import Comment from '../../components/comment/comment.tsx';
+import Favorites from '../../components/favorites/favorites.js';
+import Main from '../../components/main/main.js';
+import NoAvailable from '../../components/no-available/no-available.js';
+import SignIn from '../../components/sign-in/sign-in.js';
 
-import withAuthorization from '../../hocs/with-authorization/with-authorization.jsx';
-import withComment from '../../hocs/with-comment/with-comment.jsx';
+import withAuthorization from '../../hocs/with-authorization/with-authorization.js';
+import withComment from '../../hocs/with-comment/with-comment.js';
 
 const CommentWrapped = withComment(Comment);
 const SignInWrapped = withAuthorization(SignIn);

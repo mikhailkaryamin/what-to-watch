@@ -7,7 +7,7 @@ import {
 
 import {FilmDetailedTabsType} from '../../const.js';
 
-import FilmDetailedTabs from './film-detailed-tabs.jsx';
+import FilmDetailedTabs from './film-detailed-tabs.tsx';
 
 configure({
   adapter: new Adapter(),

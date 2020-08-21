@@ -23,7 +23,7 @@ import {createAPI} from './api.js';
 
 import {StatusRequestServer} from './const.js';
 
-import App from './components/app/app.jsx';
+import App from './components/app/app.js';
 
 const onUnauthorized = () => {
   store.dispatch(UserAction.checkAuthorization(AuthStatus.NO_AUTH));

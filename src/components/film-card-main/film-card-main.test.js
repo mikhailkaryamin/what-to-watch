@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import {AuthStatus} from '../../const.js';
 import {initialState} from '../../mocks/initialState.js';
 
-import {FilmCardMain} from './film-card-main.jsx';
+import {FilmCardMain} from './film-card-main.tsx';
 
 const mockStore = configureStore([]);
 

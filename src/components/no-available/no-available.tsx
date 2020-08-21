@@ -5,9 +5,9 @@ import {
   string
 } from 'prop-types';
 
-import Footer from '../footer/footer.jsx';
-import Header from '../header/header.jsx';
-import UserPage from '../user-page/user-page.jsx';
+import Footer from '../footer/footer.js';
+import Header from '../header/header.js';
+import UserPage from '../user-page/user-page.tsx';
 
 const NoAvailableFilms = (props) => {
   const {

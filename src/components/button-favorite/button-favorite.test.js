@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {FavoriteButtonPlace} from '../../const.js';
 
-import {ButtonFavorite} from './button-favorite.jsx';
+import {ButtonFavorite} from './button-favorite.tsx';
 
 describe(`button favorite`, () => {
 

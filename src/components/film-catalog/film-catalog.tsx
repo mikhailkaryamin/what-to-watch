@@ -16,9 +16,9 @@ import {
   getFilmsLikeThis,
 } from '../../reducer/films/selectors.js';
 
-import FilmCards from '../film-cards/film-cards.jsx';
-import GenresList from '../genres-list/genres-list.jsx';
-import ShowMoreButton from '../show-more-button/show-more-button.jsx';
+import FilmCards from '../film-cards/film-cards.js';
+import GenresList from '../genres-list/genres-list.tsx';
+import ShowMoreButton from '../show-more-button/show-more-button.tsx';
 
 const FilmCatalog = (props) => {
   const {

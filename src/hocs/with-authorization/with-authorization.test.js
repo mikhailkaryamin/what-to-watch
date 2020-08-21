@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import withAuthorization from './with-authorization.jsx';
+import withAuthorization from './with-authorization.tsx';
 
 configure({
   adapter: new Adapter(),

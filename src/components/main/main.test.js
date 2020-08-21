@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 
 import {initialState} from '../../mocks/initialState.js';
 
-import Main from './main.jsx';
+import Main from './main.tsx';
 
 const mockStore = configureStore([]);
 

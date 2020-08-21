@@ -6,7 +6,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 import {initialState} from '../../mocks/initialState.js';
 
-import ButtonUser from './button-user.jsx';
+import ButtonUser from './button-user.tsx';
 
 const mockStore = configureStore([]);
 

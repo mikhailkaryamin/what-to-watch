@@ -4,9 +4,9 @@ import {
   string,
 } from 'prop-types';
 
-import ButtonSignIn from '../button-sign-in/button-sign-in.jsx';
-import ButtonUser from '../button-user/button-user.jsx';
-import Logotype from '../logotype/logotype.jsx';
+import ButtonSignIn from '../button-sign-in/button-sign-in.js';
+import ButtonUser from '../button-user/button-user.js';
+import Logotype from '../logotype/logotype.tsx';
 
 const HeaderWithBg = (props) => {
   const {

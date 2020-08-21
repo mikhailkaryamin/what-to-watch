@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import withPreviewVideo from './with-preview-video.jsx';
+import withPreviewVideo from './with-preview-video.tsx';
 
 configure({
   adapter: new Adapter()

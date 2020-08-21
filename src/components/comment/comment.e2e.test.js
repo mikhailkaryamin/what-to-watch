@@ -5,7 +5,7 @@ import {
   shallow,
 } from 'enzyme';
 
-import Comment from './comment.jsx';
+import Comment from './comment.tsx';
 
 configure({
   adapter: new Adapter()

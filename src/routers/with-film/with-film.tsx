@@ -23,10 +23,10 @@ import {ActionCreator as OptionsCreator} from '../../reducer/options/options.js'
 import {getFilm} from '../../reducer/options/selectors.js';
 import {getFilms} from '../../reducer/films/selectors.js';
 
-import ButtonExitPlayer from '../../components/button-exit-player/button-exit-player.jsx';
-import FilmDetailed from '../../components/film-detailed/film-detailed.jsx';
+import ButtonExitPlayer from '../../components/button-exit-player/button-exit-player.js';
+import FilmDetailed from '../../components/film-detailed/film-detailed.js';
 
-import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.jsx';
+import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.js';
 
 const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
 

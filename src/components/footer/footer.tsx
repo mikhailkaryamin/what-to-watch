@@ -1,7 +1,7 @@
 import React from 'react';
 import {bool} from 'prop-types';
 
-import Logotype from '../logotype/logotype.jsx';
+import Logotype from '../logotype/logotype.tsx';
 
 const MODIFICATOR_CLASS = `logo__link--light`;
 

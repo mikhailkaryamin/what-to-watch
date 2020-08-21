@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
-import HeaderWithBg from './header-with-bg.jsx';
+import HeaderWithBg from './header-with-bg.tsx';
 
 describe(`HeaderWithBg`, () => {
   const BG_IMAGE = `img/aviator.jpg`;

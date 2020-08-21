@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 
 import {initialState} from '../../mocks/initialState.js';
 
-import GenresList from './genres-list.jsx';
+import GenresList from './genres-list.tsx';
 
 const mockStore = configureStore([]);
 

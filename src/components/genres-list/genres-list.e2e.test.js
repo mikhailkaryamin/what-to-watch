@@ -5,7 +5,7 @@ import {
   shallow
 } from 'enzyme';
 
-import {GenresList} from './genres-list.jsx';
+import {GenresList} from './genres-list.tsx';
 
 configure({
   adapter: new Adapter(),

@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import SignIn from './sign-in.jsx';
+import SignIn from './sign-in.tsx';
 
 configure({
   adapter: new Adapter(),

@@ -10,7 +10,7 @@ import {
   FilmDetailedTabsType
 } from '../../const.js';
 
-import {FilmDetailed} from './film-detailed.jsx';
+import {FilmDetailed} from './film-detailed.tsx';
 
 const mockStore = configureStore([]);
 

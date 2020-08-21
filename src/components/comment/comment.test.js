@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Comment from './comment.jsx';
+import Comment from './comment.tsx';
 
 describe(`comment`, () => {
   const wrapper = renderer

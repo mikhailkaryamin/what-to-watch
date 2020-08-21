@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import withToggleFilmInfo from './with-toggle-film-info.jsx';
+import withToggleFilmInfo from './with-toggle-film-info.tsx';
 
 configure({
   adapter: new Adapter()

@@ -18,16 +18,16 @@ import {
 
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
-import ButtonAddComment from '../button-add-comment/button-add-comment.jsx';
-import ButtonFavorite from '../button-favorite/button-favorite.jsx';
-import ButtonPlay from '../button-play/button-play.jsx';
-import FilmCatalog from '../film-catalog/film-catalog.jsx';
-import FilmDetailedTabs from '../film-detailed-tabs/film-detailed-tabs.jsx';
-import TabComments from '../tab-comments/tab-comments.jsx';
-import TabDetails from '../tab-details/tab-details.jsx';
-import TabOverview from '../tab-overview/tab-overview.jsx';
-import Footer from '../footer/footer.jsx';
-import HeaderWithBg from '../header-with-bg/header-with-bg.jsx';
+import ButtonAddComment from '../button-add-comment/button-add-comment.js';
+import ButtonFavorite from '../button-favorite/button-favorite.js';
+import ButtonPlay from '../button-play/button-play.js';
+import FilmCatalog from '../film-catalog/film-catalog.js';
+import FilmDetailedTabs from '../film-detailed-tabs/film-detailed-tabs.tsx';
+import TabComments from '../tab-comments/tab-comments.tsx';
+import TabDetails from '../tab-details/tab-details.tsx';
+import TabOverview from '../tab-overview/tab-overview.tsx';
+import Footer from '../footer/footer.tsx';
+import HeaderWithBg from '../header-with-bg/header-with-bg.tsx';
 
 const changeTabs = (film, currentTypeTab) => {
   const {

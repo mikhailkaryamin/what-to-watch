@@ -16,9 +16,9 @@ import {
 import {getPromoFilm} from '../../reducer/films/selectors.js';
 import {getAuthStatus} from '../../reducer/user/selectors.js';
 
-import HeaderWithBg from '../header-with-bg/header-with-bg.jsx';
-import ButtonFavorite from '../button-favorite/button-favorite.jsx';
-import ButtonPlay from '../button-play/button-play.jsx';
+import HeaderWithBg from '../header-with-bg/header-with-bg.tsx';
+import ButtonFavorite from '../button-favorite/button-favorite.js';
+import ButtonPlay from '../button-play/button-play.js';
 
 const FilmCardMain = (props) => {
   const {

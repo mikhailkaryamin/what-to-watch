@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {FilmDetailedTabsType} from '../../const.js';
 
-import FilmDetailedTabs from './film-detailed-tabs.jsx';
+import FilmDetailedTabs from './film-detailed-tabs.tsx';
 
 describe(`Film detailed tabs`, () => {
   const onTabClick = () => {};
