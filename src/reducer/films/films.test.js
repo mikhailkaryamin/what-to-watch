@@ -15,7 +15,7 @@ import {
 const initialState = {
   films: [],
   promoFilm: null,
-  statusLoad: null,
+  statusLoadFilms: null,
 };
 
 const api = createAPI(() => {});
@@ -41,7 +41,7 @@ describe(`films`, () => {
           films: `some text`
         }],
         promoFilm: null,
-        statusLoad: null,
+        statusLoadFilms: null,
       });
     });
 
@@ -58,7 +58,7 @@ describe(`films`, () => {
         promoFilm: [{
           promoFilm: `some text`
         }],
-        statusLoad: null,
+        statusLoadFilms: null,
       });
     });
 
@@ -75,7 +75,7 @@ describe(`films`, () => {
         promoFilm: [{
           promoFilm: `some text`
         }],
-        statusLoad: null,
+        statusLoadFilms: null,
       });
     });
 
@@ -88,7 +88,20 @@ describe(`films`, () => {
       ).toEqual({
         films: [],
         promoFilm: null,
-        statusLoad: `success`,
+        statusLoadFilms: `success`,
+      });
+    });
+
+    test(`should handle SET_STATUS_LOAD_FILMS`, () => {
+      expect(
+          reducer(initialState, {
+            type: ActionType.SET_STATUS_LOAD_PROMO,
+            payload: `success`,
+          })
+      ).toEqual({
+        films: [],
+        promoFilm: null,
+        statusLoadPromo: `success`,
       });
     });
   });
@@ -126,6 +139,14 @@ describe(`films`, () => {
           ActionCreator.setStatusLoadFilms()
       ).toEqual({
         type: `SET_STATUS_LOAD_FILMS`,
+      });
+    });
+
+    test(`setStatusLoadPromo should create SET_STATUS_LOAD_PROMO action`, () => {
+      expect(
+          ActionCreator.setStatusLoadPromo()
+      ).toEqual({
+        type: `SET_STATUS_LOAD_PROMO`,
       });
     });
   });
@@ -167,7 +188,7 @@ describe(`films`, () => {
 
       return loaderPromoFilm(dispatch, mockState, api)
         .then(() => {
-          expect(dispatch).toHaveBeenCalledTimes(1);
+          expect(dispatch).toHaveBeenCalledTimes(2);
           expect(dispatch).toHaveBeenNthCalledWith(1, {
             type: ActionType.LOAD_PROMO_FILM,
             payload: modelFilm,
