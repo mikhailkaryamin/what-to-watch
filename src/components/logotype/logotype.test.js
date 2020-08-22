@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
-import Logotype from './logotype.jsx';
+import Logotype from './logotype.tsx';
 
 describe(`logotype`, () => {
   test(`should render logotype not link`, () => {

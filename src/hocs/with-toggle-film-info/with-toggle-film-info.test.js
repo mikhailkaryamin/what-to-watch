@@ -1,11 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import {
   configure,
   shallow,
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import withToggleFilmInfo from './with-toggle-film-info.jsx';
+import withToggleFilmInfo from './with-toggle-film-info.tsx';
 
 configure({
   adapter: new Adapter()

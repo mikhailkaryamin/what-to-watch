@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
@@ -10,7 +10,7 @@ import {
   FilmDetailedTabsType
 } from '../../const.js';
 
-import {FilmDetailed} from './film-detailed.jsx';
+import {FilmDetailed} from './film-detailed.tsx';
 
 const mockStore = configureStore([]);
 

@@ -1,11 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import {
   configure,
   shallow,
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import SignIn from './sign-in.jsx';
+import SignIn from './sign-in.tsx';
 
 configure({
   adapter: new Adapter(),

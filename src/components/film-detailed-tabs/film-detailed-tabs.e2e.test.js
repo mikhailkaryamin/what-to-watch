@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import {
   configure,
@@ -7,7 +7,7 @@ import {
 
 import {FilmDetailedTabsType} from '../../const.js';
 
-import FilmDetailedTabs from './film-detailed-tabs.jsx';
+import FilmDetailedTabs from './film-detailed-tabs.tsx';
 
 configure({
   adapter: new Adapter(),

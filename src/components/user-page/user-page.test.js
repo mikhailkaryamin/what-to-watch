@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 
-import UserPage from './user-page.jsx';
+import UserPage from './user-page.tsx';
 
 describe(`user page`, () => {
   const MockComponent = () => <div />;

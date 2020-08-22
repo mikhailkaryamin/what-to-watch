@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 
-import PreviewVideo from './preview-video.jsx';
+import PreviewVideo from './preview-video.tsx';
 
 describe(`Preview video`, () => {
   const PREVIEW_VIDEO_LINK = `https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/Schlossbergbahn.webm/Schlossbergbahn.webm.480p.vp9.webm`;

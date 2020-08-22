@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
-import SignIn from './sign-in.jsx';
+import SignIn from './sign-in.tsx';
 
 describe(`sing in`, () => {
   const isDisabledSubmitButton = false;

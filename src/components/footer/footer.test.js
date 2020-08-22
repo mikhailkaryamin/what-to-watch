@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 
-import Footer from './footer.jsx';
+import Footer from './footer.tsx';
 
 describe(`Footer`, () => {
   const wrapper = renderer

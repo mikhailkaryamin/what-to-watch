@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import {AuthStatus} from '../../const.js';
 import {initialState} from '../../mocks/initialState.js';
 
-import {FilmCardMain} from './film-card-main.jsx';
+import {FilmCardMain} from './film-card-main.tsx';
 
 const mockStore = configureStore([]);
 

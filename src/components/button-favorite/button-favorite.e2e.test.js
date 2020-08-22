@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   configure,
   shallow,
@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import {FavoriteButtonPlace} from '../../const.js';
 
-import {ButtonFavorite} from './button-favorite.jsx';
+import {ButtonFavorite} from './button-favorite.tsx';
 
 configure({
   adapter: new Adapter(),

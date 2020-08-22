@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 
-import SignInInput from './sign-in-input.jsx';
+import SignInInput from './sign-in-input.tsx';
 
 describe(`sing in input`, () => {
   const onChange = () => {};
