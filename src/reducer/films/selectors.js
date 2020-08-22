@@ -26,8 +26,12 @@ const getPromoFilm = (state) => {
   return state[NameSpace.FILMS].promoFilm;
 };
 
-const getStatus = (state) => {
-  return state[NameSpace.FILMS].statusLoad;
+const getStatusFilms = (state) => {
+  return state[NameSpace.FILMS].statusLoadFilms;
+};
+
+const getStatusPromo = (state) => {
+  return state[NameSpace.FILMS].statusLoadPromo;
 };
 
 const getFilmsByGenre = createSelector(
@@ -71,5 +75,6 @@ export {
   getFilmsLikeThis,
   getGenres,
   getPromoFilm,
-  getStatus,
+  getStatusFilms,
+  getStatusPromo,
 };

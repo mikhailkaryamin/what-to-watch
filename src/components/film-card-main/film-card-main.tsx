@@ -26,10 +26,6 @@ const FilmCardMain: React.FC<Props> = (props: Props) => {
     promoFilm
   } = props;
 
-  if (!promoFilm) {
-    return <div />;
-  }
-
   const {
     backgroundImage,
     genre,

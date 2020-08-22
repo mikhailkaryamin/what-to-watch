@@ -5,7 +5,8 @@ import {StatusRequestServer} from '../../const.js';
 const initialState = {
   films: [],
   promoFilm: null,
-  statusLoad: null,
+  statusLoadFilms: null,
+  statusLoadPromo: null,
 };
 
 const ActionType = {
@@ -13,6 +14,7 @@ const ActionType = {
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   SET_PROMO_FILM: `SET_PROMO_FILM`,
   SET_STATUS_LOAD_FILMS: `SET_STATUS_LOAD_FILMS`,
+  SET_STATUS_LOAD_PROMO: `SET_STATUS_LOAD_PROMO`,
 };
 
 const ActionCreator = {
@@ -34,6 +36,11 @@ const ActionCreator = {
   setStatusLoadFilms: (status) => ({
     type: ActionType.SET_STATUS_LOAD_FILMS,
     payload: status,
+  }),
+
+  setStatusLoadPromo: (status) => ({
+    type: ActionType.SET_STATUS_LOAD_PROMO,
+    payload: status
   })
 };
 
@@ -56,6 +63,7 @@ const Operation = {
       .then((response) => {
         const promoFilm = Film.parseFilm(response.data);
         dispatch(ActionCreator.loadPromoFilm(promoFilm));
+        dispatch(ActionCreator.setStatusLoadPromo(StatusRequestServer.SUCCESS));
       });
   },
 };
@@ -79,7 +87,12 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.SET_STATUS_LOAD_FILMS:
       return extend(state, {
-        statusLoad: action.payload,
+        statusLoadFilms: action.payload,
+      });
+
+    case ActionType.SET_STATUS_LOAD_PROMO:
+      return extend(state, {
+        statusLoadPromo: action.payload,
       });
   }
 
