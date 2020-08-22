@@ -16,13 +16,15 @@ import {Operation as CommentOperation} from '../../reducer/comment/comment';
 import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite';
 import {Operation as UserOperation} from '../../reducer/user/user';
 
-import {getStatus as getStatusCommentUpload} from '../../reducer/comment/selectors';
+import {getStatusFilms as getStatusCommentUpload} from '../../reducer/comment/selectors';
 import {
-  getStatus as getStatusFilmsLoad,
+  getStatusFilms as getStatusLoadingFilms,
+  getStatusPromo as getStatusLoadingPromo,
   getFilms,
 } from '../../reducer/films/selectors';
 import {getAuthStatus} from '../../reducer/user/selectors';
 
+import Loader from '../loader/loader';
 import NoAvailable from '../no-available/no-available';
 
 import {App as Router} from '../../routers/app/app';
@@ -33,6 +35,7 @@ type Props = {
   loadFavorite: () => void,
   signIn: (arg0: UserRAWType) => void,
   statusLoadFilms: string | null,
+  statusLoadPromo: string | null,
   statusUploadComment: string | null,
   uploadComment: (arg0: CommentRAWType) => void,
 }
@@ -44,13 +47,14 @@ const App: React.FC<Props> = (props: Props) => {
     loadFavorite,
     signIn,
     statusLoadFilms,
+    statusLoadPromo,
     statusUploadComment,
     uploadComment,
   } = props;
 
   const isAuth = authStatus === AuthStatus.AUTH;
   const isErrorNetwork = statusLoadFilms === StatusRequestServer.FAIL;
-  const isLoading = statusLoadFilms === null || authStatus === null;
+  const isLoading = statusLoadFilms === null || statusLoadPromo === null || authStatus === null;
 
   if (isErrorNetwork) {
     return <NoAvailable
@@ -62,7 +66,9 @@ const App: React.FC<Props> = (props: Props) => {
   }
 
   if (isLoading) {
-    return <div />;
+    return (
+      <Loader />
+    );
   }
 
   if (isAuth) {
@@ -84,7 +90,8 @@ const App: React.FC<Props> = (props: Props) => {
 const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
   films: getFilms(state),
-  statusLoadFilms: getStatusFilmsLoad(state),
+  statusLoadFilms: getStatusLoadingFilms(state),
+  statusLoadPromo: getStatusLoadingPromo(state),
   statusUploadComment: getStatusCommentUpload(state),
 });
 
