@@ -1,23 +1,23 @@
-import React from 'react';
+import * as React from 'react';
 
-import {
-  bool,
-  string
-} from 'prop-types';
+import Footer from '../footer/footer';
+import Header from '../header/header';
+import UserPage from '../user-page/user-page';
 
-import Footer from '../footer/footer.js';
-import Header from '../header/header.js';
-import UserPage from '../user-page/user-page.tsx';
+type Props = {
+  isAuth: boolean,
+  isLink: boolean,
+  isWithSignIn: boolean,
+  message: string,
+}
 
-const NoAvailableFilms = (props) => {
+const NoAvailableFilms: React.FC<Props> = (props: Props) => {
   const {
     isAuth,
     isLink,
     isWithSignIn,
     message,
   } = props;
-
-  const MODIFICATOR_CLASS = `logo__link--light`;
 
   return (
     <UserPage>
@@ -33,17 +33,9 @@ const NoAvailableFilms = (props) => {
       </div>
       <Footer
         isLink={isLink}
-        modificatorClass={MODIFICATOR_CLASS}
       />
     </UserPage>
   );
-};
-
-NoAvailableFilms.propTypes = {
-  isAuth: bool.isRequired,
-  isLink: bool.isRequired,
-  isWithSignIn: bool.isRequired,
-  message: string.isRequired,
 };
 
 export default NoAvailableFilms;

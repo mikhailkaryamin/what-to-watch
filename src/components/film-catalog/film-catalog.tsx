@@ -1,26 +1,29 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import {
-  arrayOf,
-  number,
-  string,
-} from 'prop-types';
 
-import {FilmCardsListType} from '../../const.js';
-import {filmPropTypes} from '../../types.js';
+import {FilmCardsListType} from '../../const';
+import {FilmType} from '../../types';
 
-import {getFavoriteFilms} from '../../reducer/favorite/selectors.js';
-import {getAmountRenderFilmCard} from '../../reducer/options/selectors.js';
+import {getFavoriteFilms} from '../../reducer/favorite/selectors';
+import {getAmountRenderFilmCard} from '../../reducer/options/selectors';
 import {
   getFilmsByGenre,
   getFilmsLikeThis,
-} from '../../reducer/films/selectors.js';
+} from '../../reducer/films/selectors';
 
-import FilmCards from '../film-cards/film-cards.js';
-import GenresList from '../genres-list/genres-list.tsx';
-import ShowMoreButton from '../show-more-button/show-more-button.tsx';
+import FilmCards from '../film-cards/film-cards';
+import GenresList from '../genres-list/genres-list';
+import ShowMoreButton from '../show-more-button/show-more-button';
 
-const FilmCatalog = (props) => {
+type Props = {
+  amountRenderFilmCard: number,
+  filmsFavorite: FilmType[],
+  filmsByGenre: FilmType[],
+  filmsLikeThis: FilmType[],
+  sign: string,
+}
+
+const FilmCatalog: React.FC<Props> = (props: Props) => {
   const {
     amountRenderFilmCard,
     filmsFavorite,
@@ -70,14 +73,6 @@ const FilmCatalog = (props) => {
 
     </section>
   );
-};
-
-FilmCatalog.propTypes = {
-  amountRenderFilmCard: number.isRequired,
-  filmsFavorite: arrayOf(filmPropTypes),
-  filmsByGenre: arrayOf(filmPropTypes),
-  filmsLikeThis: arrayOf(filmPropTypes),
-  sign: string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

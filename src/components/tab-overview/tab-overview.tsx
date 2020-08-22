@@ -1,10 +1,12 @@
-import React from 'react';
-import {
-  arrayOf,
-  number,
-  string,
-} from 'prop-types';
+import * as React from 'react';
 
+type Props = {
+  description: string,
+  director: string,
+  rating: number,
+  scoreCount: number,
+  starring: string[],
+}
 
 const LevelRating = {
   BAD: 0,
@@ -14,7 +16,7 @@ const LevelRating = {
   AWESOME: 10,
 };
 
-const getFilmRatingLevel = (rating) =>{
+const getFilmRatingLevel = (rating: number) =>{
   let ratingLevel = ``;
 
   switch (true) {
@@ -38,7 +40,7 @@ const getFilmRatingLevel = (rating) =>{
   return ratingLevel;
 };
 
-const TabOverview = (props) => {
+const TabOverview: React.FC<Props> = (props: Props) => {
   const {
     description,
     director,
@@ -81,14 +83,5 @@ const TabOverview = (props) => {
     </React.Fragment>
   );
 };
-
-TabOverview.propTypes = {
-  description: string,
-  director: string,
-  rating: number,
-  scoreCount: number,
-  starring: arrayOf(string),
-};
-
 
 export default TabOverview;

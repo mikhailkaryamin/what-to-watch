@@ -1,14 +1,16 @@
-import React from 'react';
-import {
-  bool,
-  string,
-} from 'prop-types';
+import * as React from 'react';
 
-import ButtonSignIn from '../button-sign-in/button-sign-in.js';
-import ButtonUser from '../button-user/button-user.js';
-import Logotype from '../logotype/logotype.tsx';
+import ButtonSignIn from '../button-sign-in/button-sign-in';
+import ButtonUser from '../button-user/button-user';
+import Logotype from '../logotype/logotype';
 
-const HeaderWithBg = (props) => {
+type Props = {
+  backgroundImage: string,
+  isAuth: boolean,
+  isLink: boolean,
+}
+
+const HeaderWithBg: React.FC<Props> = (props: Props) => {
   const {
     backgroundImage,
     isAuth,
@@ -39,12 +41,6 @@ const HeaderWithBg = (props) => {
       </header>
     </React.Fragment>
   );
-};
-
-HeaderWithBg.propTypes = {
-  backgroundImage: string.isRequired,
-  isAuth: bool.isRequired,
-  isLink: bool.isRequired,
 };
 
 export default HeaderWithBg;

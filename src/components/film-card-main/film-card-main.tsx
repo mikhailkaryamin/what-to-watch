@@ -1,33 +1,33 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {
-  oneOf,
-  oneOfType,
-  string,
-} from 'prop-types';
-import {filmPropTypes} from '../../types.js';
+import {FilmType} from '../../types';
 
 import {
   AuthStatus,
   FavoriteButtonPlace
-} from '../../const.js';
+} from '../../const';
 
-import {getPromoFilm} from '../../reducer/films/selectors.js';
-import {getAuthStatus} from '../../reducer/user/selectors.js';
+import {getPromoFilm} from '../../reducer/films/selectors';
+import {getAuthStatus} from '../../reducer/user/selectors';
 
-import HeaderWithBg from '../header-with-bg/header-with-bg.tsx';
-import ButtonFavorite from '../button-favorite/button-favorite.js';
-import ButtonPlay from '../button-play/button-play.js';
+import HeaderWithBg from '../header-with-bg/header-with-bg';
+import ButtonFavorite from '../button-favorite/button-favorite';
+import ButtonPlay from '../button-play/button-play';
 
-const FilmCardMain = (props) => {
+type Props = {
+  authStatus: string | null,
+  promoFilm: FilmType,
+}
+
+const FilmCardMain: React.FC<Props> = (props: Props) => {
   const {
     authStatus,
     promoFilm
   } = props;
 
   if (!promoFilm) {
-    return false;
+    return <div />;
   }
 
   const {
@@ -77,14 +77,6 @@ const FilmCardMain = (props) => {
       </div>
     </section>
   );
-};
-
-FilmCardMain.propTypes = {
-  authStatus: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-  promoFilm: filmPropTypes,
 };
 
 const mapStateToProps = (state) => ({

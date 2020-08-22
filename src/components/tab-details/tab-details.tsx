@@ -1,12 +1,14 @@
-import React from 'react';
-import {
-  arrayOf,
-  number,
-  string,
-} from 'prop-types';
+import * as React from 'react';
 
+type Props = {
+  director: string,
+  genre: string,
+  released: number,
+  runTime: number,
+  starring: string[],
+}
 
-const getFormattedRunTime = (runTime) => {
+const getFormattedRunTime = (runTime: number) => {
   let hours = null;
   let minutes = null;
 
@@ -21,7 +23,7 @@ const getFormattedRunTime = (runTime) => {
   );
 };
 
-const getStarsMarkup = (starring) => {
+const getStarsMarkup = (starring: string[]) => {
   return starring.map((star, i) =>
     <React.Fragment key={`${star}` + i}>
       {star}{(i < starring.length - 1) ? `, ` : ``} <br/>
@@ -29,7 +31,7 @@ const getStarsMarkup = (starring) => {
   );
 };
 
-const TabDetails = (props) => {
+const TabDetails: React.FC<Props> = (props: Props) => {
   const {
     director,
     genre,
@@ -75,14 +77,6 @@ const TabDetails = (props) => {
       </p>
     </div>
   </div>);
-};
-
-TabDetails.propTypes = {
-  director: string,
-  genre: string,
-  released: number,
-  runTime: number,
-  starring: arrayOf(string),
 };
 
 export default TabDetails;

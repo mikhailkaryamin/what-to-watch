@@ -1,9 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import {arrayOf} from 'prop-types';
 
-import {commentPropTypes} from '../../types.js';
-import {getComments} from '../../reducer/comment/selectors.js';
+import {CommentType} from '../../types';
+import {getComments} from '../../reducer/comment/selectors';
+
+type Props = {
+  comments: CommentType[],
+}
 
 const getDateCommentFormat = (date) => {
   const FORMAT_DATE = {
@@ -17,7 +20,7 @@ const getDateCommentFormat = (date) => {
   return dateComment.toLocaleString(`en-US`, FORMAT_DATE);
 };
 
-const getMarkupComment = (comment) => {
+const getMarkupComment = (comment: CommentType) => {
   return (
     <div
       key={`${comment.id}-review`}
@@ -32,7 +35,7 @@ const getMarkupComment = (comment) => {
           <cite className="review__author">
             {comment.user.name}
           </cite>
-          <time className="review__date" dateTime={new Date(comment.date)}>
+          <time className="review__date" dateTime={new Date(comment.date).toISOString()}>
             {getDateCommentFormat(comment.date)}
           </time>
         </footer>
@@ -45,7 +48,7 @@ const getMarkupComment = (comment) => {
   );
 };
 
-const TabComments = (props) => {
+const TabComments: React.FC<Props> = (props: Props) => {
   const {
     comments,
   } = props;
@@ -69,10 +72,6 @@ const TabComments = (props) => {
       </div>
     </div>
   );
-};
-
-TabComments.propTypes = {
-  comments: arrayOf(commentPropTypes)
 };
 
 const mapStateToProps = (state) => ({

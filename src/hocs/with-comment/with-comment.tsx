@@ -1,13 +1,22 @@
-import React, {
-  PureComponent
-} from 'react';
-import {
-  func,
-  number
-} from 'prop-types';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  rating: number;
+  comment: string;
+}
+
+interface InjectingProps {
+  isDisabledSubmitButton: boolean;
+  onChange: (arg0: {}) => void;
+  onSubmit: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+}
 
 const withComment = (Component) => {
-  class WithComment extends PureComponent {
+  type S = React.ComponentProps<typeof Component>;
+  type T = Subtract<S, InjectingProps>;
+
+  class WithComment extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -40,7 +49,7 @@ const withComment = (Component) => {
       return true;
     }
 
-    _handleFormSubmit(evt) {
+    _handleFormSubmit(evt: React.MouseEvent<HTMLButtonElement>) {
       const {
         uploadComment,
         filmId,
@@ -70,11 +79,6 @@ const withComment = (Component) => {
     }
 
   }
-
-  WithComment.propTypes = {
-    uploadComment: func.isRequired,
-    filmId: number.isRequired,
-  };
 
   return WithComment;
 };

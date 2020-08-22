@@ -1,33 +1,34 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {
-  func,
-  oneOf,
-  oneOfType,
-  string,
-} from 'prop-types';
-import {filmPropTypes} from '../../types.js';
+import {FilmType} from '../../types';
 
 import {
   AuthStatus,
   FavoriteButtonPlace,
   FilmCardsListType,
   FilmDetailedTabsType,
-} from '../../const.js';
+} from '../../const';
 
-import {getAuthStatus} from '../../reducer/user/selectors.js';
+import {getAuthStatus} from '../../reducer/user/selectors';
 
-import ButtonAddComment from '../button-add-comment/button-add-comment.js';
-import ButtonFavorite from '../button-favorite/button-favorite.js';
-import ButtonPlay from '../button-play/button-play.js';
-import FilmCatalog from '../film-catalog/film-catalog.js';
-import FilmDetailedTabs from '../film-detailed-tabs/film-detailed-tabs.tsx';
-import TabComments from '../tab-comments/tab-comments.tsx';
-import TabDetails from '../tab-details/tab-details.tsx';
-import TabOverview from '../tab-overview/tab-overview.tsx';
-import Footer from '../footer/footer.tsx';
-import HeaderWithBg from '../header-with-bg/header-with-bg.tsx';
+import ButtonAddComment from '../button-add-comment/button-add-comment';
+import ButtonFavorite from '../button-favorite/button-favorite';
+import ButtonPlay from '../button-play/button-play';
+import FilmCatalog from '../film-catalog/film-catalog';
+import FilmDetailedTabs from '../film-detailed-tabs/film-detailed-tabs';
+import TabComments from '../tab-comments/tab-comments';
+import TabDetails from '../tab-details/tab-details';
+import TabOverview from '../tab-overview/tab-overview';
+import Footer from '../footer/footer';
+import HeaderWithBg from '../header-with-bg/header-with-bg';
+
+type Props = {
+  authStatus: string | null,
+  film: FilmType,
+  currentTypeTab: string,
+  onTabClick: () => void,
+}
 
 const changeTabs = (film, currentTypeTab) => {
   const {
@@ -63,7 +64,7 @@ const changeTabs = (film, currentTypeTab) => {
   }
 };
 
-const FilmDetailed = (props) => {
+const FilmDetailed: React.FC<Props> = (props: Props) => {
   const {
     authStatus,
     film,
@@ -147,16 +148,6 @@ const FilmDetailed = (props) => {
       </div>
     </React.Fragment>
   );
-};
-
-FilmDetailed.propTypes = {
-  authStatus: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-  film: filmPropTypes,
-  currentTypeTab: string.isRequired,
-  onTabClick: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,14 +1,15 @@
-import React from 'react';
-import {
-  bool,
-  oneOf,
-  oneOfType,
-  string,
-} from 'prop-types';
+import * as React from 'react';
 
-import ButtonSignIn from '../button-sign-in/button-sign-in.js';
-import ButtonUser from '../button-user/button-user.js';
-import Logotype from '../logotype/logotype.tsx';
+import ButtonSignIn from '../button-sign-in/button-sign-in';
+import ButtonUser from '../button-user/button-user';
+import Logotype from '../logotype/logotype';
+
+type Props = {
+  headline?: string,
+  isAuth: boolean,
+  isLink: boolean,
+  isWithSignIn: boolean,
+}
 
 const Header = (props) => {
   const {
@@ -36,16 +37,6 @@ const Header = (props) => {
       }
     </header>
   );
-};
-
-Header.propTypes = {
-  headline: oneOfType([
-    string.isRequired,
-    oneOf([undefined]).isRequired,
-  ]),
-  isAuth: bool.isRequired,
-  isLink: bool.isRequired,
-  isWithSignIn: bool.isRequired,
 };
 
 export default Header;

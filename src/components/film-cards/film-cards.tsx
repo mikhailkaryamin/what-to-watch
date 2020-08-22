@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import {
   arrayOf,
@@ -7,14 +7,19 @@ import {
   string,
 } from 'prop-types';
 
-import {filmPropTypes} from '../../types.js';
+import {FilmType} from '../../types';
 
-import FilmCard from '../film-card/film-card.js';
-import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video.tsx';
+import FilmCard from '../film-card/film-card';
+import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video';
+
+type Props = {
+  films: FilmType[],
+  prefix?: string | null,
+}
 
 const FilmCardWrapped = withPreviewVideo(FilmCard);
 
-const FilmCards = (props) => {
+const FilmCards: React.FC<Props> = (props: Props) => {
   const {
     films,
     prefix,
@@ -32,14 +37,6 @@ const FilmCards = (props) => {
       }
     </div>
   );
-};
-
-FilmCards.propTypes = {
-  films: arrayOf(filmPropTypes).isRequired,
-  prefix: oneOfType([
-    string.isRequired,
-    oneOf([undefined]).isRequired,
-  ]),
 };
 
 export default FilmCards;

@@ -1,16 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import {Redirect} from 'react-router-dom';
 
-import {
-  bool,
-  func,
-  oneOf,
-  oneOfType,
-  string,
-  number,
-} from 'prop-types';
+import {StatusRequestServer} from '../../const';
 
-import {StatusRequestServer} from '../../const.js';
+type Props = {
+  filmId: number,
+  isDisabledSubmitButton: boolean,
+  onChange: (arg0: {}) => void,
+  onSubmit: () => void,
+  statusUploadComment: string | null,
+}
 
 const STARS_RATING = [1, 2, 3, 4, 5];
 
@@ -35,7 +34,7 @@ const getMarkupStar = (starNumber, onChange) => {
   );
 };
 
-const Comment = (props) => {
+const Comment: React.FC<Props> = (props: Props) => {
   const {
     filmId,
     isDisabledSubmitButton,
@@ -88,17 +87,6 @@ const Comment = (props) => {
         </form>
       </div>
   );
-};
-
-Comment.propTypes = {
-  filmId: number.isRequired,
-  isDisabledSubmitButton: bool.isRequired,
-  onChange: func.isRequired,
-  onSubmit: func.isRequired,
-  statusUploadComment: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
 };
 
 export default Comment;

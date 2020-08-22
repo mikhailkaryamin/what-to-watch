@@ -1,10 +1,23 @@
-import React, {
-  PureComponent
-} from 'react';
-import {func} from 'prop-types';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  email: string;
+  password: string;
+}
+
+interface InjectingProps {
+  isDisabledSubmitButton: boolean;
+  onChange: (arg0: {}) => void;
+  onSubmit: () => void;
+  signIn: (arg0: () => void) => void,
+}
 
 const withAuthorization = (Component) => {
-  class WithAuthorization extends PureComponent {
+  type S = React.ComponentProps<typeof Component>;
+  type T = Subtract<S, InjectingProps>
+
+  class WithAuthorization extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -65,10 +78,6 @@ const withAuthorization = (Component) => {
       signIn(userData);
     }
   }
-
-  WithAuthorization.propTypes = {
-    signIn: func.isRequired,
-  };
 
   return WithAuthorization;
 };

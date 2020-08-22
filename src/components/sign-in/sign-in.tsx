@@ -1,22 +1,23 @@
-import React from 'react';
+import * as React from 'react';
 import {Redirect} from 'react-router-dom';
 
-import {
-  func,
-  bool
-} from 'prop-types';
+import {AppRoute} from '../../const';
 
-import Footer from '../footer/footer.js';
-import Header from '../header/header.js';
-import SignInInput from '../sign-in-input/sign-in-input.tsx';
-import UserPage from '../user-page/user-page.tsx';
+import Footer from '../footer/footer';
+import Header from '../header/header';
+import SignInInput from '../sign-in-input/sign-in-input';
+import UserPage from '../user-page/user-page';
 
-import {AppRoute} from '../../const.js';
+type Props = {
+  isAuth: boolean,
+  isDisabledSubmitButton: boolean,
+  onChange: () => void,
+  onSubmit: () => void,
+}
 
 const HEADLINE_HEADER = `Sign in`;
-const MODIFICATOR_CLASS = `logo__link--light`;
 
-const SignIn = (props) => {
+const SignIn: React.FC<Props> = (props: Props) => {
   const {
     isAuth,
     isDisabledSubmitButton,
@@ -65,19 +66,11 @@ const SignIn = (props) => {
 
           <Footer
             isLink={true}
-            modificatorClass={MODIFICATOR_CLASS}
           />
         </UserPage>
       }
     </React.Fragment>
   );
-};
-
-SignIn.propTypes = {
-  isAuth: bool.isRequired,
-  isDisabledSubmitButton: bool.isRequired,
-  onChange: func.isRequired,
-  onSubmit: func.isRequired,
 };
 
 export default SignIn;

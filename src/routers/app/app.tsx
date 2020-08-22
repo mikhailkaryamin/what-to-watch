@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -6,36 +6,42 @@ import {
 } from 'react-router-dom';
 
 import {
-  func,
-  string,
-  oneOf,
-  oneOfType,
-  arrayOf,
-} from 'prop-types';
-import {filmPropTypes} from '../../types.js';
+  CommentRAWType,
+  FilmType,
+  UserRAWType,
+} from '../../types';
 
 import {
   AppRoute,
   AuthStatus,
   NoAvailableMessage,
-} from '../../const.js';
+} from '../../const';
 
-import WithFilm from '../with-film/with-film.tsx';
-import Private from '../private/private.tsx';
+import WithFilm from '../with-film/with-film';
+import Private from '../private/private';
 
-import Comment from '../../components/comment/comment.tsx';
-import Favorites from '../../components/favorites/favorites.js';
-import Main from '../../components/main/main.js';
-import NoAvailable from '../../components/no-available/no-available.js';
-import SignIn from '../../components/sign-in/sign-in.js';
+import Comment from '../../components/comment/comment';
+import Favorites from '../../components/favorites/favorites';
+import Main from '../../components/main/main';
+import NoAvailable from '../../components/no-available/no-available';
+import SignIn from '../../components/sign-in/sign-in';
 
-import withAuthorization from '../../hocs/with-authorization/with-authorization.js';
-import withComment from '../../hocs/with-comment/with-comment.js';
+import withAuthorization from '../../hocs/with-authorization/with-authorization';
+import withComment from '../../hocs/with-comment/with-comment';
 
 const CommentWrapped = withComment(Comment);
 const SignInWrapped = withAuthorization(SignIn);
 
-const App = (props) => {
+type Props = {
+  authStatus: string | null,
+  films: FilmType[],
+  signIn: (arg0: UserRAWType) => void,
+  statusLoadFilms: string | null,
+  statusUploadComment: string | null,
+  uploadComment: (arg0: CommentRAWType) => void,
+}
+
+const App: React.FC<Props> = (props: Props) => {
   const {
     authStatus,
     films,
@@ -131,6 +137,7 @@ const App = (props) => {
               <NoAvailable
                 isAuth={isAuth}
                 isLink={true}
+                isWithSignIn={true}
                 message={NoAvailableMessage.PAGE}
               />
             );
@@ -140,24 +147,6 @@ const App = (props) => {
       </Switch>
     </Router>
   );
-};
-
-App.propTypes = {
-  authStatus: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-  films: arrayOf(filmPropTypes),
-  signIn: func.isRequired,
-  statusLoadFilms: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-  statusUploadComment: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-  uploadComment: func.isRequired,
 };
 
 export {App};

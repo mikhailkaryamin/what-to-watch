@@ -1,9 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-import {filmPropTypes} from '../../types.js';
+import {FilmType} from '../../types';
 
-const ButtonPlay = (props) => {
+type Props = {
+  film: FilmType,
+}
+
+const ButtonPlay: React.FC<Props> = (props: Props) => {
   const {
     film,
   } = props;
@@ -22,10 +26,6 @@ const ButtonPlay = (props) => {
       </span>
     </Link>
   );
-};
-
-ButtonPlay.propTypes = {
-  film: filmPropTypes.isRequired,
 };
 
 export default ButtonPlay;

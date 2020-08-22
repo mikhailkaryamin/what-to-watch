@@ -1,15 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 
-import {bool} from 'prop-types';
+import {FilmCardsListType} from '../../const';
 
-import {FilmCardsListType} from '../../const.js';
+import FilmCatalog from '../film-catalog/film-catalog';
+import Footer from '../footer/footer';
+import Header from '../header/header';
+import UserPage from '../user-page/user-page';
 
-import FilmCatalog from '../film-catalog/film-catalog.tsx';
-import Footer from '../footer/footer.tsx';
-import Header from '../header/header.tsx';
-import UserPage from '../user-page/user-page.tsx';
+type Props = {
+  isAuth: boolean,
+}
 
-const Favorites = (props) => {
+const Favorites: React.FC<Props> = (props: Props) => {
   const {
     isAuth,
   } = props;
@@ -32,10 +34,6 @@ const Favorites = (props) => {
       />
     </UserPage>
   );
-};
-
-Favorites.propTypes = {
-  isAuth: bool.isRequired,
 };
 
 export default Favorites;

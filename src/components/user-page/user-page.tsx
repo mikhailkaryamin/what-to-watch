@@ -1,7 +1,10 @@
-import React from 'react';
-import {node} from 'prop-types';
+import * as React from 'react';
 
-const UserPage = (props) => {
+type Props = {
+  children: React.ReactNode;
+}
+
+const UserPage: React.FC<Props> = (props: Props) => {
   const {
     children: Component,
   } = props;
@@ -11,10 +14,6 @@ const UserPage = (props) => {
       {Component}
     </div>
   );
-};
-
-UserPage.propTypes = {
-  children: node.isRequired,
 };
 
 export default UserPage;

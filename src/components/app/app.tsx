@@ -1,36 +1,43 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {
-  func,
-  string,
-  oneOf,
-  oneOfType,
-  arrayOf,
-} from 'prop-types';
-import {filmPropTypes} from '../../types.js';
+  CommentRAWType,
+  FilmType,
+  UserRAWType,
+} from '../../types';
 
 import {
   AuthStatus,
   NoAvailableMessage,
   StatusRequestServer,
-} from '../../const.js';
+} from '../../const';
 
-import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
-import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite.js';
-import {Operation as UserOperation} from '../../reducer/user/user.js';
+import {Operation as CommentOperation} from '../../reducer/comment/comment';
+import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite';
+import {Operation as UserOperation} from '../../reducer/user/user';
 
-import {getStatus as getStatusCommentUpload} from '../../reducer/comment/selectors.js';
+import {getStatus as getStatusCommentUpload} from '../../reducer/comment/selectors';
 import {
   getStatus as getStatusFilmsLoad,
   getFilms,
-} from '../../reducer/films/selectors.js';
-import {getAuthStatus} from '../../reducer/user/selectors.js';
+} from '../../reducer/films/selectors';
+import {getAuthStatus} from '../../reducer/user/selectors';
 
-import NoAvailable from '../no-available/no-available.tsx';
+import NoAvailable from '../no-available/no-available';
 
-import {App as Router} from '../../routers/app/app.tsx';
+import {App as Router} from '../../routers/app/app';
 
-const App = (props) => {
+type Props = {
+  authStatus: string | null,
+  films: FilmType[],
+  loadFavorite: () => void,
+  signIn: (arg0: UserRAWType) => void,
+  statusLoadFilms: string | null,
+  statusUploadComment: string | null,
+  uploadComment: (arg0: CommentRAWType) => void,
+}
+
+const App: React.FC<Props> = (props: Props) => {
   const {
     authStatus,
     films,
@@ -55,7 +62,7 @@ const App = (props) => {
   }
 
   if (isLoading) {
-    return ``;
+    return <div />;
   }
 
   if (isAuth) {
@@ -66,32 +73,12 @@ const App = (props) => {
     <Router
       authStatus={authStatus}
       films={films}
-      loadFavorite={loadFavorite}
       signIn={signIn}
       statusLoadFilms={statusLoadFilms}
       statusUploadComment={statusUploadComment}
       uploadComment={uploadComment}
     />
   );
-};
-
-App.propTypes = {
-  authStatus: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-  films: arrayOf(filmPropTypes),
-  loadFavorite: func.isRequired,
-  signIn: func.isRequired,
-  statusLoadFilms: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-  statusUploadComment: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-  uploadComment: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -101,11 +88,11 @@ const mapStateToProps = (state) => ({
   statusUploadComment: getStatusCommentUpload(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
   loadFavorite: () => {
     dispatch(FavoriteOperation.loadFavoriteFilms());
   },
-  signIn: (user) => {
+  signIn: (user: (arg0: () => void) => void) => {
     dispatch(UserOperation.signIn(user));
   },
   uploadComment: (commentData, id) => {
@@ -113,8 +100,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export {
-  App,
-};
+export {App};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

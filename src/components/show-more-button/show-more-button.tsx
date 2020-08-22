@@ -1,10 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import {func} from 'prop-types';
 
-import {ActionCreator as ActionOptions} from '../../reducer/options/options.js';
+import {ActionCreator as ActionOptions} from '../../reducer/options/options';
 
-const ShowMoreButton = (props) => {
+type Props = {
+  onShowMoreButtonClick: () => void,
+}
+
+const ShowMoreButton: React.FC<Props> = (props: Props) => {
   const {
     onShowMoreButtonClick,
   } = props;
@@ -22,10 +25,6 @@ const ShowMoreButton = (props) => {
       </button>
     </div>
   );
-};
-
-ShowMoreButton.propTypes = {
-  onShowMoreButtonClick: func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

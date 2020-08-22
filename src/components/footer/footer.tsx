@@ -1,11 +1,14 @@
-import React from 'react';
-import {bool} from 'prop-types';
+import * as React from 'react';
 
-import Logotype from '../logotype/logotype.tsx';
+import Logotype from '../logotype/logotype';
+
+type Props = {
+  isLink: boolean,
+}
 
 const MODIFICATOR_CLASS = `logo__link--light`;
 
-const Footer = (props) => {
+const Footer: React.FC<Props> = (props: Props) => {
   const {
     isLink
   } = props;
@@ -23,10 +26,6 @@ const Footer = (props) => {
       </div>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  isLink: bool.isRequired,
 };
 
 export default Footer;

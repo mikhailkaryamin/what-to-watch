@@ -1,42 +1,43 @@
-import React from 'react';
+import * as React from 'react';
 import {Route} from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import {connect} from 'react-redux';
 
-import {
-  arrayOf,
-  func,
-  oneOf,
-  oneOfType,
-  string,
-} from 'prop-types';
-
-import {filmPropTypes} from '../../types.js';
+import {FilmType} from '../../types';
 
 import {
   AppRoute,
   StatusRequestServer,
-} from '../../const.js';
+} from '../../const';
 
-import {Operation as CommentOperation} from '../../reducer/comment/comment.js';
-import {ActionCreator as OptionsCreator} from '../../reducer/options/options.js';
-import {getFilm} from '../../reducer/options/selectors.js';
-import {getFilms} from '../../reducer/films/selectors.js';
+import {Operation as CommentOperation} from '../../reducer/comment/comment';
+import {ActionCreator as OptionsCreator} from '../../reducer/options/options';
+import {getFilm} from '../../reducer/options/selectors';
+import {getFilms} from '../../reducer/films/selectors';
 
-import ButtonExitPlayer from '../../components/button-exit-player/button-exit-player.js';
-import FilmDetailed from '../../components/film-detailed/film-detailed.js';
+import ButtonExitPlayer from '../../components/button-exit-player/button-exit-player';
+import FilmDetailed from '../../components/film-detailed/film-detailed';
 
-import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info.js';
+import withToggleFilmInfo from '../../hocs/with-toggle-film-info/with-toggle-film-info';
+
+type Props = {
+  film: FilmType,
+  films: FilmType[],
+  onLoadComment: (arg0: number) => void,
+  onSetCurrentFilm: (arg0: FilmType) => void,
+  path: string,
+  statusLoadFilms: string | null,
+}
 
 const FilmDetailedWrapped = withToggleFilmInfo(FilmDetailed);
 
-const setFilm = (films, id, onSetCurrentFilm) => {
+const setFilm = (films: FilmType[], id: number, onSetCurrentFilm: (arg0: FilmType) => void) => {
   const currentFilm = films.find((film) => film.id === id);
 
   onSetCurrentFilm(currentFilm);
 };
 
-const WithFilm = (props) =>{
+const WithFilm: React.FC<Props> = (props: Props) =>{
   const {
     films,
     onLoadComment,
@@ -48,7 +49,7 @@ const WithFilm = (props) =>{
   const isLoading = statusLoadFilms !== StatusRequestServer.SUCCESS;
 
   if (isLoading) {
-    return ``;
+    return;
   }
 
   return (
@@ -93,18 +94,6 @@ const WithFilm = (props) =>{
   );
 };
 
-WithFilm.propTypes = {
-  film: filmPropTypes,
-  films: arrayOf(filmPropTypes),
-  onLoadComment: func.isRequired,
-  onSetCurrentFilm: func.isRequired,
-  path: string.isRequired,
-  statusLoadFilms: oneOfType([
-    string.isRequired,
-    oneOf([null]).isRequired,
-  ]),
-};
-
 const mapStateToProps = (state) => ({
   film: getFilm(state),
   films: getFilms(state),
@@ -119,8 +108,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export {
-  WithFilm
-};
+export {WithFilm};
 
 export default connect(mapStateToProps, mapDispatchToProps)(WithFilm);

@@ -1,5 +1,8 @@
-import React from 'react';
-import {func} from 'prop-types';
+import * as React from 'react';
+
+type Props = {
+  onChange: () => void,
+}
 
 const FIELDS = [
   {
@@ -12,7 +15,7 @@ const FIELDS = [
   },
 ];
 
-const getMarkupField = (type, description, onChange) => {
+const getMarkupField = (type: string, description: string, onChange: (arg0: {}) => void) => {
   return (
     <div
       className="sign-in__field"
@@ -35,7 +38,7 @@ const getMarkupField = (type, description, onChange) => {
   );
 };
 
-const SignInInput = (props) => {
+const SignInInput: React.FC<Props> = (props: Props) => {
   const {
     onChange,
   } = props;
@@ -45,10 +48,6 @@ const SignInInput = (props) => {
       {FIELDS.map((field) => getMarkupField(field.type, field.description, onChange))}
     </div>
   );
-};
-
-SignInInput.propTypes = {
-  onChange: func.isRequired,
 };
 
 export default SignInInput;

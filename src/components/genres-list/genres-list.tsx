@@ -1,16 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import {
-  arrayOf,
-  func,
-  string,
-} from 'prop-types';
 
-import {ActionCreator as ActionOptions} from '../../reducer/options/options.js';
-import {getGenre} from '../../reducer/options/selectors.js';
-import {getGenres} from '../../reducer/films/selectors.js';
+import {ActionCreator as ActionOptions} from '../../reducer/options/options';
+import {getGenre} from '../../reducer/options/selectors';
+import {getGenres} from '../../reducer/films/selectors';
 
-const GenresList = (props) => {
+type Props = {
+  currentGenre: string,
+  genres: string[],
+  onGenreClick: (arg0: string) => void,
+}
+
+const GenresList: React.FC<Props> = (props: Props) => {
   const {
     currentGenre,
     genres,
@@ -19,7 +20,7 @@ const GenresList = (props) => {
 
   return (
     <ul className="catalog__genres-list">
-      {genres.map((genre) => <li
+      {genres.map((genre: string) => <li
         key={genre}
         className={genre === currentGenre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}
         onClick={() => {
@@ -35,15 +36,7 @@ const GenresList = (props) => {
   );
 };
 
-GenresList.propTypes = {
-  currentGenre: string.isRequired,
-  genres: arrayOf(string).isRequired,
-  onGenreClick: func.isRequired,
-};
-
-export {
-  GenresList
-};
+export {GenresList};
 
 const mapStateToProps = (state) => ({
   currentGenre: getGenre(state),

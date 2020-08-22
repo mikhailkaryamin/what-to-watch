@@ -1,12 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-import {
-  bool,
-  string,
-} from 'prop-types';
+import {AppRoute} from '../../const';
 
-import {AppRoute} from '../../const.js';
+type Props = {
+  isLink: boolean,
+  modificatorClass?: string,
+}
 
 const getLogoMarkup = () => {
   return (
@@ -18,7 +18,7 @@ const getLogoMarkup = () => {
   );
 };
 
-const Logotype = (props) => {
+const Logotype: React.FC<Props> = (props) => {
   const {
     isLink,
     modificatorClass,
@@ -42,11 +42,6 @@ const Logotype = (props) => {
       }
     </div>
   );
-};
-
-Logotype.propTypes = {
-  isLink: bool.isRequired,
-  modificatorClass: string,
 };
 
 export default Logotype;

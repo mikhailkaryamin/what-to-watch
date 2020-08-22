@@ -1,10 +1,25 @@
-import React, {
-  PureComponent,
-} from 'react';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  isPlayVideo: boolean;
+}
+
+interface InjectingProps {
+  isPlayVideo: boolean;
+  onStopPreviewClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}
 
 const withPreviewVideo = (Component) => {
-  class WithPreviewVideo extends PureComponent {
-    constructor(props) {
+  type S = React.ComponentProps<typeof Component>;
+  type T = Subtract<S, InjectingProps>;
+
+  class WithPreviewVideo extends React.PureComponent<T, State> {
+    private _timer: ReturnType<typeof setTimeout> | null ;
+
+    constructor(props: T) {
       super(props);
       this.state = {
         isPlayVideo: false,

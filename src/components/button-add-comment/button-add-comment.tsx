@@ -1,8 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
-import {number} from 'prop-types';
 
-const ButtonAddComment = (props) => {
+type Props = {
+  id: number,
+}
+
+const ButtonAddComment: React.FC<Props> = (props: Props) => {
   const {
     id
   } = props;
@@ -15,10 +18,6 @@ const ButtonAddComment = (props) => {
       Add review
     </Link>
   );
-};
-
-ButtonAddComment.propTypes = {
-  id: number.isRequired,
 };
 
 export default ButtonAddComment;

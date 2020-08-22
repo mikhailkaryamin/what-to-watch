@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   Redirect,
   Route,
@@ -9,7 +9,7 @@ import {
   func
 } from 'prop-types';
 
-import {AppRoute} from '../../const.js';
+import {AppRoute} from '../../const';
 
 const Private = (props) => {
   const {

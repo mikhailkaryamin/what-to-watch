@@ -1,11 +1,22 @@
-import React, {
-  PureComponent
-} from 'react';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
 
-import {FilmDetailedTabsType} from '../../const.js';
+import {FilmDetailedTabsType} from '../../const';
+
+interface State {
+  currentTypeTab: string,
+}
+
+interface InjectingProps {
+  currentTypeTab: string,
+  onTabClick: (arg0: string) => void,
+}
 
 const withToggleFilmInfo = (Component) => {
-  class WithToggleFilmInfo extends PureComponent {
+  type S = React.ComponentProps<typeof Component>;
+  type T = Subtract<S, InjectingProps>;
+
+  class WithToggleFilmInfo extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -29,7 +40,7 @@ const withToggleFilmInfo = (Component) => {
       );
     }
 
-    _handleTabTypeChange(type) {
+    _handleTabTypeChange(type: string) {
       this.setState({
         currentTypeTab: type,
       });

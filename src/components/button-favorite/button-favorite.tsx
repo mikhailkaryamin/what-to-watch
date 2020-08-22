@@ -1,16 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {
-  func,
-  string,
-  bool,
-} from 'prop-types';
-import {filmPropTypes} from '../../types.js';
+import {FilmType} from '../../types';
 
-import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite.js';
+import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite';
 
-const ButtonFavorite = (props) => {
+type Props = {
+  film: FilmType,
+  isFavorite: boolean,
+  place: string,
+  onSetFavorite: (arg0: FilmType, arg1: string) => void,
+  onRemoveFavorite: (arg0: FilmType, arg1: string) => void,
+}
+
+const ButtonFavorite: React.FC<Props> = (props: Props) => {
   const {
     film,
     isFavorite,
@@ -61,14 +64,6 @@ const ButtonFavorite = (props) => {
       ? getButtonRemoveFavorite()
       : getButtonInFavorite()
   );
-};
-
-ButtonFavorite.propTypes = {
-  film: filmPropTypes,
-  isFavorite: bool.isRequired,
-  place: string.isRequired,
-  onSetFavorite: func.isRequired,
-  onRemoveFavorite: func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

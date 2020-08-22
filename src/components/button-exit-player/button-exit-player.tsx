@@ -1,13 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {func} from 'prop-types';
+import {AppRoute} from '../../const';
+import {ActionCreator as ActionOptions} from '../../reducer/options/options';
 
-import {AppRoute} from '../../const.js';
-import {ActionCreator as ActionOptions} from '../../reducer/options/options.js';
+type Props = {
+  onButtonExitClick: () => void,
+}
 
-const ButtonExitPlayer = (props) => {
+const ButtonExitPlayer: React.FC<Props> = (props: Props) => {
   const {onButtonExitClick} = props;
 
   return (
@@ -26,10 +28,6 @@ const ButtonExitPlayer = (props) => {
     </Link>
 
   );
-};
-
-ButtonExitPlayer.propTypes = {
-  onButtonExitClick: func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

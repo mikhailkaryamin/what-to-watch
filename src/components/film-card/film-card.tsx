@@ -1,15 +1,19 @@
-import React from 'react';
-import {
-  bool,
-  func,
-} from 'prop-types';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-import {filmPropTypes} from '../../types.js';
+import {FilmType} from '../../types';
 
-import VideoPlayer from '../preview-video/preview-video.tsx';
+import VideoPlayer from '../preview-video/preview-video';
 
-const FilmCard = (props) => {
+type Props = {
+  film: FilmType,
+  isPlayVideo: boolean,
+  onMouseEnter: () => void,
+  onMouseLeave: () => void,
+  onStopPreviewClick: () => void,
+}
+
+const FilmCard: React.FC<Props> = (props: Props) => {
   const {
     isPlayVideo,
     onMouseEnter,
@@ -72,14 +76,6 @@ const FilmCard = (props) => {
       </h3>
     </article>
   );
-};
-
-FilmCard.propTypes = {
-  film: filmPropTypes.isRequired,
-  isPlayVideo: bool.isRequired,
-  onMouseEnter: func.isRequired,
-  onMouseLeave: func.isRequired,
-  onStopPreviewClick: func.isRequired,
 };
 
 export default FilmCard;

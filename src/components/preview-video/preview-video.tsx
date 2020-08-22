@@ -1,7 +1,11 @@
-import React from 'react';
-import {string} from 'prop-types';
+import * as React from 'react';
 
-const VideoPlayer = (props) => {
+type Props = {
+  previewVideoLink: string,
+  posterImage: string,
+}
+
+const VideoPlayer: React.FC<Props> = (props: Props) => {
   const {
     previewVideoLink,
     posterImage,
@@ -16,11 +20,6 @@ const VideoPlayer = (props) => {
       height="175"
     />
   );
-};
-
-VideoPlayer.propTypes = {
-  previewVideoLink: string,
-  posterImage: string,
 };
 
 export default VideoPlayer;

@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {
   applyMiddleware,
   createStore,
@@ -8,22 +8,22 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
-import reducer from './reducer/reducer.js';
+import reducer from './reducer/reducer';
 import {
   Operation as FilmOperation,
   ActionCreator as ActionFilms
-} from './reducer/films/films.js';
+} from './reducer/films/films';
 import {
   ActionCreator as UserAction,
   AuthStatus,
   Operation as UserOperation,
-} from './reducer/user/user.js';
+} from './reducer/user/user';
 
-import {createAPI} from './api.js';
+import {createAPI} from './api';
 
-import {StatusRequestServer} from './const.js';
+import {StatusRequestServer} from './const';
 
-import App from './components/app/app.js';
+import App from './components/app/app';
 
 const onUnauthorized = () => {
   store.dispatch(UserAction.checkAuthorization(AuthStatus.NO_AUTH));

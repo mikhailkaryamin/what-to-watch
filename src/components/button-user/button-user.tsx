@@ -1,17 +1,18 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {AppRoute} from '../../const.js';
+import {UserType} from '../../types'
 
-import {getUser} from '../../reducer/user/selectors.js';
-import {
-  number,
-  shape,
-  string,
-} from 'prop-types';
+import {AppRoute} from '../../const';
 
-const ButtonUser = (props) => {
+import {getUser} from '../../reducer/user/selectors';
+
+type Props = {
+  user: UserType
+}
+
+const ButtonUser: React.FC<Props> = (props: Props) => {
   const {
     user,
   } = props;
@@ -25,15 +26,6 @@ const ButtonUser = (props) => {
       </div>
     </Link>
   );
-};
-
-ButtonUser.propTypes = {
-  user: shape({
-    avatarUrl: string.isRequired,
-    email: string.isRequired,
-    id: number.isRequired,
-    name: string.isRequired,
-  })
 };
 
 const mapStateToProps = (state) => ({

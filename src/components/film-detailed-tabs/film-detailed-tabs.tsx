@@ -1,12 +1,13 @@
-import React from 'react';
-import {
-  func,
-  string
-} from 'prop-types';
+import * as React from 'react';
 
-import {FilmDetailedTabsType} from '../../const.js';
+import {FilmDetailedTabsType} from '../../const';
 
-const FilmDetailedTabs = (props) => {
+type Props = {
+  currentTypeTab: string,
+  onTabClick: (arg0: string) => void,
+}
+
+const FilmDetailedTabs: React.FC<Props> = (props: Props) => {
   const {
     currentTypeTab,
     onTabClick,
@@ -14,7 +15,7 @@ const FilmDetailedTabs = (props) => {
 
   return (<nav className="movie-nav movie-card__nav">
     <ul className="movie-nav__list">
-      {Object.values(FilmDetailedTabsType).map((type) =>
+      {Object.values(FilmDetailedTabsType).map((type: string) =>
         <li
           key={type}
           className={
@@ -31,11 +32,6 @@ const FilmDetailedTabs = (props) => {
       )}
     </ul>
   </nav>);
-};
-
-FilmDetailedTabs.propTypes = {
-  currentTypeTab: string,
-  onTabClick: func,
 };
 
 export default FilmDetailedTabs;

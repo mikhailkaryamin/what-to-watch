@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 
-import {FilmCardsListType} from '../../const.js';
+import {FilmCardsListType} from '../../const';
 
-import FilmCardMain from '../film-card-main/film-card-main.js';
-import FilmCatalog from '../film-catalog/film-catalog.js';
-import Footer from '../footer/footer.js';
+import FilmCardMain from '../film-card-main/film-card-main';
+import FilmCatalog from '../film-catalog/film-catalog';
+import Footer from '../footer/footer';
 
 const Main = () => {
   return (
