@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {FilmType} from '../../types';
 
 type Props = {
-  film: FilmType,
+  film: FilmType;
 }
 
 const ButtonPlay: React.FC<Props> = (props: Props) => {

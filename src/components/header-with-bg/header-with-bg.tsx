@@ -5,9 +5,9 @@ import ButtonUser from '../button-user/button-user';
 import Logotype from '../logotype/logotype';
 
 type Props = {
-  backgroundImage: string,
-  isAuth: boolean,
-  isLink: boolean,
+  backgroundImage: string;
+  isAuth: boolean;
+  isLink: boolean;
 }
 
 const HeaderWithBg: React.FC<Props> = (props: Props) => {

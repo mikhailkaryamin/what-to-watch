@@ -1,12 +1,15 @@
 import * as React from 'react';
 import {Diff} from 'utility-types';
 
-import {UserRAWType} from '../../types';
+import {
+  DataInputSignInType,
+  UserRAWType,
+} from '../../types';
 
 interface InjectingProps {
   isDisabledSubmitButton: boolean;
-  onChange: (arg0: {}) => void;
-  onSubmit: () => void;
+  onChange: (data: DataInputSignInType) => void;
+  onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
 }
 
 const withAuthorization = <BaseProps extends InjectingProps>(
@@ -14,7 +17,7 @@ const withAuthorization = <BaseProps extends InjectingProps>(
 ) => {
 
   type HocProps = Diff<BaseProps, InjectingProps> & {
-    signIn: (arg0: UserRAWType) => void;
+    signIn: (userData: UserRAWType) => void;
   };
 
   type HocState = {
@@ -54,11 +57,7 @@ const withAuthorization = <BaseProps extends InjectingProps>(
       return true;
     }
 
-    _handleInputChange(
-      data: {
-        type: string,
-        value: string
-      }) {
+    _handleInputChange(data: DataInputSignInType) {
 
       if (data.type === `email`) {
         this.setState({
@@ -73,7 +72,7 @@ const withAuthorization = <BaseProps extends InjectingProps>(
       }
     }
 
-    _handleFormSubmit(evt: React.MouseEvent<HTMLButtonElement>) {
+    _handleFormSubmit(evt: React.FormEvent<HTMLFormElement>) {
       const {
         signIn
       } = this.props;

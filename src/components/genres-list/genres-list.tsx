@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
+import {RootState} from '../../types';
+
 import {ActionCreator as ActionOptions} from '../../reducer/options/options';
 import {getGenre} from '../../reducer/options/selectors';
 import {getGenres} from '../../reducer/films/selectors';
 
 type Props = {
-  currentGenre: string,
-  genres: string[],
-  onGenreClick: (arg0: string) => void,
+  currentGenre: string;
+  genres: string[];
+  onGenreClick: (genre: string) => void;
 }
 
 const GenresList: React.FC<Props> = (props: Props) => {
@@ -38,12 +40,12 @@ const GenresList: React.FC<Props> = (props: Props) => {
 
 export {GenresList};
 
-const mapStateToProps = (state: {}) => ({
+const mapStateToProps = (state: RootState) => ({
   currentGenre: getGenre(state),
   genres: getGenres(state),
 });
 
-const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   onGenreClick(genre: string) {
     dispatch(ActionOptions.resetAmountRenderFilmCard());
     dispatch(ActionOptions.setGenre(genre));

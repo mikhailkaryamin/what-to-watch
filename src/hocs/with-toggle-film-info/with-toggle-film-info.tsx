@@ -7,7 +7,7 @@ import {FilmDetailedTabsType} from '../../const';
 
 interface InjectingProps {
   currentTypeTab: string,
-  onTabClick: (arg0: string) => void,
+  onTabClick: (type: string) => void,
 }
 
 const withToggleFilmInfo = <BaseProps extends InjectingProps>(

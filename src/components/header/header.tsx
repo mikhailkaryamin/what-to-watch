@@ -5,13 +5,13 @@ import ButtonUser from '../button-user/button-user';
 import Logotype from '../logotype/logotype';
 
 type Props = {
-  headline?: string,
-  isAuth: boolean,
-  isLink: boolean,
-  isWithSignIn: boolean,
+  headline?: string;
+  isAuth: boolean;
+  isLink: boolean;
+  isWithSignIn: boolean;
 }
 
-const Header = (props) => {
+const Header: React.FC<Props> = (props: Props) => {
   const {
     headline,
     isAuth,

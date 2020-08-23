@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {Redirect} from 'react-router-dom';
 
+import {DataInputSignInType} from '../../types';
+
 import {AppRoute} from '../../const';
 
 import Footer from '../footer/footer';
@@ -9,10 +11,10 @@ import SignInInput from '../sign-in-input/sign-in-input';
 import UserPage from '../user-page/user-page';
 
 type Props = {
-  isAuth: boolean,
-  isDisabledSubmitButton: boolean,
-  onChange: () => void,
-  onSubmit: () => void,
+  isAuth: boolean;
+  isDisabledSubmitButton: boolean;
+  onChange: (data: DataInputSignInType) => void;
+  onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
 }
 
 const HEADLINE_HEADER = `Sign in`;

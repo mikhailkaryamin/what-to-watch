@@ -1,11 +1,14 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {CommentType} from '../../types';
+import {
+  CommentType,
+  RootState,
+} from '../../types';
 import {getComments} from '../../reducer/comment/selectors';
 
 type Props = {
-  comments: CommentType[],
+  comments: CommentType[];
 }
 
 const getDateCommentFormat = (date: number) => {
@@ -74,7 +77,7 @@ const TabComments: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: {}) => ({
+const mapStateToProps = (state: RootState) => ({
   comments: getComments(state),
 });
 

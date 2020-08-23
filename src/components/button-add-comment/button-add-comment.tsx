@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 
 type Props = {
-  id: number,
+  id: number;
 }
 
 const ButtonAddComment: React.FC<Props> = (props: Props) => {
   const {
-    id
+    id,
   } = props;
 
   return (

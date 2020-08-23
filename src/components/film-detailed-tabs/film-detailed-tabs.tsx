@@ -3,8 +3,8 @@ import * as React from 'react';
 import {FilmDetailedTabsType} from '../../const';
 
 type Props = {
-  currentTypeTab: string,
-  onTabClick: (arg0: string) => void,
+  currentTypeTab: string;
+  onTabClick: (type: string) => void;
 }
 
 const FilmDetailedTabs: React.FC<Props> = (props: Props) => {

@@ -6,7 +6,7 @@ import {AppRoute} from '../../const';
 import {ActionCreator as ActionOptions} from '../../reducer/options/options';
 
 type Props = {
-  onButtonExitClick: () => void,
+  onButtonExitClick: () => void;
 }
 
 const ButtonExitPlayer: React.FC<Props> = (props: Props) => {
@@ -30,7 +30,7 @@ const ButtonExitPlayer: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   onButtonExitClick() {
     dispatch(ActionOptions.resetFilm());
   }

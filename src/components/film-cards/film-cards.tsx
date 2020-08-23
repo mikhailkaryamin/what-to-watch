@@ -1,20 +1,13 @@
 import * as React from 'react';
 
-import {
-  arrayOf,
-  oneOf,
-  oneOfType,
-  string,
-} from 'prop-types';
-
 import {FilmType} from '../../types';
 
 import FilmCard from '../film-card/film-card';
 import withPreviewVideo from '../../hocs/with-preview-video/with-preview-video';
 
 type Props = {
-  films: FilmType[],
-  prefix?: string | null,
+  films: FilmType[];
+  prefix?: string | null;
 }
 
 const FilmCardWrapped = withPreviewVideo(FilmCard);

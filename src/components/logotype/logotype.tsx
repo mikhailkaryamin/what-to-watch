@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 
 type Props = {
-  isLink: boolean,
-  modificatorClass?: string,
+  isLink: boolean;
+  modificatorClass?: string;
 }
 
 const getLogoMarkup = () => {
@@ -18,7 +18,7 @@ const getLogoMarkup = () => {
   );
 };
 
-const Logotype: React.FC<Props> = (props) => {
+const Logotype: React.FC<Props> = (props: Props) => {
   const {
     isLink,
     modificatorClass,

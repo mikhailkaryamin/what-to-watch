@@ -5,10 +5,10 @@ import Header from '../header/header';
 import UserPage from '../user-page/user-page';
 
 type Props = {
-  isAuth: boolean,
-  isLink: boolean,
-  isWithSignIn: boolean,
-  message: string,
+  isAuth: boolean;
+  isLink: boolean;
+  isWithSignIn: boolean;
+  message: string;
 }
 
 const NoAvailableFilms: React.FC<Props> = (props: Props) => {

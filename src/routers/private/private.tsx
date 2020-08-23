@@ -7,10 +7,10 @@ import {
 import {AppRoute} from '../../const';
 
 type Props = {
-  exact: boolean,
-  isAuth: boolean,
-  path: string,
-  render: Function,
+  exact: boolean;
+  isAuth: boolean;
+  path: string;
+  render: Function;
 }
 
 const Private = (props: Props) => {

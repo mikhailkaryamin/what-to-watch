@@ -1,17 +1,16 @@
 import * as React from 'react';
 import {Diff} from 'utility-types';
 
-import {CommentRAWType} from '../../types';
+import {
+  CommentRAWType,
+  DataInputCommentType,
+} from '../../types';
 
-type DataInput = {
-  type: `comment` | `rating`;
-  value: any;
-}
 
 interface InjectingProps {
   isDisabledSubmitButton: boolean;
-  onChange: (data: DataInput) => void;
-  onSubmit: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange: (data: DataInputCommentType) => void;
+  onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
 }
 
 const withComment = <BaseProps extends InjectingProps>(
@@ -61,7 +60,7 @@ const withComment = <BaseProps extends InjectingProps>(
       return true;
     }
 
-    _handleFormSubmit(evt: React.MouseEvent<HTMLButtonElement>) {
+    _handleFormSubmit(evt: React.FormEvent<HTMLFormElement>) {
       const {
         uploadComment,
         filmId,
@@ -76,7 +75,7 @@ const withComment = <BaseProps extends InjectingProps>(
       uploadComment(commentData, filmId);
     }
 
-    _handleInputChange(data: DataInput) {
+    _handleInputChange(data: DataInputCommentType) {
       if (data.type === `comment`) {
         this.setState({
           comment: data.value,

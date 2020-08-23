@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 type Props = {
-  director: string,
-  genre: string,
-  released: number,
-  runTime: number,
-  starring: string[],
+  director: string;
+  genre: string;
+  released: number;
+  runTime: number;
+  starring: string[];
 }
 
 const getFormattedRunTime = (runTime: number) => {

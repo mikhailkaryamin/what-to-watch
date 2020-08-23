@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 type Props = {
-  previewVideoLink: string,
-  posterImage: string,
+  previewVideoLink: string;
+  posterImage: string;
 }
 
 const VideoPlayer: React.FC<Props> = (props: Props) => {

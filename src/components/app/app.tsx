@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {
   CommentRAWType,
   FilmType,
+  RootState,
   UserRAWType,
 } from '../../types';
 
@@ -30,14 +31,14 @@ import NoAvailable from '../no-available/no-available';
 import {App as Router} from '../../routers/app/app';
 
 type Props = {
-  authStatus: string | null,
-  films: FilmType[],
-  loadFavorite: () => void,
-  signIn: (arg0: UserRAWType) => void,
-  statusLoadFilms: string | null,
-  statusLoadPromo: string | null,
-  statusUploadComment: string | null,
-  uploadComment: (arg0: CommentRAWType) => void,
+  authStatus: string | null;
+  films: FilmType[];
+  loadFavorite: () => void;
+  signIn: (user: UserRAWType) => void;
+  statusLoadFilms: string | null;
+  statusLoadPromo: string | null;
+  statusUploadComment: string | null;
+  uploadComment: (commentData: CommentRAWType, id: number) => void;
 }
 
 const App: React.FC<Props> = (props: Props) => {
@@ -87,7 +88,7 @@ const App: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: {}) => ({
+const mapStateToProps = (state: RootState) => ({
   authStatus: getAuthStatus(state),
   films: getFilms(state),
   statusLoadFilms: getStatusLoadingFilms(state),
@@ -95,11 +96,11 @@ const mapStateToProps = (state: {}) => ({
   statusUploadComment: getStatusCommentUpload(state),
 });
 
-const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   loadFavorite: () => {
     dispatch(FavoriteOperation.loadFavoriteFilms());
   },
-  signIn: (user: (arg0: () => void) => void) => {
+  signIn: (user: UserRAWType) => {
     dispatch(UserOperation.signIn(user));
   },
   uploadComment: (commentData: CommentRAWType, id: number) => {
