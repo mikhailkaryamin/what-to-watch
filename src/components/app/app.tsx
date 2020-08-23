@@ -16,7 +16,7 @@ import {Operation as CommentOperation} from '../../reducer/comment/comment';
 import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite';
 import {Operation as UserOperation} from '../../reducer/user/user';
 
-import {getStatusFilms as getStatusCommentUpload} from '../../reducer/comment/selectors';
+import {getStatus as getStatusCommentUpload} from '../../reducer/comment/selectors';
 import {
   getStatusFilms as getStatusLoadingFilms,
   getStatusPromo as getStatusLoadingPromo,
@@ -87,7 +87,7 @@ const App: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: {}) => ({
   authStatus: getAuthStatus(state),
   films: getFilms(state),
   statusLoadFilms: getStatusLoadingFilms(state),
@@ -102,7 +102,7 @@ const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
   signIn: (user: (arg0: () => void) => void) => {
     dispatch(UserOperation.signIn(user));
   },
-  uploadComment: (commentData, id) => {
+  uploadComment: (commentData: CommentRAWType, id: number) => {
     dispatch(CommentOperation.uploadComment(commentData, id));
   },
 });
