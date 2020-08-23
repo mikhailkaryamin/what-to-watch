@@ -1,23 +1,25 @@
 import * as React from 'react';
-import {Subtract} from 'utility-types';
+import {Diff} from 'utility-types';
 
 import {FilmDetailedTabsType} from '../../const';
-
-interface State {
-  currentTypeTab: string,
-}
 
 interface InjectingProps {
   currentTypeTab: string,
   onTabClick: (arg0: string) => void,
 }
 
-const withToggleFilmInfo = (Component) => {
-  type S = React.ComponentProps<typeof Component>;
-  type T = Subtract<S, InjectingProps>;
+const withToggleFilmInfo = <BaseProps extends InjectingProps>(
+  Component: React.ComponentType<BaseProps>
+) => {
 
-  class WithToggleFilmInfo extends React.PureComponent<T, State> {
-    constructor(props) {
+  type HocProps = Diff<BaseProps, InjectingProps>;
+
+  type HocState = {
+    currentTypeTab: string,
+  }
+
+  class WithToggleFilmInfo extends React.PureComponent<HocProps, HocState> {
+    constructor(props: HocProps) {
       super(props);
 
       this.state = {
@@ -33,9 +35,9 @@ const withToggleFilmInfo = (Component) => {
 
       return (
         <Component
-          {...this.props}
           currentTypeTab={currentTypeTab}
           onTabClick={this._handleTabTypeChange}
+          {...(this.props as any)}
         />
       );
     }
