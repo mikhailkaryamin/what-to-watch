@@ -3,15 +3,17 @@ import {
   Redirect,
   Route,
 } from 'react-router-dom';
-import {
-  bool,
-  string,
-  func
-} from 'prop-types';
 
 import {AppRoute} from '../../const';
 
-const Private = (props) => {
+type Props = {
+  exact: boolean,
+  isAuth: boolean,
+  path: string,
+  render: Function,
+}
+
+const Private = (props: Props) => {
   const {
     exact,
     isAuth,
@@ -38,13 +40,6 @@ const Private = (props) => {
       }}
     />
   );
-};
-
-Private.propTypes = {
-  exact: bool.isRequired,
-  isAuth: bool.isRequired,
-  path: string.isRequired,
-  render: func.isRequired,
 };
 
 export default Private;
