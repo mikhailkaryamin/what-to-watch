@@ -1,23 +1,28 @@
 import * as React from 'react';
-import {Subtract} from 'utility-types';
+import {Diff} from 'utility-types';
 
-interface State {
-  email: string;
-  password: string;
-}
+import {UserRAWType} from '../../types';
 
 interface InjectingProps {
   isDisabledSubmitButton: boolean;
   onChange: (arg0: {}) => void;
   onSubmit: () => void;
-  signIn: (arg0: () => void) => void,
 }
 
-const withAuthorization = (Component) => {
-  type S = React.ComponentProps<typeof Component>;
-  type T = Subtract<S, InjectingProps>
+const withAuthorization = <BaseProps extends InjectingProps>(
+  Component: React.ComponentType<BaseProps>
+) => {
 
-  class WithAuthorization extends React.PureComponent<T, State> {
+  type HocProps = Diff<BaseProps, InjectingProps> & {
+    signIn: (arg0: UserRAWType) => void;
+  };
+
+  type HocState = {
+    email: string;
+    password: string;
+  }
+
+  class WithAuthorization extends React.PureComponent<HocProps, HocState> {
     constructor(props) {
       super(props);
 
@@ -34,10 +39,10 @@ const withAuthorization = (Component) => {
     render() {
       return (
         <Component
-          {...this.props}
           isDisabledSubmitButton={this._checkUserData()}
           onChange={this._handleInputChange}
           onSubmit={this._handleFormSubmit}
+          {...(this.props as any)}
         />
       );
     }
@@ -49,7 +54,11 @@ const withAuthorization = (Component) => {
       return true;
     }
 
-    _handleInputChange(data) {
+    _handleInputChange(
+      data: {
+        type: string,
+        value: string
+      }) {
 
       if (data.type === `email`) {
         this.setState({
@@ -64,7 +73,7 @@ const withAuthorization = (Component) => {
       }
     }
 
-    _handleFormSubmit(evt) {
+    _handleFormSubmit(evt: React.MouseEvent<HTMLButtonElement>) {
       const {
         signIn
       } = this.props;
