@@ -23,7 +23,7 @@ const withAuthorization = <BaseProps extends InjectingProps>(
   }
 
   class WithAuthorization extends React.PureComponent<HocProps, HocState> {
-    constructor(props) {
+    constructor(props: HocProps) {
       super(props);
 
       this.state = {

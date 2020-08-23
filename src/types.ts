@@ -1,5 +1,5 @@
 type CommentRAWType = {
-  rating: string,
+  rating: number,
   comment: string,
 }
 
