@@ -1,10 +1,17 @@
 import * as React from 'react';
 
-type Props = {
-  onChange: () => void,
+import {DataInputSignInType} from '../../types';
+
+type FieldsType = {
+  type: `email` | `password`;
+  description: string;
 }
 
-const FIELDS = [
+type Props = {
+  onChange: (data: DataInputSignInType) => void;
+}
+
+const FIELDS: FieldsType[] = [
   {
     type: `email`,
     description: `Email address`
@@ -15,7 +22,7 @@ const FIELDS = [
   },
 ];
 
-const getMarkupField = (type: string, description: string, onChange: (arg0: {}) => void) => {
+const getMarkupField = (type: `email` | `password`, description: string, onChange: (data: DataInputSignInType) => void) => {
   return (
     <div
       className="sign-in__field"

@@ -8,7 +8,7 @@ import Header from '../header/header';
 import UserPage from '../user-page/user-page';
 
 type Props = {
-  isAuth: boolean,
+  isAuth: boolean;
 }
 
 const Favorites: React.FC<Props> = (props: Props) => {

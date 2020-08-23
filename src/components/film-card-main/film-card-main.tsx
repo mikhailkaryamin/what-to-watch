@@ -1,7 +1,10 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {FilmType} from '../../types';
+import {
+  FilmType,
+  RootState,
+} from '../../types';
 
 import {
   AuthStatus,
@@ -16,8 +19,8 @@ import ButtonFavorite from '../button-favorite/button-favorite';
 import ButtonPlay from '../button-play/button-play';
 
 type Props = {
-  authStatus: string | null,
-  promoFilm: FilmType,
+  authStatus: string | null;
+  promoFilm: FilmType;
 }
 
 const FilmCardMain: React.FC<Props> = (props: Props) => {
@@ -75,7 +78,7 @@ const FilmCardMain: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   authStatus: getAuthStatus(state),
   promoFilm: getPromoFilm(state),
 });

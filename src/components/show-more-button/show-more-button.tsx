@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {ActionCreator as ActionOptions} from '../../reducer/options/options';
 
 type Props = {
-  onShowMoreButtonClick: () => void,
+  onShowMoreButtonClick: () => void;
 }
 
 const ShowMoreButton: React.FC<Props> = (props: Props) => {
@@ -27,7 +27,7 @@ const ShowMoreButton: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   onShowMoreButtonClick() {
     dispatch(ActionOptions.setAmountRenderFilmCard());
   }

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Logotype from '../logotype/logotype';
 
 type Props = {
-  isLink: boolean,
+  isLink: boolean;
 }
 
 const MODIFICATOR_CLASS = `logo__link--light`;

@@ -1,8 +1,12 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
+import {
+  FilmType,
+  RootState,
+} from '../../types';
+
 import {FilmCardsListType} from '../../const';
-import {FilmType} from '../../types';
 
 import {getFavoriteFilms} from '../../reducer/favorite/selectors';
 import {getAmountRenderFilmCard} from '../../reducer/options/selectors';
@@ -16,11 +20,11 @@ import GenresList from '../genres-list/genres-list';
 import ShowMoreButton from '../show-more-button/show-more-button';
 
 type Props = {
-  amountRenderFilmCard: number,
-  filmsFavorite: FilmType[],
-  filmsByGenre: FilmType[],
-  filmsLikeThis: FilmType[],
-  sign: string,
+  amountRenderFilmCard: number;
+  filmsFavorite: FilmType[];
+  filmsByGenre: FilmType[];
+  filmsLikeThis: FilmType[];
+  sign: string;
 }
 
 const FilmCatalog: React.FC<Props> = (props: Props) => {
@@ -75,15 +79,13 @@ const FilmCatalog: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   amountRenderFilmCard: getAmountRenderFilmCard(state),
   filmsFavorite: getFavoriteFilms(state),
   filmsByGenre: getFilmsByGenre(state),
   filmsLikeThis: getFilmsLikeThis(state),
 });
 
-export {
-  FilmCatalog,
-};
+export {FilmCatalog};
 
 export default connect(mapStateToProps)(FilmCatalog);

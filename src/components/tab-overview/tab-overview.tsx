@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 type Props = {
-  description: string,
-  director: string,
-  rating: number,
-  scoreCount: number,
-  starring: string[],
+  description: string;
+  director: string;
+  rating: number;
+  scoreCount: number;
+  starring: string[];
 }
 
 const LevelRating = {

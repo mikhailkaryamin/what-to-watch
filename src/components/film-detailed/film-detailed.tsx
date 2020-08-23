@@ -1,7 +1,10 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {FilmType} from '../../types';
+import {
+  FilmType,
+  RootState,
+} from '../../types';
 
 import {
   AuthStatus,
@@ -24,13 +27,13 @@ import Footer from '../footer/footer';
 import HeaderWithBg from '../header-with-bg/header-with-bg';
 
 type Props = {
-  authStatus: string | null,
-  film: FilmType,
-  currentTypeTab: string,
-  onTabClick: () => void,
+  authStatus: string | null;
+  film: FilmType;
+  currentTypeTab: string;
+  onTabClick: (type: string) => void;
 }
 
-const changeTabs = (film, currentTypeTab) => {
+const changeTabs = (film: FilmType, currentTypeTab: string) => {
   const {
     description,
     director,
@@ -150,7 +153,7 @@ const FilmDetailed: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   authStatus: getAuthStatus(state),
 });
 

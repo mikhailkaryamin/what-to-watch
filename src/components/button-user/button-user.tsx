@@ -2,14 +2,17 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {UserType} from '../../types'
+import {
+  RootState,
+  UserType,
+} from '../../types'
 
 import {AppRoute} from '../../const';
 
 import {getUser} from '../../reducer/user/selectors';
 
 type Props = {
-  user: UserType
+  user: UserType;
 }
 
 const ButtonUser: React.FC<Props> = (props: Props) => {
@@ -28,7 +31,7 @@ const ButtonUser: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   user: getUser(state),
 });
 

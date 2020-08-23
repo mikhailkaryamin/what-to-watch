@@ -1,23 +1,34 @@
 import * as React from 'react';
-import {Subtract} from 'utility-types';
+import {Diff} from 'utility-types';
 
-interface State {
-  rating: number;
-  comment: string;
-}
+import {
+  CommentRAWType,
+  DataInputCommentType,
+} from '../../types';
+
 
 interface InjectingProps {
   isDisabledSubmitButton: boolean;
-  onChange: (arg0: {}) => void;
-  onSubmit: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange: (data: DataInputCommentType) => void;
+  onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const withComment = (Component) => {
-  type S = React.ComponentProps<typeof Component>;
-  type T = Subtract<S, InjectingProps>;
+const withComment = <BaseProps extends InjectingProps>(
+  Component: React.ComponentType<BaseProps>
+) => {
 
-  class WithComment extends React.PureComponent<T, State> {
-    constructor(props) {
+  type HocProps = Diff<BaseProps, InjectingProps> & {
+    uploadComment: (commentData: CommentRAWType, filmId: number) => void;
+    filmId: number;
+  }
+
+  type HocState = {
+    rating: number;
+    comment: string;
+  }
+
+  class WithComment extends React.PureComponent<HocProps, HocState> {
+    constructor(props: HocProps) {
       super(props);
 
       this.state = {
@@ -33,10 +44,10 @@ const withComment = (Component) => {
     render() {
       return (
         <Component
-          {...this.props}
           isDisabledSubmitButton={this._checkComment()}
           onChange={this._handleInputChange}
           onSubmit={this._handleFormSubmit}
+          {...(this.props as any)}
         />
       );
     }
@@ -49,7 +60,7 @@ const withComment = (Component) => {
       return true;
     }
 
-    _handleFormSubmit(evt: React.MouseEvent<HTMLButtonElement>) {
+    _handleFormSubmit(evt: React.FormEvent<HTMLFormElement>) {
       const {
         uploadComment,
         filmId,
@@ -64,7 +75,7 @@ const withComment = (Component) => {
       uploadComment(commentData, filmId);
     }
 
-    _handleInputChange(data) {
+    _handleInputChange(data: DataInputCommentType) {
       if (data.type === `comment`) {
         this.setState({
           comment: data.value,

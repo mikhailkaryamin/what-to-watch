@@ -1,19 +1,21 @@
 import * as React from 'react';
 import {Redirect} from 'react-router-dom';
 
+import {DataInputCommentType} from '../../types';
+
 import {StatusRequestServer} from '../../const';
 
 type Props = {
-  filmId: number,
-  isDisabledSubmitButton: boolean,
-  onChange: (arg0: {}) => void,
-  onSubmit: () => void,
-  statusUploadComment: string | null,
+  filmId: number;
+  isDisabledSubmitButton: boolean;
+  onChange: (data: DataInputCommentType) => void;
+  onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
+  statusUploadComment: string | null;
 }
 
 const STARS_RATING = [1, 2, 3, 4, 5];
 
-const getMarkupStar = (starNumber, onChange) => {
+const getMarkupStar = (starNumber: number, onChange: ({type, value}) => void) => {
   return (
     <React.Fragment key={starNumber}>
       <input

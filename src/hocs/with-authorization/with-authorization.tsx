@@ -1,24 +1,32 @@
 import * as React from 'react';
-import {Subtract} from 'utility-types';
+import {Diff} from 'utility-types';
 
-interface State {
-  email: string;
-  password: string;
-}
+import {
+  DataInputSignInType,
+  UserRAWType,
+} from '../../types';
 
 interface InjectingProps {
   isDisabledSubmitButton: boolean;
-  onChange: (arg0: {}) => void;
-  onSubmit: () => void;
-  signIn: (arg0: () => void) => void,
+  onChange: (data: DataInputSignInType) => void;
+  onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const withAuthorization = (Component) => {
-  type S = React.ComponentProps<typeof Component>;
-  type T = Subtract<S, InjectingProps>
+const withAuthorization = <BaseProps extends InjectingProps>(
+  Component: React.ComponentType<BaseProps>
+) => {
 
-  class WithAuthorization extends React.PureComponent<T, State> {
-    constructor(props) {
+  type HocProps = Diff<BaseProps, InjectingProps> & {
+    signIn: (userData: UserRAWType) => void;
+  };
+
+  type HocState = {
+    email: string;
+    password: string;
+  }
+
+  class WithAuthorization extends React.PureComponent<HocProps, HocState> {
+    constructor(props: HocProps) {
       super(props);
 
       this.state = {
@@ -34,10 +42,10 @@ const withAuthorization = (Component) => {
     render() {
       return (
         <Component
-          {...this.props}
           isDisabledSubmitButton={this._checkUserData()}
           onChange={this._handleInputChange}
           onSubmit={this._handleFormSubmit}
+          {...(this.props as any)}
         />
       );
     }
@@ -49,7 +57,7 @@ const withAuthorization = (Component) => {
       return true;
     }
 
-    _handleInputChange(data) {
+    _handleInputChange(data: DataInputSignInType) {
 
       if (data.type === `email`) {
         this.setState({
@@ -64,7 +72,7 @@ const withAuthorization = (Component) => {
       }
     }
 
-    _handleFormSubmit(evt) {
+    _handleFormSubmit(evt: React.FormEvent<HTMLFormElement>) {
       const {
         signIn
       } = this.props;

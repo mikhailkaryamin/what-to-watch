@@ -6,11 +6,11 @@ import {FilmType} from '../../types';
 import {Operation as FavoriteOperation} from '../../reducer/favorite/favorite';
 
 type Props = {
-  film: FilmType,
-  isFavorite: boolean,
-  place: string,
-  onSetFavorite: (arg0: FilmType, arg1: string) => void,
-  onRemoveFavorite: (arg0: FilmType, arg1: string) => void,
+  film: FilmType;
+  isFavorite: boolean;
+  place: string;
+  onSetFavorite: (film: FilmType, place: string) => void;
+  onRemoveFavorite: (film: FilmType, place: string) => void;
 }
 
 const ButtonFavorite: React.FC<Props> = (props: Props) => {
@@ -66,11 +66,11 @@ const ButtonFavorite: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onRemoveFavorite: (film, place) => {
+const mapDispatchToProps = (dispatch: Function) => ({
+  onRemoveFavorite: (film: FilmType, place: string) => {
     dispatch(FavoriteOperation.removeFavoriteFilm(film, place));
   },
-  onSetFavorite: (film, place) => {
+  onSetFavorite: (film: FilmType, place: string) => {
     dispatch(FavoriteOperation.setFavoriteFilm(film, place));
   }
 });

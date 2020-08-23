@@ -6,11 +6,11 @@ import {FilmType} from '../../types';
 import VideoPlayer from '../preview-video/preview-video';
 
 type Props = {
-  film: FilmType,
-  isPlayVideo: boolean,
-  onMouseEnter: () => void,
-  onMouseLeave: () => void,
-  onStopPreviewClick: () => void,
+  film: FilmType;
+  isPlayVideo: boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  onStopPreviewClick: () => void;
 }
 
 const FilmCard: React.FC<Props> = (props: Props) => {

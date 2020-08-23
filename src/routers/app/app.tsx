@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  RouteComponentProps,
   Switch,
 } from 'react-router-dom';
 
@@ -33,12 +34,12 @@ const CommentWrapped = withComment(Comment);
 const SignInWrapped = withAuthorization(SignIn);
 
 type Props = {
-  authStatus: string | null,
-  films: FilmType[],
-  signIn: (arg0: UserRAWType) => void,
-  statusLoadFilms: string | null,
-  statusUploadComment: string | null,
-  uploadComment: (arg0: CommentRAWType) => void,
+  authStatus: string | null;
+  films: FilmType[];
+  signIn: (userData: UserRAWType) => void;
+  statusLoadFilms: string | null;
+  statusUploadComment: string | null;
+  uploadComment: (commentData: CommentRAWType, id: number) => void;
 }
 
 const App: React.FC<Props> = (props: Props) => {
@@ -90,12 +91,14 @@ const App: React.FC<Props> = (props: Props) => {
 
         <WithFilm
           exact
+          isAuth={isAuth}
           path={AppRoute.PLAYER}
           statusLoadFilms={statusLoadFilms}
         />
 
         <WithFilm
           exact
+          isAuth={isAuth}
           path={AppRoute.FILM}
           statusLoadFilms={statusLoadFilms}
         />
@@ -117,7 +120,8 @@ const App: React.FC<Props> = (props: Props) => {
           exact={true}
           isAuth={isAuth}
           path={AppRoute.ADD_COMMENT}
-          render={(renderProps) => {
+          render={(renderProps: RouteComponentProps<any>) => {
+            console.log(renderProps)
             const filmId = parseInt(renderProps.match.params.id, 10);
 
             return (
