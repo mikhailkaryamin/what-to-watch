@@ -66,11 +66,11 @@ const ButtonFavorite: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onRemoveFavorite: (film, place) => {
+const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
+  onRemoveFavorite: (film: FilmType, place: string) => {
     dispatch(FavoriteOperation.removeFavoriteFilm(film, place));
   },
-  onSetFavorite: (film, place) => {
+  onSetFavorite: (film: FilmType, place: string) => {
     dispatch(FavoriteOperation.setFavoriteFilm(film, place));
   }
 });
