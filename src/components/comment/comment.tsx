@@ -13,7 +13,7 @@ type Props = {
 
 const STARS_RATING = [1, 2, 3, 4, 5];
 
-const getMarkupStar = (starNumber: number, onChange: ({type: string, value: string}) => void) => {
+const getMarkupStar = (starNumber: number, onChange: ({type, value}) => void) => {
   return (
     <React.Fragment key={starNumber}>
       <input
