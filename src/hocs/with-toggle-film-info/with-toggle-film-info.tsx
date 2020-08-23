@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {Diff} from 'utility-types';
 
+import {FilmType} from '../../types';
+
 import {FilmDetailedTabsType} from '../../const';
 
 interface InjectingProps {
@@ -12,7 +14,9 @@ const withToggleFilmInfo = <BaseProps extends InjectingProps>(
   Component: React.ComponentType<BaseProps>
 ) => {
 
-  type HocProps = Diff<BaseProps, InjectingProps>;
+  type HocProps = Diff<BaseProps, InjectingProps> & {
+    film: FilmType;
+  };
 
   type HocState = {
     currentTypeTab: string,
