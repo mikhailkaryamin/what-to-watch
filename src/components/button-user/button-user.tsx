@@ -28,7 +28,7 @@ const ButtonUser: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: {}) => ({
   user: getUser(state),
 });
 
