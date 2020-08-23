@@ -75,7 +75,7 @@ const FilmCardMain: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: {}) => ({
   authStatus: getAuthStatus(state),
   promoFilm: getPromoFilm(state),
 });
