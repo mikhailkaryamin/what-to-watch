@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {Subtract} from 'utility-types';
-
-interface State {
-  isPlayVideo: boolean;
-}
+import {Diff} from 'utility-types';
 
 interface InjectingProps {
   isPlayVideo: boolean;
@@ -12,14 +8,21 @@ interface InjectingProps {
   onMouseLeave: () => void;
 }
 
-const withPreviewVideo = (Component) => {
-  type S = React.ComponentProps<typeof Component>;
-  type T = Subtract<S, InjectingProps>;
+const withPreviewVideo = <BaseProps extends InjectingProps>(
+  Component: React.ComponentType<BaseProps>
+) => {
+  
+  type HocProps = Diff<BaseProps, InjectingProps>;
+  
+  type HocState = {
+    isPlayVideo: boolean;
+  }
 
-  class WithPreviewVideo extends React.PureComponent<T, State> {
+
+  class WithPreviewVideo extends React.PureComponent<HocProps, HocState> {
     private _timer: ReturnType<typeof setTimeout> | null ;
 
-    constructor(props: T) {
+    constructor(props: HocProps) {
       super(props);
       this.state = {
         isPlayVideo: false,
@@ -44,11 +47,11 @@ const withPreviewVideo = (Component) => {
 
       return (
         <Component
-          {...this.props}
           isPlayVideo={isPlayVideo}
           onStopPreviewClick={this._handleMouseClick}
           onMouseEnter={this._handleMouseEnter}
           onMouseLeave={this._handleMouseLeave}
+          {...(this.props as any)}
         />
       );
     }
