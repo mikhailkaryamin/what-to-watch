@@ -30,14 +30,12 @@ const ButtonExitPlayer: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
   onButtonExitClick() {
     dispatch(ActionOptions.resetFilm());
   }
 });
 
-export {
-  ButtonExitPlayer,
-};
+export {ButtonExitPlayer};
 
 export default connect(null, mapDispatchToProps)(ButtonExitPlayer);
