@@ -27,7 +27,7 @@ const ShowMoreButton: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
   onShowMoreButtonClick() {
     dispatch(ActionOptions.setAmountRenderFilmCard());
   }
