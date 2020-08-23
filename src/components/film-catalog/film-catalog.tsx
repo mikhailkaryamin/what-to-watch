@@ -75,15 +75,13 @@ const FilmCatalog: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: {}) => ({
   amountRenderFilmCard: getAmountRenderFilmCard(state),
   filmsFavorite: getFavoriteFilms(state),
   filmsByGenre: getFilmsByGenre(state),
   filmsLikeThis: getFilmsLikeThis(state),
 });
 
-export {
-  FilmCatalog,
-};
+export {FilmCatalog};
 
 export default connect(mapStateToProps)(FilmCatalog);
