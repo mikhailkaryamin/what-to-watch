@@ -38,13 +38,13 @@ const GenresList: React.FC<Props> = (props: Props) => {
 
 export {GenresList};
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: {}) => ({
   currentGenre: getGenre(state),
   genres: getGenres(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onGenreClick(genre) {
+const mapDispatchToProps = (dispatch: (arg0: () => void) => void) => ({
+  onGenreClick(genre: string) {
     dispatch(ActionOptions.resetAmountRenderFilmCard());
     dispatch(ActionOptions.setGenre(genre));
   }
