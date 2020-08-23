@@ -8,7 +8,7 @@ type Props = {
   comments: CommentType[],
 }
 
-const getDateCommentFormat = (date) => {
+const getDateCommentFormat = (date: number) => {
   const FORMAT_DATE = {
     year: `numeric`,
     day: `numeric`,
@@ -74,12 +74,10 @@ const TabComments: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: {}) => ({
   comments: getComments(state),
 });
 
-export {
-  TabComments
-};
+export {TabComments};
 
 export default connect(mapStateToProps)(TabComments);
