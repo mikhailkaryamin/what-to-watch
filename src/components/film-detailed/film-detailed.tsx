@@ -30,7 +30,7 @@ type Props = {
   onTabClick: () => void,
 }
 
-const changeTabs = (film, currentTypeTab) => {
+const changeTabs = (film: FilmType, currentTypeTab: string) => {
   const {
     description,
     director,
@@ -150,7 +150,7 @@ const FilmDetailed: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: {}) => ({
   authStatus: getAuthStatus(state),
 });
 
