@@ -16,6 +16,7 @@ const initialState = {
   films: [],
   promoFilm: null,
   statusLoadFilms: null,
+  statusLoadPromo: null,
 };
 
 const api = createAPI(() => {});
@@ -42,6 +43,7 @@ describe(`films`, () => {
         }],
         promoFilm: null,
         statusLoadFilms: null,
+        statusLoadPromo: null,
       });
     });
 
@@ -59,6 +61,7 @@ describe(`films`, () => {
           promoFilm: `some text`
         }],
         statusLoadFilms: null,
+        statusLoadPromo: null,
       });
     });
 
@@ -76,6 +79,7 @@ describe(`films`, () => {
           promoFilm: `some text`
         }],
         statusLoadFilms: null,
+        statusLoadPromo: null,
       });
     });
 
@@ -89,10 +93,11 @@ describe(`films`, () => {
         films: [],
         promoFilm: null,
         statusLoadFilms: `success`,
+        statusLoadPromo: null,
       });
     });
 
-    test(`should handle SET_STATUS_LOAD_FILMS`, () => {
+    test(`should handle SET_STATUS_LOAD_PROMO`, () => {
       expect(
           reducer(initialState, {
             type: ActionType.SET_STATUS_LOAD_PROMO,
@@ -101,6 +106,7 @@ describe(`films`, () => {
       ).toEqual({
         films: [],
         promoFilm: null,
+        statusLoadFilms: null,
         statusLoadPromo: `success`,
       });
     });

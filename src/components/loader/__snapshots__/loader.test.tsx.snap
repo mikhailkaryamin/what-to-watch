@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loader should render loader 1`] = `
+<div
+  className="user-page"
+>
+  <div
+    className="lds-ring"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</div>
+`;
