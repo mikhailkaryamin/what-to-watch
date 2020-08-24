@@ -1,9 +1,9 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+
 import {BrowserRouter as Router} from 'react-router-dom';
 
-import renderer from 'react-test-renderer';
-
-import {ButtonExitPlayer} from './button-exit-player.tsx';
+import {ButtonExitPlayer} from './button-exit-player';
 
 describe(`button exit player`, () => {
   const wrapper = renderer

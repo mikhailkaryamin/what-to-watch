@@ -1,9 +1,8 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-import renderer from 'react-test-renderer';
-
-import ButtonPlay from './button-play.tsx';
+import ButtonPlay from './button-play';
 
 describe(`button play`, () => {
   const FILM = {

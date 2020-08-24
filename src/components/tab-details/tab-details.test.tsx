@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
-import TabDetails from './tab-details.tsx';
+import TabDetails from './tab-details';
 
 describe(`Tab details`, () => {
   const DIRECTOR = `big boss`;

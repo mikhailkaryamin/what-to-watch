@@ -1,10 +1,10 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-import Favorites from './favorites.tsx';
+import Favorites from './favorites';
 
 import {initialState} from '../../mocks/initialState.js';
 

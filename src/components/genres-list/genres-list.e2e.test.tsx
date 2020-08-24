@@ -1,11 +1,11 @@
 import * as React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {
   configure,
   shallow
 } from 'enzyme';
 
-import {GenresList} from './genres-list.tsx';
+import {GenresList} from './genres-list';
 
 configure({
   adapter: new Adapter(),

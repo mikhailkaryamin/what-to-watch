@@ -1,8 +1,8 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {BrowserRouter as Router} from 'react-router-dom';
-import renderer from 'react-test-renderer';
 
-import ButtonSignIn from './button-sign-in.tsx';
+import ButtonSignIn from './button-sign-in';
 
 describe(`button sign in`, () => {
   const wrapper = renderer

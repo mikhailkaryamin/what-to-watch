@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
-import {App} from './app.tsx';
+import {App} from './app';
 
 describe(`Render App`, () => {
 
@@ -14,6 +14,7 @@ describe(`Render App`, () => {
             loadFavorite={()=> {}}
             signIn={()=>{}}
             statusLoadFilms={`success`}
+            statusLoadPromo={`success`}
             statusUploadComment={`success`}
             uploadComment={() => {}}
           />

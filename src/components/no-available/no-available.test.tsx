@@ -1,8 +1,8 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {BrowserRouter as Router} from 'react-router-dom';
-import renderer from 'react-test-renderer';
 
-import NoAvailable from './no-available.tsx';
+import NoAvailable from './no-available';
 
 describe(`no available`, () => {
   const wrapper = renderer

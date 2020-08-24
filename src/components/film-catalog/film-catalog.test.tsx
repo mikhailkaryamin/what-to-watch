@@ -1,13 +1,13 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {BrowserRouter as Router} from 'react-router-dom';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
 import {FilmCardsListType} from '../../const.js';
 import {initialState} from '../../mocks/initialState.js';
 
-import FilmCatalog from './film-catalog.tsx';
+import FilmCatalog from './film-catalog';
 
 const mockStore = configureStore([]);
 

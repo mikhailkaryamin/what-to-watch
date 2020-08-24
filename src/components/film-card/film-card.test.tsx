@@ -1,8 +1,8 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {BrowserRouter as Router} from 'react-router-dom';
-import renderer from 'react-test-renderer';
 
-import FilmCard from './film-card.tsx';
+import FilmCard from './film-card';
 
 describe(`Film card`, () => {
   const FILM_CARD = {

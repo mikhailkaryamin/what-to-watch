@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
-import {TabComments} from './tab-comments.tsx';
+import {TabComments} from './tab-comments';
 
 describe(`Tab comments`, () => {
   const COMMENTS = [{

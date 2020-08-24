@@ -1,8 +1,8 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {BrowserRouter as Router} from 'react-router-dom';
-import renderer from 'react-test-renderer';
 
-import Header from './header.tsx';
+import Header from './header';
 
 describe(`Header`, () => {
   const wrapper = renderer

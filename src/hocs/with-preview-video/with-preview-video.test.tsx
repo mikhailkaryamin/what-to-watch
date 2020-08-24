@@ -1,11 +1,11 @@
 import * as React from 'react';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {
   configure,
   shallow,
 } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 
-import withPreviewVideo from './with-preview-video.tsx';
+import withPreviewVideo from './with-preview-video';
 
 configure({
   adapter: new Adapter()

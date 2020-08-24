@@ -1,11 +1,11 @@
 import * as React from 'react';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {
   configure,
   shallow,
 } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 
-import withComment from './with-comment.tsx';
+import withComment from './with-comment';
 
 configure({
   adapter: new Adapter()

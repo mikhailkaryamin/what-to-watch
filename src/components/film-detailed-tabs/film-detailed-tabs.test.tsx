@@ -1,9 +1,9 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
 import {FilmDetailedTabsType} from '../../const.js';
 
-import FilmDetailedTabs from './film-detailed-tabs.tsx';
+import FilmDetailedTabs from './film-detailed-tabs';
 
 describe(`Film detailed tabs`, () => {
   const onTabClick = () => {};

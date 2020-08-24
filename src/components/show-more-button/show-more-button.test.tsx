@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
-import {ShowMoreButton} from './show-more-button.tsx';
+import {ShowMoreButton} from './show-more-button';
 
 describe(`Render ShowMoreButton`, () => {
   test(`should render ShowMoreButton`, () => {

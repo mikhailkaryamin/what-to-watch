@@ -1,7 +1,7 @@
 import * as React from 'react';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
-import TabOverview from './tab-overview.tsx';
+import TabOverview from './tab-overview';
 
 describe(`Tab overview`, () => {
   const DESCRIPTION = `simple text`;
