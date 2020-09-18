@@ -42,6 +42,8 @@ type Props = {
   uploadComment: (commentData: CommentRAWType, id: number) => void;
 }
 
+const BASE_NAME = "/what-to-watch";
+
 const App: React.FC<Props> = (props: Props) => {
   const {
     authStatus,
@@ -57,7 +59,7 @@ const App: React.FC<Props> = (props: Props) => {
   const isLoading = statusLoadFilms === null || authStatus === null;
 
   return (
-    <Router>
+    <Router basename={BASE_NAME}>
       <Switch>
         <Route
           exact
